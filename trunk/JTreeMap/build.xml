@@ -1,0 +1,81 @@
+<project name="jtreemap" default="buildJar" basedir=".">
+
+	<property name="classpath" value=".;${java.class.path};
+		./lib/jdom.jar" />
+	<property name="classes.dir" value="./classes" />
+	<property name="java.dir" value="./src" />
+	<property name="project.build.debug" value="on" />
+	<property name="version" value="1_0" />
+
+
+	<target name="prepare">
+		<mkdir dir="${classes.dir}" />
+	</target>
+
+
+	<target name="clean">
+		<delete includeEmptyDirs="true" quiet="true">
+			<fileset dir="${classes.dir}" includes="**/*.class,**/*.properties" />
+		</delete>
+	</target>
+
+
+
+	<target name="compile" depends="prepare">
+		<javac srcdir="${java.dir}" destdir="${classes.dir}" debug="${project.build.debug}" />
+	</target>
+
+	<target name="buildJar" description="build jarfile for JTreeMap" depends="clean, compile">
+
+		<delete file="jtreemap.jar" quiet="true" />
+		<jar destfile="./jtreemap.jar">
+			<fileset dir="${classes.dir}">
+				<include name="**/*.class" />
+				<include name="**/*.png" />
+				<include name="**/*.gif" />
+			</fileset>
+			<manifest>
+				<attribute name="Main-Class" value="org.jense.swing.jtreemap.example.JTreeMapExample" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="buildDistrib" description="build jarfile distrib for JTreeMap" depends="clean, compile">
+
+		<delete>
+			<fileset dir="./distrib">
+				<include name="*" />
+			</fileset>
+		</delete>
+
+		<jar destfile="./distrib/jtreemap-${version}.jar">
+			<fileset dir="${classes.dir}">
+				<include name="**/*.class" />
+				<include name="**/*.png" />
+				<include name="**/*.gif" />
+				<exclude name="**/*Example*.class" />
+			</fileset>
+		</jar>
+
+	</target>
+
+	<target name="javadoc">
+		<javadoc packagenames="org.jense.swing.jtreemap.*,org.jense.swing.jtreemap.example.*" sourcepath="src" defaultexcludes="yes" destdir="doc" author="true" version="true" use="true" windowtitle="JTreeMap">
+			<doctitle>
+				<![CDATA[<h1>JTreeMap</h1>]]></doctitle>
+		<tag name="todo" scope="all" description="To do:" />
+	</javadoc>
+</target>
+
+<target name="zipDistribSrc">
+	<delete>
+		<fileset dir="..">
+			<include name="jTreeMap-${version}.zip" />
+		</fileset>
+	</delete>
+
+	<zip destfile="../jTreeMap-${version}.zip" basedir=".">
+	</zip>
+</target>
+
+</project>
