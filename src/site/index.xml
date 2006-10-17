@@ -1,0 +1,46 @@
+<document>
+  <properties>
+    <author email="Kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>JTreeMap</title>
+  </properties>
+  <head>
+    <meta name="description"
+	content="JTreeMap is a Java Java component which reprensents hierarchical structure in a Treemap/heatmap, released under the business-friendly Apache 2.0 license."
+	/>
+
+    <meta name="keywords"
+        content="TreeMap, HeatMap, Swing component, java, open source" />
+    <meta name="Subject" content="Heatmap component" />
+    <meta name="Copyright" content="ObjectLab Financial Ltd" />
+    <meta name="Language" content="English" />
+    <meta name="Designer" content="ObjectLab Financial Ltd" />
+    <meta name="Distribution" content="Global" />
+    <meta name="robots" content="ALL"/>
+    <meta name="Revisit-After" content="20 Days" />
+  </head>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Introduction">
+
+    <p>How to represent a tree in a map</p>
+
+    <p>JTreeMap is a Java Swing component which reprensents hierarchical structure in a Treemap. This is <a href="http://en.wikipedia.org/wiki/Treemapping">treemapping</a>.</p>
+
+    <p>A tree structure may includes more or less important elements.
+For example, in a tree structure of files, there can be files of big size.
+It can be then interesting to know which repertory is the most important on a hard disk.
+But, in a treeview, we can't distinguish the significant elements.
+<a href="http://www.cs.umd.edu/hcil/treemap/">Treemap</a> makes it possible to represent each element in a rectangle of more or less big size according to its importance in the tree structure.
+Moreover, we can add a code color which makes it possible to introduce new information into the representation of the tree structure.</p>
+
+<p>For example, you can use Treemap to see :
+<ul>
+<li>which is the most important repertory on your hard disk.</li>
+<li>if your portofolio of stocks is well distributed between the various branches of industry.</li>
+<li>the map of the market (<a href="http://www.smartmoney.com/marketmap/">smartmoney.com</a>) </li>
+</ul>
+</p>
+    </section>
+
+  </body>
+</document>
