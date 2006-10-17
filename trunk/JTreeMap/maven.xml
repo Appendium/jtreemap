@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!--
+   /*  
+   * ========================================================================
+   * ObjectLab Financial Ltd, proud sponsor of jt:FileReader.
+   * ========================================================================
+   */
+-->
+
+<project xmlns:j="jelly:core" xmlns:core="jelly:core"
+   xmlns:maven="jelly:maven" xmlns:ant="jelly:ant"
+   xmlns:define="jelly:define" xmlns:doc="doc" xmlns:util="jelly:util"
+   xmlns:log="jelly:log">
+
+   <goal name="jt:build" prereqs="jar:install" />
+   <goal name="jt:rebuild" prereqs="clean,jt:build" />
+</project>
