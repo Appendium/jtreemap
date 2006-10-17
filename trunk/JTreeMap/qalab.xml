@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE qalab [<!ELEMENT qalab (summary,file*)>
+<!ATTLIST qalab version CDATA #REQUIRED>
+<!ELEMENT summary (summaryresult*)>
+<!ELEMENT file (result+)>
+<!ATTLIST file id ID #REQUIRED>
+<!ATTLIST file path CDATA #REQUIRED>
+<!ELEMENT result EMPTY>
+<!ATTLIST result date CDATA #REQUIRED>
+<!ATTLIST result statvalue CDATA #REQUIRED>
+<!ATTLIST result type CDATA #REQUIRED>
+<!ELEMENT summaryresult EMPTY>
+<!ATTLIST summaryresult date CDATA #REQUIRED>
+<!ATTLIST summaryresult statvalue CDATA #REQUIRED>
+<!ATTLIST summaryresult filecount CDATA #REQUIRED>
+<!ATTLIST summaryresult type CDATA #REQUIRED>
+]>
+<qalab version="1.1">
+    <summary>
+        <summaryresult date="2006-10-17" filecount="27" statvalue="307" type="checkstyle"/>
+        <summaryresult date="2006-10-17" filecount="14" statvalue="35" type="findbugs"/>
+        <summaryresult date="2006-10-17" filecount="4" statvalue="280" type="simian"/>
+    </summary>
+    <file id="org_jense_swing_jtreemap_package.html" path="org/jense/swing/jtreemap/package.html">
+        <result date="2006-10-17" statvalue="1" type="checkstyle"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_example_package.html" path="org/jense/swing/jtreemap/example/package.html">
+        <result date="2006-10-17" statvalue="1" type="checkstyle"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_DefaultToolTip.java" path="org/jense/swing/jtreemap/DefaultToolTip.java">
+        <result date="2006-10-17" statvalue="7" type="checkstyle"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_DefaultToolTipBuilder.java" path="org/jense/swing/jtreemap/DefaultToolTipBuilder.java">
+        <result date="2006-10-17" statvalue="1" type="checkstyle"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_DefaultValue.java" path="org/jense/swing/jtreemap/DefaultValue.java">
+        <result date="2006-10-17" statvalue="1" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="1" type="findbugs"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_IToolTipBuilder.java" path="org/jense/swing/jtreemap/IToolTipBuilder.java">
+        <result date="2006-10-17" statvalue="1" type="checkstyle"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_JTreeMap.java" path="org/jense/swing/jtreemap/JTreeMap.java">
+        <result date="2006-10-17" statvalue="23" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="5" type="findbugs"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_SplitSquarified.java" path="org/jense/swing/jtreemap/SplitSquarified.java">
+        <result date="2006-10-17" statvalue="12" type="checkstyle"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_SplitStrategy.java" path="org/jense/swing/jtreemap/SplitStrategy.java">
+        <result date="2006-10-17" statvalue="3" type="checkstyle"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_TreeMapNode.java" path="org/jense/swing/jtreemap/TreeMapNode.java">
+        <result date="2006-10-17" statvalue="17" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="1" type="findbugs"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_UniqueColorProvider.java" path="org/jense/swing/jtreemap/UniqueColorProvider.java">
+        <result date="2006-10-17" statvalue="7" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="2" type="findbugs"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_Value.java" path="org/jense/swing/jtreemap/Value.java">
+        <result date="2006-10-17" statvalue="1" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="2" type="findbugs"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_example_BuilderTM3.java" path="org/jense/swing/jtreemap/example/BuilderTM3.java">
+        <result date="2006-10-17" statvalue="1" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="1" type="findbugs"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_example_BuilderXML.java" path="org/jense/swing/jtreemap/example/BuilderXML.java">
+        <result date="2006-10-17" statvalue="2" type="checkstyle"/>
+    </file>
+    <file
+        id="org_jense_swing_jtreemap_example_HSBTreeMapColorProvider.java" path="org/jense/swing/jtreemap/example/HSBTreeMapColorProvider.java">
+        <result date="2006-10-17" statvalue="61" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="5" type="findbugs"/>
+    </file>
+    <file
+        id="org_jense_swing_jtreemap_example_JTreeMapAppletExample.java" path="org/jense/swing/jtreemap/example/JTreeMapAppletExample.java">
+        <result date="2006-10-17" statvalue="60" type="checkstyle"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_example_JTreeMapExample.java" path="org/jense/swing/jtreemap/example/JTreeMapExample.java">
+        <result date="2006-10-17" statvalue="75" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="2" type="findbugs"/>
+        <result date="2006-10-17" statvalue="2" type="findbugs"/>
+        <result date="2006-10-17" statvalue="2" type="findbugs"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_example_RandomColorProvider.java" path="org/jense/swing/jtreemap/example/RandomColorProvider.java">
+        <result date="2006-10-17" statvalue="10" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="4" type="findbugs"/>
+    </file>
+    <file
+        id="org_jense_swing_jtreemap_example_RedGreenColorProvider.java" path="org/jense/swing/jtreemap/example/RedGreenColorProvider.java">
+        <result date="2006-10-17" statvalue="15" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="5" type="findbugs"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_example_ValuePercent.java" path="org/jense/swing/jtreemap/example/ValuePercent.java">
+        <result date="2006-10-17" statvalue="1" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="1" type="findbugs"/>
+    </file>
+    <file id="org_jense_swing_jtreemap_example_ZoomPopupMenu.java" path="org/jense/swing/jtreemap/example/ZoomPopupMenu.java">
+        <result date="2006-10-17" statvalue="7" type="checkstyle"/>
+        <result date="2006-10-17" statvalue="2" type="findbugs"/>
+    </file>
+</qalab>
