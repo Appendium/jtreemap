@@ -1,0 +1,31 @@
+<document>
+  <properties>
+    <author email="Kit@objectlab.co.uk">Benoit Xhenseval</author>
+    <title>JTreeMap</title>
+  </properties>
+  <head>
+    <meta name="description"
+	content="JTreeMap is a Java Swing component which reprensents hierarchical structure in a Treemap/heatmap, released under the business-friendly Apache 2.0 license."
+	/>
+
+    <meta name="keywords"
+        content="TreeMap, HeatMap, Swing component, java, open source" />
+    <meta name="Subject" content="Heatmap component" />
+    <meta name="Copyright" content="ObjectLab Financial Ltd" />
+    <meta name="Language" content="English" />
+    <meta name="Designer" content="ObjectLab Financial Ltd" />
+    <meta name="Distribution" content="Global" />
+    <meta name="robots" content="ALL"/>
+    <meta name="Revisit-After" content="20 Days" />
+  </head>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="JTreemap Introduction">
+
+    <p>JTreeMap is a Java Swing component which reprensents hierarchical structure in a Treemap/heatmap.</p>
+    <p>Check out the <a href="apidocs/index.html">UML diagrams here</a></p>
+    <p>Also look at the <a href="maven-reports.html">Project Reports</a> menu on the left for project specific items, unit tests, QA etc.</p>
+    </section>
+
+  </body>
+</document>
