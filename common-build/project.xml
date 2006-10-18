@@ -41,6 +41,7 @@
          http://www.sourceforge.net/tracker/?group_id=26527
    </issueTrackingUrl>
    <siteAddress>jtreemap.sourceforge.net</siteAddress>
+   <logo>images/jtreemapSmall.gif</logo>
    <siteDirectory/>
    <repository>
       <url>http://svn.sourceforge.net/jtreemap</url>

@@ -4,9 +4,12 @@
   <title>JTreeMap</title>
   <body>
       <menu name="JTreeMap">
+         <item name="Applet Example" href="appletsample.html" />
+         <item name="WebStart Example" href="jtreemap.jnlp" />
+         <item name="News" href="changes-report.html" />
          <item name="Sitemap" href="sitemap.html" />
-         <item name="JTreeMap" href="./multiproject/jtreemap/index.html" />
-         <item name="KTreeMap" href="./multiproject/ktreemap/index.html" />
+         <item name="JTreeMap library" href="./multiproject/jtreemap/index.html" />
+         <item name="KTreeMap library" href="./multiproject/ktreemap/index.html" />
       </menu>
     <links>
       <item name="Main Page on Sourceforge" href="http://jtreemap.sourceforge.net" />
@@ -19,6 +22,9 @@
          <item name="QALab"  href="http://qalab.sourceforge.net/" />
          <item name="ObjectLab Kit"  href="http://objectlabkit.sourceforge.net/" />
          <item name="ObjectLab"  href="http://www.objectlab.co.uk" />
+         
+         <item name="hcil Treemap" href="http://www.cs.umd.edu/hcil/treemap/"/>
+         <item name="SmartMoney" href="http://www.smartmoney.com/"/>
       </menu>
       <footer>
          <a href="http://sourceforge.net">

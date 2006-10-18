@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<jnlp spec="1.0+" codebase="http://jtreemap.sourceforge.net" href="jtreemap.jnlp"> 
+  <information> 
+    <title>JTreeMap Example</title> 
+    <vendor>Jense</vendor> 
+    <homepage href="http://jtreemap.sourceforge.net/index.html"/> 
+    <description></description> 
+    <description kind="short">JTreeMap Example</description>
+    <icon href="jtreemap.gif"/> 
+    <offline-allowed/>
+  </information> 
+  <security> 
+      <all-permissions/> 
+  </security> 
+  <resources> 
+    <j2se version="1.5+"/> 
+    <jar href="jtreemap.jar"/> 
+  </resources> 
+  
+  <application-desc main-class="org.jense.swing.jtreemap.example.JTreeMapExample"/> 
+</jnlp>

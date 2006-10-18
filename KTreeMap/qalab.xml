@@ -55,6 +55,9 @@
     </file>
     <file id="org_jense_ktreemap_example_HSBTreeMapColorProvider.java" path="org/jense/ktreemap/example/HSBTreeMapColorProvider.java">
         <result date="2006-10-18" statvalue="1" type="findbugs"/>
+        <result date="2006-10-18" statvalue="1" type="findbugs"/>
+        <result date="2006-10-18" statvalue="1" type="findbugs"/>
+        <result date="2006-10-18" statvalue="1" type="findbugs"/>
         <result date="2006-10-18" statvalue="47" type="checkstyle"/>
         <result date="2006-10-18" statvalue="1" type="findbugs"/>
         <result date="2006-10-18" statvalue="1" type="findbugs"/>
