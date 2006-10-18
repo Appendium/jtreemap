@@ -14,7 +14,7 @@
   </security> 
   <resources> 
     <j2se version="1.5+"/> 
-    <jar href="jtreemap.jar"/> 
+    <jar href="jtreemap-@JARVERSION@.jar"/> 
   </resources> 
   
   <application-desc main-class="org.jense.swing.jtreemap.example.JTreeMapExample"/> 

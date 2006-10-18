@@ -4,12 +4,12 @@
   <title>JTreeMap</title>
   <body>
       <menu name="JTreeMap">
-         <item name="Sitemap" href="sitemap.html" />
+         <item name="Section map" href="sitemap.html" />
       </menu>
     <links>
-      <item name="Main Page on Sourceforge" href="http://jtreemap.sourceforge.net" />
+      <item name="Page on Sourceforge" href="http://jtreemap.sourceforge.net" />
       <item name="Main Page" href="../../index.html" />
-      <item name="KTreeMap" href="../KTreeMap/index.html" />
+      <item name="KTreeMap" href="../org.jense.ktreemap/index.html" />
     </links>
     <sitemap/>
     <search/>

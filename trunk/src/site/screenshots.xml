@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+ -->
+
+<document>
+  <properties>
+		<title>Screenshots JTreeMap</title>
+  </properties>
+	<body>
+	<section name="With Tree">
+		<img src="images/JTreeMapExample.png" alt="Screenshot with a tree"/>
+	</section>
+	<section name="Without Tree">
+		<img src="images/JTreeMap.png" alt="Screenshot without displaying the tree"/>
+	</section>
+	</body>
+</document>

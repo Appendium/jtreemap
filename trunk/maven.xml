@@ -48,6 +48,19 @@
 
    <goal name="jt:site">
       <attainGoal name="dist:build" />
-      <attainGoal name="dist:multiproject" />
+        <ant:copy file="${maven.build.dir}/docs/generic-appletsample.html" tofile="${maven.build.dir}/docs/appletsample.html" overwrite="true">
+	    <ant:filterset>
+	       <ant:filter token="JARVERSION" value="${pom.currentVersion}"/>
+	    </ant:filterset>
+        </ant:copy>
+        <ant:copy file="${maven.build.dir}/docs/generic-jtreemap.jnlp" tofile="${maven.build.dir}/docs/jtreemap.jnlp" overwrite="true">
+	    <ant:filterset>
+	       <ant:filter token="JARVERSION" value="${pom.currentVersion}"/>
+	    </ant:filterset>
+        </ant:copy>
+        <ant:copy file="${basedir}/jtreemap/target/jtreemap-${pom.currentVersion}.jar" tofile="${maven.build.dir}/docs/jtreemap-${pom.currentVersion}.jar" overwrite="true"/>
+        <ant:delete file="${maven.build.dir}/docs/generic-appletsample.html"/>
+        <ant:delete file="${maven.build.dir}/docs/generic-jtreemap.jnlp"/>
+      <attainGoal name="dist:multiproject" />      
    </goal>
 </project>

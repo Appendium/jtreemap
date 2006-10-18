@@ -25,7 +25,7 @@
 <project>
    <extend>../common-build/project.xml</extend>
    <name>KTreeMap</name>
-   <artifactId>ktreemap</artifactId>
+   <artifactId>org.jense.ktreemap</artifactId>
    <package>org.jense.ktreemap</package>
    <shortDescription>KTreeMap is a Java SWT component which reprensents hierarchical structure in a Treemap.</shortDescription>
    <description>
@@ -122,6 +122,18 @@
             <directory>src/main/java</directory>
             <includes>
                <include>**/*.dtd</include>
+            </includes>
+            <filtering>false</filtering>
+         </resource>
+         <resource>
+            <directory>src/main/conf</directory>
+            <includes>
+               <include>**/*.gif</include>
+               <include>**/*.jpg</include>
+               <include>**/*.png</include>
+               <include>**/*.xml</include>
+               <include>**/*.tm3</include>
+               <include>**/*.mf</include>
             </includes>
             <filtering>false</filtering>
          </resource>
