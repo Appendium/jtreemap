@@ -9,6 +9,7 @@
          <item name="Screenshots" href="screenshots.html" />
          <item name="News" href="changes-report.html" />
          <item name="Sitemap" href="sitemap.html" />
+         <item name="StatSVN" href="./statsvn" />
          <item name="JTreeMap library" href="./multiproject/jtreemap/index.html" />
          <item name="KTreeMap library" href="./multiproject/org.jense.ktreemap/index.html" />
       </menu>

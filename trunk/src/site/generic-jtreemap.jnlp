@@ -6,7 +6,7 @@
     <homepage href="http://jtreemap.sourceforge.net/index.html"/> 
     <description></description> 
     <description kind="short">JTreeMap Example</description>
-    <icon href="jtreemap.gif"/> 
+    <icon href="images/jtreemap.gif"/> 
     <offline-allowed/>
   </information> 
   <security> 
