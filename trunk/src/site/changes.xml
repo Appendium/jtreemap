@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- 
+ -->
+
+<document>
+  <properties>
+    <title>Changes</title>
+  </properties>
+  <body> 
+    <release version="1.1.0" date="In SVN" description="Re-org">
+    	<action dev="benoitx" type="add">Maven Build.</action>
+    	<action dev="marchy" type="add">Move to Subversion.</action>
+    </release>
+    <release version="1.0-SWT" date="2006-09-03" description="First SWT Release">
+    	<action dev="jense128" type="add">The SWT version of JTreeMap! Copy the jar into the plugins directory of your Eclipse. Then, you can open the example view. (Window/Show View/others... KTreeMap/KTreeMap View) </action>
+    </release>
+    <release version="1.0" date="2006-07-02" description="First Release">
+    	<action dev="jense128" type="fix">couple of bugs and The first release of jTreeMap!</action>
+    </release>
+    <release version="1.0-beta3" date="2006-03-13" description="Third Beta">
+    	<action dev="jense128" type="fix">JTreeMap is totaly compatible with Java 1.5</action>
+	<action dev="jense128" type="add">If you want to keep the compatibility with java 1.4, please contact me.</action>
+	<action dev="jense128" type="add">The ToolTip can be personalized.</action>
+	<action dev="jense128" type="add">Add the ColorProvider contribution of Andy Adamczak is added to the release.</action>
+	<action dev="jense128" type="fix">The example is improved.</action>
+	<action dev="jense128" type="fix">Fix bugs. </action>
+    </release>
+    <release version="1.0-beta" date="2005-11-24" description="First Beta">
+    	<action dev="jense128" type="fix">The JTreeMap now fits the window/frame/panel. </action>
+    	<action dev="jense128" type="add">You can load tm3 file. tm3 file is a format from hcil TreeMap. See here how to create your own tm3 file.</action>
+	<action dev="jense128" type="fix">Code is improved to render the override easier.</action>
+	<action dev="jense128" type="add">The example is improved too.</action>
+    </release>
+    <release version="0.9.6" date="2005-11-11" description="Maintenance">
+    	<action dev="jense128" type="fix">resolve some bugs.This seems to be the final release. If you have any suggestions, there are welcome </action>
+    </release>
+    <release version="0.9.5" date="2005-11-07" description="More Examples">
+    	<action dev="jense128" type="add">More examples. Can load your own xml file from the example.More split strategies.Improved code</action>
+    </release>
+  </body>
+</document>

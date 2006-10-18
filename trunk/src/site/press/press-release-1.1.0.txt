@@ -1,0 +1,48 @@
+Laurent Dutheil and ObjectLab are pleased to announce release 1.1.0 of
+JTreeMap for Java 1.4+.
+
+Open Source TreeMap/Heatmap components for Swing and SWT.
+
+http://jtreemap.sourceforge.net
+
+JTreeMap is released under the business friendly Apache License v2.0.
+
+It is available immediately for download via SourceForge or the Maven Central
+Repository (both Maven 1 and Maven 2). The homepage has some very 
+quick examples.
+
+The library is small, lightweight and does not force you to adopt a
+framework.
+
+
+
+
+.
+.
+.
+.
+.
+.
+.
+
+
+
+
+ObjectLab is not new to the open-source community having used numerous OS 
+projects, It has recently launched the ObjectLab Kit family, including:
+- QALab (http://qalab.sourceforge.net), a tool that keeps track over-time
+  of the static analysis results from FindBugs, Checkstyle, PMD, Cobertura etc.
+- DateCalculators (http://objectlabkit.sourceforge.net), a set of generic
+  lightweight and thread-safe Date calculators for Business and Finance.
+ 
+We would like to thanks our friends and colleagues for their help, 
+reviews and suggestions.
+
+Sorry for the long email... 
+
+Feel free to pass on to people who may be interested.
+
+Enjoy!!
+
+Laurent Dutheil and The ObjectLab Team (Benoit Xhenseval, Marcin Jekot, Ekin Gulen)
+

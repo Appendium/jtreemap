@@ -111,6 +111,12 @@
         <result date="2006-10-17" statvalue="2" type="findbugs"/>
         <result date="2006-10-18" statvalue="2" type="findbugs"/>
         <result date="2006-10-18" statvalue="2" type="findbugs"/>
+        <result date="2006-10-18" statvalue="2" type="findbugs"/>
+        <result date="2006-10-18" statvalue="2" type="findbugs"/>
+        <result date="2006-10-18" statvalue="2" type="findbugs"/>
+        <result date="2006-10-18" statvalue="2" type="findbugs"/>
+        <result date="2006-10-18" statvalue="2" type="findbugs"/>
+        <result date="2006-10-18" statvalue="2" type="findbugs"/>
         <result date="2006-10-18" statvalue="75" type="checkstyle"/>
         <result date="2006-10-18" statvalue="2" type="findbugs"/>
         <result date="2006-10-18" statvalue="2" type="findbugs"/>
