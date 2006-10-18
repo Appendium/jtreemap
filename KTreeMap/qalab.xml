@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE qalab [<!ELEMENT qalab (summary,file*)>
+<!ATTLIST qalab version CDATA #REQUIRED>
+<!ELEMENT summary (summaryresult*)>
+<!ELEMENT file (result+)>
+<!ATTLIST file id ID #REQUIRED>
+<!ATTLIST file path CDATA #REQUIRED>
+<!ELEMENT result EMPTY>
+<!ATTLIST result date CDATA #REQUIRED>
+<!ATTLIST result statvalue CDATA #REQUIRED>
+<!ATTLIST result type CDATA #REQUIRED>
+<!ELEMENT summaryresult EMPTY>
+<!ATTLIST summaryresult date CDATA #REQUIRED>
+<!ATTLIST summaryresult statvalue CDATA #REQUIRED>
+<!ATTLIST summaryresult filecount CDATA #REQUIRED>
+<!ATTLIST summaryresult type CDATA #REQUIRED>
+]>
+<qalab version="1.1">
+    <summary>
+        <summaryresult date="2006-10-18" filecount="22" statvalue="136" type="checkstyle"/>
+        <summaryresult date="2006-10-18" filecount="1" statvalue="4" type="pmd"/>
+        <summaryresult date="2006-10-18" filecount="6" statvalue="7" type="findbugs"/>
+        <summaryresult date="2006-10-18" filecount="2" statvalue="34" type="simian"/>
+    </summary>
+    <file id="org_jense_ktreemap_example_package.html" path="org/jense/ktreemap/example/package.html">
+        <result date="2006-10-18" statvalue="1" type="checkstyle"/>
+    </file>
+    <file id="org_jense_ktreemap_package.html" path="org/jense/ktreemap/package.html">
+        <result date="2006-10-18" statvalue="1" type="checkstyle"/>
+    </file>
+    <file id="org_jense_ktreemap_ITreeMapColorProvider.java" path="org/jense/ktreemap/ITreeMapColorProvider.java">
+        <result date="2006-10-18" statvalue="1" type="checkstyle"/>
+    </file>
+    <file id="org_jense_ktreemap_ITreeMapProvider.java" path="org/jense/ktreemap/ITreeMapProvider.java">
+        <result date="2006-10-18" statvalue="3" type="checkstyle"/>
+    </file>
+    <file id="org_jense_ktreemap_KTreeMap.java" path="org/jense/ktreemap/KTreeMap.java">
+        <result date="2006-10-18" statvalue="12" type="checkstyle"/>
+    </file>
+    <file id="org_jense_ktreemap_SplitSquarified.java" path="org/jense/ktreemap/SplitSquarified.java">
+        <result date="2006-10-18" statvalue="12" type="checkstyle"/>
+    </file>
+    <file id="org_jense_ktreemap_SplitStrategy.java" path="org/jense/ktreemap/SplitStrategy.java">
+        <result date="2006-10-18" statvalue="3" type="checkstyle"/>
+    </file>
+    <file id="org_jense_ktreemap_TreeMapNode.java" path="org/jense/ktreemap/TreeMapNode.java">
+        <result date="2006-10-18" statvalue="4" type="checkstyle"/>
+    </file>
+    <file id="org_jense_ktreemap_example_BuilderTM3.java" path="org/jense/ktreemap/example/BuilderTM3.java">
+        <result date="2006-10-18" statvalue="1" type="checkstyle"/>
+        <result date="2006-10-18" statvalue="1" type="findbugs"/>
+    </file>
+    <file id="org_jense_ktreemap_example_BuilderXML.java" path="org/jense/ktreemap/example/BuilderXML.java">
+        <result date="2006-10-18" statvalue="2" type="checkstyle"/>
+    </file>
+    <file id="org_jense_ktreemap_example_HSBTreeMapColorProvider.java" path="org/jense/ktreemap/example/HSBTreeMapColorProvider.java">
+        <result date="2006-10-18" statvalue="1" type="findbugs"/>
+        <result date="2006-10-18" statvalue="47" type="checkstyle"/>
+        <result date="2006-10-18" statvalue="1" type="findbugs"/>
+        <result date="2006-10-18" statvalue="1" type="findbugs"/>
+    </file>
+    <file id="org_jense_ktreemap_example_KTreeMapView.java" path="org/jense/ktreemap/example/KTreeMapView.java">
+        <result date="2006-10-18" statvalue="15" type="checkstyle"/>
+        <result date="2006-10-18" statvalue="1" type="findbugs"/>
+    </file>
+    <file id="org_jense_ktreemap_example_ResourceManager.java" path="org/jense/ktreemap/example/ResourceManager.java">
+        <result date="2006-10-18" statvalue="32" type="checkstyle"/>
+        <result date="2006-10-18" statvalue="4" type="pmd"/>
+        <result date="2006-10-18" statvalue="1" type="findbugs"/>
+    </file>
+    <file id="org_jense_ktreemap_example_TM3Bean.java" path="org/jense/ktreemap/example/TM3Bean.java">
+        <result date="2006-10-18" statvalue="2" type="checkstyle"/>
+        <result date="2006-10-18" statvalue="2" type="findbugs"/>
+    </file>
+</qalab>
