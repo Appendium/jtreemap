@@ -5,13 +5,13 @@
   <body>
       <menu name="JTreeMap">
          <item name="Sitemap" href="sitemap.html" />
-         <item name="JTreeMap" href="./JTreeMap/index.html" />
-         <item name="KTreeMap" href="./KTreeMap/index.html" />
+         <item name="JTreeMap" href="./multiproject/jtreemap/index.html" />
+         <item name="KTreeMap" href="./multiproject/ktreemap/index.html" />
       </menu>
     <links>
       <item name="Main Page on Sourceforge" href="http://jtreemap.sourceforge.net" />
-      <item name="JTreeMap" href="./JTreeMap/index.html" />
-      <item name="KTreeMap" href="./KTreeMap/index.html" />
+      <item name="JTreeMap" href="./multiproject/jtreemap/index.html" />
+      <item name="KTreeMap" href="./multiproject/ktreemap/index.html" />
     </links>
     <sitemap/>
     <search/>
