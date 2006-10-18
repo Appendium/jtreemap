@@ -8,7 +8,7 @@
   </properties>
 	<body>
 	<section name="The Applet Example">
-		<applet archive="jtreemap.jar"
+		<applet archive="./jtreemap-@JARVERSION@.jar"
 			code="org.jense.swing.jtreemap.example.JTreeMapAppletExample.class"
 			width="600" height="400">
 		</applet>

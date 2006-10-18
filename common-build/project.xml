@@ -72,6 +72,7 @@
          <organization>ObjectLab Financial Ltd</organization>
          <roles>
             <role>Developer</role>
+            <role>Maven Mig.</role>
          </roles>
          <url>http://www.xhenseval.com</url>
          <timezone>+0</timezone>
@@ -82,7 +83,17 @@
          <email>marcin at jekot DOt net</email>
          <organization>ObjectLab Financial Ltd</organization>
          <roles>
-            <role>Subversion mig</role>
+            <role>Subversion Mig</role>
+         </roles>
+         <timezone>+0</timezone>
+      </developer>
+      <developer>
+         <name>Ekin Gulen</name>
+         <id>ekingulen</id>
+         <email>ekingulen at yahoo DOt com</email>
+         <organization>ObjectLab Financial Ltd</organization>
+         <roles>
+            <role>Developer</role>
          </roles>
          <timezone>+0</timezone>
       </developer>

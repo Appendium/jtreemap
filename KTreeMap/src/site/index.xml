@@ -25,6 +25,14 @@
     <p>KTreeMap is a Java SWT component which reprensents hierarchical structure in a Treemap/heatmap. It is an Eclipse plugin</p>
     <p>Check out the <a href="apidocs/index.html">UML diagrams here</a></p>
     <p>Also look at the <a href="maven-reports.html">Project Reports</a> menu on the left for project specific items, unit tests, QA etc.</p>
+    
+    <subsection name="Building with maven">
+    <p>Now... building a SWT Eclipse plugin with Maven turned up to be a bit of a nightmare, primarily because of the 
+    totally outdated jars on iBiblio.org. So we decided to tackle this problem and happily hack it.  In order to compile the ktreemap,
+    you need to copy the jar files in the directory eclipse-jars.  We have provided a quick (and dirty) copyToRepo.bat to help you.
+    It is probably not putting the jars in the right directory structure, but then there is no standard at the moment...</p>
+    </subsection>
+    
     </section>
 
   </body>
