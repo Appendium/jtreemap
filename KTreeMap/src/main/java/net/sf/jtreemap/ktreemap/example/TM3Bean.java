@@ -1,4 +1,4 @@
-package org.jense.ktreemap.example;
+package net.sf.jtreemap.ktreemap.example;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class TM3Bean {
 
   private HashMap<String, Object> values = new HashMap<String, Object>();
   private String label;
-  
+
   /**
    * @return the number fields (ie INTEGER and FLOAT)
    */
@@ -65,7 +65,7 @@ public class TM3Bean {
   public void setValue(String fieldName, Object value) {
     values.put(fieldName, value);
   }
-  
+
   /**
    * get the value of the field
    * @param fieldName field name

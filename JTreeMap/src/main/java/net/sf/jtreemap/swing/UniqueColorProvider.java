@@ -2,7 +2,7 @@
  * Created on 7 oct. 2005
  *
  */
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 /**
  * Color Provider by default.<BR>
  * All values are associated to a unique color.
- * 
+ *
  * @author Laurent DUTHEIL
  *
  */
@@ -20,7 +20,7 @@ public class UniqueColorProvider extends ColorProvider {
   private final static Color defaultColor = new Color(153,153,51);
   private Color color;
   private JPanel legend;
-  
+
   /**
    * Constructor.
    */
@@ -35,9 +35,9 @@ public class UniqueColorProvider extends ColorProvider {
   public UniqueColorProvider(Color color) {
     this.color = color;
   }
-  
+
   /* (non-Javadoc)
-   * @see org.jense.swing.jtreemap.ColorProvider#getColor(double)
+   * @see net.sf.jtreemap.swing.ColorProvider#getColor(double)
    */
   @Override
   public Color getColor(Value value) {
@@ -45,7 +45,7 @@ public class UniqueColorProvider extends ColorProvider {
   }
 
   /* (non-Javadoc)
-   * @see org.jense.swing.jtreemap.ColorProvider#getLegendPanel()
+   * @see net.sf.jtreemap.swing.ColorProvider#getLegendPanel()
    */
   @Override
   public JPanel getLegendPanel() {
@@ -56,13 +56,13 @@ public class UniqueColorProvider extends ColorProvider {
   }
   /**
    * Panel with the legend.
-   * 
+   *
    * @author Laurent Dutheil
    */
   private class Legend extends JPanel {
     private static final long serialVersionUID = -8046211081305644785L;
     private String text = "Unique Color Provider";
-    
+
     /**
      * Constructor.
      */
@@ -70,7 +70,7 @@ public class UniqueColorProvider extends ColorProvider {
       this.setPreferredSize(new java.awt.Dimension(100, 40));
 
     }
-    
+
     @Override
     public void paint(Graphics g) {
       g.setColor(Color.black);

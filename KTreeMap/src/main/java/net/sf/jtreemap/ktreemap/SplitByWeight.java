@@ -1,11 +1,11 @@
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 import java.util.Iterator;
 import java.util.List;
 
 /**
  * Strategy who split the elements in 2 groups of equivalent weight.
- * 
+ *
  * @author Laurent Dutheil
  */
 

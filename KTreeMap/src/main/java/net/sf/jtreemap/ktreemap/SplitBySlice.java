@@ -1,7 +1,7 @@
 /*
  * Created on 3 nov. 2005
  */
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.eclipse.swt.graphics.Rectangle;
 
 /**
  * Split the treemap by slice
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class SplitBySlice extends SplitStrategy {
@@ -57,8 +57,8 @@ public class SplitBySlice extends SplitStrategy {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.SplitStrategy#splitElements(java.util.Vector,
+   *
+   * @see net.sf.jtreemap.swing.SplitStrategy#splitElements(java.util.Vector,
    *      java.util.Vector, java.util.Vector)
    */
   @Override
@@ -70,8 +70,8 @@ public class SplitBySlice extends SplitStrategy {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.SplitStrategy#calculatePositionsRec(int, int,
+   *
+   * @see net.sf.jtreemap.swing.SplitStrategy#calculatePositionsRec(int, int,
    *      int, int, double, java.util.Vector)
    */
   @Override

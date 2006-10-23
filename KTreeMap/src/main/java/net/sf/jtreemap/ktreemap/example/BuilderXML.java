@@ -1,4 +1,4 @@
-package org.jense.ktreemap.example;
+package net.sf.jtreemap.ktreemap.example;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.jense.ktreemap.*;
+import net.sf.jtreemap.ktreemap.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -17,7 +17,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Parse a XML file to build the tree. <BR>
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -31,7 +31,7 @@ public class BuilderXML extends TreeMapNodeBuilder {
 
   /**
    * Constructor
-   * 
+   *
    * @param file XML file name
    * @throws ParseException if the file don't correspond to the TreeMap.dtd
    */
@@ -47,7 +47,7 @@ public class BuilderXML extends TreeMapNodeBuilder {
     }
     String label = ((Element) elmt.getElementsByTagName(LABEL).item(0))
         .getChildNodes().item(0).getNodeValue();
-    
+
     XMLBean bean = new XMLBean();
     bean.setLabel(label);
 
@@ -72,13 +72,13 @@ public class BuilderXML extends TreeMapNodeBuilder {
           NodeList weights = child.getElementsByTagName(WEIGHT);
           String weightString = ((Element) weights.item(0)).getChildNodes()
               .item(0).getNodeValue();
-          
+
           XMLBean beanChild = new XMLBean();
           beanChild.setLabel(label);
           beanChild.setValue(Double.valueOf(valueString)
               .doubleValue());
           beanChild.setWeight(Double.valueOf(weightString).doubleValue());
-          
+
           buildLeaf(beanChild, tmn);
 
         }

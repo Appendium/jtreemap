@@ -25,8 +25,8 @@
 <project>
    <extend>../common-build/project.xml</extend>
    <name>KTreeMap</name>
-   <artifactId>org.jense.ktreemap</artifactId>
-   <package>org.jense.ktreemap</package>
+   <artifactId>net.sf.jtreemap.ktreemap</artifactId>
+   <package>net.sf.jtreemap.ktreemap</package>
    <shortDescription>KTreeMap is a Java SWT component which reprensents hierarchical structure in a Treemap.</shortDescription>
    <description>
        KTreeMap is a Java SWT component which represents hierarchical structure in a Treemap

@@ -1,4 +1,4 @@
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import java.util.Vector;
 
@@ -8,14 +8,14 @@ import java.util.Vector;
  * The split is done by dichotomy. We split the elements in 2 groups with a
  * defined strategy (for example : take care of the weight of the elements)
  * <p>
- * 
+ *
  * @author Laurent Dutheil
  */
 
 public abstract class SplitStrategy {
   /**
    * calculate the positions for all the elements of the root.
-   * 
+   *
    * @param root the root to calculate
    */
   public void calculatePositions(TreeMapNode root) {
@@ -32,7 +32,7 @@ public abstract class SplitStrategy {
 
   /**
    * split the elements of a JTreeMap.
-   * 
+   *
    * @param v Vector with the elements to split (arg IN)
    * @param v1 first Vector of the split (arg OUT)
    * @param v2 second Vector of the split (arg OUT)
@@ -44,7 +44,7 @@ public abstract class SplitStrategy {
    * Sum the weight of elements. <BR>
    * You can override this method if you want to apply a coef on the weights or
    * to cancel the effect of weight on the strategy.
-   * 
+   *
    * @param v Vector with the elements to sum
    * @return the sum of the weight of elements
    */
@@ -142,7 +142,7 @@ public abstract class SplitStrategy {
 
   /**
    * Sort the elements by descending weight.
-   * 
+   *
    * @param v Vector with the elements to be sorted
    */
   protected void sortVector(Vector<TreeMapNode> v) {

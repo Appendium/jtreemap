@@ -1,4 +1,4 @@
-package org.jense.swing.jtreemap.example;
+package net.sf.jtreemap.swing.example;
 
 import java.awt.*;
 import javax.swing.*;
@@ -16,11 +16,11 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.tree.DefaultTreeModel;
 
-import org.jense.swing.jtreemap.*;
+import net.sf.jtreemap.swing.*;
 
 /**
  * Test of JTreeMap
- * 
+ *
  * @author Laurent Dutheil
  */
 public class JTreeMapExample extends JFrame implements ActionListener {
@@ -63,7 +63,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
      * same level
      */
     // TreeMapNode.setBorder(5);
-    
+
     // add a popup menu to zoom the JTreeMap
     this.zoomPopup = new ZoomPopupMenu(this.jTreeMap);
 
@@ -78,7 +78,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
   /**
    * main
-   * 
+   *
    * @param args command line
    */
   public static void main(String[] args) {
@@ -89,7 +89,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
    */
   public void actionPerformed(ActionEvent e) {
@@ -129,7 +129,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
   /**
    * Set the tm3 file
-   * 
+   *
    * @param path the path of the tm3 file
    */
   public void setTm3File(String path) {
@@ -151,7 +151,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
   /**
    * Set the xml file corresponding to the TreeMap.dtd
-   * 
+   *
    * @param xmlFileName xml file name
    */
   public void setXmlFile(String xmlFileName) {
@@ -173,7 +173,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
   /**
    * Code to execute before closing the window
-   * 
+   *
    * @param e WindowEvent
    */
   protected void this_windowClosing(WindowEvent e) {
@@ -410,12 +410,12 @@ public class JTreeMapExample extends JFrame implements ActionListener {
    * This method build a default TreeMap root. <BR>
    * This methode may be replaced by one who get the root from a servlet or a
    * jdbc client or something else...
-   * 
+   *
    * @return the root of the TreeMap.
    */
   private TreeMapNode getDefaultRoot() {
      TreeMapNodeBuilder builder = new TreeMapNodeBuilder();
-    
+
      TreeMapNode root = builder.buildBranch("Root", null);
      TreeMapNode tmn1 = builder.buildBranch("branch1", root);
      TreeMapNode tmn11 = builder.buildBranch("branch11", tmn1);
@@ -547,13 +547,13 @@ public class JTreeMapExample extends JFrame implements ActionListener {
      builder.buildLeaf("leaf434", 3.0, value, tmn43);
      value = new ValuePercent(0.0);
      builder.buildLeaf("leaf5", 5.0, value, root);
-    
+
      return builder.getRoot();
   }
 
   /**
    * init the window
-   * 
+   *
    * @throws Exception
    */
   private void initGUI() throws Exception {

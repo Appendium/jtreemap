@@ -4,20 +4,20 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            id="org.jense.ktreemap"
+            id="net.sf.jtreemap.ktreemap"
             name="KTreeMap"/>
       <view
-            category="org.jense.ktreemap"
-            class="org.jense.ktreemap.example.KTreeMapView"
+            category="net.sf.jtreemap.ktreemap"
+            class="net.sf.jtreemap.ktreemap.example.KTreeMapView"
             icon="icons/ktreemap.gif"
-            id="org.jense.ktreemap.example.KTreeMapView"
+            id="net.sf.jtreemap.ktreemap.example.KTreeMapView"
             name="KTreeMap View"/>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
          <view
-               id="org.jense.ktreemap.example.KTreeMapView"
+               id="net.sf.jtreemap.ktreemap.example.KTreeMapView"
                ratio="0.5"
                relationship="right"
                relative="org.eclipse.ui.views.TaskList"/>

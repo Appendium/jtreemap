@@ -1,4 +1,4 @@
-package org.jense.swing.jtreemap.example;
+package net.sf.jtreemap.swing.example;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.jense.swing.jtreemap.*;
+import net.sf.jtreemap.swing.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -17,7 +17,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Parse a XML file to build the tree. <BR>
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -32,7 +32,7 @@ public class BuilderXML {
 
   /**
    * Constructor
-   * 
+   *
    * @param stFileName XML file name
    * @throws ParseException if the file don't correspond to the TreeMap.dtd
    */
@@ -43,7 +43,7 @@ public class BuilderXML {
 
   /**
    * get the build root
-   * 
+   *
    * @return the build root
    */
   public TreeMapNode getRoot() {

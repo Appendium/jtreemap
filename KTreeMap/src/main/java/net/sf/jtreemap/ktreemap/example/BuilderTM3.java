@@ -1,7 +1,7 @@
 /*
  * Created on 22 nov. 2005
  */
-package org.jense.ktreemap.example;
+package net.sf.jtreemap.ktreemap.example;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,14 +14,14 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-import org.jense.ktreemap.TreeMapNode;
-import org.jense.ktreemap.TreeMapNodeBuilder;
+import net.sf.jtreemap.ktreemap.TreeMapNode;
+import net.sf.jtreemap.ktreemap.TreeMapNodeBuilder;
 
 /**
  * Parse a TM3 file to build the tree. <BR>
  * See <a href=http://www.cs.umd.edu/hcil/treemap/doc4.1/create_TM3_file.html>
  * how to create your own TM3 data file </a> from hcil Treemap site.
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class BuilderTM3 extends TreeMapNodeBuilder {
@@ -30,7 +30,7 @@ public class BuilderTM3 extends TreeMapNodeBuilder {
 
   /**
    * Constructor
-   * 
+   *
    * @param tm3File tm3 file
    * @throws IOException
    */
@@ -40,7 +40,7 @@ public class BuilderTM3 extends TreeMapNodeBuilder {
 
   /**
    * Set the weights of all the TreeMapNode with the values of the fieldName.
-   * 
+   *
    * @param fieldName name of the field to set the weights
    */
   public void setWeights() {
@@ -125,7 +125,7 @@ public class BuilderTM3 extends TreeMapNodeBuilder {
     }
 
     leaves.clear();
-    
+
     // read the values
     while ((line = in.readLine()) != null) {
       st = new StringTokenizer(line, "\t");

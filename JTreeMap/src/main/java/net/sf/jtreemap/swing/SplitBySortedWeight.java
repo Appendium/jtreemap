@@ -1,4 +1,4 @@
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import java.util.Iterator;
 import java.util.Vector;
@@ -11,7 +11,7 @@ import java.util.Vector;
  * <p>
  * The heaviest elements are on the top left of the JTreeMap. The lightest
  * elements are on the bottom right of the JTreeMap
- * 
+ *
  * @author Laurent Dutheil
  */
 

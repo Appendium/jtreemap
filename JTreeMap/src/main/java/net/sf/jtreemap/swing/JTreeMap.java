@@ -1,4 +1,4 @@
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import java.util.Enumeration;
 import java.awt.Color;
@@ -27,8 +27,8 @@ import javax.swing.border.Border;
  * <p>
  * So, in a JTreeMap, you can see the size and the value of an element in a
  * tree.
- * 
- * @see org.jense.swing.jtreemap.TreeMapNode
+ *
+ * @see net.sf.jtreemap.swing.TreeMapNode
  * @author Laurent Dutheil
  */
 public class JTreeMap extends JComponent {
@@ -53,7 +53,7 @@ public class JTreeMap extends JComponent {
    * Constructor of JTreeMap. <BR>
    * The chosen strategy is SplitSquarified. <BR>
    * The chosen color provider is UniqueColorProvider.
-   * 
+   *
    * @see SplitSquarified
    * @see UniqueColorProvider
    * @param root the root of the tree to display
@@ -65,7 +65,7 @@ public class JTreeMap extends JComponent {
   /**
    * Constructor of JTreeMap. <BR>
    * The chosen color provider is UniqueColorProvider.
-   * 
+   *
    * @see UniqueColorProvider
    * @param root the root of the tree to display
    * @param strategy the split strategy
@@ -109,7 +109,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * draw the item.
-   * 
+   *
    * @param g Graphics where you have to draw
    * @param item item to draw
    */
@@ -129,7 +129,7 @@ public class JTreeMap extends JComponent {
    * You have first to define the font of the Graphics. <BR>
    * You may override this method to change the position or the color of the
    * label.
-   * 
+   *
    * @param g Graphics where you have to draw
    * @param item TreeMapNode to draw
    */
@@ -178,7 +178,7 @@ public class JTreeMap extends JComponent {
    * You may override this method to draw the labels you want. <BR>
    * For exemples, all the leaves, or all the first level children, or all of
    * them...
-   * 
+   *
    * @param g Graphics where you have to draw
    * @param item TreeMapNode to draw
    */
@@ -214,7 +214,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * get the active leaf (the one under the mouse).
-   * 
+   *
    * @return Returns the activeLeaf.
    */
   public TreeMapNode getActiveLeaf() {
@@ -223,7 +223,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * get the ColorProvider.
-   * 
+   *
    * @return the ColorProvider
    */
   public ColorProvider getColorProvider() {
@@ -236,7 +236,7 @@ public class JTreeMap extends JComponent {
    * This may be not the root of the jTreeMap. After a zoom, the displayed root
    * can be the root of an under-tree.
    * </p>
-   * 
+   *
    * @return the displayed root
    */
   public TreeMapNode getDisplayedRoot() {
@@ -245,7 +245,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * get the root.
-   * 
+   *
    * @return the root
    */
   public TreeMapNode getRoot() {
@@ -254,7 +254,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * get the SplitStrategy.
-   * 
+   *
    * @return the SplitStrategy
    */
   public SplitStrategy getStrategy() {
@@ -293,7 +293,7 @@ public class JTreeMap extends JComponent {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
    */
   @Override
@@ -313,7 +313,7 @@ public class JTreeMap extends JComponent {
           - insets.left - insets.right, height - border - insets.top
           - insets.bottom);
     }
-    
+
     this.calculatePositions();
 
     if (this.displayedRoot.children().hasMoreElements()) {
@@ -337,7 +337,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * reveal the item.
-   * 
+   *
    * @param g Graphics where you have to draw
    * @param item TreeMapNode to reveal
    */
@@ -350,7 +350,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * set the active leaf.
-   * 
+   *
    * @param newActiveLeaf the new active leaf
    */
   public void setActiveLeaf(TreeMapNode newActiveLeaf) {
@@ -361,7 +361,7 @@ public class JTreeMap extends JComponent {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see javax.swing.JComponent#setBorder(javax.swing.border.Border)
    */
   @Override
@@ -385,7 +385,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * set the ColorProvider.
-   * 
+   *
    * @param newColorProvider the new ColorPorvider
    */
   public void setColorProvider(ColorProvider newColorProvider) {
@@ -398,7 +398,7 @@ public class JTreeMap extends JComponent {
    * This may be not the root of the jTreeMap. After a zoom, the displayed root
    * can be the root of an under-tree.
    * </p>
-   * 
+   *
    * @param newDisplayedRoot new DiplayedRoot
    */
   public void setDisplayedRoot(TreeMapNode newDisplayedRoot) {
@@ -407,7 +407,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * set the new root.
-   * 
+   *
    * @param newRoot the new root to set
    */
   public void setRoot(TreeMapNode newRoot) {
@@ -421,7 +421,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * set the new strategy.
-   * 
+   *
    * @param newStrat the new strategy to set
    */
   public void setStrategy(SplitStrategy newStrat) {
@@ -430,7 +430,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * Set the builder of the toolTip.<BR>
-   * 
+   *
    * @param toolTipBuilder The toolTipBuilder to set.
    */
   public void setToolTipBuilder(IToolTipBuilder toolTipBuilder) {
@@ -439,7 +439,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * When you zoom the jTreeMap, you have the choice to keep proportions or not.
-   * 
+   *
    * @param keepProportion true if you want to keep proportions, else false
    */
   public void setZoomKeepProportion(boolean keepProportion) {
@@ -455,7 +455,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * Zoom the JTreeMap to the dest node.
-   * 
+   *
    * @param dest node we want to zoom
    */
   public void zoom(TreeMapNode dest) {
@@ -467,7 +467,7 @@ public class JTreeMap extends JComponent {
 
   /**
    * Listener who define the active leaf and set the tooltip text.
-   * 
+   *
    * @author Laurent Dutheil
    */
   protected class HandleMouseMotion extends MouseMotionAdapter {
@@ -488,10 +488,10 @@ public class JTreeMap extends JComponent {
       }
     }
   }
-  
+
   /**
    * Class who zoom and unzoom the JTreeMap.
-   * 
+   *
    * @author Laurent Dutheil
    */
   private class Zoom {

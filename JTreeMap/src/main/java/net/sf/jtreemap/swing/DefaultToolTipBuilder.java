@@ -1,24 +1,24 @@
 /**
- * 
+ *
  */
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import javax.swing.JToolTip;
 
 /**
  * Default class to build the DefaultToolTip displayed by the JTreeMap.<BR>
- * 
- * @see org.jense.swing.jtreemap.DefaultToolTip
+ *
+ * @see net.sf.jtreemap.swing.DefaultToolTip
  * @author Laurent DUTHEIL
  *
  */
 public class DefaultToolTipBuilder implements IToolTipBuilder {
   private static JToolTip instance = null;
   private JTreeMap jTreeMap;
-  
+
   /**
    * Constructor.
-   * 
+   *
    * @param jTreeMap the linked JTreeMap
    */
   public DefaultToolTipBuilder(JTreeMap jTreeMap) {
@@ -26,7 +26,7 @@ public class DefaultToolTipBuilder implements IToolTipBuilder {
   }
 
   /* (non-Javadoc)
-   * @see org.jense.swing.jtreemap.IToolTipBuilder#getToolTip()
+   * @see net.sf.jtreemap.swing.IToolTipBuilder#getToolTip()
    */
   public JToolTip getToolTip() {
     if (instance == null) {

@@ -1,10 +1,10 @@
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import javax.swing.JPanel;
 import java.awt.Color;
 
 /**
- * Abstract class with the methods who attribute color to the elements of 
+ * Abstract class with the methods who attribute color to the elements of
  * JTreeMap.
  *
  * @author Laurent DUTHEIL

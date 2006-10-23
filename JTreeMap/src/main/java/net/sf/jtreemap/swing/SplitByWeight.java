@@ -1,11 +1,11 @@
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import java.util.Iterator;
 import java.util.Vector;
 
 /**
  * Strategy who split the elements in 2 groups of equivalent weight.
- * 
+ *
  * @author Laurent Dutheil
  */
 

@@ -1,12 +1,12 @@
-package org.jense.swing.jtreemap.example;
+package net.sf.jtreemap.swing.example;
 
 import java.text.NumberFormat;
 
-import org.jense.swing.jtreemap.Value;
+import net.sf.jtreemap.swing.Value;
 
 /**
  * class who can display the values of elements of a JTreeMap with pourcent
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -26,7 +26,7 @@ public class ValuePercent extends Value {
 
   /**
    * Constructor of ValuePercent
-   * 
+   *
    * @param value double value
    */
   public ValuePercent(double value) {

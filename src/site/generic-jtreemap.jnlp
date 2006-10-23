@@ -17,5 +17,5 @@
     <jar href="jtreemap-@JARVERSION@.jar"/> 
   </resources> 
   
-  <application-desc main-class="org.jense.swing.jtreemap.example.JTreeMapExample"/> 
+  <application-desc main-class="net.sf.jtreemap.swing.example.JTreeMapExample"/> 
 </jnlp>

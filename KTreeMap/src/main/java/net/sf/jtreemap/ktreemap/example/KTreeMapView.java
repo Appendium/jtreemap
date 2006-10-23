@@ -1,4 +1,4 @@
-package org.jense.ktreemap.example;
+package net.sf.jtreemap.ktreemap.example;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +30,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.*;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.SWT;
-import org.jense.ktreemap.*;
+import net.sf.jtreemap.ktreemap.*;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -48,7 +48,7 @@ import org.jense.ktreemap.*;
  */
 
 public class KTreeMapView extends ViewPart {
-  private static final String ID_BUNDLE = "org.jense.ktreemap";
+  private static final String ID_BUNDLE = "net.sf.jtreemap.ktreemap";
 
   private TreeViewer viewer;
   private DrillDownAdapter drillDownAdapter;
@@ -109,7 +109,7 @@ public class KTreeMapView extends ViewPart {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see org.eclipse.ui.part.WorkbenchPart#dispose()
    */
   @Override
@@ -389,7 +389,7 @@ public class KTreeMapView extends ViewPart {
 
     xmlProvider = new XMLTreeMapProvider();
     tm3Provider = new TM3TreeMapProvider();
-    
+
     return builder.getRoot();
   }
 
@@ -520,7 +520,7 @@ public class KTreeMapView extends ViewPart {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jface.action.Action#getImageDescriptor()
      */
     @Override
@@ -531,7 +531,7 @@ public class KTreeMapView extends ViewPart {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jface.action.Action#run()
      */
     @Override
@@ -578,7 +578,7 @@ public class KTreeMapView extends ViewPart {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jface.action.Action#getImageDescriptor()
      */
     @Override
@@ -589,7 +589,7 @@ public class KTreeMapView extends ViewPart {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jface.action.Action#run()
      */
     @Override
@@ -627,7 +627,7 @@ public class KTreeMapView extends ViewPart {
 
     /**
      * Constructor
-     * 
+     *
      * @param text text of the action
      * @param image image
      * @param node destination TreeMapNode of the zoom
@@ -640,7 +640,7 @@ public class KTreeMapView extends ViewPart {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see javax.swing.Action#isEnabled()
      */
     @Override
@@ -650,7 +650,7 @@ public class KTreeMapView extends ViewPart {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.jface.action.Action#run()
      */
     @Override

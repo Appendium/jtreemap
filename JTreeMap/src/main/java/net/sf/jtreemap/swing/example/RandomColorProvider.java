@@ -1,7 +1,7 @@
 /*
  * Created on 4 nov. 2005
  */
-package org.jense.swing.jtreemap.example;
+package net.sf.jtreemap.swing.example;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,10 +12,10 @@ import java.util.TreeMap;
 
 import javax.swing.JPanel;
 
-import org.jense.swing.jtreemap.ColorProvider;
-import org.jense.swing.jtreemap.JTreeMap;
-import org.jense.swing.jtreemap.TreeMapNode;
-import org.jense.swing.jtreemap.Value;
+import net.sf.jtreemap.swing.ColorProvider;
+import net.sf.jtreemap.swing.JTreeMap;
+import net.sf.jtreemap.swing.TreeMapNode;
+import net.sf.jtreemap.swing.Value;
 
 /**
  * <p>
@@ -32,13 +32,13 @@ public class RandomColorProvider extends ColorProvider {
       new Color(0, 255, 0), new Color(0, 0, 255), new Color(255, 255, 0),
       new Color(255, 0, 255), new Color(0, 255, 255), new Color(102, 102, 51),
       new Color(255, 51, 153), new Color(255, 153, 51),
-      new Color(204, 204, 51), new Color(205, 102, 204), 
+      new Color(204, 204, 51), new Color(205, 102, 204),
       new Color(51, 153, 255), new Color(153, 102, 0) };
   private int cursor = 0;
   protected TreeMap<Value, Color> mapping = new TreeMap<Value, Color>();
   private JPanel legend;
   protected JTreeMap jTreeMap;
-  
+
   /**
    * Constructor
    * @param jTreeMap jTreeMap to color
@@ -48,8 +48,8 @@ public class RandomColorProvider extends ColorProvider {
   }
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.ColorProvider#getColor(double)
+   *
+   * @see net.sf.jtreemap.swing.ColorProvider#getColor(double)
    */
   @Override
   public Color getColor(Value value) {
@@ -78,8 +78,8 @@ public class RandomColorProvider extends ColorProvider {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.ColorProvider#getLegendPanel()
+   *
+   * @see net.sf.jtreemap.swing.ColorProvider#getLegendPanel()
    */
   @Override
   public JPanel getLegendPanel() {
@@ -91,7 +91,7 @@ public class RandomColorProvider extends ColorProvider {
 
   /**
    * Panel with the legend
-   * 
+   *
    * @author Laurent Dutheil
    */
   protected class Legend extends JPanel {

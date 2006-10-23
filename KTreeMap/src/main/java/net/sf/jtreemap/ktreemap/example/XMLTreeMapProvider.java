@@ -1,7 +1,7 @@
-package org.jense.ktreemap.example;
+package net.sf.jtreemap.ktreemap.example;
 
-import org.jense.ktreemap.ITreeMapProvider;
-import org.jense.ktreemap.TreeMapNode;
+import net.sf.jtreemap.ktreemap.ITreeMapProvider;
+import net.sf.jtreemap.ktreemap.TreeMapNode;
 
 /**
  * TreeMapProvider for a XML file

@@ -1,4 +1,4 @@
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import java.util.List;
  * <p>
  * The heaviest elements are on the top left of the KTreeMap. The lightest
  * elements are on the bottom right of the KTreeMap
- * 
+ *
  * @author Laurent Dutheil
  */
 

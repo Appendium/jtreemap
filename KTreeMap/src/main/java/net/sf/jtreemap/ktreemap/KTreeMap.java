@@ -1,4 +1,4 @@
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -28,8 +28,8 @@ import org.eclipse.swt.events.PaintListener;
  * <p>
  * So, in a KTreeMap, you can see the size and the value of an element in a
  * tree.
- * 
- * @see org.jense.ktreemap.TreeMapNode
+ *
+ * @see net.sf.jtreemap.ktreemap.TreeMapNode
  * @author Laurent Dutheil
  */
 public class KTreeMap extends Canvas {
@@ -55,10 +55,10 @@ public class KTreeMap extends Canvas {
   /**
    * Constructor of JTreeMap. <BR>
    * The chosen strategy is SplitSquarified. <BR>
-   * @param parent parent Composite 
+   * @param parent parent Composite
    * @param style style
    * @param root the root of the tree to display
-   * 
+   *
    * @see SplitSquarified
    */
   public KTreeMap(Composite parent, int style, TreeMapNode root) {
@@ -103,7 +103,7 @@ public class KTreeMap extends Canvas {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see org.eclipse.swt.widgets.Widget#dispose()
    */
   @Override
@@ -115,7 +115,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * get the active leaf (the one under the mouse).
-   * 
+   *
    * @return Returns the activeLeaf.
    */
   public TreeMapNode getActiveLeaf() {
@@ -142,7 +142,7 @@ public class KTreeMap extends Canvas {
    * This may be not the root of the jTreeMap. After a zoom, the displayed root
    * can be the root of an under-tree.
    * </p>
-   * 
+   *
    * @return the displayed root
    */
   public TreeMapNode getDisplayedRoot() {
@@ -151,7 +151,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * get the root.
-   * 
+   *
    * @return the root
    */
   public TreeMapNode getRoot() {
@@ -160,7 +160,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * get the SplitStrategy.
-   * 
+   *
    * @return the SplitStrategy
    */
   public SplitStrategy getStrategy() {
@@ -169,7 +169,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * get the IColorLabelProvider.
-   * 
+   *
    * @return the IColorLabelProvider
    */
   public ITreeMapProvider getTreeMapProvider() {
@@ -178,7 +178,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * set the active leaf.
-   * 
+   *
    * @param newActiveLeaf the new active leaf
    */
   public void setActiveLeaf(TreeMapNode newActiveLeaf) {
@@ -201,7 +201,7 @@ public class KTreeMap extends Canvas {
    * This may be not the root of the jTreeMap. After a zoom, the displayed root
    * can be the root of an under-tree.
    * </p>
-   * 
+   *
    * @param newDisplayedRoot new DiplayedRoot
    */
   public void setDisplayedRoot(TreeMapNode newDisplayedRoot) {
@@ -211,7 +211,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * set the new root.
-   * 
+   *
    * @param newRoot the new root to set
    */
   public void setRoot(TreeMapNode newRoot) {
@@ -224,7 +224,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * set the new strategy.
-   * 
+   *
    * @param newStrat the new strategy to set
    */
   public void setStrategy(SplitStrategy newStrat) {
@@ -234,7 +234,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * set the ColorProvider.
-   * 
+   *
    * @param newColorProvider the new ColorPorvider
    */
   public void setTreeMapProvider(ITreeMapProvider newColorProvider) {
@@ -244,7 +244,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * When you zoom the jTreeMap, you have the choice to keep proportions or not.
-   * 
+   *
    * @param keepProportion true if you want to keep proportions, else false
    */
   public void setZoomKeepProportion(boolean keepProportion) {
@@ -260,7 +260,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * Zoom the JTreeMap to the dest node.
-   * 
+   *
    * @param dest node we want to zoom
    */
   public void zoom(TreeMapNode dest) {
@@ -308,7 +308,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * draw the item.
-   * 
+   *
    * @param gc Graphics where you have to draw
    * @param item item to draw
    */
@@ -328,7 +328,7 @@ public class KTreeMap extends Canvas {
    * You have first to define the font of the Graphics. <BR>
    * You may override this method to change the position or the color of the
    * label.
-   * 
+   *
    * @param gc Graphics where you have to draw
    * @param item TreeMapNode to draw
    */
@@ -379,7 +379,7 @@ public class KTreeMap extends Canvas {
    * You may override this method to draw the labels you want. <BR>
    * For exemples, all the leaves, or all the first level children, or all of
    * them...
-   * 
+   *
    * @param gc Graphics where you have to draw
    * @param item TreeMapNode to draw
    */
@@ -397,7 +397,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * reveal the item.
-   * 
+   *
    * @param gc Graphics where you have to draw
    * @param item TreeMapNode to reveal
    */
@@ -422,7 +422,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * Listener who define the active leaf and set the tooltip text.
-   * 
+   *
    * @author Laurent Dutheil
    */
   protected class HandleMouseMotion implements MouseMoveListener {
@@ -456,7 +456,7 @@ public class KTreeMap extends Canvas {
 
   /**
    * Class who zoom and unzoom the JTreeMap.
-   * 
+   *
    * @author Laurent Dutheil
    */
   private class Zoom {
@@ -472,7 +472,7 @@ public class KTreeMap extends Canvas {
 
     /**
      * Execute the zoom.
-     * 
+     *
      * @param dest TreeMapNode where you want to zoom
      */
     public void execute(TreeMapNode dest) {
@@ -513,7 +513,7 @@ public class KTreeMap extends Canvas {
 
     /**
      * set the new dimensions of the dest root
-     * 
+     *
      * @param dest the root to dimension
      */
     protected void setNewDimension(TreeMapNode dest) {

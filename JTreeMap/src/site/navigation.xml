@@ -9,7 +9,7 @@
     <links>
       <item name="Page on Sourceforge" href="http://jtreemap.sourceforge.net" />
       <item name="Main Page" href="../../index.html" />
-      <item name="KTreeMap" href="../org.jense.ktreemap/index.html" />
+      <item name="KTreeMap" href="../net.sf.jtreemap.ktreemap/index.html" />
     </links>
     <sitemap/>
     <search/>

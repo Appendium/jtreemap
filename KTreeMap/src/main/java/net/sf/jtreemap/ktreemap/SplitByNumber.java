@@ -1,4 +1,4 @@
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class SplitByNumber extends SplitStrategy {
       v2.add(v.get(index));
     }
   }
-  
+
   @Override
   public double sumWeight(List<TreeMapNode> v) {
     //all the elements must have the same weight
