@@ -221,6 +221,14 @@
         <result date="2006-10-23" statvalue="60" type="checkstyle"/>
     </file>
     <file id="net_sf_jtreemap_swing_example_JTreeMapExample.java" path="net/sf/jtreemap/swing/example/JTreeMapExample.java">
+        <result date="2006-10-23" statvalue="2" type="findbugs"/>
+        <result date="2006-10-23" statvalue="2" type="findbugs"/>
+        <result date="2006-10-23" statvalue="2" type="findbugs"/>
+        <result date="2006-10-23" statvalue="2" type="findbugs"/>
+        <result date="2006-10-23" statvalue="2" type="findbugs"/>
+        <result date="2006-10-23" statvalue="2" type="findbugs"/>
+        <result date="2006-10-23" statvalue="2" type="findbugs"/>
+        <result date="2006-10-23" statvalue="2" type="findbugs"/>
         <result date="2006-10-23" statvalue="75" type="checkstyle"/>
         <result date="2006-10-23" statvalue="2" type="findbugs"/>
         <result date="2006-10-23" statvalue="2" type="findbugs"/>

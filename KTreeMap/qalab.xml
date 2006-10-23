@@ -119,6 +119,8 @@
     </file>
     <file
         id="net_sf_jtreemap_ktreemap_example_HSBTreeMapColorProvider.java" path="net/sf/jtreemap/ktreemap/example/HSBTreeMapColorProvider.java">
+        <result date="2006-10-23" statvalue="1" type="findbugs"/>
+        <result date="2006-10-23" statvalue="1" type="findbugs"/>
         <result date="2006-10-23" statvalue="47" type="checkstyle"/>
         <result date="2006-10-23" statvalue="1" type="findbugs"/>
         <result date="2006-10-23" statvalue="1" type="findbugs"/>
