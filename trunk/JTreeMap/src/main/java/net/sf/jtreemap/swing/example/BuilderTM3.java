@@ -1,7 +1,7 @@
 /*
  * Created on 22 nov. 2005
  */
-package org.jense.swing.jtreemap.example;
+package net.sf.jtreemap.swing.example;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,15 +16,15 @@ import java.util.LinkedList;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 
-import org.jense.swing.jtreemap.DefaultValue;
-import org.jense.swing.jtreemap.TreeMapNode;
-import org.jense.swing.jtreemap.TreeMapNodeBuilder;
+import net.sf.jtreemap.swing.DefaultValue;
+import net.sf.jtreemap.swing.TreeMapNode;
+import net.sf.jtreemap.swing.TreeMapNodeBuilder;
 
 /**
  * Parse a TM3 file to build the tree. <BR>
  * See <a href=http://www.cs.umd.edu/hcil/treemap/doc4.1/create_TM3_file.html>
  * how to create your own TM3 data file </a> from hcil Treemap site.
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class BuilderTM3 {
@@ -53,7 +53,7 @@ public class BuilderTM3 {
 
   /**
    * Constructor
-   * 
+   *
    * @param tm3File tm3 file
    * @throws IOException
    */
@@ -78,7 +78,7 @@ public class BuilderTM3 {
 
   /**
    * get the build root.
-   * 
+   *
    * @return the build root
    */
   public TreeMapNode getRoot() {

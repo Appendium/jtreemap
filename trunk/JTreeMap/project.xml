@@ -26,7 +26,7 @@
    <extend>../common-build/project.xml</extend>
    <name>JTreeMap</name>
    <artifactId>jtreemap</artifactId>
-   <package>org.jense.swing.jtreemap</package>
+   <package>net.sf.jtreemap</package>
    <shortDescription>JTreeMap is a Java Swing component which reprensents hierarchical structure in a Treemap.</shortDescription>
    <description>
        JTreeMap is a Java Swing component which reprensents hierarchical structure in a Treemap

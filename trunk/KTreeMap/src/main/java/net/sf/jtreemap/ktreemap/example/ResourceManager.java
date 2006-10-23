@@ -1,4 +1,4 @@
-package org.jense.ktreemap.example;
+package net.sf.jtreemap.ktreemap.example;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,7 +23,7 @@ import org.eclipse.swt.widgets.*;
  * <p>
  * Copyright (c) 2003, Instantiations, Inc. <br>
  * All Rights Reserved
- * 
+ *
  * @version $Revision$
  * @author scheglov_ke
  * @author Dan Rubel

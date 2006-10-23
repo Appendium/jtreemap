@@ -35,7 +35,7 @@
 				<include name="**/*.gif" />
 			</fileset>
 			<manifest>
-				<attribute name="Main-Class" value="org.jense.swing.jtreemap.example.JTreeMapExample" />
+				<attribute name="Main-Class" value="net.sf.jtreemap.swing.example.JTreeMapExample" />
 			</manifest>
 		</jar>
 	</target>
@@ -60,7 +60,7 @@
 	</target>
 
 	<target name="javadoc">
-		<javadoc packagenames="org.jense.swing.jtreemap.*,org.jense.swing.jtreemap.example.*" sourcepath="src" defaultexcludes="yes" destdir="doc" author="true" version="true" use="true" windowtitle="JTreeMap">
+		<javadoc packagenames="net.sf.jtreemap.swing.*,net.sf.jtreemap.swing.example.*" sourcepath="src" defaultexcludes="yes" destdir="doc" author="true" version="true" use="true" windowtitle="JTreeMap">
 			<doctitle>
 				<![CDATA[<h1>JTreeMap</h1>]]></doctitle>
 		<tag name="todo" scope="all" description="To do:" />

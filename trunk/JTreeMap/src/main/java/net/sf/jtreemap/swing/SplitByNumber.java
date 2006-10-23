@@ -1,4 +1,4 @@
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import java.util.Vector;
 
@@ -23,7 +23,7 @@ public class SplitByNumber extends SplitStrategy {
       v2.addElement(v.elementAt(index));
     }
   }
-  
+
   @Override
   public double sumWeight(Vector<TreeMapNode> v) {
     //all the elements must have the same weight

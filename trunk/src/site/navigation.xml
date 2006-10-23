@@ -11,12 +11,12 @@
          <item name="Sitemap" href="sitemap.html" />
          <item name="StatSVN" href="./statsvn" />
          <item name="JTreeMap library" href="./multiproject/jtreemap/index.html" />
-         <item name="KTreeMap library" href="./multiproject/org.jense.ktreemap/index.html" />
+         <item name="KTreeMap library" href="./multiproject/net.sf.jtreemap.ktreemap/index.html" />
       </menu>
     <links>
       <item name="Main Page on Sourceforge" href="http://jtreemap.sourceforge.net" />
       <item name="JTreeMap" href="./multiproject/jtreemap/index.html" />
-      <item name="KTreeMap" href="./multiproject/org.jense.ktreemap/index.html" />
+      <item name="KTreeMap" href="./multiproject/net.sf.jtreemap.ktreemap/index.html" />
     </links>
     <sitemap/>
     <search/>

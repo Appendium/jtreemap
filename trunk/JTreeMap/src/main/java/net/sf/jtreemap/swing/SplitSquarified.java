@@ -1,13 +1,13 @@
 /*
  * Created on 3 nov. 2005
  */
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import java.util.Vector;
 
 /**
  * The Squarified split strategy
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class SplitSquarified extends SplitStrategy {
@@ -75,8 +75,8 @@ public class SplitSquarified extends SplitStrategy {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.SplitStrategy#calculatePositionsRec(int, int,
+   *
+   * @see net.sf.jtreemap.swing.SplitStrategy#calculatePositionsRec(int, int,
    *      int, int, double, java.util.Vector)
    */
   @Override
@@ -116,7 +116,7 @@ public class SplitSquarified extends SplitStrategy {
   /**
    * Execute the recurence for the children of the elements of the vector.<BR>
    * Add also the borders if necessary
-   * 
+   *
    * @param v Vector with the elements to calculate
    */
   private void calculateChildren(Vector<TreeMapNode> v) {
@@ -144,7 +144,7 @@ public class SplitSquarified extends SplitStrategy {
         } else {
           bSub = 0;
         }
-        
+
         int w = node.getWidth() - bSub;
         if (w < 0) {
           w = 0;
@@ -153,7 +153,7 @@ public class SplitSquarified extends SplitStrategy {
         if (h < 0) {
           h = 0;
         }
-        
+
         TreeMapNode.setBorder(TreeMapNode.getBorder() - bSub);
         calculatePositionsRec(node.getX() + bSub, node.getY() + bSub, w, h, node.getWeight(), node
             .getChildren());

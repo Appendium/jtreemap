@@ -1,7 +1,7 @@
 /*
  * HSBTreeMapColorProvider.java Created on Feb 17, 2006
  */
-package org.jense.swing.jtreemap.example;
+package net.sf.jtreemap.swing.example;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,18 +9,18 @@ import java.util.Enumeration;
 
 import javax.swing.JPanel;
 
-import org.jense.swing.jtreemap.ColorProvider;
-import org.jense.swing.jtreemap.DefaultValue;
-import org.jense.swing.jtreemap.JTreeMap;
-import org.jense.swing.jtreemap.TreeMapNode;
-import org.jense.swing.jtreemap.Value;
+import net.sf.jtreemap.swing.ColorProvider;
+import net.sf.jtreemap.swing.DefaultValue;
+import net.sf.jtreemap.swing.JTreeMap;
+import net.sf.jtreemap.swing.TreeMapNode;
+import net.sf.jtreemap.swing.Value;
 
 /**
  * An HSB color space color provider for JTreeMap. Uses a specified function to
  * map the values onto the HSB color space. The default is a linear function,
  * but in my experience one of the logarithmic ones works best for this color
  * space.
- * 
+ *
  * @author Andy Adamczak
  */
 public class HSBTreeMapColorProvider extends ColorProvider {
@@ -29,23 +29,23 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      */
     public enum ColorDistributionTypes {
         /**
-         * 
+         *
          */
         Linear,
         /**
-         * 
+         *
          */
         Log,
         /**
-         * 
+         *
          */
         Exp,
         /**
-         * 
+         *
          */
         SquareRoot,
         /**
-         * 
+         *
          */
         CubicRoot
     }
@@ -145,8 +145,8 @@ public class HSBTreeMapColorProvider extends ColorProvider {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see org.jense.swing.jtreemap.ColorProvider#getLegendPanel()
+     *
+     * @see net.sf.jtreemap.swing.ColorProvider#getLegendPanel()
      */
     @Override
     public JPanel getLegendPanel()
@@ -176,7 +176,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
         // hue/saturation
         // constructions for grey scales.
         float[] hsbvals = new float[3];
-        
+
         hsbvals = Color.RGBtoHSB(positiveColor.getRed(), positiveColor.getGreen(), positiveColor.getBlue(), hsbvals);
         m_positiveHue = hsbvals[0];
         m_positiveSaturation = 1f;
@@ -211,8 +211,8 @@ public class HSBTreeMapColorProvider extends ColorProvider {
 
     /*
      * (non-Javadoc)
-     * 
-     * @see org.jense.swing.jtreemap.ColorProvider#getColor(org.jense.swing.jtreemap.Value)
+     *
+     * @see net.sf.jtreemap.swing.ColorProvider#getColor(net.sf.jtreemap.swing.Value)
      */
     @Override
     public Color getColor(Value value)
@@ -245,7 +245,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
 
     /**
      * Given a value, maps that value to a new value using the specified math function
-     * 
+     *
      * @param value
      *            the value to convert
      * @return the converted value
@@ -269,7 +269,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
 
     /**
      * Set the max and the min values in the tree map
-     * 
+     *
      * @param root
      *            root of the JTreeMap
      */
@@ -336,7 +336,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
     private ColorDistributionTypes m_colorDistribution = ColorDistributionTypes.Linear;
   /**
    * Panel with the legend
-   * 
+   *
    * @author Laurent Dutheil
    */
   private class Legend extends JPanel {

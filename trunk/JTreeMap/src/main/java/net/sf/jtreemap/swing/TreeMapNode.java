@@ -1,4 +1,4 @@
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import java.util.Enumeration;
 import java.util.Vector;
@@ -7,12 +7,12 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * Node of a JTreeMap.<BR>
- * 
+ *
  * If the node is a branch, only the label is set.<BR>
  * If the node is a leaf, we need a label, a weight and a value.
  * <p>
  * You can also use a TreeMapNode in a JTree.
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -26,10 +26,10 @@ public class TreeMapNode extends DefaultMutableTreeNode {
   private int width;
   private int x;
   private int y;
-  
+
   /**
    * Get the max border between two nodes of the same level.
-   * 
+   *
    * @return Returns the border.
    */
   public static int getBorder() {
@@ -38,7 +38,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * Set the max border between two nodes of the same level.
-   * 
+   *
    * @param border The border to set.
    */
   public static void setBorder(int border) {
@@ -48,7 +48,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * Constructor for a branch.
-   * 
+   *
    * @param label label of the branch.
    */
   public TreeMapNode(String label) {
@@ -58,7 +58,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * Constructor for a leaf.
-   * 
+   *
    * @param label label of the leaf.
    * @param weight weight of the leaf (if negative, we take the absolute value).
    * @param value Value associée à la feuille
@@ -73,7 +73,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * add a new child to the node.
-   * 
+   *
    * @param newChild new child
    */
   public void add(TreeMapNode newChild) {
@@ -84,7 +84,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
   /**
    * get the active leaf.<BR>
    * null if the passed position is not in this tree.
-   * 
+   *
    * @param x x-coordinate
    * @param y y-coordinate
    * @return active leaf
@@ -107,11 +107,11 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     }
     return null;
   }
-  
+
   /**
    * get the first child which fits the position.<BR>
    * null if the passed position is not in this tree.
-   * 
+   *
    * @param x x-coordinate
    * @param y y-coordinate
    * @return the first child which fits the position.
@@ -125,14 +125,14 @@ public class TreeMapNode extends DefaultMutableTreeNode {
           return node;
         }
       }
-      
+
     }
     return null;
   }
 
   /**
    * get a Vector with the children.
-   * 
+   *
    * @return Vector with the children
    */
   @SuppressWarnings("unchecked")
@@ -142,7 +142,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * get the height.
-   * 
+   *
    * @return the height
    */
   public int getHeight() {
@@ -151,7 +151,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * get the label.
-   * 
+   *
    * @return the label
    */
   public String getLabel() {
@@ -160,7 +160,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * get the label of the Value.
-   * 
+   *
    * @return the label of the Value
    */
   public String getLabelValue() {
@@ -169,7 +169,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * get the Value.
-   * 
+   *
    * @return the value
    */
   public Value getValue() {
@@ -178,7 +178,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * get the double Value.
-   * 
+   *
    * @return the double value
    */
   public double getDoubleValue() {
@@ -187,7 +187,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * get the weight.
-   * 
+   *
    * @return the weight
    */
   public double getWeight() {
@@ -196,7 +196,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * get the width.
-   * 
+   *
    * @return the width
    */
   public int getWidth() {
@@ -205,7 +205,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * get the x-coordinate.
-   * 
+   *
    * @return the x-coordinate
    */
   public int getX() {
@@ -214,7 +214,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * get the y-coordinate.
-   * 
+   *
    * @return the y-coordinate
    */
   public int getY() {
@@ -223,7 +223,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set the position and the size.
-   * 
+   *
    * @param x x-coordinate
    * @param y y-coordinate
    * @param width the new width
@@ -238,7 +238,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set the height.
-   * 
+   *
    * @param height la nouvelle valeur de height
    */
   public void setHeight(int height) {
@@ -247,7 +247,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set the label.
-   * 
+   *
    * @param label the new label
    */
   public void setLabel(String label) {
@@ -256,7 +256,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set the position.
-   * 
+   *
    * @param x x-coordinate
    * @param y y-coordinate
    */
@@ -267,7 +267,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set size.
-   * 
+   *
    * @param width the new width
    * @param height the new height
    */
@@ -278,7 +278,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set the Value.
-   * 
+   *
    * @param value the new Value
    */
   public void setValue(Value value) {
@@ -287,7 +287,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set the weight of the node and update the parents.
-   * 
+   *
    * @param weight the new weight
    */
   public void setWeight(double weight) {
@@ -301,7 +301,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set the width.
-   * 
+   *
    * @param width la nouvelle valeur de width
    */
   public void setWidth(int width) {
@@ -310,7 +310,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set the x-coordinate.
-   * 
+   *
    * @param x the new x-coordinate
    */
   public void setX(int x) {
@@ -319,7 +319,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
   /**
    * set the y-coordinate.
-   * 
+   *
    * @param y the new y-coordinate
    */
   public void setY(int y) {

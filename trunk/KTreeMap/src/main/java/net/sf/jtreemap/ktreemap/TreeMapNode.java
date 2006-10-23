@@ -1,4 +1,4 @@
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.eclipse.swt.graphics.Rectangle;
  * If the node is a leaf, we need a label, a weight and a value.
  * <p>
  * You can also use a TreeMapNode in a JTree.
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -36,7 +36,7 @@ public class TreeMapNode {
 
   /**
    * Constructor for a leaf.
-   * 
+   *
    * @param weight weight of the leaf (if negative, we take the absolute value).
    * @param value Value associée à la feuille
    */
@@ -48,7 +48,7 @@ public class TreeMapNode {
 
   /**
    * Get the max border between two nodes of the same level.
-   * 
+   *
    * @return Returns the border.
    */
   public static int getBorder() {
@@ -57,7 +57,7 @@ public class TreeMapNode {
 
   /**
    * Set the max border between two nodes of the same level.
-   * 
+   *
    * @param border The border to set.
    */
   public static void setBorder(int border) {
@@ -66,7 +66,7 @@ public class TreeMapNode {
 
   /**
    * add a new child to the node.
-   * 
+   *
    * @param newChild new child
    */
   public void add(TreeMapNode newChild) {
@@ -78,7 +78,7 @@ public class TreeMapNode {
   /**
    * get the active leaf.<BR>
    * null if the passed position is not in this tree.
-   * 
+   *
    * @param x x-coordinate
    * @param y y-coordinate
    * @return active leaf
@@ -104,7 +104,7 @@ public class TreeMapNode {
   /**
    * get the active leaf.<BR>
    * null if the passed position is not in this tree.
-   * 
+   *
    * @param position position
    * @return active leaf
    */
@@ -114,7 +114,7 @@ public class TreeMapNode {
     }
     return null;
   }
-  
+
   /**
    * @return the bounds of the KTreeMap
    */
@@ -125,7 +125,7 @@ public class TreeMapNode {
   /**
    * get the first child which fits the position.<BR>
    * null if the passed position is not in this tree.
-   * 
+   *
    * @param x x-coordinate
    * @param y y-coordinate
    * @return the first child which fits the position.
@@ -146,7 +146,7 @@ public class TreeMapNode {
   /**
    * get the first child which fits the position.<BR>
    * null if the passed position is not in this tree.
-   * 
+   *
    * @param position position
    * @return the first child which fits the position.
    */
@@ -159,7 +159,7 @@ public class TreeMapNode {
 
   /**
    * get a List with the children.
-   * 
+   *
    * @return List with the children
    */
   @SuppressWarnings("unchecked")
@@ -169,7 +169,7 @@ public class TreeMapNode {
 
   /**
    * get the height.
-   * 
+   *
    * @return the height
    */
   public int getHeight() {
@@ -178,7 +178,7 @@ public class TreeMapNode {
 
   /**
    * get the Value.
-   * 
+   *
    * @return the value
    */
   public Object getValue() {
@@ -187,7 +187,7 @@ public class TreeMapNode {
 
   /**
    * get the weight.
-   * 
+   *
    * @return the weight
    */
   public double getWeight() {
@@ -196,7 +196,7 @@ public class TreeMapNode {
 
   /**
    * get the width.
-   * 
+   *
    * @return the width
    */
   public int getWidth() {
@@ -205,7 +205,7 @@ public class TreeMapNode {
 
   /**
    * get the x-coordinate.
-   * 
+   *
    * @return the x-coordinate
    */
   public int getX() {
@@ -214,7 +214,7 @@ public class TreeMapNode {
 
   /**
    * get the y-coordinate.
-   * 
+   *
    * @return the y-coordinate
    */
   public int getY() {
@@ -238,7 +238,7 @@ public class TreeMapNode {
 
   /**
    * set the height.
-   * 
+   *
    * @param height la nouvelle valeur de height
    */
   public void setHeight(int height) {
@@ -247,7 +247,7 @@ public class TreeMapNode {
 
   /**
    * set the position.
-   * 
+   *
    * @param x x-coordinate
    * @param y y-coordinate
    */
@@ -258,7 +258,7 @@ public class TreeMapNode {
 
   /**
    * set size.
-   * 
+   *
    * @param width the new width
    * @param height the new height
    */
@@ -269,7 +269,7 @@ public class TreeMapNode {
 
   /**
    * set the Value.
-   * 
+   *
    * @param value the new value
    */
   public void setValue(Object value) {
@@ -278,7 +278,7 @@ public class TreeMapNode {
 
   /**
    * set the weight of the node and update the parents.
-   * 
+   *
    * @param weight the new weight
    */
   public void setWeight(double weight) {
@@ -291,7 +291,7 @@ public class TreeMapNode {
 
   /**
    * set the width.
-   * 
+   *
    * @param width la nouvelle valeur de width
    */
   public void setWidth(int width) {
@@ -300,7 +300,7 @@ public class TreeMapNode {
 
   /**
    * set the x-coordinate.
-   * 
+   *
    * @param x the new x-coordinate
    */
   public void setX(int x) {
@@ -309,7 +309,7 @@ public class TreeMapNode {
 
   /**
    * set the y-coordinate.
-   * 
+   *
    * @param y the new y-coordinate
    */
   public void setY(int y) {

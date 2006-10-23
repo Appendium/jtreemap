@@ -1,8 +1,8 @@
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 /**
  * Tree builder for a JTreeMap.
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -14,7 +14,7 @@ public class TreeMapNodeBuilder {
    * If the parent is null, the build node become the root if and only if the
    * tree have no root yet. If the parent is null and if the root is already
    * build, the node will NOT be added to the tree.
-   * 
+   *
    * @param label label of the node
    * @param parent father of the node
    * @return the created node
@@ -34,7 +34,7 @@ public class TreeMapNodeBuilder {
    * If the parent is null, the build node become the root if and only if the
    * tree have no root yet. If the parent is null and if the root is already
    * build, the node will NOT be added to the tree.
-   * 
+   *
    * @param label label of the leaf
    * @param weight weight of the leaf
    * @param value Value of the leaf
@@ -54,7 +54,7 @@ public class TreeMapNodeBuilder {
 
   /**
    * get the build tree.
-   * 
+   *
    * @return the root of the tree
    */
   public TreeMapNode getRoot() {

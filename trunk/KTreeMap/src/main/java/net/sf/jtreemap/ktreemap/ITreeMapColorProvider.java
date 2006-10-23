@@ -1,4 +1,4 @@
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.swt.widgets.Composite;

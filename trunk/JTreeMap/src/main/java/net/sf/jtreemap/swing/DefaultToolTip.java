@@ -1,7 +1,7 @@
 /*
  * Created on 28 sept. 2005
  */
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,7 +12,7 @@ import javax.swing.JToolTip;
 
 /**
  * Default ToolTip for the jTreeMap.
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class DefaultToolTip extends JToolTip {
@@ -23,7 +23,7 @@ public class DefaultToolTip extends JToolTip {
 
   /**
    * Constructor.
-   * 
+   *
    * @param jTreeMap the jTreeMap who display the tooltip
    */
   public DefaultToolTip(JTreeMap jTreeMap) {

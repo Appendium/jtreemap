@@ -1,9 +1,9 @@
-package org.jense.ktreemap.example;
+package net.sf.jtreemap.ktreemap.example;
 
 import java.util.Date;
 
-import org.jense.ktreemap.ITreeMapProvider;
-import org.jense.ktreemap.TreeMapNode;
+import net.sf.jtreemap.ktreemap.ITreeMapProvider;
+import net.sf.jtreemap.ktreemap.TreeMapNode;
 
 /**
  * TreeMapProvider for a TM3 file
@@ -11,7 +11,7 @@ import org.jense.ktreemap.TreeMapNode;
  */
 public class TM3TreeMapProvider implements ITreeMapProvider {
   private static String valueField = "";
-  
+
   public double getDoubleValue(Object value) {
     if (value instanceof TM3Bean) {
       TM3Bean bean = (TM3Bean)value;

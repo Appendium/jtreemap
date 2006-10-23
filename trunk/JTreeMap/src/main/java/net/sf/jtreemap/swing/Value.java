@@ -1,4 +1,4 @@
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 
 /**
@@ -35,7 +35,7 @@ public abstract class Value implements Comparable {
    *@param newLabel the new label
    */
   public abstract void setLabel(String newLabel);
-  
+
   /* (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
    */
@@ -47,7 +47,7 @@ public abstract class Value implements Comparable {
     }
     return false;
   }
-  
+
   /* (non-Javadoc)
    * @see java.lang.Comparable#compareTo(java.lang.Object)
    */

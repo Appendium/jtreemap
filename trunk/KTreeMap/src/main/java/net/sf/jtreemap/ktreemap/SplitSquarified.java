@@ -1,7 +1,7 @@
 /*
  * Created on 3 nov. 2005
  */
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.eclipse.swt.graphics.Rectangle;
 
 /**
  * The Squarified split strategy
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class SplitSquarified extends SplitStrategy {
@@ -79,8 +79,8 @@ public class SplitSquarified extends SplitStrategy {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.SplitStrategy#calculatePositionsRec(int, int,
+   *
+   * @see net.sf.jtreemap.swing.SplitStrategy#calculatePositionsRec(int, int,
    *      int, int, double, java.util.Vector)
    */
   @Override
@@ -122,7 +122,7 @@ public class SplitSquarified extends SplitStrategy {
   /**
    * Execute the recurence for the children of the elements of the vector.<BR>
    * Add also the borders if necessary
-   * 
+   *
    * @param v Vector with the elements to calculate
    */
   private void calculateChildren(List<TreeMapNode> v) {

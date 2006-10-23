@@ -1,4 +1,4 @@
-package org.jense.ktreemap.example;
+package net.sf.jtreemap.ktreemap.example;
 
 /**
  * Bean that contains values of an element of a XML file

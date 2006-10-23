@@ -1,7 +1,7 @@
 /*
  * HSBTreeMapColorProvider.java Created on Feb 17, 2006
  */
-package org.jense.ktreemap.example;
+package net.sf.jtreemap.ktreemap.example;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
@@ -12,17 +12,17 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.jense.ktreemap.ITreeMapColorProvider;
-import org.jense.ktreemap.ITreeMapProvider;
-import org.jense.ktreemap.KTreeMap;
-import org.jense.ktreemap.TreeMapNode;
+import net.sf.jtreemap.ktreemap.ITreeMapColorProvider;
+import net.sf.jtreemap.ktreemap.ITreeMapProvider;
+import net.sf.jtreemap.ktreemap.KTreeMap;
+import net.sf.jtreemap.ktreemap.TreeMapNode;
 
 /**
  * An HSB color space color provider for KTreeMap. Uses a specified function to
  * map the values onto the HSB color space. The default is a linear function,
  * but in my experience one of the logarithmic ones works best for this color
  * space.
- * 
+ *
  * @author Andy Adamczak
  */
 public class HSBTreeMapColorProvider implements ITreeMapColorProvider {
@@ -205,7 +205,7 @@ public class HSBTreeMapColorProvider implements ITreeMapColorProvider {
 
   /**
    * Set the max and the min values in the tree map
-   * 
+   *
    * @param root root of the JTreeMap
    */
   void setValues(TreeMapNode root) {
@@ -230,7 +230,7 @@ public class HSBTreeMapColorProvider implements ITreeMapColorProvider {
   /**
    * Given a value, maps that value to a new value using the specified math
    * function
-   * 
+   *
    * @param value the value to convert
    * @return the converted value
    */
@@ -281,23 +281,23 @@ public class HSBTreeMapColorProvider implements ITreeMapColorProvider {
    */
   public enum ColorDistributionTypes {
     /**
-     * 
+     *
      */
     Linear,
     /**
-     * 
+     *
      */
     Log,
     /**
-     * 
+     *
      */
     Exp,
     /**
-     * 
+     *
      */
     SquareRoot,
     /**
-     * 
+     *
      */
     CubicRoot
   }

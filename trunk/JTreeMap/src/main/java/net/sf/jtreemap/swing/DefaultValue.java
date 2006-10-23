@@ -1,12 +1,12 @@
 /*
  * Created on 10 oct. 2005
  */
-package org.jense.swing.jtreemap;
+package net.sf.jtreemap.swing;
 
 /**
  * Default Value <BR>
  * The getLabel() method returns the "" + getValue()
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class DefaultValue extends Value {
@@ -21,7 +21,7 @@ public class DefaultValue extends Value {
 
   /**
    * Constructor.
-   * 
+   *
    * @param value double value
    */
   public DefaultValue(double value) {
@@ -30,8 +30,8 @@ public class DefaultValue extends Value {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.Value#getValue()
+   *
+   * @see net.sf.jtreemap.swing.Value#getValue()
    */
   @Override
   public double getValue() {
@@ -40,8 +40,8 @@ public class DefaultValue extends Value {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.Value#getLabel()
+   *
+   * @see net.sf.jtreemap.swing.Value#getLabel()
    */
   @Override
   public String getLabel() {
@@ -50,8 +50,8 @@ public class DefaultValue extends Value {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.Value#setValue(double)
+   *
+   * @see net.sf.jtreemap.swing.Value#setValue(double)
    */
   @Override
   public void setValue(double value) {
@@ -60,8 +60,8 @@ public class DefaultValue extends Value {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see org.jense.swing.jtreemap.Value#setLabel(java.lang.String)
+   *
+   * @see net.sf.jtreemap.swing.Value#setLabel(java.lang.String)
    */
   @Override
   public void setLabel(String newLabel) {

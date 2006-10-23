@@ -1,4 +1,4 @@
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 /**
  * Provider of the KTreeMap
@@ -12,14 +12,14 @@ public interface ITreeMapProvider {
    * @return the label of the node
    */
   public String getLabel(TreeMapNode node);
-  
+
   /**
    * Get the label of the value
    * @param value value of the node (TreeMapNode.getValue())
    * @return the label of the value
    */
   public String getValueLabel(Object value);
-  
+
   /**
    * Get the double value of the value
    * @param value value of the node (TreeMapNode.getValue())

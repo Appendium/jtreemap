@@ -1,8 +1,8 @@
-package org.jense.ktreemap;
+package net.sf.jtreemap.ktreemap;
 
 /**
  * Tree builder for a KTreeMap.
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -14,7 +14,7 @@ public abstract class TreeMapNodeBuilder {
    * If the parent is null, the build node become the root if and only if the
    * tree have no root yet. If the parent is null and if the root is already
    * build, the node will NOT be added to the tree.
-   * 
+   *
    * @param value Value of the branch
    * @param parent father of the branch
    * @return the created node
@@ -34,7 +34,7 @@ public abstract class TreeMapNodeBuilder {
    * If the parent is null, the build node become the root if and only if the
    * tree have no root yet. If the parent is null and if the root is already
    * build, the node will NOT be added to the tree.
-   * 
+   *
    * @param value Value of the leaf
    * @param parent father of the leaf
    * @return the created node
@@ -51,17 +51,17 @@ public abstract class TreeMapNodeBuilder {
 
   /**
    * get the build tree.
-   * 
+   *
    * @return the root of the tree
    */
   public TreeMapNode getRoot() {
     return this.root;
   }
-  
+
   /**
    * Return the weight of an Object. <BR>
    * This method have to be extended
-   * 
+   *
    * @param value the object (generaly, the TreeMapNode.getValue())
    * @return the weight of the value
    */

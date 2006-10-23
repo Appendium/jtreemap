@@ -1,11 +1,11 @@
-package org.jense.swing.jtreemap.example;
+package net.sf.jtreemap.swing.example;
 
 import javax.swing.JPanel;
 
-import org.jense.swing.jtreemap.ColorProvider;
-import org.jense.swing.jtreemap.JTreeMap;
-import org.jense.swing.jtreemap.TreeMapNode;
-import org.jense.swing.jtreemap.Value;
+import net.sf.jtreemap.swing.ColorProvider;
+import net.sf.jtreemap.swing.JTreeMap;
+import net.sf.jtreemap.swing.TreeMapNode;
+import net.sf.jtreemap.swing.Value;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,7 +13,7 @@ import java.awt.Graphics;
 /**
  * ColorProvider who, with a max absolute value M, choose the color between
  * values -M and M.
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -27,7 +27,7 @@ public class RedGreenColorProvider extends ColorProvider {
 
   /**
    * Constructor
-   * 
+   *
    * @param jTreeMap the JTreeMap to color
    */
   public RedGreenColorProvider(JTreeMap jTreeMap) {
@@ -106,7 +106,7 @@ public class RedGreenColorProvider extends ColorProvider {
 
   /**
    * Panel with the legend
-   * 
+   *
    * @author Laurent Dutheil
    */
   private class Legend extends JPanel {

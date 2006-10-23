@@ -1,22 +1,22 @@
 /*
  * Created on 28 oct. 2005
  */
-package org.jense.swing.jtreemap.example;
+package net.sf.jtreemap.swing.example;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
 
 import javax.swing.JApplet;
 
-import org.jense.swing.jtreemap.JTreeMap;
-import org.jense.swing.jtreemap.SplitBySortedWeight;
-import org.jense.swing.jtreemap.TreeMapNode;
-import org.jense.swing.jtreemap.TreeMapNodeBuilder;
-import org.jense.swing.jtreemap.Value;
+import net.sf.jtreemap.swing.JTreeMap;
+import net.sf.jtreemap.swing.SplitBySortedWeight;
+import net.sf.jtreemap.swing.TreeMapNode;
+import net.sf.jtreemap.swing.TreeMapNodeBuilder;
+import net.sf.jtreemap.swing.Value;
 
 /**
  * Test of JTreeMap in a JApplet
- * 
+ *
  * @author Laurent Dutheil
  */
 public class JTreeMapAppletExample extends JApplet {
@@ -34,7 +34,7 @@ public class JTreeMapAppletExample extends JApplet {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see java.applet.Applet#start()
    */
   @Override
@@ -50,7 +50,7 @@ public class JTreeMapAppletExample extends JApplet {
     new ZoomPopupMenu(this.jTreeMap);
 
     getJContentPane().add(this.jTreeMap, BorderLayout.CENTER);
-    
+
   }
 
   /**
@@ -64,7 +64,7 @@ public class JTreeMapAppletExample extends JApplet {
 
   /**
    * This method initializes jContentPane
-   * 
+   *
    * @return javax.swing.JPanel
    */
   private javax.swing.JPanel getJContentPane() {
@@ -84,7 +84,7 @@ public class JTreeMapAppletExample extends JApplet {
    */
   private TreeMapNode getRoot() {
     TreeMapNodeBuilder builder = new TreeMapNodeBuilder();
-    
+
     TreeMapNode root = builder.buildBranch("Root", null);
     TreeMapNode tmn1 = builder.buildBranch("branch1", root);
     TreeMapNode tmn11 = builder.buildBranch("branch11", tmn1);
@@ -214,7 +214,7 @@ public class JTreeMapAppletExample extends JApplet {
     builder.buildLeaf("leaf433",0.5, value, tmn43);
     value = new ValuePercent(0.0);
     builder.buildLeaf("leaf434",3.0, value, tmn43);
-    
+
     return builder.getRoot();
   }
 }

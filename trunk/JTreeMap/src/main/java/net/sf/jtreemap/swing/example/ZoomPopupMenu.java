@@ -1,7 +1,7 @@
 /*
  * Created on 28 oct. 2005
  */
-package org.jense.swing.jtreemap.example;
+package net.sf.jtreemap.swing.example;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -13,14 +13,14 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPopupMenu;
 
-import org.jense.swing.jtreemap.JTreeMap;
-import org.jense.swing.jtreemap.TreeMapNode;
+import net.sf.jtreemap.swing.JTreeMap;
+import net.sf.jtreemap.swing.TreeMapNode;
 
 /**
  * PopupMenu which permits to zoom the JTreeMap<BR>
  * The menuItems are the ancestors and the children of the displayed TreeMapNode
  * of the JTreeMap
- * 
+ *
  * @author Laurent Dutheil
  */
 public class ZoomPopupMenu extends JPopupMenu {
@@ -53,7 +53,7 @@ public class ZoomPopupMenu extends JPopupMenu {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
      */
     @Override
@@ -114,7 +114,7 @@ public class ZoomPopupMenu extends JPopupMenu {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
     public void actionPerformed(ActionEvent e) {
@@ -125,7 +125,7 @@ public class ZoomPopupMenu extends JPopupMenu {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see javax.swing.Action#isEnabled()
      */
     @Override
