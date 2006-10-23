@@ -8,6 +8,7 @@
   </properties>
   <body> 
     <release version="1.1.0" date="In SVN" description="Re-org">
+    	<action dev="benoitx" type="add">Moved org.jense to official package net.sf.jtreemap (sorry, it breaks your code but we must do this to release on iBiblio.org, the official Maven repository).</action>
     	<action dev="benoitx" type="add">Maven Build.</action>
     	<action dev="marchy" type="add">Move to Subversion.</action>
     </release>
