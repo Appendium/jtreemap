@@ -59,7 +59,7 @@ Moreover, we can add a code color which makes it possible to introduce new infor
     
     </subsection>
 
-    <subsection name="So, what is on offer?">
+    <subsection name="Which JDK?">
     <p>1.5+, get over it :-)</p>
     </subsection>
     
@@ -81,7 +81,7 @@ Moreover, we can add a code color which makes it possible to introduce new infor
     <p>JTreeMap releases a basic demo application, you can open XML and TM3 files.  The application can be launched via (see <a href="jtreemap.jnlp">WebStart</a>) or 
     this way: java -jar jtreemap-1.1.0.jar</p>
     <p>The accepted file formats are: XML of the following format:</p>
-    <div class="code"><pre>
+    <div class="source"><pre>
     &lt;?xml version='1.0' encoding='ISO-8859-1'?>
     &lt;!ELEMENT root (label,(branch |leaf)*)>
     &lt;!ELEMENT branch (label,(branch|leaf)*)>
@@ -92,7 +92,7 @@ Moreover, we can add a code color which makes it possible to introduce new infor
     </pre></div>
     
     <p>XML Example:</p>
-    <div class="code"><pre>
+    <div class="source"><pre>
 &lt;?xml version='1.0' encoding='ISO-8859-1'?>
 &lt;!DOCTYPE root SYSTEM "TreeMap.dtd" >
 &lt;root>
@@ -125,7 +125,7 @@ Moreover, we can add a code color which makes it possible to introduce new infor
     </pre></div>
     
     <p>In the field of treemapping, there is also a standard file format called TM3, which is TAB delimited:</p>
-    <div class="code"><pre>
+    <div class="source"><pre>
 Length (Miles)	Traffic Lights	Speed Limit	Repairs per week				
 FLOAT	INTEGER	INTEGER	FLOAT				
 12.5	4	40	2.3		Roads	Highway	Route 1
@@ -140,7 +140,7 @@ FLOAT	INTEGER	INTEGER	FLOAT
     
     <subsection name="As an component in your application">   
     <p>The library provided allows you to integrate the treemap in your java app</p>
-    <div class="code"><pre>
+    <div class="source"><pre>
     
 //
 // Build the Tree with JTreeMap classes

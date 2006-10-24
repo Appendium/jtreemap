@@ -139,6 +139,7 @@
         <result date="2006-10-23" statvalue="47" type="checkstyle"/>
         <result date="2006-10-23" statvalue="1" type="findbugs"/>
         <result date="2006-10-23" statvalue="1" type="findbugs"/>
+        <result date="2006-10-24" statvalue="1" type="findbugs"/>
         <result date="2006-10-24" statvalue="47" type="checkstyle"/>
         <result date="2006-10-24" statvalue="1" type="findbugs"/>
         <result date="2006-10-24" statvalue="1" type="findbugs"/>
