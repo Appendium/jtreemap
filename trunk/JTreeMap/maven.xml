@@ -13,6 +13,13 @@
    xmlns:define="jelly:define" xmlns:doc="doc" xmlns:util="jelly:util"
    xmlns:log="jelly:log">
 
-   <goal name="jt:build" prereqs="jar:install" />
+   <goal name="jt:build" prereqs="jar:install">
+	<signjar lazy="true" storepass="password" alias="mykey"
+		keystore="codesignature.keystore">
+		<fileset dir="target">
+			<include name="*.jar" />
+		</fileset>
+	</signjar>
+   </goal>
    <goal name="jt:rebuild" prereqs="clean,jt:build" />
 </project>
