@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
-<!-- 
- -->
-
 <document>
   <properties>
     <title>Changes</title>
   </properties>
   <body> 
     <release version="1.1.0" date="In SVN" description="Re-org">
+    	<action dev="benoitx" type="fix">Code is now gone through Checkstyle, PMD, FindBugs and Simian...</action>
     	<action dev="benoitx" type="add">Moved org.jense to official package net.sf.jtreemap (sorry, it breaks your code but we must do this to release on iBiblio.org, the official Maven repository).</action>
     	<action dev="benoitx" type="add">Maven Build.</action>
     	<action dev="marchy" type="add">Move to Subversion.</action>
@@ -24,7 +22,7 @@
 	<action dev="jense128" type="add">The ToolTip can be personalized.</action>
 	<action dev="jense128" type="add">Add the ColorProvider contribution of Andy Adamczak is added to the release.</action>
 	<action dev="jense128" type="fix">The example is improved.</action>
-	<action dev="jense128" type="fix">Fix bugs. </action>
+	<action dev="jense128" type="fix">Fix bugs.</action>
     </release>
     <release version="1.0-beta" date="2005-11-24" description="First Beta">
     	<action dev="jense128" type="fix">The JTreeMap now fits the window/frame/panel. </action>
@@ -33,7 +31,7 @@
 	<action dev="jense128" type="add">The example is improved too.</action>
     </release>
     <release version="0.9.6" date="2005-11-11" description="Maintenance">
-    	<action dev="jense128" type="fix">resolve some bugs.This seems to be the final release. If you have any suggestions, there are welcome </action>
+    	<action dev="jense128" type="fix">Resolve some bugs.This seems to be the final release. If you have any suggestions, there are welcome </action>
     </release>
     <release version="0.9.5" date="2005-11-07" description="More Examples">
     	<action dev="jense128" type="add">More examples. Can load your own xml file from the example.More split strategies.Improved code</action>
