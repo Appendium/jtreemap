@@ -1,6 +1,7 @@
 package net.sf.jtreemap.swing;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.Vector;
 
 /**
@@ -112,13 +113,18 @@ public abstract class SplitStrategy implements Serializable {
             // we split the Vector according to the selected strategy
             final Vector<TreeMapNode> v1 = new Vector<TreeMapNode>();
             final Vector<TreeMapNode> v2 = new Vector<TreeMapNode>();
-            double weight1, weight2; // poids des 2 vecteurs
+            double weight1;
+            double weight2; // poids des 2 vecteurs
             this.splitElements(v, v1, v2);
             weight1 = this.sumWeight(v1);
             weight2 = this.sumWeight(v2);
 
-            int w1, w2, h1, h2;
-            int x2, y2;
+            int w1;
+            int w2;
+            int h1;
+            int h2;
+            int x2;
+            int y2;
             // if width is greater than height, we split the width
             if (w0 > h0) {
                 w1 = (int) (w0 * weight1 / weight0);
@@ -163,4 +169,43 @@ public abstract class SplitStrategy implements Serializable {
 
     }
 
+    protected void workOutWeight(final Vector<TreeMapNode> v1, final Vector<TreeMapNode> v2, final Vector<TreeMapNode> vClone,
+            final double sumWeight) {
+        double memWeight = 0.0;
+        double elemWeight = 0.0;
+        for (final Iterator<TreeMapNode> i = vClone.iterator(); i.hasNext();) {
+            TreeMapNode tmn = i.next();
+            elemWeight = tmn.getWeight();
+            // if adding the current element pass the middle of total weight
+            if (memWeight + elemWeight >= sumWeight / 2) {
+                // we look at the finest split (the nearest of the middle of
+                // weight)
+                if (((sumWeight / 2) - memWeight) > ((memWeight + elemWeight) - (sumWeight / 2))) {
+                    // if it is after the add, we add the element to the first
+                    // Vector
+                    memWeight += elemWeight;
+                    v1.addElement(tmn);
+                } else {
+                    // we must have at least 1 element in the first vector
+                    if (v1.isEmpty()) {
+                        v1.addElement(tmn);
+                    } else {
+                        // if it is before the add, we add the element to the
+                        // second Vector
+                        v2.addElement(tmn);
+                    }
+                }
+                // then we fill the second Vector qith the rest of elements
+                while (i.hasNext()) {
+                    tmn = i.next();
+                    v2.addElement(tmn);
+                }
+            } else {
+                // we add in the first vector while we don't reach the middle of
+                // weight
+                memWeight += elemWeight;
+                v1.addElement(tmn);
+            }
+        }
+    }
 }

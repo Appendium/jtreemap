@@ -16,6 +16,12 @@ import javax.swing.JToolTip;
  * @author Laurent DUTHEIL
  */
 public class DefaultToolTip extends JToolTip {
+    private static final int TOOLTIP_OFFSET = 5;
+
+    private static final int DEFAULT_VALUE_SIZE = 10;
+
+    private static final int DEFAULT_LABEL_SIZE = 14;
+
     private static final long serialVersionUID = -2492627777999093973L;
 
     private JTreeMap jTreeMap;
@@ -32,8 +38,8 @@ public class DefaultToolTip extends JToolTip {
      */
     public DefaultToolTip(final JTreeMap jTreeMap) {
         this.jTreeMap = jTreeMap;
-        this.labelFont = new Font("Default", Font.BOLD, 14);
-        this.valueFont = new Font("Default", Font.PLAIN, 10);
+        this.labelFont = new Font("Default", Font.BOLD, DEFAULT_LABEL_SIZE);
+        this.valueFont = new Font("Default", Font.PLAIN, DEFAULT_VALUE_SIZE);
 
         final int width = 160;
         final int height = getFontMetrics(this.labelFont).getHeight() + getFontMetrics(this.valueFont).getHeight();
@@ -50,9 +56,9 @@ public class DefaultToolTip extends JToolTip {
             g.fill3DRect(0, 0, this.getWidth(), this.getHeight(), true);
             g.setColor(Color.black);
             g.setFont(this.labelFont);
-            g.drawString(this.jTreeMap.getActiveLeaf().getLabel(), 5, g.getFontMetrics(this.labelFont).getAscent());
+            g.drawString(this.jTreeMap.getActiveLeaf().getLabel(), TOOLTIP_OFFSET, g.getFontMetrics(this.labelFont).getAscent());
             g.setFont(this.valueFont);
-            g.drawString(this.jTreeMap.getActiveLeaf().getLabelValue(), 5, this.getHeight() - 5);
+            g.drawString(this.jTreeMap.getActiveLeaf().getLabelValue(), TOOLTIP_OFFSET, this.getHeight() - TOOLTIP_OFFSET);
         }
     }
 

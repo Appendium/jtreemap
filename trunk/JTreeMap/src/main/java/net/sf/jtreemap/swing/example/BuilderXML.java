@@ -11,6 +11,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import net.sf.jtreemap.swing.TreeMapNode;
 import net.sf.jtreemap.swing.TreeMapNodeBuilder;
 import net.sf.jtreemap.swing.Value;
+import net.sf.jtreemap.swing.ValuePercent;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -90,12 +91,10 @@ public class BuilderXML {
                     final double weight = Double.valueOf(weightString).doubleValue();
 
                     this.builder.buildLeaf(label, weight, value, tmn);
-
                 }
 
             }
         }
-
     }
 
     private void parse(final String stFileName) throws ParseException {
@@ -115,7 +114,5 @@ public class BuilderXML {
         } catch (final IOException e) {
             throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
         }
-
     }
-
 }

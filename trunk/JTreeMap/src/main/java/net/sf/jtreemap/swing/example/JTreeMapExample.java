@@ -46,8 +46,10 @@ import net.sf.jtreemap.swing.SplitByWeight;
 import net.sf.jtreemap.swing.SplitSquarified;
 import net.sf.jtreemap.swing.SplitStrategy;
 import net.sf.jtreemap.swing.TreeMapNode;
-import net.sf.jtreemap.swing.TreeMapNodeBuilder;
-import net.sf.jtreemap.swing.Value;
+import net.sf.jtreemap.swing.provider.HSBTreeMapColorProvider;
+import net.sf.jtreemap.swing.provider.RandomColorProvider;
+import net.sf.jtreemap.swing.provider.RedGreenColorProvider;
+import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
 
 /**
  * Test of JTreeMap
@@ -55,6 +57,16 @@ import net.sf.jtreemap.swing.Value;
  * @author Laurent Dutheil
  */
 public class JTreeMapExample extends JFrame implements ActionListener {
+    private static final double CONSTRAINT_WEIGHTX = 0.5;
+
+    private static final int SCROLLPANE_WIDTH = 140;
+
+    private static final int APPLICATION_HEIGHT = 400;
+
+    private static final int APPLICATION_WIDTH = 600;
+
+    private static final int DEFAULT_FONT_SIZE = 16;
+
     private static final long serialVersionUID = 2813934810390001709L;
 
     private static final String EXIT = "Exit";
@@ -63,17 +75,15 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
     private static final String OPEN_XML_FILE = "Open Xml File";
 
-    protected JTreeMap jTreeMap;
+    private JTreeMap jTreeMap;
 
-    protected JTree treeView = new JTree();
+    private JTree treeView = new JTree();
 
-    protected ZoomPopupMenu zoomPopup;
-
-    protected BuilderTM3 builderTM3;
+    private BuilderTM3 builderTM3;
 
     private CardLayout cardLayout;
 
-    protected JComboBox cmbColorProvider;
+    private JComboBox cmbColorProvider;
 
     private JComboBox cmbStrategy;
 
@@ -97,22 +107,22 @@ public class JTreeMapExample extends JFrame implements ActionListener {
      * Constructor
      */
     public JTreeMapExample() {
-        this.root = getDefaultRoot();
+        root = DemoUtil.buildDemoRoot();
 
-        this.jTreeMap = new JTreeMap(this.root);
-        this.jTreeMap.setFont(new Font(null, Font.BOLD, 16));
-        this.jTreeMap.setPreferredSize(new Dimension(600, 400));
-        this.jTreeMap.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+        jTreeMap = new JTreeMap(this.root);
+        jTreeMap.setFont(new Font(null, Font.BOLD, DEFAULT_FONT_SIZE));
+        jTreeMap.setPreferredSize(new Dimension(APPLICATION_WIDTH, APPLICATION_HEIGHT));
+        jTreeMap.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 
         /* uncomment if you want to keep proportions on zooming */
-        // this.jTreeMap.setZoomKeepProportion(true);
+        // jTreeMap.setZoomKeepProportion(true);
         /*
          * uncomment if you want to change the max border between two nodes of
          * the same level
          */
         // TreeMapNode.setBorder(5);
         // add a popup menu to zoom the JTreeMap
-        this.zoomPopup = new ZoomPopupMenu(this.jTreeMap);
+        new ZoomPopupMenu(this.jTreeMap);
 
         // init GUI
         try {
@@ -120,7 +130,6 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         } catch (final Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
     /**
@@ -171,7 +180,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
             updateLegendPanel();
 
         } else if (EXIT.equals(command)) {
-            this_windowClosing(null);
+            windowClosingEvent(null);
         }
     }
 
@@ -183,14 +192,14 @@ public class JTreeMapExample extends JFrame implements ActionListener {
      */
     public void setTm3File(final String path) {
         try {
-            this.builderTM3 = new BuilderTM3(new File(path));
-            this.root = this.builderTM3.getRoot();
+            builderTM3 = new BuilderTM3(new File(path));
+            root = builderTM3.getRoot();
 
-            this.jTreeMap.setRoot(this.root);
-            this.treeModel.setRoot(this.root);
+            jTreeMap.setRoot(this.root);
+            treeModel.setRoot(this.root);
 
             setTM3Fields();
-            this.panelTM3.setVisible(true);
+            panelTM3.setVisible(true);
         } catch (final IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
@@ -206,12 +215,12 @@ public class JTreeMapExample extends JFrame implements ActionListener {
     public void setXmlFile(final String xmlFileName) {
         try {
             final BuilderXML bXml = new BuilderXML(xmlFileName);
-            this.root = bXml.getRoot();
+            root = bXml.getRoot();
 
-            this.jTreeMap.setRoot(this.root);
-            this.treeModel.setRoot(this.root);
+            jTreeMap.setRoot(this.root);
+            treeModel.setRoot(this.root);
 
-            this.panelTM3.setVisible(false);
+            panelTM3.setVisible(false);
         } catch (final ParseException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
@@ -225,7 +234,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
      * @param e
      *            WindowEvent
      */
-    protected void this_windowClosing(final WindowEvent e) {
+    protected void windowClosingEvent(final WindowEvent e) {
         System.exit(0);
     }
 
@@ -249,7 +258,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         menu.add(item);
 
         menuBar.add(menu);
-        this.setJMenuBar(menuBar);
+        setJMenuBar(menuBar);
     }
 
     /**
@@ -264,11 +273,11 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         splitPaneCenter.setTopComponent(jScrollPane1);
         splitPaneCenter.setBottomComponent(this.jTreeMap);
 
-        this.treeModel = new DefaultTreeModel(this.root);
-        this.treeView = new JTree(this.treeModel);
+        treeModel = new DefaultTreeModel(this.root);
+        treeView = new JTree(this.treeModel);
         jScrollPane1.getViewport().add(this.treeView);
-        jScrollPane1.setPreferredSize(new Dimension(140, this.jTreeMap.getRoot().getHeight()));
-        this.treeView.addTreeSelectionListener(new TreeSelectionListener() {
+        jScrollPane1.setPreferredSize(new Dimension(SCROLLPANE_WIDTH, jTreeMap.getRoot().getHeight()));
+        treeView.addTreeSelectionListener(new TreeSelectionListener() {
             public void valueChanged(final TreeSelectionEvent e) {
                 // for each selected elements ont the treeView, we zoom the
                 // JTreeMap
@@ -285,9 +294,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
                 JTreeMapExample.this.jTreeMap.zoom(dest);
                 JTreeMapExample.this.jTreeMap.repaint();
             }
-
         });
-
     }
 
     /**
@@ -295,13 +302,13 @@ public class JTreeMapExample extends JFrame implements ActionListener {
      */
     private void addPanelEast(final Container parent) {
         GridBagConstraints gridBagConstraints;
-        this.panelTM3 = new JPanel();
+        panelTM3 = new JPanel();
         parent.add(this.panelTM3, BorderLayout.EAST);
 
         final JPanel choicePanel = new JPanel();
         choicePanel.setLayout(new java.awt.GridBagLayout());
         choicePanel.setBorder(new TitledBorder("Choose the TM3 fields"));
-        this.panelTM3.add(choicePanel);
+        panelTM3.add(choicePanel);
 
         final JLabel lblWeight = new JLabel(" weight : ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -310,14 +317,14 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         choicePanel.add(lblWeight, gridBagConstraints);
 
-        this.cmbWeight = new JComboBox();
+        cmbWeight = new JComboBox();
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.weightx = CONSTRAINT_WEIGHTX;
         choicePanel.add(this.cmbWeight, gridBagConstraints);
-        this.cmbWeight.addActionListener(new ActionListener() {
+        cmbWeight.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
                 final JComboBox cmb = (JComboBox) e.getSource();
                 final String field = (String) cmb.getSelectedItem();
@@ -334,15 +341,15 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         gridBagConstraints.weighty = 1.0;
         choicePanel.add(lblValue, gridBagConstraints);
 
-        this.cmbValue = new JComboBox();
+        cmbValue = new JComboBox();
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.weightx = CONSTRAINT_WEIGHTX;
         gridBagConstraints.weighty = 1.0;
         choicePanel.add(this.cmbValue, gridBagConstraints);
-        this.cmbValue.addActionListener(new ActionListener() {
+        cmbValue.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
                 final JComboBox cmb = (JComboBox) e.getSource();
                 final String field = (String) cmb.getSelectedItem();
@@ -353,7 +360,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
             }
         });
 
-        this.panelTM3.setVisible(false);
+        panelTM3.setVisible(false);
     }
 
     /**
@@ -366,12 +373,12 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         lblStrategy.setText("Strategy :");
         parent.add(panelNorth, BorderLayout.NORTH);
         panelNorth.add(lblStrategy);
-        this.cmbStrategy = new JComboBox();
+        cmbStrategy = new JComboBox();
         panelNorth.add(this.cmbStrategy);
 
         createStrategies();
 
-        this.cmbStrategy.addActionListener(new ActionListener() {
+        cmbStrategy.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
                 updateStrategy();
             }
@@ -388,22 +395,22 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         final JLabel lblColorProvider = new JLabel();
         lblColorProvider.setText("Color Provider :");
         jPanelLegendNorth.add(lblColorProvider);
-        this.cmbColorProvider = new JComboBox();
+        cmbColorProvider = new JComboBox();
         jPanelLegendNorth.add(this.cmbColorProvider);
         southPanel.add(jPanelLegendNorth, BorderLayout.NORTH);
-        this.panelLegend = new JPanel();
+        panelLegend = new JPanel();
         southPanel.add(this.panelLegend, BorderLayout.CENTER);
         parent.add(southPanel, BorderLayout.SOUTH);
-        this.cardLayout = new CardLayout();
-        this.panelLegend.setLayout(this.cardLayout);
+        cardLayout = new CardLayout();
+        panelLegend.setLayout(this.cardLayout);
 
         createColorProviders();
 
-        for (final String key : this.colorProviders.keySet()) {
-            this.cmbColorProvider.addItem(key);
+        for (final String key : colorProviders.keySet()) {
+            cmbColorProvider.addItem(key);
         }
 
-        this.cmbColorProvider.addActionListener(new ActionListener() {
+        cmbColorProvider.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
                 if (JTreeMapExample.this.cmbColorProvider.getSelectedIndex() > -1) {
                     updateLegendPanel();
@@ -411,183 +418,38 @@ public class JTreeMapExample extends JFrame implements ActionListener {
             }
         });
 
-        this.cmbColorProvider.setSelectedIndex(0);
+        cmbColorProvider.setSelectedIndex(0);
     }
 
     protected void createColorProviders() {
-        this.colorProviders.put("Red Green", new RedGreenColorProvider(this.jTreeMap));
-        this.colorProviders.put("Random", new RandomColorProvider(jTreeMap));
-        this.colorProviders.put("HSB linear", new HSBTreeMapColorProvider(jTreeMap,
+        colorProviders.put("Red Green", new RedGreenColorProvider(this.jTreeMap));
+        colorProviders.put("Random", new RandomColorProvider(jTreeMap));
+        colorProviders.put("HSB linear", new HSBTreeMapColorProvider(jTreeMap,
                 HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED));
-        this.colorProviders.put("HSB log", new HSBTreeMapColorProvider(jTreeMap,
-                HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN, Color.RED));
-        this.colorProviders.put("HSB SquareRoot", new HSBTreeMapColorProvider(jTreeMap,
+        colorProviders.put("HSB log", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log,
+                Color.GREEN, Color.RED));
+        colorProviders.put("HSB SquareRoot", new HSBTreeMapColorProvider(jTreeMap,
                 HSBTreeMapColorProvider.ColorDistributionTypes.SquareRoot, Color.GREEN, Color.RED));
-        this.colorProviders.put("HSB CubicRoot", new HSBTreeMapColorProvider(jTreeMap,
+        colorProviders.put("HSB CubicRoot", new HSBTreeMapColorProvider(jTreeMap,
                 HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN, Color.RED));
-        this.colorProviders.put("HSB exp", new HSBTreeMapColorProvider(jTreeMap,
-                HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN, Color.RED));
-        for (final String key : this.colorProviders.keySet()) {
-            final ColorProvider cp = this.colorProviders.get(key);
-            this.panelLegend.add(cp.getLegendPanel(), key);
+        colorProviders.put("HSB exp", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp,
+                Color.GREEN, Color.RED));
+        for (final String key : colorProviders.keySet()) {
+            final ColorProvider cp = colorProviders.get(key);
+            panelLegend.add(cp.getLegendPanel(), key);
         }
     }
 
     private void createStrategies() {
-        this.strategies.put("Squarified", new SplitSquarified());
-        this.strategies.put("Sorted Weight", new SplitBySortedWeight());
-        this.strategies.put("Weight", new SplitByWeight());
-        this.strategies.put("Slice", new SplitBySlice());
-        this.strategies.put("Equal Weight", new SplitByNumber());
-        this.cmbStrategy.removeAllItems();
-        for (final String key : this.strategies.keySet()) {
-            this.cmbStrategy.addItem(key);
+        strategies.put("Squarified", new SplitSquarified());
+        strategies.put("Sorted Weight", new SplitBySortedWeight());
+        strategies.put("Weight", new SplitByWeight());
+        strategies.put("Slice", new SplitBySlice());
+        strategies.put("Equal Weight", new SplitByNumber());
+        cmbStrategy.removeAllItems();
+        for (final String key : strategies.keySet()) {
+            cmbStrategy.addItem(key);
         }
-    }
-
-    /**
-     * This method build a default TreeMap root. <BR>
-     * This methode may be replaced by one who get the root from a servlet or a
-     * jdbc client or something else...
-     * 
-     * @return the root of the TreeMap.
-     */
-    private TreeMapNode getDefaultRoot() {
-        final TreeMapNodeBuilder builder = new TreeMapNodeBuilder();
-
-        final TreeMapNode root = builder.buildBranch("Root", null);
-        final TreeMapNode tmn1 = builder.buildBranch("branch1", root);
-        final TreeMapNode tmn11 = builder.buildBranch("branch11", tmn1);
-        Value value = new ValuePercent(0.45);
-        builder.buildLeaf("leaf111", 1.0, value, tmn11);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf112", 2.0, value, tmn11);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf113", 0.5, value, tmn11);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf114", 3.0, value, tmn11);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf115", 0.25, value, tmn11);
-        final TreeMapNode tmn12 = builder.buildBranch("branch12", tmn1);
-        value = new ValuePercent(1.0);
-        builder.buildLeaf("leaf121", 1.0, value, tmn12);
-        value = new ValuePercent(5.0);
-        builder.buildLeaf("leaf122", 2.0, value, tmn12);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf123", 0.5, value, tmn12);
-        value = new ValuePercent(-2.0);
-        builder.buildLeaf("leaf124", 3.0, value, tmn12);
-        value = new ValuePercent(0.0);
-        builder.buildLeaf("leaf125", 0.25, value, tmn12);
-        final TreeMapNode tmn13 = builder.buildBranch("branch13", tmn1);
-        value = new ValuePercent(1.0);
-        builder.buildLeaf("leaf131", 1.0, value, tmn13);
-        value = new ValuePercent(5.0);
-        builder.buildLeaf("leaf132", 2.0, value, tmn13);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf133", 0.5, value, tmn13);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf134", 3.0, value, tmn13);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf14", 3.0, value, tmn1);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf15", 2.0, value, tmn1);
-        final TreeMapNode tmn2 = builder.buildBranch("branch2", root);
-        final TreeMapNode tmn21 = builder.buildBranch("branch21", tmn2);
-        value = new ValuePercent(-1.0);
-        builder.buildLeaf("leaf211", 1.0, value, tmn21);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf212", 2.0, value, tmn21);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf213", 0.5, value, tmn21);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf214", 3.0, value, tmn21);
-        value = new ValuePercent(5.0);
-        builder.buildLeaf("leaf215", 0.25, value, tmn21);
-        final TreeMapNode tmn22 = builder.buildBranch("branch22", tmn2);
-        value = new ValuePercent(1.0);
-        builder.buildLeaf("leaf221", 1.0, value, tmn22);
-        value = new ValuePercent(5.0);
-        builder.buildLeaf("leaf222", 2.0, value, tmn22);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf223", 0.5, value, tmn22);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf224", 3.0, value, tmn22);
-        final TreeMapNode tmn3 = builder.buildBranch("branch3", root);
-        final TreeMapNode tmn31 = builder.buildBranch("branch31", tmn3);
-        value = new ValuePercent(-1.0);
-        builder.buildLeaf("leaf311", 1.0, value, tmn31);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf312", 2.0, value, tmn31);
-        value = new ValuePercent(-2.0);
-        builder.buildLeaf("leaf313", 0.5, value, tmn31);
-        value = new ValuePercent(-2.0);
-        builder.buildLeaf("leaf314", 3.0, value, tmn31);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf315", 0.25, value, tmn31);
-        final TreeMapNode tmn32 = builder.buildBranch("branch32", tmn3);
-        value = new ValuePercent(-1.0);
-        builder.buildLeaf("leaf321", 1.0, value, tmn32);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf322", 2.0, value, tmn32);
-        value = new ValuePercent(0.0);
-        builder.buildLeaf("leaf323", 0.5, value, tmn32);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf324", 3.0, value, tmn32);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf325", 0.25, value, tmn32);
-        final TreeMapNode tmn33 = builder.buildBranch("branch33", tmn3);
-        value = new ValuePercent(-1.0);
-        builder.buildLeaf("leaf331", 1.0, value, tmn33);
-        value = new ValuePercent(5.0);
-        builder.buildLeaf("leaf332", 2.0, value, tmn33);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf333", 0.5, value, tmn33);
-        value = new ValuePercent(-2.0);
-        builder.buildLeaf("leaf334", 3.0, value, tmn33);
-        final TreeMapNode tmn34 = builder.buildBranch("branch34", tmn3);
-        value = new ValuePercent(-1.0);
-        builder.buildLeaf("leaf341", 1.0, value, tmn34);
-        value = new ValuePercent(5.0);
-        builder.buildLeaf("leaf342", 2.0, value, tmn34);
-        value = new ValuePercent(-2.0);
-        builder.buildLeaf("leaf343", 0.5, value, tmn34);
-        final TreeMapNode tmn4 = builder.buildBranch("branch4", root);
-        final TreeMapNode tmn41 = builder.buildBranch("branch41", tmn4);
-        value = new ValuePercent(1.0);
-        builder.buildLeaf("leaf411", 1.0, value, tmn41);
-        value = new ValuePercent(5.0);
-        builder.buildLeaf("leaf412", 2.0, value, tmn41);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf413", 0.5, value, tmn41);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf414", 3.0, value, tmn41);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf415", 0.25, value, tmn41);
-        final TreeMapNode tmn42 = builder.buildBranch("branch42", tmn4);
-        value = new ValuePercent(1.0);
-        builder.buildLeaf("leaf421", 1.0, value, tmn42);
-        value = new ValuePercent(5.0);
-        builder.buildLeaf("leaf422", 2.0, value, tmn42);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf423", 0.5, value, tmn42);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf424", 3.0, value, tmn42);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf425", 0.25, value, tmn42);
-        final TreeMapNode tmn43 = builder.buildBranch("branch43", tmn4);
-        value = new ValuePercent(1.0);
-        builder.buildLeaf("leaf431", 1.0, value, tmn43);
-        value = new ValuePercent(-5.0);
-        builder.buildLeaf("leaf432", 2.0, value, tmn43);
-        value = new ValuePercent(2.0);
-        builder.buildLeaf("leaf433", 0.5, value, tmn43);
-        value = new ValuePercent(0.0);
-        builder.buildLeaf("leaf434", 3.0, value, tmn43);
-        value = new ValuePercent(0.0);
-        builder.buildLeaf("leaf5", 5.0, value, root);
-
-        return builder.getRoot();
     }
 
     /**
@@ -596,12 +458,12 @@ public class JTreeMapExample extends JFrame implements ActionListener {
      * @throws Exception
      */
     private void initGUI() throws Exception {
-        this.setTitle("JTreeMap Example");
+        setTitle("JTreeMap Example");
 
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
+        addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(final WindowEvent e) {
-                this_windowClosing(e);
+                windowClosingEvent(e);
             }
         });
 
@@ -624,36 +486,35 @@ public class JTreeMapExample extends JFrame implements ActionListener {
     }
 
     private void setTM3Fields() {
-        final String[] numberFields = this.builderTM3.getNumberFields();
+        final String[] numberFields = builderTM3.getNumberFields();
         final String[] cmbValues = new String[numberFields.length + 1];
         cmbValues[0] = "";
         for (int i = 1; i < cmbValues.length; i++) {
             cmbValues[i] = numberFields[i - 1];
         }
-        this.cmbWeight.removeAllItems();
-        this.cmbValue.removeAllItems();
+        cmbWeight.removeAllItems();
+        cmbValue.removeAllItems();
         for (final String item : cmbValues) {
-            this.cmbWeight.addItem(item);
-            this.cmbValue.addItem(item);
+            cmbWeight.addItem(item);
+            cmbValue.addItem(item);
         }
-
     }
 
     protected void updateLegendPanel() {
-        final String key = (String) this.cmbColorProvider.getSelectedItem();
-        final ColorProvider cp = this.colorProviders.get(key);
+        final String key = (String) cmbColorProvider.getSelectedItem();
+        final ColorProvider cp = colorProviders.get(key);
         if (cp != null) {
-            this.jTreeMap.setColorProvider(cp);
-            this.cardLayout.show(this.panelLegend, key);
+            jTreeMap.setColorProvider(cp);
+            cardLayout.show(this.panelLegend, key);
         }
         JTreeMapExample.this.repaint();
     }
 
     void updateStrategy() {
-        final String key = (String) this.cmbStrategy.getSelectedItem();
-        final SplitStrategy strat = this.strategies.get(key);
-        this.jTreeMap.setStrategy(strat);
-        this.jTreeMap.repaint();
+        final String key = (String) cmbStrategy.getSelectedItem();
+        final SplitStrategy strat = strategies.get(key);
+        jTreeMap.setStrategy(strat);
+        jTreeMap.repaint();
     }
 
     static class TM3FileFilter extends FileFilter {

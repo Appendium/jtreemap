@@ -33,9 +33,17 @@ import javax.swing.border.Border;
  * @author Laurent Dutheil
  */
 public class JTreeMap extends JComponent {
+    private static final int BORDER_FOR_FONT = 5;
+
+    private static final int MAX_NUM_CHAR = 3;
+
+    private static final int INSET = 4;
+
+    private static final int DISMISS_DELAY_MS = 100000;
+
     private static final long serialVersionUID = 7255952672238300249L;
 
-    private static final Color transparencyColor = new Color(204, 204, 204, 128);
+    private static final Color TRANSPARENCY_COLOR = new Color(204, 204, 204, 128);
 
     // active leaf
     private TreeMapNode activeLeaf = null;
@@ -87,21 +95,21 @@ public class JTreeMap extends JComponent {
         final ToolTipManager ttm = ToolTipManager.sharedInstance();
         ttm.setInitialDelay(0);
         ttm.setReshowDelay(0);
-        ttm.setDismissDelay(100000);
+        ttm.setDismissDelay(DISMISS_DELAY_MS);
         ttm.setEnabled(true);
         ttm.setLightWeightPopupEnabled(true);
-        this.setToolTipText("");
+        setToolTipText("");
 
         // the default DefaultToolTipBuilder
-        this.toolTipBuilder = new DefaultToolTipBuilder(this);
+        toolTipBuilder = new DefaultToolTipBuilder(this);
 
-        this.zoom = new Zoom();
+        zoom = new Zoom();
 
-        this.setRoot(root);
-        this.setStrategy(strategy);
-        this.setColorProvider(new UniqueColorProvider());
+        setRoot(root);
+        setStrategy(strategy);
+        setColorProvider(new UniqueColorProvider());
 
-        this.addMouseMotionListener(new HandleMouseMotion());
+        addMouseMotionListener(new HandleMouseMotion());
     }
 
     /**
@@ -109,14 +117,14 @@ public class JTreeMap extends JComponent {
      * The positions of the root must be calculated first.
      */
     public void calculatePositions() {
-        if (this.getStrategy() != null && this.displayedRoot != null) {
-            this.getStrategy().calculatePositions(this.displayedRoot);
+        if (this.getStrategy() != null && displayedRoot != null) {
+            getStrategy().calculatePositions(this.displayedRoot);
         }
     }
 
     @Override
     public JToolTip createToolTip() {
-        return this.toolTipBuilder.getToolTip();
+        return toolTipBuilder.getToolTip();
     }
 
     /**
@@ -159,13 +167,13 @@ public class JTreeMap extends JComponent {
             final int stringWidth = fm.stringWidth(label);
             // the width of the label depends on the font :
             // if the width of the label is larger than the item
-            if (item.getWidth() - 5 <= stringWidth) {
+            if (item.getWidth() - BORDER_FOR_FONT <= stringWidth) {
                 // We have to truncate the label
                 // number of chars who can be writen in the item
                 final int nbChar = (label.length() * item.getWidth()) / stringWidth;
-                if (nbChar > 3) {
+                if (nbChar > MAX_NUM_CHAR) {
                     // and add "..." at the end
-                    label = label.substring(0, nbChar - 3) + "...";
+                    label = label.substring(0, nbChar - MAX_NUM_CHAR) + "...";
                 } else {
                     // if it is not enough large, we display nothing
                     label = "";
@@ -204,18 +212,18 @@ public class JTreeMap extends JComponent {
         // add the labels (level -1)
         g.setFont(this.getFont());
         if (this.displayedRoot.isLeaf()) {
-            drawLabel(g, this.displayedRoot);
+            drawLabel(g, displayedRoot);
         } else {
-            for (final Enumeration e = this.displayedRoot.children(); e.hasMoreElements();) {
+            for (final Enumeration e = displayedRoot.children(); e.hasMoreElements();) {
                 drawLabel(g, (TreeMapNode) (e.nextElement()));
             }
         }
 
         /* uncomment to add the labels of the lowered levels (up to depth > 2) */
-        // int depth = item.getLevel() - this.displayedRoot.getLevel();
-        // float newSize = Math.max(20, this.getFont().getSize2D());
+        // int depth = item.getLevel() - displayedRoot.getLevel();
+        // float newSize = Math.max(20, getFont().getSize2D());
         // java.awt.Font labelFont =
-        // this.getFont().deriveFont(java.awt.Font.BOLD,
+        // getFont().deriveFont(java.awt.Font.BOLD,
         // newSize - 3 * depth);
         // g.setFont(labelFont);
         // if (depth > 2) {
@@ -237,7 +245,7 @@ public class JTreeMap extends JComponent {
      * @return Returns the activeLeaf.
      */
     public TreeMapNode getActiveLeaf() {
-        return this.activeLeaf;
+        return activeLeaf;
     }
 
     /**
@@ -246,7 +254,7 @@ public class JTreeMap extends JComponent {
      * @return the ColorProvider
      */
     public ColorProvider getColorProvider() {
-        return this.colorProvider;
+        return colorProvider;
     }
 
     /**
@@ -259,7 +267,7 @@ public class JTreeMap extends JComponent {
      * @return the displayed root
      */
     public TreeMapNode getDisplayedRoot() {
-        return this.displayedRoot;
+        return displayedRoot;
     }
 
     /**
@@ -268,7 +276,7 @@ public class JTreeMap extends JComponent {
      * @return the root
      */
     public TreeMapNode getRoot() {
-        return this.root;
+        return root;
     }
 
     /**
@@ -277,30 +285,31 @@ public class JTreeMap extends JComponent {
      * @return the SplitStrategy
      */
     public SplitStrategy getStrategy() {
-        return this.strategy;
+        return strategy;
     }
 
     @Override
     public Point getToolTipLocation(final MouseEvent event) {
         int posX;
         int posY;
-        final JToolTip toolTip = this.createToolTip();
-        final int XMax = this.displayedRoot.getX() + this.displayedRoot.getWidth();
-        final int YMin = this.displayedRoot.getY();
+        final JToolTip toolTip = createToolTip();
+        final int xMax = displayedRoot.getX() + displayedRoot.getWidth();
+        final int yMin = displayedRoot.getY();
         if (this.activeLeaf != null) {
-            if (this.activeLeaf.getWidth() >= toolTip.getWidth() + 8 && this.activeLeaf.getHeight() >= toolTip.getHeight() + 8) {
-                posX = this.activeLeaf.getX() + 4;
-                posY = this.activeLeaf.getY() + 4;
+            if (this.activeLeaf.getWidth() >= toolTip.getWidth() + 2 * INSET
+                    && activeLeaf.getHeight() >= toolTip.getHeight() + 2 * INSET) {
+                posX = activeLeaf.getX() + INSET;
+                posY = activeLeaf.getY() + INSET;
             } else {
-                posX = this.activeLeaf.getX() + this.activeLeaf.getWidth() + 4;
-                posY = this.activeLeaf.getY() - toolTip.getHeight() - 4;
+                posX = activeLeaf.getX() + activeLeaf.getWidth() + INSET;
+                posY = activeLeaf.getY() - toolTip.getHeight() - INSET;
             }
 
-            if (posY < YMin + 4) {
-                posY = YMin + 4;
+            if (posY < yMin + INSET) {
+                posY = yMin + INSET;
             }
-            if ((posX + toolTip.getWidth() > XMax - 4) && (this.activeLeaf.getX() >= toolTip.getWidth() + 4)) {
-                posX = this.activeLeaf.getX() - 4 - toolTip.getWidth();
+            if ((posX + toolTip.getWidth() > xMax - INSET) && (this.activeLeaf.getX() >= toolTip.getWidth() + INSET)) {
+                posX = activeLeaf.getX() - INSET - toolTip.getWidth();
             }
 
             return new Point(posX, posY);
@@ -321,29 +330,30 @@ public class JTreeMap extends JComponent {
         final Insets insets = getInsets();
 
         final int border = TreeMapNode.getBorder();
-        this.root.setDimension(this.root.getX(), this.root.getY(), width - border - insets.left - insets.right, height - border
+        root.setDimension(this.root.getX(), root.getY(), width - border - insets.left - insets.right, height - border
                 - insets.top - insets.bottom);
 
         if (!this.root.equals(this.displayedRoot)) {
-            this.displayedRoot.setDimension(this.displayedRoot.getX(), this.displayedRoot.getY(), width - border - insets.left
+            displayedRoot.setDimension(this.displayedRoot.getX(), displayedRoot.getY(), width - border - insets.left
                     - insets.right, height - border - insets.top - insets.bottom);
         }
 
-        this.calculatePositions();
+        calculatePositions();
 
         if (this.displayedRoot.children().hasMoreElements()) {
             // the background
             g.setColor(this.getBackground());
-            g.fillRect(this.displayedRoot.getX(), this.displayedRoot.getY(), this.displayedRoot.getWidth() + border,
-                    this.displayedRoot.getHeight() + border);
+            g.fillRect(this.displayedRoot.getX(), displayedRoot.getY(), displayedRoot.getWidth() + border, displayedRoot
+                    .getHeight()
+                    + border);
             // the JTreeMapExample
-            draw(g, this.displayedRoot);
+            draw(g, displayedRoot);
             // reveal the active leaf
             if (this.activeLeaf != null) {
-                reveal(g, this.activeLeaf);
+                reveal(g, activeLeaf);
             }
             // the labels
-            drawLabels(g, this.displayedRoot);
+            drawLabels(g, displayedRoot);
         }
 
     }
@@ -358,7 +368,7 @@ public class JTreeMap extends JComponent {
      */
     protected void reveal(final Graphics g, final TreeMapNode item) {
         if (item.isLeaf()) {
-            g.setColor(transparencyColor);
+            g.setColor(TRANSPARENCY_COLOR);
             g.fillRect(item.getX(), item.getY(), item.getWidth(), item.getHeight());
         }
     }
@@ -371,7 +381,7 @@ public class JTreeMap extends JComponent {
      */
     public void setActiveLeaf(final TreeMapNode newActiveLeaf) {
         if (newActiveLeaf == null || newActiveLeaf.isLeaf()) {
-            this.activeLeaf = newActiveLeaf;
+            activeLeaf = newActiveLeaf;
         }
     }
 
@@ -384,17 +394,17 @@ public class JTreeMap extends JComponent {
     public void setBorder(final Border border) {
         // Substract the previous border insets
         Insets insets = getInsets();
-        this.displayedRoot.setDimension(this.displayedRoot.getX() - insets.left, this.displayedRoot.getY() - insets.top,
-                this.displayedRoot.getWidth() + insets.left + insets.right, this.displayedRoot.getHeight() + insets.top
-                        + insets.bottom);
+        displayedRoot.setDimension(this.displayedRoot.getX() - insets.left, displayedRoot.getY() - insets.top, displayedRoot
+                .getWidth()
+                + insets.left + insets.right, displayedRoot.getHeight() + insets.top + insets.bottom);
 
         super.setBorder(border);
 
         // Add the new border insets
         insets = getInsets();
-        this.displayedRoot.setDimension(this.displayedRoot.getX() + insets.left, this.displayedRoot.getY() + insets.top,
-                this.displayedRoot.getWidth() - insets.left - insets.right, this.displayedRoot.getHeight() - insets.top
-                        - insets.bottom);
+        displayedRoot.setDimension(this.displayedRoot.getX() + insets.left, displayedRoot.getY() + insets.top, displayedRoot
+                .getWidth()
+                - insets.left - insets.right, displayedRoot.getHeight() - insets.top - insets.bottom);
     }
 
     /**
@@ -404,7 +414,7 @@ public class JTreeMap extends JComponent {
      *            the new ColorPorvider
      */
     public void setColorProvider(final ColorProvider newColorProvider) {
-        this.colorProvider = newColorProvider;
+        colorProvider = newColorProvider;
     }
 
     /**
@@ -418,7 +428,7 @@ public class JTreeMap extends JComponent {
      *            new DiplayedRoot
      */
     public void setDisplayedRoot(final TreeMapNode newDisplayedRoot) {
-        this.displayedRoot = newDisplayedRoot;
+        displayedRoot = newDisplayedRoot;
     }
 
     /**
@@ -428,11 +438,11 @@ public class JTreeMap extends JComponent {
      *            the new root to set
      */
     public void setRoot(final TreeMapNode newRoot) {
-        this.root = newRoot;
+        root = newRoot;
         final Insets insets = getInsets();
-        this.root.setX(insets.left);
-        this.root.setY(insets.top);
-        this.setDisplayedRoot(this.root);
+        root.setX(insets.left);
+        root.setY(insets.top);
+        setDisplayedRoot(this.root);
 
     }
 
@@ -443,7 +453,7 @@ public class JTreeMap extends JComponent {
      *            the new strategy to set
      */
     public void setStrategy(final SplitStrategy newStrat) {
-        this.strategy = newStrat;
+        strategy = newStrat;
     }
 
     /**
@@ -464,14 +474,14 @@ public class JTreeMap extends JComponent {
      *            true if you want to keep proportions, else false
      */
     public void setZoomKeepProportion(final boolean keepProportion) {
-        this.zoom.setKeepProportion(keepProportion);
+        zoom.setKeepProportion(keepProportion);
     }
 
     /**
      * Undo the zoom to display the root.
      */
     public void unzoom() {
-        this.zoom.undo();
+        zoom.undo();
     }
 
     /**
@@ -484,7 +494,7 @@ public class JTreeMap extends JComponent {
         // undo the last zoom
         unzoom();
 
-        this.zoom.execute(dest);
+        zoom.execute(dest);
     }
 
     /**
@@ -530,7 +540,7 @@ public class JTreeMap extends JComponent {
          * Constructor
          */
         public Zoom() {
-            this.enable = true;
+            enable = true;
         }
 
         /**
@@ -547,7 +557,7 @@ public class JTreeMap extends JComponent {
 
                 JTreeMap.this.setDisplayedRoot(dest);
 
-                this.enable = false;
+                enable = false;
             }
         }
 
@@ -555,7 +565,7 @@ public class JTreeMap extends JComponent {
          * @return Returns the keepProportion.
          */
         public boolean isKeepProportion() {
-            return this.keepProportion;
+            return keepProportion;
         }
 
         /**
@@ -605,10 +615,8 @@ public class JTreeMap extends JComponent {
         public void undo() {
             if (!this.enable) {
                 JTreeMap.this.setDisplayedRoot(JTreeMap.this.getRoot());
-                this.enable = true;
+                enable = true;
             }
         }
-
     }
-
 }
