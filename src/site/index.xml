@@ -5,7 +5,7 @@
   </properties>
   <head>
     <meta name="description"
-	content="JTreeMap is a Java Java component which reprensents hierarchical structure in a Treemap/heatmap, released under the business-friendly Apache 2.0 license."
+	content="JTreeMap is a Java swing component which represents hierarchical structure in a Treemap/heatmap, released under the business-friendly Apache 2.0 license."
 	/>
 
     <meta name="keywords"
@@ -20,26 +20,195 @@
   </head>
   <body>
     <!-- The body of the document contains a number of sections -->
-    <section name="Introduction">
+    <section name="How to represent a tree in a map?">
 
-    <p>How to represent a tree in a map</p>
-
-    <p>JTreeMap is a Java Swing component which reprensents hierarchical structure in a Treemap. This is <a href="http://en.wikipedia.org/wiki/Treemapping">treemapping</a>.</p>
-
+    <p><img src="http://sourceforge.net/dbimage.php?id=44184" style="float:left"/>How to represent and visualize a lot of information at a glance is a hot topic in IT. 
+    A <strong>Treemap</strong>, also known as <strong>Heatmap</strong>, is an important tool for this. A TreeMap graphically represents a hierarchical structure.  
+    Typically, the hierarchy will involve a tree of nodes of different sizes and different colours.</p>
+    
+    <p>A Heatmap/Treemap is great to see a lot of information in one glance. It can be interactive and allow you to drill down into some section of the hierarchy. More on treemapping <a href="http://en.wikipedia.org/wiki/Treemapping">on Wikipedia</a>.</p>
+    
+    <p>
+    <ul><li>Each box on the chart may be contained in another box (e.g. Microsoft and Sun in the Technology box, CitiGroup in Banking, etc hence the hierachical view.</li>
+    <li>The size is usually determined by the relative size of a parameter in comparison to the full size of the chart (i.e. the 'bigger' X, the bigger it is on the chart).</li>
+    <li>The colour shows another dimension in the parameters, like a movement in time (i.e. conventionally the greener, the bigger the increase; the 'redder', the bigger the decrease!).</li></ul></p>
+        
     <p>A tree structure may includes more or less important elements.
-For example, in a tree structure of files, there can be files of big size.
-It can be then interesting to know which repertory is the most important on a hard disk.
+For example, in a tree structure of files, there can be big files or small files.
+It can be then interesting to know which directory is the biggest on a hard disk, at a glance!.
 But, in a treeview, we can't distinguish the significant elements.
-<a href="http://www.cs.umd.edu/hcil/treemap/">Treemap</a> makes it possible to represent each element in a rectangle of more or less big size according to its importance in the tree structure.
+<a href="http://www.cs.umd.edu/hcil/treemap/">Treemap</a> makes it possible to represent each element in a rectangle of more or less big size 
+according to its importance in the tree structure.
 Moreover, we can add a code color which makes it possible to introduce new information into the representation of the tree structure.</p>
 
 <p>For example, you can use Treemap to see :
 <ul>
-<li>which is the most important repertory on your hard disk.</li>
-<li>if your portofolio of stocks is well distributed between the various branches of industry.</li>
-<li>the map of the market (<a href="http://www.smartmoney.com/marketmap/">smartmoney.com</a>) </li>
+<li>which is the most important directory on your hard disk.</li>
+<li>if your portfolio of stocks is well distributed between the various industry sectors.</li>
+<li>the map of the entire stock market (<a href="http://www.smartmoney.com/marketmap/">smartmoney.com</a>) </li>
 </ul>
 </p>
+
+    <subsection name="So, what is on offer?">
+
+    <p>We believe that JTreemap is the only java, open-source and <strong>maintained</strong> library for treemapping. JTreeMap components are released under the business-friendly Apache 2.0 license.</p>
+
+    <p>JTreeMap releases 2 components: 
+    <ul><li>a Java Swing component JTreeMap and a demo app.</li>
+    <li>a SWT/Eclipse Plugin component, KTreeMap</li></ul></p>
+    
+    </subsection>
+
+    <subsection name="So, what is on offer?">
+    <p>1.5+, get over it :-)</p>
+    </subsection>
+    
+    <subsection name="UML?">
+    <p>We are using yDoc to generate a 'javadoc-like' documentation per module with the added twist of UML diagrams:</p>
+    <ul>
+       <li><a href="multiproject/jtreemap/apidocs/index.html">UML for JTreeMap</a></li>
+       <li><a href="multiproject/net.sf.jtreemap.ktreemap/apidocs/index.html">UML for KTreeMap</a></li>
+    </ul>    
+    </subsection>
+       
+    </section>
+    
+    <section name="How do I use it?">
+    
+    <p>You have 2 options: as an application or as a demo.</p>
+    
+    <subsection name="As an application">
+    <p>JTreeMap releases a basic demo application, you can open XML and TM3 files.  The application can be launched via (see <a href="jtreemap.jnlp">WebStart</a>) or 
+    this way: java -jar jtreemap-1.1.0.jar</p>
+    <p>The accepted file formats are: XML of the following format:</p>
+    <div class="code"><pre>
+    &lt;?xml version='1.0' encoding='ISO-8859-1'?>
+    &lt;!ELEMENT root (label,(branch |leaf)*)>
+    &lt;!ELEMENT branch (label,(branch|leaf)*)>
+    &lt;!ELEMENT leaf (label,weight,value) >
+    &lt;!ELEMENT label (#PCDATA) >
+    &lt;!ELEMENT weight (#PCDATA) >
+    &lt;!ELEMENT value (#PCDATA) >
+    </pre></div>
+    
+    <p>XML Example:</p>
+    <div class="code"><pre>
+&lt;?xml version='1.0' encoding='ISO-8859-1'?>
+&lt;!DOCTYPE root SYSTEM "TreeMap.dtd" >
+&lt;root>
+  &lt;label>Root&lt;/label>
+  &lt;branch>
+    &lt;label>branch1&lt;/label>
+    &lt;branch>
+	&lt;label>branch11&lt;/label>
+	&lt;leaf>
+	  &lt;label>leaf111&lt;/label>
+	  &lt;weight>1.0&lt;/weight>
+	  &lt;value>0.5&lt;/value>
+	&lt;/leaf>
+    &lt;/branch>
+    &lt;branch>
+	&lt;label>branch12&lt;/label>
+	&lt;leaf>
+	  &lt;label>leaf121&lt;/label>
+	  &lt;weight>1.0&lt;/weight>
+	  &lt;value>1.0&lt;/value>
+	&lt;/leaf>
+	&lt;leaf>
+	  &lt;label>leaf122&lt;/label>
+	  &lt;weight>2.0&lt;/weight>
+	  &lt;value>5.0&lt;/value>
+	&lt;/leaf>
+    &lt;/branch>
+   &lt;/branch>
+&lt;/root>   
+    </pre></div>
+    
+    <p>In the field of treemapping, there is also a standard file format called TM3, which is TAB delimited:</p>
+    <div class="code"><pre>
+Length (Miles)	Traffic Lights	Speed Limit	Repairs per week				
+FLOAT	INTEGER	INTEGER	FLOAT				
+12.5	4	40	2.3		Roads	Highway	Route 1
+11.2	3	45	1.4		Roads	Highway	Route 5
+35.7	0	65	5.3		Roads	Interstate	I-300
+201.4	0	65	11.4		Roads	Interstate	I-234
+1.3	5	25	0.1		Roads	Street	Main St.
+3.4	7	35	0.4		Roads	Street	Broad St.
+    </pre></div>
+        
+    </subsection>
+    
+    <subsection name="As an component in your application">   
+    <p>The library provided allows you to integrate the treemap in your java app</p>
+    <div class="code"><pre>
+    
+//
+// Build the Tree with JTreeMap classes
+//
+TreeMapNodeBuilder builder = new TreeMapNodeBuilder();
+TreeMapNode buildingRoot = builder.buildBranch("branch1", null);
+
+TreeMapNode box1 = builder.buildBranch("box1", buildingRoot);
+
+double currentValue = 50;
+double previousValue = 40;
+TreeMapNode leaf1 = builder.buildLeaf("leaf1", currentValue, new ValuePercent(currentValue / previousValue), box1);
+...
+
+TreeMapNode root = builder.getRoot();
+
+//
+// Build the JTreeMap
+//
+JTreeMap jTreeMap = new JTreeMap(root);
+jTreeMap.setFont(new Font(null, Font.BOLD, 10));
+jTreeMap.setPreferredSize(new Dimension(600, 400));
+jTreeMap.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+
+// add a popup menu to zoom the JTreeMap
+new ZoomPopupMenu(jTreeMap);
+
+final HSBTreeMapColorProvider provider = new HSBTreeMapColorProvider(jTreeMap,
+	HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN, Color.RED);
+jTreeMap.setColorProvider(provider);
+
+//
+// put in a tree view with a JTree on the left and a JTreeMap on the right
+//
+JPanel view = new JPanel();
+
+JSplitPane splitPaneCenter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+view.add(splitPaneCenter, BorderLayout.CENTER);
+
+JScrollPane jScrollPane1 = new JScrollPane();
+splitPaneCenter.setLeftComponent(jScrollPane1);
+splitPaneCenter.setRightComponent(jTreeMap);
+
+DefaultTreeModel treeModel = new DefaultTreeModel(root);
+final JTree treeView = new JTree(treeModel);
+jScrollPane1.getViewport().add(treeView);
+jScrollPane1.setPreferredSize(new Dimension(140, jTreeMap.getRoot().getHeight()));
+treeView.addTreeSelectionListener(new TreeSelectionListener() {
+    public void valueChanged(TreeSelectionEvent e) {
+	// for each selected elements ont the treeView, we zoom the JTreeMap
+	TreeMapNode dest = (TreeMapNode) treeView.getLastSelectedPathComponent();
+
+	// if the element is a leaf, we select the parent
+	if (dest != null &amp;&amp; dest.isLeaf()) {
+	    dest = (TreeMapNode) dest.getParent();
+	}
+	if (dest == null) {
+	    return;
+	}
+
+	jTreeMap.zoom(dest);
+	jTreeMap.repaint();
+    }
+});
+...
+
+    </pre></div>
+    </subsection>
     </section>
 
   </body>

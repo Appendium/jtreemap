@@ -5,6 +5,14 @@ Open Source TreeMap/Heatmap components for Swing and SWT.
 
 http://jtreemap.sourceforge.net
 
+How to represent and visualize a lot of information at a glance is a 
+hot topic in IT. A Treemap, also known as Heatmap, is an important tool
+for this. A TreeMap graphically represents a hierarchical structure.
+
+Typically, the hierarchy will involve a tree of nodes of different sizes
+and different colours.  The size and colours are determined by parameters
+such as the relative importance of a node in comparison to the full size.
+
 JTreeMap is released under the business friendly Apache License v2.0.
 
 It is available immediately for download via SourceForge or the Maven Central
@@ -13,9 +21,6 @@ quick examples.
 
 The library is small, lightweight and does not force you to adopt a
 framework.
-
-
-
 
 .
 .
