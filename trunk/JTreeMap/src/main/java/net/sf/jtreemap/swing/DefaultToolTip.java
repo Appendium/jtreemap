@@ -12,47 +12,48 @@ import javax.swing.JToolTip;
 
 /**
  * Default ToolTip for the jTreeMap.
- *
+ * 
  * @author Laurent DUTHEIL
  */
 public class DefaultToolTip extends JToolTip {
-  private static final long serialVersionUID = -2492627777999093973L;
-  private JTreeMap jTreeMap;
-  private Font labelFont;
-  private Font valueFont;
+    private static final long serialVersionUID = -2492627777999093973L;
 
-  /**
-   * Constructor.
-   *
-   * @param jTreeMap the jTreeMap who display the tooltip
-   */
-  public DefaultToolTip(JTreeMap jTreeMap) {
-    this.jTreeMap = jTreeMap;
-    this.labelFont = new Font("Default", Font.BOLD, 14);
-    this.valueFont = new Font("Default", Font.PLAIN, 10);
+    private JTreeMap jTreeMap;
 
-    int width = 160;
-    int height = getFontMetrics(this.labelFont).getHeight()
-        + getFontMetrics(this.valueFont).getHeight();
+    private Font labelFont;
 
-    Dimension size = new Dimension(width, height);
-    this.setSize(size);
-    this.setPreferredSize(size);
-  }
+    private Font valueFont;
 
-  @Override
-  public void paint(Graphics g) {
-    if (this.jTreeMap.getActiveLeaf() != null) {
-      g.setColor(Color.lightGray);
-      g.fill3DRect(0, 0, this.getWidth(), this.getHeight(), true);
-      g.setColor(Color.black);
-      g.setFont(this.labelFont);
-      g.drawString(this.jTreeMap.getActiveLeaf().getLabel(), 5, g
-          .getFontMetrics(this.labelFont).getAscent());
-      g.setFont(this.valueFont);
-      g.drawString(this.jTreeMap.getActiveLeaf().getLabelValue(), 5, this
-          .getHeight() - 5);
+    /**
+     * Constructor.
+     * 
+     * @param jTreeMap
+     *            the jTreeMap who display the tooltip
+     */
+    public DefaultToolTip(final JTreeMap jTreeMap) {
+        this.jTreeMap = jTreeMap;
+        this.labelFont = new Font("Default", Font.BOLD, 14);
+        this.valueFont = new Font("Default", Font.PLAIN, 10);
+
+        final int width = 160;
+        final int height = getFontMetrics(this.labelFont).getHeight() + getFontMetrics(this.valueFont).getHeight();
+
+        final Dimension size = new Dimension(width, height);
+        this.setSize(size);
+        this.setPreferredSize(size);
     }
-  }
+
+    @Override
+    public void paint(final Graphics g) {
+        if (this.jTreeMap.getActiveLeaf() != null) {
+            g.setColor(Color.lightGray);
+            g.fill3DRect(0, 0, this.getWidth(), this.getHeight(), true);
+            g.setColor(Color.black);
+            g.setFont(this.labelFont);
+            g.drawString(this.jTreeMap.getActiveLeaf().getLabel(), 5, g.getFontMetrics(this.labelFont).getAscent());
+            g.setFont(this.valueFont);
+            g.drawString(this.jTreeMap.getActiveLeaf().getLabelValue(), 5, this.getHeight() - 5);
+        }
+    }
 
 }

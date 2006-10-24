@@ -7,322 +7,352 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * Node of a JTreeMap.<BR>
- *
+ * 
  * If the node is a branch, only the label is set.<BR>
  * If the node is a leaf, we need a label, a weight and a value.
  * <p>
  * You can also use a TreeMapNode in a JTree.
- *
+ * 
  * @author Laurent Dutheil
  */
 
 public class TreeMapNode extends DefaultMutableTreeNode {
-  private static final long serialVersionUID = 742372833853976103L;
-  //max border between two nodes of the same level
-  private static int border = 3;
-  private int height;
-  private Value value;
-  private double weight = 0.0;
-  private int width;
-  private int x;
-  private int y;
+    private static final long serialVersionUID = 742372833853976103L;
 
-  /**
-   * Get the max border between two nodes of the same level.
-   *
-   * @return Returns the border.
-   */
-  public static int getBorder() {
-    return TreeMapNode.border;
-  }
+    // max border between two nodes of the same level
+    private static int border = 3;
 
-  /**
-   * Set the max border between two nodes of the same level.
-   *
-   * @param border The border to set.
-   */
-  public static void setBorder(int border) {
-    TreeMapNode.border = border;
-  }
+    private int height;
 
+    private Value value;
 
-  /**
-   * Constructor for a branch.
-   *
-   * @param label label of the branch.
-   */
-  public TreeMapNode(String label) {
-    super(label);
-    super.allowsChildren = true;
-  }
+    private double weight = 0.0;
 
-  /**
-   * Constructor for a leaf.
-   *
-   * @param label label of the leaf.
-   * @param weight weight of the leaf (if negative, we take the absolute value).
-   * @param value Value associée à la feuille
-   */
-  public TreeMapNode(String label, double weight, Value value) {
-    super(label);
-    //the weight must be positive
-    this.weight = Math.abs(weight);
-    this.value = value;
-    super.allowsChildren = false;
-  }
+    private int width;
 
-  /**
-   * add a new child to the node.
-   *
-   * @param newChild new child
-   */
-  public void add(TreeMapNode newChild) {
-    super.add(newChild);
-    this.setWeight(this.weight + newChild.getWeight());
-  }
+    private int x;
 
-  /**
-   * get the active leaf.<BR>
-   * null if the passed position is not in this tree.
-   *
-   * @param x x-coordinate
-   * @param y y-coordinate
-   * @return active leaf
-   */
-  public TreeMapNode getActiveLeaf(int x, int y) {
+    private int y;
 
-    if (this.isLeaf()) {
-      if ((x >= this.getX()) && (x <= this.getX() + this.getWidth())
-          && (y >= this.getY()) && (y <= this.getY() + this.getHeight())) {
-        return this;
-      }
-    } else {
-      for (Enumeration e = this.children(); e.hasMoreElements();) {
-        TreeMapNode node = (TreeMapNode) (e.nextElement());
-        if ((x >= node.getX()) && (x <= node.getX() + node.getWidth())
-            && (y >= node.getY()) && (y <= node.getY() + node.getHeight())) {
-          return node.getActiveLeaf(x, y);
+    /**
+     * Get the max border between two nodes of the same level.
+     * 
+     * @return Returns the border.
+     */
+    public static int getBorder() {
+        return TreeMapNode.border;
+    }
+
+    /**
+     * Set the max border between two nodes of the same level.
+     * 
+     * @param border
+     *            The border to set.
+     */
+    public static void setBorder(final int border) {
+        TreeMapNode.border = border;
+    }
+
+    /**
+     * Constructor for a branch.
+     * 
+     * @param label
+     *            label of the branch.
+     */
+    public TreeMapNode(final String label) {
+        super(label);
+        super.allowsChildren = true;
+    }
+
+    /**
+     * Constructor for a leaf.
+     * 
+     * @param label
+     *            label of the leaf.
+     * @param weight
+     *            weight of the leaf (if negative, we take the absolute value).
+     * @param value
+     *            Value associée à la feuille
+     */
+    public TreeMapNode(final String label, final double weight, final Value value) {
+        super(label);
+        // the weight must be positive
+        this.weight = Math.abs(weight);
+        this.value = value;
+        super.allowsChildren = false;
+    }
+
+    /**
+     * add a new child to the node.
+     * 
+     * @param newChild
+     *            new child
+     */
+    public void add(final TreeMapNode newChild) {
+        super.add(newChild);
+        this.setWeight(this.weight + newChild.getWeight());
+    }
+
+    /**
+     * get the active leaf.<BR>
+     * null if the passed position is not in this tree.
+     * 
+     * @param x
+     *            x-coordinate
+     * @param y
+     *            y-coordinate
+     * @return active leaf
+     */
+    public TreeMapNode getActiveLeaf(final int x, final int y) {
+
+        if (this.isLeaf()) {
+            if ((x >= this.getX()) && (x <= this.getX() + this.getWidth()) && (y >= this.getY())
+                    && (y <= this.getY() + this.getHeight())) {
+                return this;
+            }
+        } else {
+            for (final Enumeration e = this.children(); e.hasMoreElements();) {
+                final TreeMapNode node = (TreeMapNode) (e.nextElement());
+                if ((x >= node.getX()) && (x <= node.getX() + node.getWidth()) && (y >= node.getY())
+                        && (y <= node.getY() + node.getHeight())) {
+                    return node.getActiveLeaf(x, y);
+                }
+            }
         }
-      }
+        return null;
     }
-    return null;
-  }
 
-  /**
-   * get the first child which fits the position.<BR>
-   * null if the passed position is not in this tree.
-   *
-   * @param x x-coordinate
-   * @param y y-coordinate
-   * @return the first child which fits the position.
-   */
-  public TreeMapNode getChild(int x, int y) {
-    if (! this.isLeaf()) {
-      for (Enumeration e = this.children(); e.hasMoreElements();) {
-        TreeMapNode node = (TreeMapNode) (e.nextElement());
-        if ((x >= node.getX()) && (x <= node.getX() + node.getWidth())
-            && (y >= node.getY()) && (y <= node.getY() + node.getHeight())) {
-          return node;
+    /**
+     * get the first child which fits the position.<BR>
+     * null if the passed position is not in this tree.
+     * 
+     * @param x
+     *            x-coordinate
+     * @param y
+     *            y-coordinate
+     * @return the first child which fits the position.
+     */
+    public TreeMapNode getChild(final int x, final int y) {
+        if (!this.isLeaf()) {
+            for (final Enumeration e = this.children(); e.hasMoreElements();) {
+                final TreeMapNode node = (TreeMapNode) (e.nextElement());
+                if ((x >= node.getX()) && (x <= node.getX() + node.getWidth()) && (y >= node.getY())
+                        && (y <= node.getY() + node.getHeight())) {
+                    return node;
+                }
+            }
+
         }
-      }
-
+        return null;
     }
-    return null;
-  }
 
-  /**
-   * get a Vector with the children.
-   *
-   * @return Vector with the children
-   */
-  @SuppressWarnings("unchecked")
-  public Vector<TreeMapNode> getChildren() {
-    return this.children;
-  }
-
-  /**
-   * get the height.
-   *
-   * @return the height
-   */
-  public int getHeight() {
-    return this.height;
-  }
-
-  /**
-   * get the label.
-   *
-   * @return the label
-   */
-  public String getLabel() {
-    return this.getUserObject().toString();
-  }
-
-  /**
-   * get the label of the Value.
-   *
-   * @return the label of the Value
-   */
-  public String getLabelValue() {
-    return this.value.getLabel();
-  }
-
-  /**
-   * get the Value.
-   *
-   * @return the value
-   */
-  public Value getValue() {
-    return this.value;
-  }
-
-  /**
-   * get the double Value.
-   *
-   * @return the double value
-   */
-  public double getDoubleValue() {
-    return this.value.getValue();
-  }
-
-  /**
-   * get the weight.
-   *
-   * @return the weight
-   */
-  public double getWeight() {
-    return this.weight;
-  }
-
-  /**
-   * get the width.
-   *
-   * @return the width
-   */
-  public int getWidth() {
-    return this.width;
-  }
-
-  /**
-   * get the x-coordinate.
-   *
-   * @return the x-coordinate
-   */
-  public int getX() {
-    return this.x;
-  }
-
-  /**
-   * get the y-coordinate.
-   *
-   * @return the y-coordinate
-   */
-  public int getY() {
-    return this.y;
-  }
-
-  /**
-   * set the position and the size.
-   *
-   * @param x x-coordinate
-   * @param y y-coordinate
-   * @param width the new width
-   * @param height the new height
-   */
-  public void setDimension(int x, int y, int width, int height) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-  }
-
-  /**
-   * set the height.
-   *
-   * @param height la nouvelle valeur de height
-   */
-  public void setHeight(int height) {
-    this.height = height;
-  }
-
-  /**
-   * set the label.
-   *
-   * @param label the new label
-   */
-  public void setLabel(String label) {
-    this.userObject = label;
-  }
-
-  /**
-   * set the position.
-   *
-   * @param x x-coordinate
-   * @param y y-coordinate
-   */
-  public void setPosition(int x, int y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  /**
-   * set size.
-   *
-   * @param width the new width
-   * @param height the new height
-   */
-  public void setSize(int width, int height) {
-    this.width = width;
-    this.height = height;
-  }
-
-  /**
-   * set the Value.
-   *
-   * @param value the new Value
-   */
-  public void setValue(Value value) {
-    this.value = value;
-  }
-
-  /**
-   * set the weight of the node and update the parents.
-   *
-   * @param weight the new weight
-   */
-  public void setWeight(double weight) {
-    double newWeight = Math.abs(weight);
-    if (this.parent != null) {
-      ((TreeMapNode) this.parent).setWeight(((TreeMapNode) this.parent).weight
-                                      - this.weight + newWeight);
+    /**
+     * get a Vector with the children.
+     * 
+     * @return Vector with the children
+     */
+    @SuppressWarnings("unchecked")
+    public Vector<TreeMapNode> getChildren() {
+        return this.children;
     }
-    this.weight = newWeight;
-  }
 
-  /**
-   * set the width.
-   *
-   * @param width la nouvelle valeur de width
-   */
-  public void setWidth(int width) {
-    this.width = width;
-  }
+    /**
+     * get the height.
+     * 
+     * @return the height
+     */
+    public int getHeight() {
+        return this.height;
+    }
 
-  /**
-   * set the x-coordinate.
-   *
-   * @param x the new x-coordinate
-   */
-  public void setX(int x) {
-    this.x = x;
-  }
+    /**
+     * get the label.
+     * 
+     * @return the label
+     */
+    public String getLabel() {
+        return this.getUserObject().toString();
+    }
 
-  /**
-   * set the y-coordinate.
-   *
-   * @param y the new y-coordinate
-   */
-  public void setY(int y) {
-    this.y = y;
-  }
+    /**
+     * get the label of the Value.
+     * 
+     * @return the label of the Value
+     */
+    public String getLabelValue() {
+        return this.value.getLabel();
+    }
+
+    /**
+     * get the Value.
+     * 
+     * @return the value
+     */
+    public Value getValue() {
+        return this.value;
+    }
+
+    /**
+     * get the double Value.
+     * 
+     * @return the double value
+     */
+    public double getDoubleValue() {
+        return this.value.getValue();
+    }
+
+    /**
+     * get the weight.
+     * 
+     * @return the weight
+     */
+    public double getWeight() {
+        return this.weight;
+    }
+
+    /**
+     * get the width.
+     * 
+     * @return the width
+     */
+    public int getWidth() {
+        return this.width;
+    }
+
+    /**
+     * get the x-coordinate.
+     * 
+     * @return the x-coordinate
+     */
+    public int getX() {
+        return this.x;
+    }
+
+    /**
+     * get the y-coordinate.
+     * 
+     * @return the y-coordinate
+     */
+    public int getY() {
+        return this.y;
+    }
+
+    /**
+     * set the position and the size.
+     * 
+     * @param x
+     *            x-coordinate
+     * @param y
+     *            y-coordinate
+     * @param width
+     *            the new width
+     * @param height
+     *            the new height
+     */
+    public void setDimension(final int x, final int y, final int width, final int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    /**
+     * set the height.
+     * 
+     * @param height
+     *            la nouvelle valeur de height
+     */
+    public void setHeight(final int height) {
+        this.height = height;
+    }
+
+    /**
+     * set the label.
+     * 
+     * @param label
+     *            the new label
+     */
+    public void setLabel(final String label) {
+        this.userObject = label;
+    }
+
+    /**
+     * set the position.
+     * 
+     * @param x
+     *            x-coordinate
+     * @param y
+     *            y-coordinate
+     */
+    public void setPosition(final int x, final int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
+     * set size.
+     * 
+     * @param width
+     *            the new width
+     * @param height
+     *            the new height
+     */
+    public void setSize(final int width, final int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    /**
+     * set the Value.
+     * 
+     * @param value
+     *            the new Value
+     */
+    public void setValue(final Value value) {
+        this.value = value;
+    }
+
+    /**
+     * set the weight of the node and update the parents.
+     * 
+     * @param weight
+     *            the new weight
+     */
+    public void setWeight(final double weight) {
+        final double newWeight = Math.abs(weight);
+        if (this.parent != null) {
+            ((TreeMapNode) this.parent).setWeight(((TreeMapNode) this.parent).weight - this.weight + newWeight);
+        }
+        this.weight = newWeight;
+    }
+
+    /**
+     * set the width.
+     * 
+     * @param width
+     *            la nouvelle valeur de width
+     */
+    public void setWidth(final int width) {
+        this.width = width;
+    }
+
+    /**
+     * set the x-coordinate.
+     * 
+     * @param x
+     *            the new x-coordinate
+     */
+    public void setX(final int x) {
+        this.x = x;
+    }
+
+    /**
+     * set the y-coordinate.
+     * 
+     * @param y
+     *            the new y-coordinate
+     */
+    public void setY(final int y) {
+        this.y = y;
+    }
 }

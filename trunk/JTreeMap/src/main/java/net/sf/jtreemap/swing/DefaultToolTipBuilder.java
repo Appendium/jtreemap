@@ -3,35 +3,46 @@
  */
 package net.sf.jtreemap.swing;
 
+import java.io.Serializable;
+
 import javax.swing.JToolTip;
 
 /**
  * Default class to build the DefaultToolTip displayed by the JTreeMap.<BR>
- *
+ * 
  * @see net.sf.jtreemap.swing.DefaultToolTip
  * @author Laurent DUTHEIL
- *
+ * 
  */
-public class DefaultToolTipBuilder implements IToolTipBuilder {
-  private static JToolTip instance = null;
-  private JTreeMap jTreeMap;
+public class DefaultToolTipBuilder implements IToolTipBuilder, Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -1646772942428571187L;
 
-  /**
-   * Constructor.
-   *
-   * @param jTreeMap the linked JTreeMap
-   */
-  public DefaultToolTipBuilder(JTreeMap jTreeMap) {
-    this.jTreeMap = jTreeMap;
-  }
+    private static JToolTip instance = null;
 
-  /* (non-Javadoc)
-   * @see net.sf.jtreemap.swing.IToolTipBuilder#getToolTip()
-   */
-  public JToolTip getToolTip() {
-    if (instance == null) {
-      instance = new DefaultToolTip(this.jTreeMap);
+    private JTreeMap jTreeMap;
+
+    /**
+     * Constructor.
+     * 
+     * @param jTreeMap
+     *            the linked JTreeMap
+     */
+    public DefaultToolTipBuilder(final JTreeMap jTreeMap) {
+        this.jTreeMap = jTreeMap;
     }
-    return instance;
-  }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see net.sf.jtreemap.swing.IToolTipBuilder#getToolTip()
+     */
+    public JToolTip getToolTip() {
+        if (instance == null) {
+            instance = new DefaultToolTip(this.jTreeMap);
+        }
+        return instance;
+    }
 }

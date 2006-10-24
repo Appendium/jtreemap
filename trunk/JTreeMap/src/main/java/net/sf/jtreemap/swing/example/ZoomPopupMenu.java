@@ -20,118 +20,125 @@ import net.sf.jtreemap.swing.TreeMapNode;
  * PopupMenu which permits to zoom the JTreeMap<BR>
  * The menuItems are the ancestors and the children of the displayed TreeMapNode
  * of the JTreeMap
- *
+ * 
  * @author Laurent Dutheil
  */
 public class ZoomPopupMenu extends JPopupMenu {
-  private static final long serialVersionUID = 8468224816342601183L;
-  /**
-   * Unzoom icon
-   */
-  public static final Icon unzoomIcon = new ImageIcon(ZoomPopupMenu.class
-      .getResource("icons/unzoom.png"));
-  /**
-   * Zoom icon
-   */
-  public static final Icon zoomIcon = new ImageIcon(ZoomPopupMenu.class
-      .getResource("icons/zoom.png"));
-  protected JTreeMap jTreeMap;
-  private MouseListener mouseListener;
+    private static final long serialVersionUID = 8468224816342601183L;
 
-  /**
-   * Constructor
-   * @param jTreeMap jTreeMap which you want to add a zoom popup menu
-   */
-  public ZoomPopupMenu(JTreeMap jTreeMap) {
-    super();
-    this.jTreeMap = jTreeMap;
-    this.mouseListener = new HandleClickMouse();
-    this.jTreeMap.addMouseListener(this.mouseListener);
-  }
-
-  protected class HandleClickMouse extends MouseAdapter {
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+    /**
+     * Unzoom icon
      */
-    @Override
-    public void mouseClicked(MouseEvent e) {
-      if (e.getButton() == MouseEvent.BUTTON3
-          || (e.getButton() == MouseEvent.BUTTON1 && e.isAltGraphDown())
-          || (e.getButton() == MouseEvent.BUTTON1 && e.isAltDown())
-          || (e.getButton() == MouseEvent.BUTTON1 && e.isControlDown())
-          || (e.getButton() == MouseEvent.BUTTON1 && e.isMetaDown())) {
+    public static final Icon unzoomIcon = new ImageIcon(ZoomPopupMenu.class.getResource("icons/unzoom.png"));
 
-        for (int i = ZoomPopupMenu.this.getComponentCount(); i > 0; i--) {
-          ZoomPopupMenu.this.remove(i - 1);
-        }
+    /**
+     * Zoom icon
+     */
+    public static final Icon zoomIcon = new ImageIcon(ZoomPopupMenu.class.getResource("icons/zoom.png"));
 
-        TreeMapNode orig = ZoomPopupMenu.this.jTreeMap.getDisplayedRoot();
+    protected JTreeMap jTreeMap;
 
-        TreeMapNode cursor = orig;
-        // Parents
-        while (cursor.getParent() != null) {
-          TreeMapNode parent = (TreeMapNode) cursor.getParent();
-          ZoomAction action = new ZoomAction(parent, unzoomIcon);
-          ZoomPopupMenu.this.insert(action, 0);
-          cursor = parent;
-        }
-        // Separator
-        ZoomPopupMenu.this.addSeparator();
-
-        // children
-        cursor = orig;
-        while (cursor.getChild(e.getX(), e.getY()) != null) {
-          TreeMapNode child = cursor.getChild(e.getX(), e.getY());
-          if (!child.isLeaf()) {
-            ZoomAction action = new ZoomAction(child, zoomIcon);
-            ZoomPopupMenu.this.add(action);
-          }
-          cursor = child;
-        }
-
-        ZoomPopupMenu.this.show(e.getComponent(), e.getX(), e.getY());
-      }
-    }
-
-  }
-
-  private class ZoomAction extends AbstractAction {
-    private static final long serialVersionUID = -8559400865920393294L;
-    private TreeMapNode node;
+    private transient MouseListener mouseListener;
 
     /**
      * Constructor
-     * @param node where you want to zoom/unzoom
-     * @param icon icon corresponding to the operation (zoom or unzoom)
+     * 
+     * @param jTreeMap
+     *            jTreeMap which you want to add a zoom popup menu
      */
-    public ZoomAction(TreeMapNode node, Icon icon) {
-      super(node.getLabel(), icon);
-      this.node = node;
+    public ZoomPopupMenu(final JTreeMap jTreeMap) {
+        super();
+        this.jTreeMap = jTreeMap;
+        this.mouseListener = new HandleClickMouse();
+        this.jTreeMap.addMouseListener(this.mouseListener);
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-     */
-    public void actionPerformed(ActionEvent e) {
-      ZoomPopupMenu.this.jTreeMap.zoom(this.node);
-      ZoomPopupMenu.this.jTreeMap.repaint();
+    protected class HandleClickMouse extends MouseAdapter {
+
+        /*
+         * (non-Javadoc)
+         * 
+         * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+         */
+        @Override
+        public void mouseClicked(final MouseEvent e) {
+            if (e.getButton() == MouseEvent.BUTTON3 || (e.getButton() == MouseEvent.BUTTON1 && e.isAltGraphDown())
+                    || (e.getButton() == MouseEvent.BUTTON1 && e.isAltDown())
+                    || (e.getButton() == MouseEvent.BUTTON1 && e.isControlDown())
+                    || (e.getButton() == MouseEvent.BUTTON1 && e.isMetaDown())) {
+
+                for (int i = ZoomPopupMenu.this.getComponentCount(); i > 0; i--) {
+                    ZoomPopupMenu.this.remove(i - 1);
+                }
+
+                final TreeMapNode orig = ZoomPopupMenu.this.jTreeMap.getDisplayedRoot();
+
+                TreeMapNode cursor = orig;
+                // Parents
+                while (cursor.getParent() != null) {
+                    final TreeMapNode parent = (TreeMapNode) cursor.getParent();
+                    final ZoomAction action = new ZoomAction(parent, unzoomIcon);
+                    ZoomPopupMenu.this.insert(action, 0);
+                    cursor = parent;
+                }
+                // Separator
+                ZoomPopupMenu.this.addSeparator();
+
+                // children
+                cursor = orig;
+                while (cursor.getChild(e.getX(), e.getY()) != null) {
+                    final TreeMapNode child = cursor.getChild(e.getX(), e.getY());
+                    if (!child.isLeaf()) {
+                        final ZoomAction action = new ZoomAction(child, zoomIcon);
+                        ZoomPopupMenu.this.add(action);
+                    }
+                    cursor = child;
+                }
+
+                ZoomPopupMenu.this.show(e.getComponent(), e.getX(), e.getY());
+            }
+        }
 
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.swing.Action#isEnabled()
-     */
-    @Override
-    public boolean isEnabled() {
-      return true;
-    }
+    private class ZoomAction extends AbstractAction {
+        private static final long serialVersionUID = -8559400865920393294L;
 
-  }
+        private TreeMapNode node;
+
+        /**
+         * Constructor
+         * 
+         * @param node
+         *            where you want to zoom/unzoom
+         * @param icon
+         *            icon corresponding to the operation (zoom or unzoom)
+         */
+        public ZoomAction(final TreeMapNode node, final Icon icon) {
+            super(node.getLabel(), icon);
+            this.node = node;
+        }
+
+        /*
+         * (non-Javadoc)
+         * 
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
+        public void actionPerformed(final ActionEvent e) {
+            ZoomPopupMenu.this.jTreeMap.zoom(this.node);
+            ZoomPopupMenu.this.jTreeMap.repaint();
+
+        }
+
+        /*
+         * (non-Javadoc)
+         * 
+         * @see javax.swing.Action#isEnabled()
+         */
+        @Override
+        public boolean isEnabled() {
+            return true;
+        }
+
+    }
 }
