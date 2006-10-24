@@ -17,10 +17,12 @@ import javax.swing.tree.DefaultMutableTreeNode;
  */
 
 public class TreeMapNode extends DefaultMutableTreeNode {
+    private static final int DEFAULT_BORDER_SIZE = 3;
+
     private static final long serialVersionUID = 742372833853976103L;
 
     // max border between two nodes of the same level
-    private static int border = 3;
+    private static int border = DEFAULT_BORDER_SIZE;
 
     private int height;
 
