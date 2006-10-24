@@ -234,8 +234,6 @@
         <result date="2006-10-23" statvalue="2" type="findbugs"/>
         <result date="2006-10-23" statvalue="2" type="findbugs"/>
         <result date="2006-10-23" statvalue="2" type="findbugs"/>
-        <result date="2006-10-24" statvalue="2" type="findbugs"/>
-        <result date="2006-10-24" statvalue="2" type="findbugs"/>
         <result date="2006-10-24" statvalue="1" type="checkstyle"/>
     </file>
     <file id="net_sf_jtreemap_swing_example_RandomColorProvider.java" path="net/sf/jtreemap/swing/example/RandomColorProvider.java">
