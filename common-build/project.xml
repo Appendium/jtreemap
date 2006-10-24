@@ -29,7 +29,7 @@
    <groupId>net.sf.jtreemap</groupId>
    <currentVersion>1.1.0</currentVersion>
    <organization>
-      <name>ObjectLab Financial Ltd</name>
+      <name>L. Dutheil and ObjectLab Financial Ltd</name>
       <url>http://www.objectlab.co.uk</url>
       <logo>
          http://www.objectlab.co.uk/images/objectlab-web-noblue.gif
@@ -173,7 +173,7 @@
       <report>maven-simian-plugin</report>
       <report>maven-cobertura-plugin</report>
       <report>maven-qalab-plugin</report>
-      <report>maven-ydoc-plugin</report>
+      <report>maven-javadoc-plugin</report>
       <report>maven-jdepend-plugin</report>
       <report>maven-faq-plugin</report>
       <report>maven-junit-report-plugin</report>
