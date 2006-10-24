@@ -97,25 +97,25 @@ public class TreeMapNode extends DefaultMutableTreeNode {
      * get the active leaf.<BR>
      * null if the passed position is not in this tree.
      * 
-     * @param x
+     * @param xParam
      *            x-coordinate
-     * @param y
+     * @param yParam
      *            y-coordinate
      * @return active leaf
      */
-    public TreeMapNode getActiveLeaf(final int x, final int y) {
+    public TreeMapNode getActiveLeaf(final int xParam, final int yParam) {
 
         if (this.isLeaf()) {
-            if ((x >= this.getX()) && (x <= this.getX() + this.getWidth()) && (y >= this.getY())
-                    && (y <= this.getY() + this.getHeight())) {
+            if ((xParam >= this.getX()) && (xParam <= this.getX() + this.getWidth()) && (yParam >= this.getY())
+                    && (yParam <= this.getY() + this.getHeight())) {
                 return this;
             }
         } else {
             for (final Enumeration e = this.children(); e.hasMoreElements();) {
                 final TreeMapNode node = (TreeMapNode) (e.nextElement());
-                if ((x >= node.getX()) && (x <= node.getX() + node.getWidth()) && (y >= node.getY())
-                        && (y <= node.getY() + node.getHeight())) {
-                    return node.getActiveLeaf(x, y);
+                if ((xParam >= node.getX()) && (xParam <= node.getX() + node.getWidth()) && (yParam >= node.getY())
+                        && (yParam <= node.getY() + node.getHeight())) {
+                    return node.getActiveLeaf(xParam, yParam);
                 }
             }
         }
@@ -126,18 +126,18 @@ public class TreeMapNode extends DefaultMutableTreeNode {
      * get the first child which fits the position.<BR>
      * null if the passed position is not in this tree.
      * 
-     * @param x
+     * @param xParam
      *            x-coordinate
-     * @param y
+     * @param yParam
      *            y-coordinate
      * @return the first child which fits the position.
      */
-    public TreeMapNode getChild(final int x, final int y) {
+    public TreeMapNode getChild(final int xParam, final int yParam) {
         if (!this.isLeaf()) {
             for (final Enumeration e = this.children(); e.hasMoreElements();) {
                 final TreeMapNode node = (TreeMapNode) (e.nextElement());
-                if ((x >= node.getX()) && (x <= node.getX() + node.getWidth()) && (y >= node.getY())
-                        && (y <= node.getY() + node.getHeight())) {
+                if ((xParam >= node.getX()) && (xParam <= node.getX() + node.getWidth()) && (yParam >= node.getY())
+                        && (yParam <= node.getY() + node.getHeight())) {
                     return node;
                 }
             }
@@ -240,20 +240,20 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     /**
      * set the position and the size.
      * 
-     * @param x
+     * @param xParam
      *            x-coordinate
-     * @param y
+     * @param yParam
      *            y-coordinate
-     * @param width
+     * @param widthParam
      *            the new width
-     * @param height
+     * @param heightParam
      *            the new height
      */
-    public void setDimension(final int x, final int y, final int width, final int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    public void setDimension(final int xParam, final int yParam, final int widthParam, final int heightParam) {
+        this.x = xParam;
+        this.y = yParam;
+        this.width = widthParam;
+        this.height = heightParam;
     }
 
     /**
@@ -279,27 +279,27 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     /**
      * set the position.
      * 
-     * @param x
+     * @param xParam
      *            x-coordinate
-     * @param y
+     * @param yParam
      *            y-coordinate
      */
-    public void setPosition(final int x, final int y) {
-        this.x = x;
-        this.y = y;
+    public void setPosition(final int xParam, final int yParam) {
+        this.x = xParam;
+        this.y = yParam;
     }
 
     /**
      * set size.
      * 
-     * @param width
+     * @param widthParam
      *            the new width
-     * @param height
+     * @param heightParam
      *            the new height
      */
-    public void setSize(final int width, final int height) {
-        this.width = width;
-        this.height = height;
+    public void setSize(final int widthParam, final int heightParam) {
+        this.width = widthParam;
+        this.height = heightParam;
     }
 
     /**

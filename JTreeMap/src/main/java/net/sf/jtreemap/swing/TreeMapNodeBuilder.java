@@ -13,6 +13,7 @@ public class TreeMapNodeBuilder implements Serializable {
      * 
      */
     private static final long serialVersionUID = -1340499387405510692L;
+
     private TreeMapNode root;
 
     /**

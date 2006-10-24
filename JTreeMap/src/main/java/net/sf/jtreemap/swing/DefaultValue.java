@@ -14,6 +14,7 @@ public class DefaultValue extends Value {
      * 
      */
     private static final long serialVersionUID = 367321198951855282L;
+
     private double value;
 
     /**

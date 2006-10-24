@@ -56,11 +56,11 @@ public class BuilderTM3 implements Serializable {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
-    private static final LinkedList<String> fieldNames = new LinkedList<String>();
+    private static final LinkedList<String> FIELD_NAMES = new LinkedList<String>();
 
-    private static final LinkedList<String> fieldTypes = new LinkedList<String>();
+    private static final LinkedList<String> FIELD_TYPES = new LinkedList<String>();
 
-    private static final HashMap<TreeMapNode, HashMap<String, Object>> values = new HashMap<TreeMapNode, HashMap<String, Object>>();
+    private static final HashMap<TreeMapNode, HashMap<String, Object>> VALUES = new HashMap<TreeMapNode, HashMap<String, Object>>();
 
     private TreeMapNodeBuilder builder;
 
@@ -81,10 +81,10 @@ public class BuilderTM3 implements Serializable {
      */
     public String[] getNumberFields() {
         final TreeSet<String> result = new TreeSet<String>();
-        for (int i = 0; i < fieldNames.size(); i++) {
-            final String type = fieldTypes.get(i);
+        for (int i = 0; i < FIELD_NAMES.size(); i++) {
+            final String type = FIELD_TYPES.get(i);
             if (INTEGER.equals(type) || FLOAT.equals(type)) {
-                result.add(fieldNames.get(i));
+                result.add(FIELD_NAMES.get(i));
             }
         }
         return result.toArray(new String[1]);
@@ -100,19 +100,19 @@ public class BuilderTM3 implements Serializable {
     }
 
     /**
-     * Set the values of all the JTreeMapNode with the values of the fieldName.
+     * Set the VALUES of all the JTreeMapNode with the VALUES of the fieldName.
      * 
      * @param fieldName
-     *            name of the field to set the values
+     *            name of the field to set the VALUES
      */
     public void setValues(final String fieldName) {
         if ("".equals(fieldName)) {
-            for (final TreeMapNode node : values.keySet()) {
+            for (final TreeMapNode node : VALUES.keySet()) {
                 node.setValue(new DefaultValue(0));
             }
         } else {
-            for (final TreeMapNode node : values.keySet()) {
-                final HashMap<String, Object> mapNodeValues = values.get(node);
+            for (final TreeMapNode node : VALUES.keySet()) {
+                final HashMap<String, Object> mapNodeValues = VALUES.get(node);
                 final Object value = mapNodeValues.get(fieldName);
                 if (value instanceof Number) {
                     final Number number = (Number) value;
@@ -126,19 +126,19 @@ public class BuilderTM3 implements Serializable {
     }
 
     /**
-     * Set the weights of all the JTreeMapNode with the values of the fieldName.
+     * Set the weights of all the JTreeMapNode with the VALUES of the fieldName.
      * 
      * @param fieldName
      *            name of the field to set the weights
      */
     public void setWeights(final String fieldName) {
         if ("".equals(fieldName)) {
-            for (final TreeMapNode node : values.keySet()) {
+            for (final TreeMapNode node : VALUES.keySet()) {
                 node.setWeight(1);
             }
         } else {
-            for (final TreeMapNode node : values.keySet()) {
-                final HashMap<String, Object> mapNodeValues = values.get(node);
+            for (final TreeMapNode node : VALUES.keySet()) {
+                final HashMap<String, Object> mapNodeValues = VALUES.get(node);
                 final Object value = mapNodeValues.get(fieldName);
                 if (value instanceof Number) {
                     final Number number = (Number) value;
@@ -155,7 +155,7 @@ public class BuilderTM3 implements Serializable {
      * @param st
      *            StringTokenizer which contains the hierarchy path
      * @param mapNodeValues
-     *            HashMap with fields and their values
+     *            HashMap with fields and their VALUES
      */
     private void createNodes(final StringTokenizer st, final HashMap<String, Object> mapNodeValues) {
         // read the hierarchy path
@@ -188,8 +188,8 @@ public class BuilderTM3 implements Serializable {
 
         // create the leaf
         final TreeMapNode leaf = this.builder.buildLeaf(hierarchyPath.getLast(), 1, new DefaultValue(), node);
-        // each leaf is associated to their values
-        values.put(leaf, mapNodeValues);
+        // each leaf is associated to their VALUES
+        VALUES.put(leaf, mapNodeValues);
     }
 
     /**
@@ -205,32 +205,32 @@ public class BuilderTM3 implements Serializable {
             // read the field names
             line = in.readLine();
             StringTokenizer st = new StringTokenizer(line, "\t");
-            fieldNames.clear();
+            FIELD_NAMES.clear();
             while (st.hasMoreTokens()) {
-                fieldNames.add(st.nextToken());
+                FIELD_NAMES.add(st.nextToken());
             }
 
             // read the field types
             line = in.readLine();
             st = new StringTokenizer(line, "\t");
-            fieldTypes.clear();
+            FIELD_TYPES.clear();
             while (st.hasMoreTokens()) {
-                fieldTypes.add(st.nextToken());
+                FIELD_TYPES.add(st.nextToken());
             }
 
-            // read the values
-            values.clear();
+            // read the VALUES
+            VALUES.clear();
             while ((line = in.readLine()) != null) {
                 st = new StringTokenizer(line, "\t");
                 final HashMap<String, Object> mapNodeValues = new HashMap<String, Object>();
-                // the values are formated
-                for (int i = 0; i < fieldNames.size(); i++) {
+                // the VALUES are formated
+                for (int i = 0; i < FIELD_NAMES.size(); i++) {
                     Object value;
-                    if (FLOAT.equals(fieldTypes.get(i))) {
+                    if (FLOAT.equals(FIELD_TYPES.get(i))) {
                         value = new Double(Double.parseDouble(st.nextToken()));
-                    } else if (INTEGER.equals(fieldTypes.get(i))) {
+                    } else if (INTEGER.equals(FIELD_TYPES.get(i))) {
                         value = new Integer(Integer.parseInt(st.nextToken()));
-                    } else if (DATE.equals(fieldTypes.get(i))) {
+                    } else if (DATE.equals(FIELD_TYPES.get(i))) {
                         try {
                             value = DATE_FORMAT.parse(st.nextToken());
                         } catch (final ParseException e) {
@@ -239,7 +239,7 @@ public class BuilderTM3 implements Serializable {
                     } else {
                         value = st.nextToken();
                     }
-                    mapNodeValues.put(fieldNames.get(i), value);
+                    mapNodeValues.put(FIELD_NAMES.get(i), value);
                 }
 
                 // if we have not the path (the node names of parents)

@@ -9,6 +9,9 @@ import java.io.Serializable;
  */
 
 public abstract class Value implements Comparable, Serializable {
+    private static final int SHIFT = 32;
+    private static final int PRIME = 31;
+
     /**
      * get the double value.
      * 
@@ -41,11 +44,10 @@ public abstract class Value implements Comparable, Serializable {
 
     @Override
     public int hashCode() {
-        final int PRIME = 31;
         int result = super.hashCode();
         long temp;
         temp = Double.doubleToLongBits(getValue());
-        result = PRIME * result + (int) (temp ^ (temp >>> 32));
+        result = PRIME * result + (int) (temp ^ (temp >>> SHIFT));
         return result;
     }
 

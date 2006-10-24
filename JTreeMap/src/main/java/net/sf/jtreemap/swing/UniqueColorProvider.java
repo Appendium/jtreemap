@@ -22,7 +22,7 @@ public class UniqueColorProvider extends ColorProvider {
      */
     private static final long serialVersionUID = -7571926934516139432L;
 
-    private final static Color defaultColor = new Color(153, 153, 51);
+    private static final Color DEFAULT_COLOR = new Color(153, 153, 51);
 
     private Color color;
 
@@ -32,7 +32,7 @@ public class UniqueColorProvider extends ColorProvider {
      * Constructor.
      */
     public UniqueColorProvider() {
-        this.color = defaultColor;
+        this.color = DEFAULT_COLOR;
     }
 
     /**
@@ -74,6 +74,14 @@ public class UniqueColorProvider extends ColorProvider {
      * @author Laurent Dutheil
      */
     private static class Legend extends JPanel {
+        private static final int LEGEND_Y_POS = 20;
+
+        private static final int LEGEND_X_POS = 20;
+
+        private static final int LEGEND_HEIGHT = 40;
+
+        private static final int LEGEND_WIDTH = 100;
+
         private static final long serialVersionUID = -8046211081305644785L;
 
         private static final String TEXT = "Unique Color Provider";
@@ -82,14 +90,14 @@ public class UniqueColorProvider extends ColorProvider {
          * Constructor.
          */
         public Legend() {
-            this.setPreferredSize(new java.awt.Dimension(100, 40));
+            this.setPreferredSize(new java.awt.Dimension(LEGEND_WIDTH, LEGEND_HEIGHT));
 
         }
 
         @Override
         public void paint(final Graphics g) {
             g.setColor(Color.black);
-            g.drawString(Legend.TEXT, 20, 20);
+            g.drawString(Legend.TEXT, LEGEND_X_POS, LEGEND_Y_POS);
         }
     }
 }

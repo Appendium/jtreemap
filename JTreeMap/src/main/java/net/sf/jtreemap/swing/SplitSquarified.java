@@ -16,11 +16,25 @@ public class SplitSquarified extends SplitStrategy {
      */
     private static final long serialVersionUID = 1711898915283018450L;
 
-    private int w1, h1;
+    private int w1;
 
-    private int x, y, w, h;
+    private int h1;
 
-    private int x2, y2, w2, h2;
+    private int x;
+
+    private int y;
+
+    private int w;
+
+    private int h;
+
+    private int x2;
+
+    private int y2;
+
+    private int w2;
+
+    private int h2;
 
     @Override
     public void splitElements(final Vector<TreeMapNode> v, final Vector<TreeMapNode> v1, final Vector<TreeMapNode> v2) {
@@ -106,13 +120,13 @@ public class SplitSquarified extends SplitStrategy {
             splitElements(vClone, v1, v2);
             // before the recurence, we have to "save" the values for the 2nd
             // Vector
-            final int x2 = this.x2;
-            final int y2 = this.y2;
-            final int w2 = this.w2;
-            final int h2 = this.h2;
+            final int prevX2 = this.x2;
+            final int prevY2 = this.y2;
+            final int prevW2 = this.w2;
+            final int prevH2 = this.h2;
             SplitBySlice.splitInSlice(x0, y0, this.w1, this.h1, v1, sumWeight(v1));
             calculateChildren(v1);
-            calculatePositionsRec(x2, y2, w2, h2, sumWeight(v2), v2);
+            calculatePositionsRec(prevX2, prevY2, prevW2, prevH2, sumWeight(v2), v2);
         }
 
     }
@@ -133,16 +147,16 @@ public class SplitSquarified extends SplitStrategy {
             if (node.isLeaf()) {
                 node.setX(node.getX() + TreeMapNode.getBorder());
                 node.setY(node.getY() + TreeMapNode.getBorder());
-                int w = node.getWidth() - TreeMapNode.getBorder();
-                if (w < 0) {
-                    w = 0;
+                int width = node.getWidth() - TreeMapNode.getBorder();
+                if (width < 0) {
+                    width = 0;
                 }
-                int h = node.getHeight() - TreeMapNode.getBorder();
-                if (h < 0) {
-                    h = 0;
+                int height = node.getHeight() - TreeMapNode.getBorder();
+                if (height < 0) {
+                    height = 0;
                 }
-                node.setHeight(h);
-                node.setWidth(w);
+                node.setHeight(height);
+                node.setWidth(width);
             } else {
                 // if this is not a leaf, calculation for the children
                 int bSub;
@@ -154,17 +168,17 @@ public class SplitSquarified extends SplitStrategy {
                     bSub = 0;
                 }
 
-                int w = node.getWidth() - bSub;
-                if (w < 0) {
-                    w = 0;
+                int width = node.getWidth() - bSub;
+                if (width < 0) {
+                    width = 0;
                 }
-                int h = node.getHeight() - bSub;
-                if (h < 0) {
-                    h = 0;
+                int height = node.getHeight() - bSub;
+                if (height < 0) {
+                    height = 0;
                 }
 
                 TreeMapNode.setBorder(TreeMapNode.getBorder() - bSub);
-                calculatePositionsRec(node.getX() + bSub, node.getY() + bSub, w, h, node.getWeight(), node.getChildren());
+                calculatePositionsRec(node.getX() + bSub, node.getY() + bSub, width, height, node.getWeight(), node.getChildren());
                 TreeMapNode.setBorder(TreeMapNode.getBorder() + bSub);
             }
 
@@ -172,11 +186,11 @@ public class SplitSquarified extends SplitStrategy {
     }
 
     private double normAspect(final double big, final double small, final double a, final double b) {
-        final double x = aspect(big, small, a, b);
-        if (x < 1) {
-            return 1 / x;
+        final double xCalc = aspect(big, small, a, b);
+        if (xCalc < 1) {
+            return 1 / xCalc;
         }
-        return x;
+        return xCalc;
     }
 
 }
