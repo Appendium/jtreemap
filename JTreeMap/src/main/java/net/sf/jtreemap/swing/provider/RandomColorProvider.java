@@ -105,6 +105,8 @@ public class RandomColorProvider extends ColorProvider {
      * @author Laurent Dutheil
      */
     protected class Legend extends JPanel {
+        private static final int OFFSET = 3;
+
         private static final int X_OFFSET = 15;
 
         private static final int INITIAL_X_POS = 20;
@@ -134,7 +136,7 @@ public class RandomColorProvider extends ColorProvider {
                 g.setColor(color);
                 g.fillRect(this.x, Legend.Y, Legend.WIDTH, Legend.HEIGHT);
                 g.setColor(Color.black);
-                x = x + Legend.WIDTH + 3;
+                x = x + Legend.WIDTH + OFFSET;
                 g.drawString(value.getLabel(), x, yString);
                 x = x + fm.stringWidth(value.getLabel()) + X_OFFSET;
             }

@@ -24,6 +24,8 @@ import net.sf.jtreemap.swing.Value;
  * @author Andy Adamczak
  */
 public class HSBTreeMapColorProvider extends ColorProvider {
+    private static final int HSBVAL_SIZE = 3;
+
     /**
      * 
      */
@@ -159,7 +161,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
         // reds in this color space, so use the
         // hue/saturation
         // constructions for grey scales.
-        float[] hsbvals = new float[3];
+        float[] hsbvals = new float[HSBVAL_SIZE];
 
         hsbvals = Color.RGBtoHSB(positiveColor.getRed(), positiveColor.getGreen(), positiveColor.getBlue(), hsbvals);
         positiveHue = hsbvals[0];
@@ -236,19 +238,26 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @return the converted value
      */
     private double adjustValue(final double value) {
+        double ret = value;
         switch (colorDistribution) {
             case Log:
-                return Math.log1p(value);
+                ret = Math.log1p(value);
+                break;
             case Exp:
-                return Math.exp(value);
+                ret = Math.exp(value);
+                break;
             case SquareRoot:
-                return Math.sqrt(value);
+                ret = Math.sqrt(value);
+                break;
             case CubicRoot:
-                return Math.cbrt(value);
+                ret = Math.cbrt(value);
+                break;
             default:
               // Linear
-              return value;
+              ret = value;
+                break;
         }
+        return ret;
     }
 
     /**
