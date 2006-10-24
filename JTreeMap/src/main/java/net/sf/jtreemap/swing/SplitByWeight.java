@@ -1,3 +1,35 @@
+/*
+ * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ *
+ * $Id$
+ * 
+ * Copyright 2006 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package net.sf.jtreemap.swing;
 
 import java.util.Vector;
@@ -21,25 +53,20 @@ public class SplitByWeight extends SplitStrategy {
 
         workOutWeight(v, v1, v2, sumWeight);
     }
-
-    /*
-     * private double workoutWeight(final Vector<TreeMapNode> v, final Vector<TreeMapNode>
-     * v1, final Vector<TreeMapNode> v2, double memWeight, final double
-     * sumWeight) { double elemWeight; for (final Iterator<TreeMapNode> i =
-     * v.iterator(); i.hasNext();) { TreeMapNode tmn = i.next(); elemWeight =
-     * tmn.getWeight(); // if adding the current element pass the middle of
-     * total weight if (memWeight + elemWeight >= sumWeight / 2) { // we look at
-     * the finest split (the nearest of the middle of // weight) if (((sumWeight /
-     * 2) - memWeight) > ((memWeight + elemWeight) - (sumWeight / 2))) { // if
-     * it is after the add, we add the element to the first // Vector memWeight +=
-     * elemWeight; v1.addElement(tmn); } else { // we must have at least 1
-     * element in the first vector if (v1.isEmpty()) { v1.addElement(tmn); }
-     * else { // if it is before the add, we add the element to the // second
-     * Vector v2.addElement(tmn); } } // then we fill the second Vector qith the
-     * rest of elements while (i.hasNext()) { tmn = i.next();
-     * v2.addElement(tmn); } } else { // we add in the first vector while we
-     * don't reach the middle of // weight memWeight += elemWeight;
-     * v1.addElement(tmn); } } return memWeight; }
-     * 
-     */
 }
+/*
+ *                 ObjectLab is supporing JTreeMap
+ * 
+ * Based in London, we are world leaders in the design and development 
+ * of bespoke applications for the securities financing markets.
+ * 
+ * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
+ *           ___  _     _           _   _          _
+ *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
+ *         | | | | '_ \| |/ _ \/ __| __| |   / _` | '_ \
+ *         | |_| | |_) | |  __/ (__| |_| |__| (_| | |_) |
+ *          \___/|_.__// |\___|\___|\__|_____\__,_|_.__/
+ *                   |__/
+ *
+ *                     www.ObjectLab.co.uk
+ */
