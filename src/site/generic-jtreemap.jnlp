@@ -2,9 +2,9 @@
 <jnlp spec="1.0+" codebase="http://jtreemap.sourceforge.net" href="jtreemap.jnlp"> 
   <information> 
     <title>JTreeMap Example</title> 
-    <vendor>Jense</vendor> 
+    <vendor>L.Dutheil and ObjectLab Financial</vendor> 
     <homepage href="http://jtreemap.sourceforge.net/index.html"/> 
-    <description></description> 
+    <description>A JTreeMap demo application that can load TM3 and XML files</description> 
     <description kind="short">JTreeMap Example</description>
     <icon href="images/jtreemap.gif"/> 
     <offline-allowed/>
