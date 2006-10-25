@@ -13,5 +13,8 @@
 	<section name="Without Tree">
 		<img src="images/JTreeMap.png" alt="Screenshot without displaying the tree"/>
 	</section>
+	<section name="JTreeMap Example with TM3 file">
+		<img src="images/tm3example.png" alt="Screenshot of the example with a loaded TM3"/>
+	</section>
 	</body>
 </document>
