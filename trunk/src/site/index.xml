@@ -66,8 +66,8 @@ Moreover, we can add a code color which makes it possible to introduce new infor
     <subsection name="UML?">
     <p>We are using yDoc to generate a 'javadoc-like' documentation per module with the added twist of UML diagrams:</p>
     <ul>
-       <li><a href="multiproject/jtreemap/apidocs/index.html">UML for JTreeMap</a></li>
-       <li><a href="multiproject/net.sf.jtreemap.ktreemap/apidocs/index.html">UML for KTreeMap</a></li>
+       <li><a href="multiproject/jtreemap/apidocs/index.html">JavaDoc with UML for JTreeMap</a></li>
+       <li><a href="multiproject/net.sf.jtreemap.ktreemap/apidocs/index.html">JavaDoc with UML for KTreeMap</a></li>
     </ul>    
     </subsection>
        

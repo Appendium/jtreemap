@@ -23,7 +23,7 @@
     <section name="JTreemap Introduction">
 
     <p>JTreeMap is a Java Swing component which reprensents hierarchical structure in a Treemap/heatmap.</p>
-    <p>Check out the <a href="apidocs/index.html">UML diagrams here</a></p>
+    <p>Check out the <a href="apidocs/index.html">Javadoc with UML diagrams here</a></p>
     <p>Also look at the <a href="maven-reports.html">Project Reports</a> menu on the left for project specific items, unit tests, QA etc.</p>
     </section>
 

@@ -89,7 +89,7 @@ public class BuilderTM3 implements Serializable {
 
     private static final LinkedList<String> FIELD_TYPES = new LinkedList<String>();
 
-    private static final HashMap<TreeMapNode, HashMap<String, Object>> VALUES = new HashMap<TreeMapNode, HashMap<String, Object>>();
+    private final HashMap<TreeMapNode, HashMap<String, Object>> VALUES = new HashMap<TreeMapNode, HashMap<String, Object>>();
 
     private TreeMapNodeBuilder builder;
 
