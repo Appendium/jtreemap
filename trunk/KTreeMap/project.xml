@@ -134,6 +134,7 @@
                <include>**/*.xml</include>
                <include>**/*.tm3</include>
                <include>**/*.mf</include>
+               <include>**/*.dtd</include>
             </includes>
             <filtering>false</filtering>
          </resource>
