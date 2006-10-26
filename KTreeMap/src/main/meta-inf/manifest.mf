@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: KTreeMap Plug-in
 Bundle-SymbolicName: net.sf.jtreemap.ktreemap;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.1.0
 Bundle-Vendor: Jense
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
