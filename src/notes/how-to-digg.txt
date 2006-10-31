@@ -1,0 +1,23 @@
+http://digg.com/submit?phase=2&url=www.UniqueURL.com&title=StoryTitle&bodytext=StoryDescription&topic=YourSelectedTopic
+
+http://digg.com/submit?phase=2&url=objectlabkit.sourceforge.net&title=ObjectLab%20Kit%3A%20Open%20Source%20Date%20Calculators%20for%20Business%20and%20Finance&bodytext=ObjectLab%20released%20version%201%2E0%2E1%20of%20ObjectLab%20Kit%20for%20Java%201%2E5,%20available%20for%20download%20via%20SourceForge%20or%20the%20Maven%20Central%20Repository%2E%20The%20Kit%20provides%20a%20Date%20Calculator%20that%20handle%20holidays,%20a%20IMM%20Date%20and%20Period%20Count%20Calculator%20and%20comes%20in%20two%20versions%3A%20one%20based%20on%20pure%20JDK%20(1%2E5)%20and%20one%20based%20on%20the%20Joda-time%20library%20(1%2E3%2B,%20JDK%201%2E5)%2E&topic=programming
+
+title
+ObjectLab Kit: Open Source Date Calculators for Business and Finance
+L.Dutheil and ObjectLab released v.1.1.0 of JTreeMap for Swing and SWT
+L%2EDutheil%20and%20ObjectLab%20released%20v%2E1%2E1%2E0%20of%20JTreeMap%20for%20Swing%20and%20SWT
+
+bodytext
+ObjectLab and Laurent Dutheil have release version 1.1.0 of JTreemap, a treemap/heatmap component for Swing or SWT and java 1.5+, available immediately on Sourceforge or Maven repository. A Treemap or Heatmap is a GUI component that graphically represents a hierarchical structure with different sizes and different colours.Released under Apachev2.0
+ObjectLab%20and%20Laurent%20Dutheil%20have%20release%20version%201%2E1%2E0%20of%20JTreemap,%20a%20treemap%2Fheatmap%20component%20for%20Swing%20or%20SWT%20and%20java%201%2E5%2B,%20available%20immediately%20on%20Sourceforge%20or%20Maven%20repository%2E%20A%20Treemap%20or%20Heatmap%20is%20a%20GUI%20component%20that%20graphically%20represents%20a%20hierarchical%20structure%20with%20different%20sizes%20and%20different%20colours%2EReleased%20under%20Apachev2%2E0
+
+http://digg.com/submit?phase=2&amp;url=
+jtreemap.sourceforge.net
+&amp;title=L%2EDutheil%20and%20ObjectLab%20released%20v%2E1%2E1%2E0%20of%20JTreeMap%20for%20Swing%20and%20SWT
+&amp;bodytext=ObjectLab%20and%20Laurent%20Dutheil%20have%20release%20version%201%2E1%2E0%20of%20JTreemap,%20a%20treemap%2Fheatmap%20component%20for%20Swing%20or%20SWT%20and%20java%201%2E5%2B,%20available%20immediately%20on%20Sourceforge%20or%20Maven%20repository%2E%20A%20Treemap%20or%20Heatmap%20is%20a%20GUI%20component%20that%20graphically%20represents%20a%20hierarchical%20structure%20with%20different%20sizes%20and%20different%20colours%2EReleased%20under%20Apachev2%2E0
+&amp;topic=programming
+
+
+ObjectLab has announced the release of version 1.0.1 of ObjectLab Kit for Java 1.5, available for download via SourceForge or the Maven Central Repository. The Kit provides Date Calculators and comes in two versions: one based on pure JDK (1.5) and one based on the Joda-time library (1.3+, JDK 1.5).
+ObjectLab released version 1.0.1 of ObjectLab Kit for Java 1.5, available for download via SourceForge or the Maven Central Repository. The Kit provides a Date Calculator that handle holidays, a IMM Date and Period Count Calculator and comes in two versions: one based on pure JDK (1.5) and one based on the Joda-time library (1.3+, JDK 1.5).
+ObjectLab released version 1.0.1 of ObjectLab Kit for Java 1.5, available for download via SourceForge or the Maven Central Repository. The Kit provides a Date Calculator that handle holidays, a IMM Date and Period Count Calculator and comes in two versions: one based on pure JDK (1.5) and one based on the Joda-time library (1.3+, JDK 1.5).
