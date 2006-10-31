@@ -1,5 +1,5 @@
 Laurent Dutheil and ObjectLab are pleased to announce release 1.1.0 of
-JTreeMap for Java 1.4+.
+JTreeMap for Java 1.5+.
 
 Open Source TreeMap/Heatmap components for Swing and SWT.
 
