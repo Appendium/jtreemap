@@ -34,8 +34,12 @@ package net.sf.jtreemap.swing.example;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 
 import javax.swing.JApplet;
+import javax.swing.JOptionPane;
 
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.SplitBySortedWeight;
@@ -49,7 +53,12 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
  * @author Laurent Dutheil
  */
 public class JTreeMapAppletExample extends JApplet {
-    private static final int APPLET_HEIGHT = 400;
+	
+    private static final String XML = "xml";
+
+	private static final String TM3 = "tm3";
+
+	private static final int APPLET_HEIGHT = 400;
 
     private static final int APPLET_WIDTH = 600;
 
@@ -77,8 +86,32 @@ public class JTreeMapAppletExample extends JApplet {
     @Override
     public void start() {
         super.start();
-        final TreeMapNode root = DemoUtil.buildDemoRoot();
+        String dataFile = getParameter("dataFile");
+        String dataFileType = getParameter("dataFileType");
+        TreeMapNode root = null;
+        if(TM3.equalsIgnoreCase(dataFileType)) {
+            try {
+            	BuilderTM3 builderTM3 = new BuilderTM3(new File(getCodeBase() + dataFile));
+                root = builderTM3.getRoot();
+//                setTM3Fields();
+//                panelTM3.setVisible(true);
+            } catch (final IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if(XML.equalsIgnoreCase(dataFileType)) {
+            try {
+                final BuilderXML bXml = new BuilderXML(getCodeBase() + dataFile);
+                root = bXml.getRoot();
+            } catch (final ParseException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
+            }
 
+        } else {
+        	root = DemoUtil.buildDemoRoot();
+        }
+        
         this.jTreeMap = new JTreeMap(root, new SplitBySortedWeight());
         this.jTreeMap.setFont(new Font(null, Font.BOLD, DEFAULT_FONT_SIZE));
         this.jTreeMap.setColorProvider(new RedGreenColorProvider(this.jTreeMap));

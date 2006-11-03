@@ -37,6 +37,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.Serializable;
@@ -44,6 +45,7 @@ import java.util.Enumeration;
 
 import javax.swing.JComponent;
 import javax.swing.JToolTip;
+import javax.swing.JTree;
 import javax.swing.ToolTipManager;
 import javax.swing.border.Border;
 
@@ -77,6 +79,11 @@ public class JTreeMap extends JComponent {
 
     private static final Color TRANSPARENCY_COLOR = new Color(204, 204, 204, 128);
 
+    /**
+     * The optional tree representation of the hierarchical data.
+     */
+    private JTree treeView;
+    
     // active leaf
     private TreeMapNode activeLeaf = null;
 
@@ -111,6 +118,21 @@ public class JTreeMap extends JComponent {
     public JTreeMap(final TreeMapNode root) {
         this(root, new SplitSquarified());
     }
+    
+    /**
+     * Constructor of JTreeMap. <BR>
+     * The chosen strategy is SplitSquarified. <BR>
+     * The chosen color provider is UniqueColorProvider.
+     * 
+     * @see SplitSquarified
+     * @see UniqueColorProvider
+     * @param root the root of the tree to display
+     * @param treeView The tree representation of the hierarchical data. 
+     */
+    public JTreeMap(final TreeMapNode root, JTree treeView) {
+    	this(root, new SplitSquarified());
+    	this.treeView = treeView;
+    }
 
     /**
      * Constructor of JTreeMap. <BR>
@@ -142,6 +164,7 @@ public class JTreeMap extends JComponent {
         setColorProvider(new UniqueColorProvider());
 
         addMouseMotionListener(new HandleMouseMotion());
+        addMouseListener(new HandleMouseClick());
     }
 
     /**
@@ -553,6 +576,29 @@ public class JTreeMap extends JComponent {
         }
     }
 
+    /**
+     * Listener which listens for double click to navigate one level down.
+     * 
+     * @author Ekin Gulen
+     */
+    protected class HandleMouseClick extends MouseAdapter {
+    	
+    	@Override
+		public void mouseClicked(MouseEvent e) {
+    		if (e.getClickCount() >= 2) {
+    			final TreeMapNode t = getDisplayedRoot().getChild(e.getX(), e.getY());
+    			if ( t != null && !t.isLeaf()) {
+//    				treeView.setSelectionPath(new TreePath(t.getPath()));
+    				zoom(t);
+    			} else {
+//    				treeView.setSelectionPath(new TreePath(((TreeMapNode)getDisplayedRoot().getParent()).getPath()));
+    				zoom((TreeMapNode)getDisplayedRoot().getParent());
+    			}
+				repaint();
+    		}
+		}
+    }
+    
     /**
      * Class who zoom and unzoom the JTreeMap.
      * 
