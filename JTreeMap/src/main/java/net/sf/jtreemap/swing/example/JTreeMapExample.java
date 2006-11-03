@@ -141,7 +141,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
     public JTreeMapExample() {
         root = DemoUtil.buildDemoRoot();
 
-        jTreeMap = new JTreeMap(this.root);
+        jTreeMap = new JTreeMap(this.root, treeView);
         jTreeMap.setFont(new Font(null, Font.BOLD, DEFAULT_FONT_SIZE));
         jTreeMap.setPreferredSize(new Dimension(APPLICATION_WIDTH, APPLICATION_HEIGHT));
         jTreeMap.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
