@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="org.eclipse.jdt.launching.javaApplet">
+<intAttribute key="org.eclipse.jdt.launching.APPLET_WIDTH" value="600"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="net.sf.jtreemap.swing.example.JTreeMapAppletExample"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_INSTALL_TYPE_ID" value="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="jtreemap"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_INSTALL_NAME" value="jre1.5.0_09"/>
+<mapAttribute key="org.eclipse.jdt.launching.APPLET_PARAMETERS">
+<mapEntry key="dataFile" value="../../roads.tm3"/>
+<mapEntry key="showTM3Conf" value="true"/>
+<mapEntry key="dataFileType" value="tm3"/>
+</mapAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.5.0_09"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/jtreemap"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.APPLET_NAME" value=""/>
+<intAttribute key="org.eclipse.jdt.launching.APPLET_HEIGHT" value="400"/>
+</launchConfiguration>
