@@ -33,13 +33,23 @@
 package net.sf.jtreemap.swing.example;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 
 import javax.swing.JApplet;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.SplitBySortedWeight;
@@ -49,18 +59,24 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
 
 /**
  * Test of JTreeMap in a JApplet
+ * Accepts 3 parameters;
+ * "dataFile" which is the path to data file relative to code base.
+ * "dataFileType" is either dt3 or xml.
+ * "showTM3CTonf", true id the tm3 configuration panle should be show for tm3 files. 
  * 
  * @author Laurent Dutheil
  */
 public class JTreeMapAppletExample extends JApplet {
 	
+	private static final double CONSTRAINT_WEIGHTX = 0.5;
+	
     private static final String XML = "xml";
 
 	private static final String TM3 = "tm3";
 
-	private static final int APPLET_HEIGHT = 400;
-
-    private static final int APPLET_WIDTH = 600;
+//	private static final int APPLET_HEIGHT = 400;
+//
+//    private static final int APPLET_WIDTH = 600;
 
     private static final int DEFAULT_FONT_SIZE = 16;
 
@@ -69,13 +85,25 @@ public class JTreeMapAppletExample extends JApplet {
     private JTreeMap jTreeMap;
 
     private javax.swing.JPanel jContentPane = null;
+    
+    private JComboBox cmbValue;
 
+    private JComboBox cmbWeight;
+
+    private JPanel panelTM3;
+
+    private BuilderTM3 builderTM3;
+
+	private boolean showTM3CTonf;
+	
     /**
      * This is the default constructor
      */
     public JTreeMapAppletExample() {
         super();
-        init();
+        // init is the life cycle method and will be called by applet context so 
+        // no need to call externally.
+        //init();
     }
 
     /*
@@ -91,21 +119,25 @@ public class JTreeMapAppletExample extends JApplet {
         TreeMapNode root = null;
         if(TM3.equalsIgnoreCase(dataFileType)) {
             try {
-            	BuilderTM3 builderTM3 = new BuilderTM3(new File(getCodeBase() + dataFile));
+            	builderTM3 = new BuilderTM3(new File(new URI(getCodeBase() + dataFile)));
                 root = builderTM3.getRoot();
-//                setTM3Fields();
-//                panelTM3.setVisible(true);
+                if (showTM3CTonf) {
+                	setTM3Fields();
+                	panelTM3.setVisible(true);
+                }
             } catch (final IOException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
-            }
+            	root = handleException(e);
+            } catch (URISyntaxException e) {
+            	root = handleException(e);
+			}
         } else if(XML.equalsIgnoreCase(dataFileType)) {
             try {
-                final BuilderXML bXml = new BuilderXML(getCodeBase() + dataFile);
+                final BuilderXML bXml = new BuilderXML(new File(new URI(getCodeBase() + dataFile)));
                 root = bXml.getRoot();
             } catch (final ParseException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
+            	root = handleException(e);
+            } catch (URISyntaxException e) {
+            	root = handleException(e);
             }
 
         } else {
@@ -120,7 +152,93 @@ public class JTreeMapAppletExample extends JApplet {
         new ZoomPopupMenu(this.jTreeMap);
 
         getJContentPane().add(this.jTreeMap, BorderLayout.CENTER);
+    }
 
+	private TreeMapNode handleException(final Exception e) {
+		e.printStackTrace();
+		JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
+		return DemoUtil.buildDemoRoot();
+	}
+
+    /**
+     * Add a pane to choose the weight and the value for TM3 file
+     */
+    private void addPanelEast(final Container parent) {
+        GridBagConstraints gridBagConstraints;
+        panelTM3 = new JPanel();
+        parent.add(this.panelTM3, BorderLayout.EAST);
+
+        final JPanel choicePanel = new JPanel();
+        choicePanel.setLayout(new java.awt.GridBagLayout());
+        choicePanel.setBorder(new TitledBorder("Choose the TM3 fields"));
+        panelTM3.add(choicePanel);
+
+        final JLabel lblWeight = new JLabel(" weight : ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        choicePanel.add(lblWeight, gridBagConstraints);
+
+        cmbWeight = new JComboBox();
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = CONSTRAINT_WEIGHTX;
+        choicePanel.add(this.cmbWeight, gridBagConstraints);
+        cmbWeight.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
+                final JComboBox cmb = (JComboBox) e.getSource();
+                final String field = (String) cmb.getSelectedItem();
+                JTreeMapAppletExample.this.builderTM3.setWeights(field);
+                JTreeMapAppletExample.this.repaint();
+            }
+        });
+
+        final JLabel lblValue = new JLabel(" value : ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weighty = 1.0;
+        choicePanel.add(lblValue, gridBagConstraints);
+
+        cmbValue = new JComboBox();
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = CONSTRAINT_WEIGHTX;
+        gridBagConstraints.weighty = 1.0;
+        choicePanel.add(this.cmbValue, gridBagConstraints);
+        cmbValue.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
+                final JComboBox cmb = (JComboBox) e.getSource();
+                final String field = (String) cmb.getSelectedItem();
+                JTreeMapAppletExample.this.builderTM3.setValues(field);
+//                createColorProviders();
+//                updateLegendPanel();
+                JTreeMapAppletExample.this.repaint();
+            }
+        });
+
+        panelTM3.setVisible(false);
+    }
+
+    private void setTM3Fields() {
+        final String[] numberFields = builderTM3.getNumberFields();
+        final String[] cmbValues = new String[numberFields.length + 1];
+        cmbValues[0] = "";
+        for (int i = 1; i < cmbValues.length; i++) {
+            cmbValues[i] = numberFields[i - 1];
+        }
+        cmbWeight.removeAllItems();
+        cmbValue.removeAllItems();
+        for (final String item : cmbValues) {
+            cmbWeight.addItem(item);
+            cmbValue.addItem(item);
+        }
     }
 
     /**
@@ -128,8 +246,14 @@ public class JTreeMapAppletExample extends JApplet {
      */
     @Override
     public void init() {
-        this.setSize(APPLET_WIDTH, APPLET_HEIGHT);
+    	// Width and height params are mandatory for an applet/object element in html
+    	// and should be defined via html.
+    	// this.setSize(APPLET_WIDTH, APPLET_HEIGHT);
         this.setContentPane(getJContentPane());
+        showTM3CTonf = "true".equalsIgnoreCase(getParameter("showTM3Conf"));
+		if (showTM3CTonf) {
+        	addPanelEast(getJContentPane());
+        }
     }
 
     /**
