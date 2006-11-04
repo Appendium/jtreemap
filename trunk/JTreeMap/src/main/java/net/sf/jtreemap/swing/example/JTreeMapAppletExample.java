@@ -58,11 +58,11 @@ import net.sf.jtreemap.swing.provider.RedGreenColorProvider;
 import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
 
 /**
- * Test of JTreeMap in a JApplet
+ * Test of JTreeMap in a JApplet.
  * Accepts 3 parameters;
  * "dataFile" which is the path to data file relative to code base.
  * "dataFileType" is either dt3 or xml.
- * "showTM3CTonf", true id the tm3 configuration panle should be show for tm3 files. 
+ * "showTM3CTonf", true if the tm3 configuration panel should be shown for tm3 files. 
  * 
  * @author Laurent Dutheil
  */
