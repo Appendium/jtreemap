@@ -23,13 +23,13 @@
 		<li>Parameter 'dataFileType', either xml or tm3</li>
 		<li>width and height are configured in the usual applet way</li>
 		</ul>
-		<div class="source"><pre>
-		< applet archive="./jtreemap-@JARVERSION@.jar"
-			code="net.sf.jtreemap.swing.example.JTreeMapAppletExample.class"
-			width="600" height="400">
-			<param name="dataFile" value="samples/dataDump.xml"/>
-			<param name="dataFileType" value="xml"/>
-		< /applet>
+		<div class="source"><pre><![CDATA[
+	<applet archive="./jtreemap-@JARVERSION@.jar"
+		code="net.sf.jtreemap.swing.example.JTreeMapAppletExample.class"
+		width="600" height="400">
+             <param name="dataFile" value="samples/dataDump.xml"/>
+             <param name="dataFileType" value="xml"/>
+	</applet>]]>
 		</pre></div>
 		</subsection>
 	</section>
