@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!ELEMENT root (label,(branch |leaf)*)>
+<!ELEMENT branch (label,(branch|leaf)*)>
+<!ELEMENT leaf (label,weight,value) >
+<!ELEMENT label (#PCDATA) >
+<!ELEMENT weight (#PCDATA) >
+<!ELEMENT value (#PCDATA) >
