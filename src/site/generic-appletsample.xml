@@ -12,7 +12,7 @@
 		<applet archive="./jtreemap-@JARVERSION@.jar"
 			code="net.sf.jtreemap.swing.example.JTreeMapAppletExample.class"
 			width="750" height="500">
-			<param name="dataFile" value="samples/dataDump.xml"/>
+			<param name="dataFile" value="samples/TreeMap.xml"/>
 			<param name="dataFileType" value="xml"/>
 		</applet>
 		
