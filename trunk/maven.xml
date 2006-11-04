@@ -61,6 +61,17 @@
         <ant:copy file="${basedir}/jtreemap/target/jtreemap-${pom.currentVersion}.jar" tofile="${maven.build.dir}/docs/jtreemap-${pom.currentVersion}.jar" overwrite="true"/>
         <ant:delete file="${maven.build.dir}/docs/generic-appletsample.html"/>
         <ant:delete file="${maven.build.dir}/docs/generic-jtreemap.jnlp"/>
-      <attainGoal name="dist:multiproject" />      
+
+        <ant:copy todir="${maven.build.dir}/docs/samples" overwrite="true">
+        	<fileset dir="./src/samples">
+        		<include name="*.xml"/>
+        		<include name="*.tm3"/>
+        		<include name="*.dtd"/>
+        	</fileset>
+        </ant:copy>
+
+        <attainGoal name="dist:multiproject" />      
+        
+        
    </goal>
 </project>

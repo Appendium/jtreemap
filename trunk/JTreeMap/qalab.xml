@@ -27,6 +27,11 @@
         <summaryresult date="2006-10-23" filecount="14" statvalue="35" type="findbugs"/>
         <summaryresult date="2006-10-23" filecount="4" statvalue="280" type="simian"/>
         <summaryresult date="2006-10-24" filecount="29" statvalue="62" type="checkstyle"/>
+        <summaryresult date="2006-10-25" filecount="29" statvalue="62" type="checkstyle"/>
+        <summaryresult date="2006-10-26" filecount="29" statvalue="63" type="checkstyle"/>
+        <summaryresult date="2006-11-04" filecount="29" statvalue="111" type="checkstyle"/>
+        <summaryresult date="2006-11-04" filecount="1" statvalue="1" type="pmd"/>
+        <summaryresult date="2006-11-04" filecount="2" statvalue="112" type="simian"/>
     </summary>
     <file id="org_jense_swing_jtreemap_package.html" path="org/jense/swing/jtreemap/package.html">
         <result date="2006-10-17" statvalue="1" type="checkstyle"/>
@@ -187,6 +192,8 @@
     <file id="net_sf_jtreemap_swing_JTreeMap.java" path="net/sf/jtreemap/swing/JTreeMap.java">
         <result date="2006-10-23" statvalue="23" type="checkstyle"/>
         <result date="2006-10-23" statvalue="5" type="findbugs"/>
+        <result date="2006-11-04" statvalue="19" type="checkstyle"/>
+        <result date="2006-11-04" statvalue="1" type="pmd"/>
     </file>
     <file id="net_sf_jtreemap_swing_SplitSquarified.java" path="net/sf/jtreemap/swing/SplitSquarified.java">
         <result date="2006-10-23" statvalue="12" type="checkstyle"/>
@@ -209,9 +216,12 @@
     <file id="net_sf_jtreemap_swing_example_BuilderTM3.java" path="net/sf/jtreemap/swing/example/BuilderTM3.java">
         <result date="2006-10-23" statvalue="1" type="checkstyle"/>
         <result date="2006-10-23" statvalue="1" type="findbugs"/>
+        <result date="2006-10-26" statvalue="1" type="checkstyle"/>
+        <result date="2006-11-04" statvalue="1" type="checkstyle"/>
     </file>
     <file id="net_sf_jtreemap_swing_example_BuilderXML.java" path="net/sf/jtreemap/swing/example/BuilderXML.java">
         <result date="2006-10-23" statvalue="2" type="checkstyle"/>
+        <result date="2006-11-04" statvalue="2" type="checkstyle"/>
     </file>
     <file
         id="net_sf_jtreemap_swing_example_HSBTreeMapColorProvider.java" path="net/sf/jtreemap/swing/example/HSBTreeMapColorProvider.java">
@@ -220,6 +230,7 @@
     </file>
     <file id="net_sf_jtreemap_swing_example_JTreeMapAppletExample.java" path="net/sf/jtreemap/swing/example/JTreeMapAppletExample.java">
         <result date="2006-10-23" statvalue="60" type="checkstyle"/>
+        <result date="2006-11-04" statvalue="27" type="checkstyle"/>
     </file>
     <file id="net_sf_jtreemap_swing_example_JTreeMapExample.java" path="net/sf/jtreemap/swing/example/JTreeMapExample.java">
         <result date="2006-10-23" statvalue="2" type="findbugs"/>
@@ -235,6 +246,9 @@
         <result date="2006-10-23" statvalue="2" type="findbugs"/>
         <result date="2006-10-23" statvalue="2" type="findbugs"/>
         <result date="2006-10-24" statvalue="1" type="checkstyle"/>
+        <result date="2006-10-25" statvalue="1" type="checkstyle"/>
+        <result date="2006-10-26" statvalue="1" type="checkstyle"/>
+        <result date="2006-11-04" statvalue="1" type="checkstyle"/>
     </file>
     <file id="net_sf_jtreemap_swing_example_RandomColorProvider.java" path="net/sf/jtreemap/swing/example/RandomColorProvider.java">
         <result date="2006-10-23" statvalue="10" type="checkstyle"/>
@@ -258,12 +272,21 @@
     <file id="net_sf_jtreemap_swing_SplitByWeight.java" path="net/sf/jtreemap/swing/SplitByWeight.java"/>
     <file id="net_sf_jtreemap_swing_example_DemoUtil.java" path="net/sf/jtreemap/swing/example/DemoUtil.java">
         <result date="2006-10-24" statvalue="57" type="checkstyle"/>
+        <result date="2006-10-25" statvalue="57" type="checkstyle"/>
+        <result date="2006-10-26" statvalue="57" type="checkstyle"/>
+        <result date="2006-11-04" statvalue="57" type="checkstyle"/>
     </file>
     <file
         id="net_sf_jtreemap_swing_provider_HSBTreeMapColorProvider.java" path="net/sf/jtreemap/swing/provider/HSBTreeMapColorProvider.java">
         <result date="2006-10-24" statvalue="2" type="checkstyle"/>
+        <result date="2006-10-25" statvalue="2" type="checkstyle"/>
+        <result date="2006-10-26" statvalue="2" type="checkstyle"/>
+        <result date="2006-11-04" statvalue="2" type="checkstyle"/>
     </file>
     <file id="net_sf_jtreemap_swing_provider_RedGreenColorProvider.java" path="net/sf/jtreemap/swing/provider/RedGreenColorProvider.java">
         <result date="2006-10-24" statvalue="2" type="checkstyle"/>
+        <result date="2006-10-25" statvalue="2" type="checkstyle"/>
+        <result date="2006-10-26" statvalue="2" type="checkstyle"/>
+        <result date="2006-11-04" statvalue="2" type="checkstyle"/>
     </file>
 </qalab>
