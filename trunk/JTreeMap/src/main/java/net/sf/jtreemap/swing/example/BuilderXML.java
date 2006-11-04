@@ -82,9 +82,22 @@ public class BuilderXML {
      */
     public BuilderXML(final String stFileName) throws ParseException {
         this.builder = new TreeMapNodeBuilder();
-        parse(stFileName);
+        parse(new File(stFileName));
     }
 
+    /**
+     * Constructor
+     * 
+     * @param stFile
+     *            XML file object
+     * @throws ParseException
+     *             if the file don't correspond to the TreeMap.dtd
+     */
+    public BuilderXML(final File stFile) throws ParseException {
+    	this.builder = new TreeMapNodeBuilder();
+    	parse(stFile);
+    }
+    
     /**
      * get the build root
      * 
@@ -129,12 +142,12 @@ public class BuilderXML {
         }
     }
 
-    private void parse(final String stFileName) throws ParseException {
+    private void parse(final File stFile) throws ParseException {
         try {
             final DocumentBuilderFactory fabrique = DocumentBuilderFactory.newInstance();
 
             final DocumentBuilder constructeur = fabrique.newDocumentBuilder();
-            this.document = constructeur.parse(new File(stFileName));
+            this.document = constructeur.parse(stFile);
 
             final Element root = this.document.getDocumentElement();
 
