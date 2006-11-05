@@ -38,10 +38,12 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.ParseException;
 
 import javax.swing.JApplet;
@@ -119,7 +121,7 @@ public class JTreeMapAppletExample extends JApplet {
         TreeMapNode root = null;
         if(TM3.equalsIgnoreCase(dataFileType)) {
             try {
-            	builderTM3 = new BuilderTM3(new File(new URI(getCodeBase() + dataFile)));
+                builderTM3 = new BuilderTM3(createReader(dataFile));
                 root = builderTM3.getRoot();
                 if (showTM3CTonf) {
                 	setTM3Fields();
@@ -127,18 +129,20 @@ public class JTreeMapAppletExample extends JApplet {
                 }
             } catch (final IOException e) {
             	root = handleException(e);
-            } catch (URISyntaxException e) {
-            	root = handleException(e);
-			}
+            }
         } else if(XML.equalsIgnoreCase(dataFileType)) {
             try {
-                final BuilderXML bXml = new BuilderXML(new File(new URI(getCodeBase() + dataFile)));
+        		URL url = new URL(getCodeBase() + dataFile);
+        		URLConnection connection = url.openConnection();
+                final BuilderXML bXml = new BuilderXML(connection.getInputStream());
                 root = bXml.getRoot();
             } catch (final ParseException e) {
             	root = handleException(e);
-            } catch (URISyntaxException e) {
+            } catch (MalformedURLException e) {
             	root = handleException(e);
-            }
+			} catch (IOException e) {
+				root = handleException(e);
+			}
 
         } else {
         	root = DemoUtil.buildDemoRoot();
@@ -153,6 +157,20 @@ public class JTreeMapAppletExample extends JApplet {
 
         getJContentPane().add(this.jTreeMap, BorderLayout.CENTER);
     }
+
+	/**
+	 * @param dataFile
+	 * @return
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
+	private BufferedReader createReader(String dataFile) throws MalformedURLException, IOException {
+		URL url = new URL(getCodeBase() + dataFile);
+		URLConnection connection = url.openConnection();
+		BufferedReader reader = new BufferedReader(
+				new InputStreamReader(connection.getInputStream()));
+		return reader;
+	}
 
 	private TreeMapNode handleException(final Exception e) {
 		e.printStackTrace();

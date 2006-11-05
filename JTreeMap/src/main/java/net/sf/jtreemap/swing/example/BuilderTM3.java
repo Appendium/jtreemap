@@ -102,9 +102,21 @@ public class BuilderTM3 implements Serializable {
      */
     public BuilderTM3(final File tm3File) throws IOException {
         this.builder = new TreeMapNodeBuilder();
-        parse(tm3File);
+        parse(new BufferedReader(new FileReader(tm3File)));
     }
 
+    /**
+     * Constructor
+     * 
+     * @param reader
+     *            reader associated with tm3 file
+     * @throws IOException
+     */
+    public BuilderTM3(final BufferedReader reader) throws IOException {
+    	this.builder = new TreeMapNodeBuilder();
+    	parse(reader);
+    }
+    
     /**
      * @return the number fields (ie INTEGER and FLOAT)
      */
@@ -222,17 +234,14 @@ public class BuilderTM3 implements Serializable {
     }
 
     /**
-     * @param tm3File
-     *            TM3 file
+     * @param reader The <code>BufferedReader</code>.
      * @throws IOException
      */
-    private void parse(final File tm3File) throws IOException {
-
-        final BufferedReader in = new BufferedReader(new FileReader(tm3File));
+    private void parse(final BufferedReader reader) throws IOException {
         try {
             String line = "";
             // read the field names
-            line = in.readLine();
+            line = reader.readLine();
             StringTokenizer st = new StringTokenizer(line, "\t");
             FIELD_NAMES.clear();
             while (st.hasMoreTokens()) {
@@ -240,7 +249,7 @@ public class BuilderTM3 implements Serializable {
             }
 
             // read the field types
-            line = in.readLine();
+            line = reader.readLine();
             st = new StringTokenizer(line, "\t");
             FIELD_TYPES.clear();
             while (st.hasMoreTokens()) {
@@ -249,7 +258,7 @@ public class BuilderTM3 implements Serializable {
 
             // read the VALUES
             VALUES.clear();
-            while ((line = in.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 st = new StringTokenizer(line, "\t");
                 final HashMap<String, Object> mapNodeValues = new HashMap<String, Object>();
                 // the VALUES are formated
@@ -281,8 +290,8 @@ public class BuilderTM3 implements Serializable {
                 createNodes(st, mapNodeValues);
             }
         } finally {
-            if (in != null) {
-                in.close();
+            if (reader != null) {
+                reader.close();
             }
         }
     }
