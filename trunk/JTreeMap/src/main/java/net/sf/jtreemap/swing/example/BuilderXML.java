@@ -95,10 +95,10 @@ public class BuilderXML {
      *             if the file don't correspond to the TreeMap.dtd
      */
     public BuilderXML(final File stFile) throws ParseException {
-    	this.builder = new TreeMapNodeBuilder();
-    	parse(stFile);
+        this.builder = new TreeMapNodeBuilder();
+        parse(stFile);
     }
-    
+
     /**
      * Constructor
      * 
@@ -108,10 +108,10 @@ public class BuilderXML {
      *             if the file don't correspond to the TreeMap.dtd
      */
     public BuilderXML(final InputStream stream) throws ParseException {
-    	this.builder = new TreeMapNodeBuilder();
-    	parse(stream);
+        this.builder = new TreeMapNodeBuilder();
+        parse(stream);
     }
-    
+
     /**
      * get the build root
      * 
@@ -174,25 +174,25 @@ public class BuilderXML {
             throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
         }
     }
-    
+
     private void parse(final InputStream stream) throws ParseException {
-    	try {
-    		final DocumentBuilderFactory fabrique = DocumentBuilderFactory.newInstance();
-    		
-    		final DocumentBuilder constructeur = fabrique.newDocumentBuilder();
-    		this.document = constructeur.parse(stream);
-    		
-    		final Element root = this.document.getDocumentElement();
-    		
-    		build(root, null);
-    	} catch (final ParserConfigurationException e) {
-    		throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
-    	} catch (final SAXException e) {
-    		throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
-    	} catch (final IOException e) {
-    		e.printStackTrace();
-    		throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
-    	}
+        try {
+            final DocumentBuilderFactory fabrique = DocumentBuilderFactory.newInstance();
+
+            final DocumentBuilder constructeur = fabrique.newDocumentBuilder();
+            this.document = constructeur.parse(stream);
+
+            final Element root = this.document.getDocumentElement();
+
+            build(root, null);
+        } catch (final ParserConfigurationException e) {
+            throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
+        } catch (final SAXException e) {
+            throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
+        } catch (final IOException e) {
+            e.printStackTrace();
+            throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
+        }
     }
 }
 /*
