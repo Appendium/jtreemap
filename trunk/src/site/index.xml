@@ -60,6 +60,8 @@ Moreover, we can add a code color which makes it possible to introduce new infor
     <ul><li>a Java Swing component JTreeMap and a demo app.</li>
     <li>a SWT/Eclipse Plugin component, KTreeMap</li></ul></p>
     
+    <p>Furthermore, the JTreeMap library contains <strong>an applet</strong> that could be used out of the box as it can read data in from a file on the web site, see this <a href="appletsample.html">example</a>.</p>
+    
     </subsection>
 
     <subsection name="Which JDK?">
