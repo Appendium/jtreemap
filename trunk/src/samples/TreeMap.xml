@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<!DOCTYPE root SYSTEM "TreeMap.dtd" >
+<!DOCTYPE root SYSTEM "http://jtreemap.sourceforge.net/TreeMap.dtd" >
 <root>
   <label>Root</label>
   <branch>
