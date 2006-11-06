@@ -50,6 +50,8 @@ import net.sf.jtreemap.swing.DefaultValue;
 import net.sf.jtreemap.swing.TreeMapNode;
 import net.sf.jtreemap.swing.TreeMapNodeBuilder;
 
+
+
 /**
  * Parse a TM3 file to build the tree. <BR>
  * See <a href=http://www.cs.umd.edu/hcil/treemap/doc4.1/create_TM3_file.html>
@@ -89,7 +91,7 @@ public class BuilderTM3 implements Serializable {
 
     private static final LinkedList<String> FIELD_TYPES = new LinkedList<String>();
 
-    private final HashMap<TreeMapNode, HashMap<String, Object>> VALUES = new HashMap<TreeMapNode, HashMap<String, Object>>();
+    private final HashMap<TreeMapNode, HashMap<String, Object>> values = new HashMap<TreeMapNode, HashMap<String, Object>>();
 
     private TreeMapNodeBuilder builder;
 
@@ -113,10 +115,10 @@ public class BuilderTM3 implements Serializable {
      * @throws IOException
      */
     public BuilderTM3(final BufferedReader reader) throws IOException {
-    	this.builder = new TreeMapNodeBuilder();
-    	parse(reader);
+        this.builder = new TreeMapNodeBuilder();
+        parse(reader);
     }
-    
+
     /**
      * @return the number fields (ie INTEGER and FLOAT)
      */
@@ -148,12 +150,12 @@ public class BuilderTM3 implements Serializable {
      */
     public void setValues(final String fieldName) {
         if ("".equals(fieldName)) {
-            for (final TreeMapNode node : VALUES.keySet()) {
+            for (final TreeMapNode node : values.keySet()) {
                 node.setValue(new DefaultValue(0));
             }
         } else {
-            for (final TreeMapNode node : VALUES.keySet()) {
-                final HashMap<String, Object> mapNodeValues = VALUES.get(node);
+            for (final TreeMapNode node : values.keySet()) {
+                final HashMap<String, Object> mapNodeValues = values.get(node);
                 final Object value = mapNodeValues.get(fieldName);
                 if (value instanceof Number) {
                     final Number number = (Number) value;
@@ -174,12 +176,12 @@ public class BuilderTM3 implements Serializable {
      */
     public void setWeights(final String fieldName) {
         if ("".equals(fieldName)) {
-            for (final TreeMapNode node : VALUES.keySet()) {
+            for (final TreeMapNode node : values.keySet()) {
                 node.setWeight(1);
             }
         } else {
-            for (final TreeMapNode node : VALUES.keySet()) {
-                final HashMap<String, Object> mapNodeValues = VALUES.get(node);
+            for (final TreeMapNode node : values.keySet()) {
+                final HashMap<String, Object> mapNodeValues = values.get(node);
                 final Object value = mapNodeValues.get(fieldName);
                 if (value instanceof Number) {
                     final Number number = (Number) value;
@@ -230,7 +232,7 @@ public class BuilderTM3 implements Serializable {
         // create the leaf
         final TreeMapNode leaf = this.builder.buildLeaf(hierarchyPath.getLast(), 1, new DefaultValue(), node);
         // each leaf is associated to their VALUES
-        VALUES.put(leaf, mapNodeValues);
+        values.put(leaf, mapNodeValues);
     }
 
     /**
@@ -257,7 +259,7 @@ public class BuilderTM3 implements Serializable {
             }
 
             // read the VALUES
-            VALUES.clear();
+            values.clear();
             while ((line = reader.readLine()) != null) {
                 st = new StringTokenizer(line, "\t");
                 final HashMap<String, Object> mapNodeValues = new HashMap<String, Object>();

@@ -69,16 +69,16 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
  * @author Laurent Dutheil
  */
 public class JTreeMapAppletExample extends JApplet {
-	
-	private static final double CONSTRAINT_WEIGHTX = 0.5;
-	
+
+    private static final double CONSTRAINT_WEIGHTX = 0.5;
+
     private static final String XML = "xml";
 
-	private static final String TM3 = "tm3";
+    private static final String TM3 = "tm3";
 
-//	private static final int APPLET_HEIGHT = 400;
-//
-//    private static final int APPLET_WIDTH = 600;
+//  private static final int APPLET_HEIGHT = 400;
+
+//  private static final int APPLET_WIDTH = 600;
 
     private static final int DEFAULT_FONT_SIZE = 16;
 
@@ -87,7 +87,7 @@ public class JTreeMapAppletExample extends JApplet {
     private JTreeMap jTreeMap;
 
     private javax.swing.JPanel jContentPane = null;
-    
+
     private JComboBox cmbValue;
 
     private JComboBox cmbWeight;
@@ -96,8 +96,8 @@ public class JTreeMapAppletExample extends JApplet {
 
     private BuilderTM3 builderTM3;
 
-	private boolean showTM3CTonf;
-	
+    private boolean showTM3CTonf;
+
     /**
      * This is the default constructor
      */
@@ -124,30 +124,30 @@ public class JTreeMapAppletExample extends JApplet {
                 builderTM3 = new BuilderTM3(createReader(dataFile));
                 root = builderTM3.getRoot();
                 if (showTM3CTonf) {
-                	setTM3Fields();
-                	panelTM3.setVisible(true);
+                    setTM3Fields();
+                    panelTM3.setVisible(true);
                 }
             } catch (final IOException e) {
-            	root = handleException(e);
+                root = handleException(e);
             }
         } else if(XML.equalsIgnoreCase(dataFileType)) {
             try {
-        		URL url = new URL(getCodeBase() + dataFile);
-        		URLConnection connection = url.openConnection();
+                URL url = new URL(getCodeBase() + dataFile);
+                URLConnection connection = url.openConnection();
                 final BuilderXML bXml = new BuilderXML(connection.getInputStream());
                 root = bXml.getRoot();
             } catch (final ParseException e) {
-            	root = handleException(e);
+                root = handleException(e);
             } catch (MalformedURLException e) {
-            	root = handleException(e);
-			} catch (IOException e) {
-				root = handleException(e);
-			}
+                root = handleException(e);
+            } catch (IOException e) {
+                root = handleException(e);
+            }
 
         } else {
-        	root = DemoUtil.buildDemoRoot();
+            root = DemoUtil.buildDemoRoot();
         }
-        
+
         this.jTreeMap = new JTreeMap(root, new SplitBySortedWeight());
         this.jTreeMap.setFont(new Font(null, Font.BOLD, DEFAULT_FONT_SIZE));
         this.jTreeMap.setColorProvider(new RedGreenColorProvider(this.jTreeMap));
@@ -158,25 +158,24 @@ public class JTreeMapAppletExample extends JApplet {
         getJContentPane().add(this.jTreeMap, BorderLayout.CENTER);
     }
 
-	/**
-	 * @param dataFile
-	 * @return
-	 * @throws MalformedURLException
-	 * @throws IOException
-	 */
-	private BufferedReader createReader(String dataFile) throws MalformedURLException, IOException {
-		URL url = new URL(getCodeBase() + dataFile);
-		URLConnection connection = url.openConnection();
-		BufferedReader reader = new BufferedReader(
-				new InputStreamReader(connection.getInputStream()));
-		return reader;
-	}
+    /**
+     * @param dataFile
+     * @return
+     * @throws IOException
+     */
+    private BufferedReader createReader(String dataFile) throws IOException {
+        URL url = new URL(getCodeBase() + dataFile);
+        URLConnection connection = url.openConnection();
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(connection.getInputStream()));
+        return reader;
+    }
 
-	private TreeMapNode handleException(final Exception e) {
-		e.printStackTrace();
-		JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
-		return DemoUtil.buildDemoRoot();
-	}
+    private TreeMapNode handleException(final Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
+        return DemoUtil.buildDemoRoot();
+    }
 
     /**
      * Add a pane to choose the weight and the value for TM3 file
@@ -235,8 +234,8 @@ public class JTreeMapAppletExample extends JApplet {
                 final JComboBox cmb = (JComboBox) e.getSource();
                 final String field = (String) cmb.getSelectedItem();
                 JTreeMapAppletExample.this.builderTM3.setValues(field);
-//                createColorProviders();
-//                updateLegendPanel();
+//              createColorProviders();
+//              updateLegendPanel();
                 JTreeMapAppletExample.this.repaint();
             }
         });
@@ -264,13 +263,13 @@ public class JTreeMapAppletExample extends JApplet {
      */
     @Override
     public void init() {
-    	// Width and height params are mandatory for an applet/object element in html
-    	// and should be defined via html.
-    	// this.setSize(APPLET_WIDTH, APPLET_HEIGHT);
+        // Width and height params are mandatory for an applet/object element in html
+        // and should be defined via html.
+        // this.setSize(APPLET_WIDTH, APPLET_HEIGHT);
         this.setContentPane(getJContentPane());
         showTM3CTonf = "true".equalsIgnoreCase(getParameter("showTM3Conf"));
-		if (showTM3CTonf) {
-        	addPanelEast(getJContentPane());
+        if (showTM3CTonf) {
+            addPanelEast(getJContentPane());
         }
     }
 
