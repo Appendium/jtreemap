@@ -586,31 +586,31 @@ public class JTreeMap extends JComponent {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() >= 2) {
-                final TreeMapNode t = getDisplayedRoot().getChild(e.getX(), e.getY());
-                if ( t != null && !t.isLeaf()) {
-                    if (treeView == null) {
-                        zoom(t);
-                    } else {
-                        zoom(t);
-                        // dont know why below does not work so for now leave it commented out
-                        // treeView.setSelectionPath(new TreePath(t.getPath()));
-                    }
-
+//          if (e.getClickCount() >= 2) {
+            final TreeMapNode t = getDisplayedRoot().getChild(e.getX(), e.getY());
+            if ( t != null && !t.isLeaf()) {
+                if (treeView == null) {
+                    zoom(t);
                 } else {
-                    if (treeView == null) {
-                        zoom((TreeMapNode)getDisplayedRoot().getParent());
-                    } else {
-                        zoom((TreeMapNode)getDisplayedRoot().getParent());
-                        // dont know why below does not work so for now leave it commented out
-                        //treeView.setSelectionPath(new TreePath(((TreeMapNode)getDisplayedRoot().getParent()).getPath()));
-                    }
+                    zoom(t);
+                    // dont know why below does not work so for now leave it commented out
+                    // treeView.setSelectionPath(new TreePath(t.getPath()));
                 }
-                repaint();
+                
+            } else {
+                if (treeView == null) {
+                    zoom((TreeMapNode)getDisplayedRoot().getParent());
+                } else {
+                    zoom((TreeMapNode)getDisplayedRoot().getParent());
+                    // dont know why below does not work so for now leave it commented out
+                    //treeView.setSelectionPath(new TreePath(((TreeMapNode)getDisplayedRoot().getParent()).getPath()));
+                }
             }
+            repaint();
+//          }
         }
     }
-
+    
     /**
      * Class who zoom and unzoom the JTreeMap.
      * 
