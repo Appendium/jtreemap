@@ -15,7 +15,8 @@
          <item name="KTreeMap library" href="./multiproject/net.sf.jtreemap.ktreemap/index.html" />
       </menu>
     <links>
-      <item name="Project Page on SF" href="http://jtreemap.sourceforge.net" />
+      <item name="Home Page" href="http://jtreemap.sourceforge.net" />
+      <item name="Project Page on SF" href="http://sourceforge.net/projects/jtreemap/" />
       <item name="JTreeMap" href="./multiproject/jtreemap/index.html" />
       <item name="KTreeMap" href="./multiproject/net.sf.jtreemap.ktreemap/index.html" />
     </links>
