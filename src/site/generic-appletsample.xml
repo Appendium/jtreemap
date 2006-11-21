@@ -8,7 +8,7 @@
   </properties>
 	<body>
 	<section name="The Applet Example">
-	<p>JTreeMap comes with an applet that you can use directly on your site. Here is an example:</p>	
+	<p>JTreeMap comes with an applet that you can use directly on your site. Use left click to Zoom and right click to see the menu. Here is an example:</p>	
 		<applet archive="./jtreemap-@JARVERSION@.jar"
 			code="net.sf.jtreemap.swing.example.JTreeMapAppletExample.class"
 			width="750" height="500">
