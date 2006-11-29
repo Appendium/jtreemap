@@ -238,7 +238,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
         }
         final double max = this.maxValue.getValue();
         final double min = this.minValue.getValue();
-        double val = value.getValue();
+        double val = (value!=null ? value.getValue() : 0.00);
 
         if (val >= 0) {
             // Value is greater than 0, use the positive colors
