@@ -191,7 +191,7 @@ public class JTreeMap extends JComponent {
      *            item to draw
      */
     protected void draw(final Graphics g, final TreeMapNode item) {
-        if (item.isLeaf()) {
+        if (item.isLeaf() && item.getValue() != null) {
             g.setColor(this.colorProvider.getColor(item.getValue()));
             g.fillRect(item.getX(), item.getY(), item.getWidth(), item.getHeight());
         } else {
@@ -582,12 +582,12 @@ public class JTreeMap extends JComponent {
      * @author Ekin Gulen
      */
     protected class HandleMouseClick extends MouseAdapter {
-        
+
         @Override
         public void mouseClicked(MouseEvent e) {
             if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
                 final TreeMapNode t = getDisplayedRoot().getChild(e.getX(), e.getY());
-                if ( t != null && !t.isLeaf()) {
+                if (t != null && !t.isLeaf()) {
                     if (treeView == null) {
                         zoom(t);
                     } else {
@@ -595,12 +595,12 @@ public class JTreeMap extends JComponent {
                         // dont know why below does not work so for now leave it commented out
                         // treeView.setSelectionPath(new TreePath(t.getPath()));
                     }
-                    
+
                 } else {
                     if (treeView == null) {
-                        zoom((TreeMapNode)getDisplayedRoot().getParent());
+                        zoom((TreeMapNode) getDisplayedRoot().getParent());
                     } else {
-                        zoom((TreeMapNode)getDisplayedRoot().getParent());
+                        zoom((TreeMapNode) getDisplayedRoot().getParent());
                         // dont know why below does not work so for now leave it commented out
                         //treeView.setSelectionPath(new TreePath(((TreeMapNode)getDisplayedRoot().getParent()).getPath()));
                     }
@@ -609,9 +609,7 @@ public class JTreeMap extends JComponent {
             }
         }
     }
-    
-    
-    
+
     /**
      * Class who zoom and unzoom the JTreeMap.
      * 

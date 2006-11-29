@@ -379,6 +379,9 @@
         <result date="2006-11-10" statvalue="47" type="checkstyle"/>
         <result date="2006-11-10" statvalue="1" type="findbugs"/>
         <result date="2006-11-10" statvalue="1" type="findbugs"/>
+        <result date="2006-11-29" statvalue="1" type="findbugs"/>
+        <result date="2006-11-29" statvalue="1" type="findbugs"/>
+        <result date="2006-11-29" statvalue="1" type="findbugs"/>
         <result date="2006-11-29" statvalue="47" type="checkstyle"/>
         <result date="2006-11-29" statvalue="1" type="findbugs"/>
         <result date="2006-11-29" statvalue="1" type="findbugs"/>

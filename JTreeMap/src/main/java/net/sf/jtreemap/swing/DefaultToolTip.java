@@ -49,7 +49,7 @@ public class DefaultToolTip extends JToolTip {
 
     private static final int DEFAULT_VALUE_SIZE = 10;
 
-    private static final int DEFAULT_LABEL_SIZE = 14;
+    private static final int DEFAULT_LABEL_SIZE = 12;
 
     private static final long serialVersionUID = -2492627777999093973L;
 
