@@ -86,7 +86,7 @@ public class RedGreenColorProvider extends ColorProvider {
             setMaxValue(this.jTreeMap.getRoot());
         }
 
-        final double dValeur = value.getValue();
+        final double dValeur = (value !=null ? value.getValue() : 0.00);
 
         int colorIndex = (int) (COLOUR_MAX_VALUE * Math.abs(dValeur) / this.maxAbsValue.getValue());
 
