@@ -86,7 +86,7 @@ public class RedGreenColorProvider extends ColorProvider {
             setMaxValue(this.jTreeMap.getRoot());
         }
 
-        final double dValeur = (value !=null ? value.getValue() : 0.00);
+        final double dValeur = (value != null ? value.getValue() : 0.00);
 
         int colorIndex = (int) (COLOUR_MAX_VALUE * Math.abs(dValeur) / this.maxAbsValue.getValue());
 
@@ -128,7 +128,7 @@ public class RedGreenColorProvider extends ColorProvider {
     private void setMaxValue(final TreeMapNode root) {
         if (root.isLeaf()) {
             final Value value = root.getValue();
-            if (this.maxAbsValue == null || Math.abs(value.getValue()) > this.maxAbsValue.getValue()) {
+            if (value != null && (this.maxAbsValue == null || Math.abs(value.getValue()) > this.maxAbsValue.getValue())) {
                 try {
                     final Class c = value.getClass();
                     if (this.maxAbsValue == null || this.minVal == null) {
@@ -204,8 +204,8 @@ public class RedGreenColorProvider extends ColorProvider {
             }
 
             g.setColor(Color.black);
-            g.drawString(RedGreenColorProvider.this.maxAbsValue.getLabel(), 
-                    Legend.X + (xCursor - 1) * Legend.WIDTH, Legend.Y - Y_INSET);
+            g.drawString(RedGreenColorProvider.this.maxAbsValue.getLabel(), Legend.X + (xCursor - 1) * Legend.WIDTH, Legend.Y
+                    - Y_INSET);
         }
     }
 }
