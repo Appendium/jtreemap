@@ -33,6 +33,7 @@
 package net.sf.jtreemap.swing.example;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -53,9 +54,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import net.sf.jtreemap.swing.ColorProvider;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.SplitBySortedWeight;
 import net.sf.jtreemap.swing.TreeMapNode;
+import net.sf.jtreemap.swing.provider.HSBTreeMapColorProvider;
+import net.sf.jtreemap.swing.provider.RandomColorProvider;
 import net.sf.jtreemap.swing.provider.RedGreenColorProvider;
 import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
 
@@ -76,11 +80,7 @@ public class JTreeMapAppletExample extends JApplet {
 
     private static final String TM3 = "tm3";
 
-//  private static final int APPLET_HEIGHT = 400;
-
-//  private static final int APPLET_WIDTH = 600;
-
-    private static final int DEFAULT_FONT_SIZE = 16;
+    private static final int DEFAULT_FONT_SIZE = 12;
 
     private static final long serialVersionUID = -8376357344981512167L;
 
@@ -103,9 +103,6 @@ public class JTreeMapAppletExample extends JApplet {
      */
     public JTreeMapAppletExample() {
         super();
-        // init is the life cycle method and will be called by applet context so 
-        // no need to call externally.
-        //init();
     }
 
     /*
@@ -116,8 +113,8 @@ public class JTreeMapAppletExample extends JApplet {
     @Override
     public void start() {
         super.start();
-        String dataFile = getParameter("dataFile");
-        String dataFileType = getParameter("dataFileType");
+        final String dataFile = getParameter("dataFile");
+        final String dataFileType = getParameter("dataFileType");
         TreeMapNode root = null;
         if(TM3.equalsIgnoreCase(dataFileType)) {
             try {
@@ -132,28 +129,53 @@ public class JTreeMapAppletExample extends JApplet {
             }
         } else if(XML.equalsIgnoreCase(dataFileType)) {
             try {
-                URL url = new URL(getCodeBase() + dataFile);
-                URLConnection connection = url.openConnection();
+                final URL url = new URL(getCodeBase() + dataFile);
+                final URLConnection connection = url.openConnection();
                 final BuilderXML bXml = new BuilderXML(connection.getInputStream());
                 root = bXml.getRoot();
             } catch (final ParseException e) {
                 root = handleException(e);
-            } catch (MalformedURLException e) {
+            } catch (final MalformedURLException e) {
                 root = handleException(e);
-            } catch (IOException e) {
+            } catch (final IOException e) {
                 root = handleException(e);
             }
-
         } else {
             root = DemoUtil.buildDemoRoot();
         }
 
         this.jTreeMap = new JTreeMap(root, new SplitBySortedWeight());
         this.jTreeMap.setFont(new Font(null, Font.BOLD, DEFAULT_FONT_SIZE));
-        this.jTreeMap.setColorProvider(new RedGreenColorProvider(this.jTreeMap));
+        
+        final String colourProvider = getParameter("colorProvider");
+        
+        ColorProvider colourProviderInstance = null;
+        if ("Random".equalsIgnoreCase(colourProvider)) {
+            colourProviderInstance = new RandomColorProvider(this.jTreeMap);
+        } else if ("HSBLinear".equalsIgnoreCase(colourProvider)) {
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap,
+                  HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED);
+        } else if ("HSBLog".equalsIgnoreCase(colourProvider)) {
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log,
+                  Color.GREEN, Color.RED);
+        } else if ("HSBSquareRoot".equalsIgnoreCase(colourProvider)) {
+            colourProviderInstance = new RandomColorProvider(this.jTreeMap);
+        } else if ("HSBCubicRoot".equalsIgnoreCase(colourProvider)) {
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap,
+                  HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN, Color.RED);
+        } else if ("HSBExp".equalsIgnoreCase(colourProvider)) {
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap,
+                  HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN, Color.RED);
+        }
+        
+        if (colourProviderInstance == null) {
+            colourProviderInstance = new RedGreenColorProvider(this.jTreeMap);
+        }
+        
+        this.jTreeMap.setColorProvider(colourProviderInstance);
 
         // Add a popupMenu to zoom
-        new ZoomPopupMenu(this.jTreeMap);
+        new ZoomPopupMenu(this.jTreeMap, true);
 
         getJContentPane().add(this.jTreeMap, BorderLayout.CENTER);
     }
@@ -163,10 +185,10 @@ public class JTreeMapAppletExample extends JApplet {
      * @return
      * @throws IOException
      */
-    private BufferedReader createReader(String dataFile) throws IOException {
-        URL url = new URL(getCodeBase() + dataFile);
-        URLConnection connection = url.openConnection();
-        BufferedReader reader = new BufferedReader(
+    private BufferedReader createReader(final String dataFile) throws IOException {
+        final URL url = new URL(getCodeBase() + dataFile);
+        final URLConnection connection = url.openConnection();
+        final BufferedReader reader = new BufferedReader(
                 new InputStreamReader(connection.getInputStream()));
         return reader;
     }
