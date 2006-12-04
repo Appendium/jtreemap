@@ -40,6 +40,7 @@ import java.awt.event.MouseListener;
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
 import net.sf.jtreemap.swing.JTreeMap;
@@ -68,6 +69,8 @@ public class ZoomPopupMenu extends JPopupMenu {
     private JTreeMap jTreeMap;
 
     private transient MouseListener mouseListener;
+    
+    private boolean showAbout;
 
     /**
      * Constructor
@@ -76,11 +79,17 @@ public class ZoomPopupMenu extends JPopupMenu {
      *            jTreeMap which you want to add a zoom popup menu
      */
     public ZoomPopupMenu(final JTreeMap jTreeMap) {
+        this(jTreeMap,false);
+    }
+    
+    public ZoomPopupMenu(final JTreeMap jTreeMap, final boolean showAbout) {
         super();
         this.jTreeMap = jTreeMap;
         this.mouseListener = new HandleClickMouse();
         this.jTreeMap.addMouseListener(this.mouseListener);
+        this.showAbout = showAbout;
     }
+    
 
     protected class HandleClickMouse extends MouseAdapter {
 
@@ -121,6 +130,13 @@ public class ZoomPopupMenu extends JPopupMenu {
                         ZoomPopupMenu.this.add(action);
                     }
                     cursor = child;
+                }
+                
+                if (showAbout) {
+                    // Separator
+                    ZoomPopupMenu.this.addSeparator();
+                    final AboutAction action = new AboutAction();
+                    ZoomPopupMenu.this.add(action);                    
                 }
 
                 ZoomPopupMenu.this.show(e.getComponent(), e.getX(), e.getY());
@@ -168,6 +184,43 @@ public class ZoomPopupMenu extends JPopupMenu {
             return true;
         }
     }
+
+
+    private class AboutAction extends AbstractAction {
+        private static final long serialVersionUID = -8559400862920393294L;
+
+        /**
+         * Constructor
+         * 
+         * @param node
+         *            where you want to zoom/unzoom
+         * @param icon
+         *            icon corresponding to the operation (zoom or unzoom)
+         */
+        public AboutAction() {
+            super("About");
+        }
+
+        /*
+         * (non-Javadoc)
+         * 
+         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+         */
+        public void actionPerformed(final ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "<html>JTreeMap powered by <a href=\"http://www.ObjectLab.co.uk\">ObjectLab.co.uk</a></html>");
+        }
+
+        /*
+         * (non-Javadoc)
+         * 
+         * @see javax.swing.Action#isEnabled()
+         */
+        @Override
+        public boolean isEnabled() {
+            return true;
+        }
+    }
+
 }
 /*
  *                 ObjectLab is supporing JTreeMap
