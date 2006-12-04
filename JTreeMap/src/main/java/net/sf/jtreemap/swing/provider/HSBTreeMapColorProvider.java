@@ -296,9 +296,13 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      *            root of the JTreeMap
      */
     private void setValues(final TreeMapNode root) {
-        if (root.isLeaf()) {
+        if (root.isLeaf()) {           
             final Value value = root.getValue();
 
+            if (value == null) {
+                return;
+            }
+            
             if (maxValue == null || value.getValue() >= maxValue.getValue()) {
                 try {
                     final Class c = value.getClass();
