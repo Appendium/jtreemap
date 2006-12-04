@@ -57,7 +57,7 @@ public class RedGreenColorProvider extends ColorProvider {
      */
     private static final long serialVersionUID = 5030306338780462810L;
 
-    private JTreeMap jTreeMap;
+    private final JTreeMap jTreeMap;
 
     private JPanel legend;
 
