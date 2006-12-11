@@ -358,6 +358,11 @@ public class JTreeMapAppletExample extends JApplet {
 
         return this.jContentPane;
     }
+
+    @Override
+    public void stop() {
+        jTreeMap.createToolTip().setVisible(false);
+    }
 }
 /*
  *                 ObjectLab is supporing JTreeMap
