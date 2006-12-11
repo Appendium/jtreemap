@@ -10,6 +10,7 @@
 <stringAttribute key="org.eclipse.jdt.launching.VM_INSTALL_NAME" value="jre1.5.0_09"/>
 <mapAttribute key="org.eclipse.jdt.launching.APPLET_PARAMETERS">
 <mapEntry key="dataFile" value="../../dataDump.xml"/>
+<mapEntry key="viewTree" value="true"/>
 <mapEntry key="dataFileType" value="xml"/>
 </mapAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.5.0_09"/>
