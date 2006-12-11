@@ -21,73 +21,81 @@
 ]>
 <qalab version="1.2">
     <summary>
-        <summaryresult date="2006-10-17" filecount="27" module="jtreemap"
-            project="jtreemap" statvalue="307" type="checkstyle"/>
-        <summaryresult date="2006-10-17" filecount="14" module="jtreemap"
-            project="jtreemap" statvalue="35" type="findbugs"/>
+        <summaryresult date="2006-10-17" filecount="27"
+            module="jtreemap" project="jtreemap" statvalue="307" type="checkstyle"/>
+        <summaryresult date="2006-10-17" filecount="14"
+            module="jtreemap" project="jtreemap" statvalue="35" type="findbugs"/>
         <summaryresult date="2006-10-17" filecount="4" module="jtreemap"
             project="jtreemap" statvalue="280" type="simian"/>
-        <summaryresult date="2006-10-18" filecount="27" module="jtreemap"
-            project="jtreemap" statvalue="307" type="checkstyle"/>
-        <summaryresult date="2006-10-18" filecount="14" module="jtreemap"
-            project="jtreemap" statvalue="35" type="findbugs"/>
+        <summaryresult date="2006-10-18" filecount="27"
+            module="jtreemap" project="jtreemap" statvalue="307" type="checkstyle"/>
+        <summaryresult date="2006-10-18" filecount="14"
+            module="jtreemap" project="jtreemap" statvalue="35" type="findbugs"/>
         <summaryresult date="2006-10-18" filecount="4" module="jtreemap"
             project="jtreemap" statvalue="280" type="simian"/>
-        <summaryresult date="2006-10-23" filecount="27" module="jtreemap"
-            project="jtreemap" statvalue="307" type="checkstyle"/>
-        <summaryresult date="2006-10-23" filecount="14" module="jtreemap"
-            project="jtreemap" statvalue="35" type="findbugs"/>
+        <summaryresult date="2006-10-23" filecount="27"
+            module="jtreemap" project="jtreemap" statvalue="307" type="checkstyle"/>
+        <summaryresult date="2006-10-23" filecount="14"
+            module="jtreemap" project="jtreemap" statvalue="35" type="findbugs"/>
         <summaryresult date="2006-10-23" filecount="4" module="jtreemap"
             project="jtreemap" statvalue="280" type="simian"/>
-        <summaryresult date="2006-10-24" filecount="29" module="jtreemap"
-            project="jtreemap" statvalue="62" type="checkstyle"/>
-        <summaryresult date="2006-10-25" filecount="29" module="jtreemap"
-            project="jtreemap" statvalue="62" type="checkstyle"/>
-        <summaryresult date="2006-10-26" filecount="29" module="jtreemap"
-            project="jtreemap" statvalue="63" type="checkstyle"/>
-        <summaryresult date="2006-11-04" filecount="29" module="jtreemap"
-            project="jtreemap" statvalue="111" type="checkstyle"/>
+        <summaryresult date="2006-10-24" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="62" type="checkstyle"/>
+        <summaryresult date="2006-10-25" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="62" type="checkstyle"/>
+        <summaryresult date="2006-10-26" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="63" type="checkstyle"/>
+        <summaryresult date="2006-11-04" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="111" type="checkstyle"/>
         <summaryresult date="2006-11-04" filecount="1" module="jtreemap"
             project="jtreemap" statvalue="1" type="pmd"/>
         <summaryresult date="2006-11-04" filecount="2" module="jtreemap"
             project="jtreemap" statvalue="112" type="simian"/>
-        <summaryresult date="2006-11-05" filecount="29" module="jtreemap"
-            project="jtreemap" statvalue="148" type="checkstyle"/>
+        <summaryresult date="2006-11-05" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="148" type="checkstyle"/>
         <summaryresult date="2006-11-05" filecount="2" module="jtreemap"
             project="jtreemap" statvalue="2" type="pmd"/>
         <summaryresult date="2006-11-05" filecount="2" module="jtreemap"
             project="jtreemap" statvalue="112" type="simian"/>
-        <summaryresult date="2006-11-06" filecount="29" module="jtreemap"
-            project="jtreemap" statvalue="65" type="checkstyle"/>
+        <summaryresult date="2006-11-06" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="65" type="checkstyle"/>
         <summaryresult date="2006-11-06" filecount="2" module="jtreemap"
             project="jtreemap" statvalue="2" type="pmd"/>
         <summaryresult date="2006-11-06" filecount="1" module="jtreemap"
             project="jtreemap" statvalue="1" type="findbugs"/>
         <summaryresult date="2006-11-06" filecount="2" module="jtreemap"
             project="jtreemap" statvalue="112" type="simian"/>
-        <summaryresult date="2006-11-09" filecount="29" module="jtreemap"
-            project="jtreemap" statvalue="65" type="checkstyle"/>
+        <summaryresult date="2006-11-09" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="65" type="checkstyle"/>
         <summaryresult date="2006-11-09" filecount="1" module="jtreemap"
             project="jtreemap" statvalue="1" type="findbugs"/>
         <summaryresult date="2006-11-09" filecount="2" module="jtreemap"
             project="jtreemap" statvalue="112" type="simian"/>
         <summaryresult date="2006-11-09" filecount="2" module="jtreemap"
             project="jtreemap" statvalue="2" type="pmd"/>
-        <summaryresult date="2006-11-10" filecount="29" module="jtreemap"
-            project="jtreemap" statvalue="64" type="checkstyle"/>
+        <summaryresult date="2006-11-10" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="64" type="checkstyle"/>
         <summaryresult date="2006-11-10" filecount="1" module="jtreemap"
             project="jtreemap" statvalue="1" type="findbugs"/>
         <summaryresult date="2006-11-10" filecount="2" module="jtreemap"
             project="jtreemap" statvalue="112" type="simian"/>
         <summaryresult date="2006-11-10" filecount="1" module="jtreemap"
             project="jtreemap" statvalue="1" type="pmd"/>
-        <summaryresult date="2006-11-29" filecount="29" module="jtreemap"
-            project="jtreemap" statvalue="64" type="checkstyle"/>
+        <summaryresult date="2006-11-29" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="64" type="checkstyle"/>
         <summaryresult date="2006-11-29" filecount="1" module="jtreemap"
             project="jtreemap" statvalue="1" type="findbugs"/>
         <summaryresult date="2006-11-29" filecount="2" module="jtreemap"
             project="jtreemap" statvalue="112" type="simian"/>
         <summaryresult date="2006-11-29" filecount="1" module="jtreemap"
+            project="jtreemap" statvalue="1" type="pmd"/>
+        <summaryresult date="2006-12-04" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="63" type="checkstyle"/>
+        <summaryresult date="2006-12-04" filecount="2" module="jtreemap"
+            project="jtreemap" statvalue="2" type="findbugs"/>
+        <summaryresult date="2006-12-04" filecount="2" module="jtreemap"
+            project="jtreemap" statvalue="112" type="simian"/>
+        <summaryresult date="2006-12-04" filecount="1" module="jtreemap"
             project="jtreemap" statvalue="1" type="pmd"/>
     </summary>
     <file id="default-default-org_jense_swing_jtreemap_package.html"
@@ -338,7 +346,8 @@
         <result date="2006-10-23" statvalue="12" type="checkstyle"/>
     </file>
     <file id="default-default-net_sf_jtreemap_swing_SplitStrategy.java"
-        module="jtreemap" path="net/sf/jtreemap/swing/SplitStrategy.java" project="jtreemap">
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/SplitStrategy.java" project="jtreemap">
         <result date="2006-10-23" statvalue="3" type="checkstyle"/>
     </file>
     <file id="default-default-net_sf_jtreemap_swing_TreeMapNode.java"
@@ -455,7 +464,8 @@
         <result date="2006-10-23" statvalue="2" type="findbugs"/>
     </file>
     <file id="default-default-net_sf_jtreemap_swing_SplitByNumber.java"
-        module="jtreemap" path="net/sf/jtreemap/swing/SplitByNumber.java" project="jtreemap"/>
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/SplitByNumber.java" project="jtreemap"/>
     <file id="default-default-net_sf_jtreemap_swing_SplitBySlice.java"
         module="jtreemap" path="net/sf/jtreemap/swing/SplitBySlice.java" project="jtreemap"/>
     <file
@@ -463,7 +473,8 @@
         module="jtreemap"
         path="net/sf/jtreemap/swing/SplitBySortedWeight.java" project="jtreemap"/>
     <file id="default-default-net_sf_jtreemap_swing_SplitByWeight.java"
-        module="jtreemap" path="net/sf/jtreemap/swing/SplitByWeight.java" project="jtreemap"/>
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/SplitByWeight.java" project="jtreemap"/>
     <file
         id="default-default-net_sf_jtreemap_swing_example_DemoUtil.java"
         module="jtreemap"
@@ -505,5 +516,51 @@
         <result date="2006-11-09" statvalue="2" type="checkstyle"/>
         <result date="2006-11-10" statvalue="2" type="checkstyle"/>
         <result date="2006-11-29" statvalue="2" type="checkstyle"/>
+    </file>
+    <file
+        id="jtreemap-jtreemap-net_sf_jtreemap_swing_example_DemoUtil.java"
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/example/DemoUtil.java" project="jtreemap">
+        <result date="2006-12-04" statvalue="57" type="checkstyle"/>
+    </file>
+    <file
+        id="jtreemap-jtreemap-net_sf_jtreemap_swing_example_JTreeMapAppletExample.java"
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/example/JTreeMapAppletExample.java" project="jtreemap">
+        <result date="2006-12-04" statvalue="1" type="checkstyle"/>
+    </file>
+    <file
+        id="jtreemap-jtreemap-net_sf_jtreemap_swing_example_JTreeMapExample.java"
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/example/JTreeMapExample.java" project="jtreemap">
+        <result date="2006-12-04" statvalue="1" type="checkstyle"/>
+    </file>
+    <file
+        id="jtreemap-jtreemap-net_sf_jtreemap_swing_provider_HSBTreeMapColorProvider.java"
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/provider/HSBTreeMapColorProvider.java" project="jtreemap">
+        <result date="2006-12-04" statvalue="2" type="checkstyle"/>
+    </file>
+    <file
+        id="jtreemap-jtreemap-net_sf_jtreemap_swing_provider_RedGreenColorProvider.java"
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/provider/RedGreenColorProvider.java" project="jtreemap">
+        <result date="2006-12-04" statvalue="2" type="checkstyle"/>
+    </file>
+    <file id="jtreemap-jtreemap-net_sf_jtreemap_swing_JTreeMap.java"
+        module="jtreemap" path="net/sf/jtreemap/swing/JTreeMap.java" project="jtreemap">
+        <result date="2006-12-04" statvalue="1" type="findbugs"/>
+    </file>
+    <file
+        id="jtreemap-jtreemap-net_sf_jtreemap_swing_provider_ZoomPopupMenu.java"
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/provider/ZoomPopupMenu.java" project="jtreemap">
+        <result date="2006-12-04" statvalue="1" type="findbugs"/>
+    </file>
+    <file
+        id="jtreemap-jtreemap-net_sf_jtreemap_swing_example_BuilderXML.java"
+        module="jtreemap"
+        path="net/sf/jtreemap/swing/example/BuilderXML.java" project="jtreemap">
+        <result date="2006-12-04" statvalue="1" type="pmd"/>
     </file>
 </qalab>
