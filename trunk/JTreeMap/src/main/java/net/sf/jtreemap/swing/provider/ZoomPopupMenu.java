@@ -42,6 +42,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import javax.swing.tree.TreePath;
 
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.TreeMapNode;
@@ -169,8 +170,15 @@ public class ZoomPopupMenu extends JPopupMenu {
          * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
          */
         public void actionPerformed(final ActionEvent e) {
-            ZoomPopupMenu.this.jTreeMap.zoom(this.node);
-            ZoomPopupMenu.this.jTreeMap.repaint();
+            if (jTreeMap.getTreeView() == null) {
+                ZoomPopupMenu.this.jTreeMap.zoom(this.node);
+                ZoomPopupMenu.this.jTreeMap.repaint();
+            } else {
+                TreePath path =  new TreePath(this.node.getPath());
+                jTreeMap.getTreeView().setSelectionPath(path);
+                jTreeMap.getTreeView().scrollPathToVisible(path);
+            }
+            
 
         }
 
