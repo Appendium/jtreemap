@@ -35,6 +35,7 @@ package net.sf.jtreemap.swing.example;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
@@ -47,12 +48,19 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.ParseException;
 
+import javax.swing.BorderFactory;
 import javax.swing.JApplet;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTree;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultTreeModel;
 
 import net.sf.jtreemap.swing.ColorProvider;
 import net.sf.jtreemap.swing.JTreeMap;
@@ -75,6 +83,8 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
 public class JTreeMapAppletExample extends JApplet {
 
     private static final double CONSTRAINT_WEIGHTX = 0.5;
+    
+    private static final int SCROLLPANE_WIDTH = 140;
 
     private static final String XML = "xml";
 
@@ -97,7 +107,12 @@ public class JTreeMapAppletExample extends JApplet {
     private BuilderTM3 builderTM3;
 
     private boolean showTM3CTonf;
-
+    
+    private boolean showTree;
+    
+    private JTree treeView;
+    private DefaultTreeModel treeModel;
+    
     /**
      * This is the default constructor
      */
@@ -144,7 +159,7 @@ public class JTreeMapAppletExample extends JApplet {
             root = DemoUtil.buildDemoRoot();
         }
 
-        this.jTreeMap = new JTreeMap(root, new SplitBySortedWeight());
+        this.jTreeMap = new JTreeMap(root, new SplitBySortedWeight(), treeView);
         this.jTreeMap.setFont(new Font(null, Font.BOLD, DEFAULT_FONT_SIZE));
         
         final String colourProvider = getParameter("colorProvider");
@@ -177,7 +192,41 @@ public class JTreeMapAppletExample extends JApplet {
         // Add a popupMenu to zoom
         new ZoomPopupMenu(this.jTreeMap, true);
 
-        getJContentPane().add(this.jTreeMap, BorderLayout.CENTER);
+        if (showTree) {
+            final JSplitPane splitPaneCenter = new JSplitPane();
+            splitPaneCenter.setBorder(BorderFactory.createEmptyBorder());
+            getJContentPane().add(splitPaneCenter, BorderLayout.CENTER);
+
+            final JScrollPane jScrollPane1 = new JScrollPane();
+            splitPaneCenter.setTopComponent(jScrollPane1);
+            splitPaneCenter.setBottomComponent(this.jTreeMap);
+
+            treeModel = new DefaultTreeModel(root);
+            treeView = new JTree(this.treeModel);
+            jTreeMap.setTreeView(treeView);
+            jScrollPane1.getViewport().add(this.treeView);
+            jScrollPane1.setPreferredSize(new Dimension(SCROLLPANE_WIDTH, jTreeMap.getRoot().getHeight()));
+            treeView.addTreeSelectionListener(new TreeSelectionListener() {
+                public void valueChanged(final TreeSelectionEvent e) {
+                    // for each selected elements ont the treeView, we zoom the
+                    // JTreeMap
+                    TreeMapNode dest = (TreeMapNode) JTreeMapAppletExample.this.treeView.getLastSelectedPathComponent();
+
+                    // if the element is a leaf, we select the parent
+                    if (dest != null && dest.isLeaf()) {
+                        dest = (TreeMapNode) dest.getParent();
+                    }
+                    if (dest == null) {
+                        return;
+                    }
+
+                    JTreeMapAppletExample.this.jTreeMap.zoom(dest);
+                    JTreeMapAppletExample.this.jTreeMap.repaint();
+                }
+            });
+        } else {
+            getJContentPane().add(this.jTreeMap, BorderLayout.CENTER);
+        }
     }
 
     /**
@@ -290,6 +339,7 @@ public class JTreeMapAppletExample extends JApplet {
         // this.setSize(APPLET_WIDTH, APPLET_HEIGHT);
         this.setContentPane(getJContentPane());
         showTM3CTonf = "true".equalsIgnoreCase(getParameter("showTM3Conf"));
+        showTree = "true".equalsIgnoreCase(getParameter("viewTree"));
         if (showTM3CTonf) {
             addPanelEast(getJContentPane());
         }

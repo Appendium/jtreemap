@@ -307,6 +307,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
         treeModel = new DefaultTreeModel(this.root);
         treeView = new JTree(this.treeModel);
+        jTreeMap.setTreeView(treeView);
         jScrollPane1.getViewport().add(this.treeView);
         jScrollPane1.setPreferredSize(new Dimension(SCROLLPANE_WIDTH, jTreeMap.getRoot().getHeight()));
         treeView.addTreeSelectionListener(new TreeSelectionListener() {
