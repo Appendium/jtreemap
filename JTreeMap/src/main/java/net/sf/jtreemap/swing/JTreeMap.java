@@ -585,12 +585,6 @@ public class JTreeMap extends JComponent {
                     setActiveLeaf(t);
                     repaint();
                 }
-                if (t != null) {
-                    setToolTipText(t.getLabel() + " " + t.getValue().getValue());
-//                    setToolTipText(t.getLabel() + " " + t.getValue().getValue() + ", Weight = " + t.getWeight());
-                } else {
-                    setToolTipText(null);
-                }
             }
         }
     }
