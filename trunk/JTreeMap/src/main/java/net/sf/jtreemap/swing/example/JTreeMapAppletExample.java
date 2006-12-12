@@ -126,14 +126,23 @@ public class JTreeMapAppletExample extends JApplet {
         super();
     }
 
-    /*
-     * (non-Javadoc)
+    /**
      * 
-     * @see java.applet.Applet#start()
      */
-    @Override
-    public void start() {
-        super.start();
+    private void initGUI() {
+        // Width and height params are mandatory for an applet/object element in html
+        // and should be defined via html.
+        // this.setSize(APPLET_WIDTH, APPLET_HEIGHT);
+        this.setContentPane(getJContentPane());
+        showTM3CTonf = "true".equalsIgnoreCase(getParameter("showTM3Conf"));
+        showTree = "true".equalsIgnoreCase(getParameter("viewTree"));
+        showWeight = "true".equalsIgnoreCase(getParameter("showWeight"));
+        weightPrefix = getParameter("weightPrefix");
+        valuePrefix = getParameter("valuePrefix");
+        if (showTM3CTonf) {
+            addPanelEast(getJContentPane());
+        }
+
         final String dataFile = getParameter("dataFile");
         final String dataFileType = getParameter("dataFileType");
         TreeMapNode root = null;
@@ -340,18 +349,7 @@ public class JTreeMapAppletExample extends JApplet {
      */
     @Override
     public void init() {
-        // Width and height params are mandatory for an applet/object element in html
-        // and should be defined via html.
-        // this.setSize(APPLET_WIDTH, APPLET_HEIGHT);
-        this.setContentPane(getJContentPane());
-        showTM3CTonf = "true".equalsIgnoreCase(getParameter("showTM3Conf"));
-        showTree = "true".equalsIgnoreCase(getParameter("viewTree"));
-        showWeight = "true".equalsIgnoreCase(getParameter("showWeight"));
-        weightPrefix = getParameter("weightPrefix");
-        valuePrefix = getParameter("valuePrefix");
-        if (showTM3CTonf) {
-            addPanelEast(getJContentPane());
-        }
+        initGUI();
     }
 
     /**
@@ -369,9 +367,12 @@ public class JTreeMapAppletExample extends JApplet {
     }
 
     @Override
-    public void stop() {
-        jTreeMap.createToolTip().setVisible(false);
+    public void destroy() {
+        super.destroy();
+        this.jContentPane.removeAll();
     }
+
+    
 }
 /*
  *                 ObjectLab is supporing JTreeMap

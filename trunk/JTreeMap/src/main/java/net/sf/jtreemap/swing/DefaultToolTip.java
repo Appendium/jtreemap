@@ -36,7 +36,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 import javax.swing.JToolTip;
 
@@ -91,7 +90,7 @@ public class DefaultToolTip extends JToolTip {
     @Override
     public void paint(final Graphics g) {
         if (this.jTreeMap.getActiveLeaf() != null) {
-            Graphics2D g2D = (Graphics2D) g;
+            Graphics g2D = (Graphics) g;
             g2D.setColor(Color.YELLOW);
             g2D.fill3DRect(0, 0, this.getWidth(), this.getHeight(), true);
             g2D.setColor(Color.black);
