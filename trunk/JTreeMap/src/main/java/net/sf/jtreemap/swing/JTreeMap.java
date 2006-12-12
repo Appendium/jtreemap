@@ -117,7 +117,7 @@ public class JTreeMap extends JComponent {
      *            the root of the tree to display
      */
     public JTreeMap(final TreeMapNode root) {
-        this(root, new SplitSquarified());
+        this(root, new SplitSquarified(), null, null, false);
     }
 
     /**
@@ -131,7 +131,7 @@ public class JTreeMap extends JComponent {
      * @param treeView The tree representation of the hierarchical data. 
      */
     public JTreeMap(final TreeMapNode root, final JTree treeView) {
-        this(root, new SplitSquarified());
+        this(root, new SplitSquarified(), null, null, false);
         this.treeView = treeView;
     }
 
@@ -146,8 +146,9 @@ public class JTreeMap extends JComponent {
      *            the split strategy
      * @param treeView The tree representation of the hierarchical data. 
      */
-    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, final JTree treeView) {
-        this(root, strategy);
+    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, final JTree treeView,
+            final String weightPrefix, final String valuePrefix, final boolean showWeight) {
+        this(root, strategy, weightPrefix, valuePrefix, showWeight);
         this.treeView = treeView;
     }
     /**
@@ -160,7 +161,8 @@ public class JTreeMap extends JComponent {
      * @param strategy
      *            the split strategy
      */
-    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy) {
+    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, 
+            final String weightPrefix, final String valuePrefix, final boolean showWeight) {
         // ToolTips appears without delay and stay as long as possible
         final ToolTipManager ttm = ToolTipManager.sharedInstance();
         ttm.setInitialDelay(0);
@@ -171,7 +173,7 @@ public class JTreeMap extends JComponent {
         setToolTipText("");
 
         // the default DefaultToolTipBuilder
-        toolTipBuilder = new DefaultToolTipBuilder(this);
+        toolTipBuilder = new DefaultToolTipBuilder(this, weightPrefix, valuePrefix, showWeight);
 
         zoom = new Zoom();
 

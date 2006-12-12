@@ -110,6 +110,12 @@ public class JTreeMapAppletExample extends JApplet {
     
     private boolean showTree;
     
+    private boolean showWeight;
+    
+    private String weightPrefix;
+    
+    private String valuePrefix;
+    
     private JTree treeView;
     private DefaultTreeModel treeModel;
     
@@ -159,7 +165,7 @@ public class JTreeMapAppletExample extends JApplet {
             root = DemoUtil.buildDemoRoot();
         }
 
-        this.jTreeMap = new JTreeMap(root, new SplitBySortedWeight(), treeView);
+        this.jTreeMap = new JTreeMap(root, new SplitBySortedWeight(), treeView, weightPrefix, valuePrefix, showWeight);
         this.jTreeMap.setFont(new Font(null, Font.BOLD, DEFAULT_FONT_SIZE));
         
         final String colourProvider = getParameter("colorProvider");
@@ -340,6 +346,9 @@ public class JTreeMapAppletExample extends JApplet {
         this.setContentPane(getJContentPane());
         showTM3CTonf = "true".equalsIgnoreCase(getParameter("showTM3Conf"));
         showTree = "true".equalsIgnoreCase(getParameter("viewTree"));
+        showWeight = "true".equalsIgnoreCase(getParameter("showWeight"));
+        weightPrefix = getParameter("weightPrefix");
+        valuePrefix = getParameter("valuePrefix");
         if (showTM3CTonf) {
             addPanelEast(getJContentPane());
         }
