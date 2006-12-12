@@ -36,6 +36,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JToolTip;
 
@@ -58,15 +59,24 @@ public class DefaultToolTip extends JToolTip {
     private Font labelFont;
 
     private Font valueFont;
-
+    
+    private String weightPrefix;
+    
+    private String valuePrefix;
+    
+    private boolean showWeight;
+    
     /**
      * Constructor.
      * 
      * @param jTreeMap
      *            the jTreeMap who display the tooltip
      */
-    public DefaultToolTip(final JTreeMap jTreeMap) {
+    public DefaultToolTip(final JTreeMap jTreeMap, final String weightPrefix, final String valuePrefix, final boolean showWeight) {
         this.jTreeMap = jTreeMap;
+        this.weightPrefix = weightPrefix;
+        this.valuePrefix = valuePrefix;
+        this.showWeight = showWeight;
         this.labelFont = new Font("Default", Font.BOLD, DEFAULT_LABEL_SIZE);
         this.valueFont = new Font("Default", Font.PLAIN, DEFAULT_VALUE_SIZE);
 
@@ -81,13 +91,24 @@ public class DefaultToolTip extends JToolTip {
     @Override
     public void paint(final Graphics g) {
         if (this.jTreeMap.getActiveLeaf() != null) {
-            g.setColor(Color.lightGray);
-            g.fill3DRect(0, 0, this.getWidth(), this.getHeight(), true);
-            g.setColor(Color.black);
-            g.setFont(this.labelFont);
-            g.drawString(this.jTreeMap.getActiveLeaf().getLabel(), TOOLTIP_OFFSET, g.getFontMetrics(this.labelFont).getAscent());
-            g.setFont(this.valueFont);
-            g.drawString(this.jTreeMap.getActiveLeaf().getLabelValue(), TOOLTIP_OFFSET, this.getHeight() - TOOLTIP_OFFSET);
+            Graphics2D g2D = (Graphics2D) g;
+            g2D.setColor(Color.YELLOW);
+            g2D.fill3DRect(0, 0, this.getWidth(), this.getHeight(), true);
+            g2D.setColor(Color.black);
+            g2D.setFont(this.labelFont);
+            g2D.drawString(this.jTreeMap.getActiveLeaf().getLabel(), TOOLTIP_OFFSET, g2D.getFontMetrics(this.labelFont).getAscent());
+            g2D.setFont(this.valueFont);
+            String toDraw = this.jTreeMap.getActiveLeaf().getLabelValue();
+            if (valuePrefix != null) {
+                toDraw = valuePrefix + " " + toDraw; 
+            }
+            if (showWeight) {
+                toDraw = this.jTreeMap.getActiveLeaf().getWeight() + ", " + toDraw; 
+            }
+            if (weightPrefix != null && showWeight) {
+                toDraw = weightPrefix + " " + toDraw; 
+            }
+            g2D.drawString(toDraw, TOOLTIP_OFFSET, this.getHeight() - TOOLTIP_OFFSET);
         }
     }
 }

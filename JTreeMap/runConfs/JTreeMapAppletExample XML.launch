@@ -11,7 +11,10 @@
 <mapAttribute key="org.eclipse.jdt.launching.APPLET_PARAMETERS">
 <mapEntry key="dataFile" value="../../dataDump.xml"/>
 <mapEntry key="viewTree" value="true"/>
+<mapEntry key="showWeight" value="true"/>
+<mapEntry key="valuePrefix" value="Value"/>
 <mapEntry key="dataFileType" value="xml"/>
+<mapEntry key="weightPrefix" value="Weight"/>
 </mapAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.5.0_09"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
