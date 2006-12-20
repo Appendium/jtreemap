@@ -59,15 +59,12 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * 
      */
     private static final long serialVersionUID = 5009655580804320847L;
+
     /**
      * @author Andy Adamczak
      */
     public enum ColorDistributionTypes {
-        Linear,
-        Log,
-        Exp,
-        SquareRoot,
-        CubicRoot
+        Linear, Log, Exp, SquareRoot, CubicRoot
     }
 
     /**
@@ -83,8 +80,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param colorDistribution
      * @param color
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, 
-            final Color color) {
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, final Color color) {
         this(treeMap, colorDistribution, color, color);
     }
 
@@ -103,7 +99,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param positiveColor
      * @param negativeColor
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, 
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution,
             final Color positiveColor, final Color negativeColor) {
         super();
         jTreeMap = treeMap;
@@ -126,8 +122,8 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param hue
      * @param saturation
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, 
-            final float hue, final float saturation) {
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, final float hue,
+            final float saturation) {
         this(treeMap, colorDistribution, hue, saturation, hue, saturation);
     }
 
@@ -138,7 +134,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param negativeHue
      * @param negativeSaturation
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final float positiveHue, final float positiveSaturation, 
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final float positiveHue, final float positiveSaturation,
             final float negativeHue, final float negativeSaturation) {
         this(treeMap, ColorDistributionTypes.Linear, positiveHue, positiveSaturation, negativeHue, negativeSaturation);
     }
@@ -151,9 +147,8 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param negativeHue
      * @param negativeSaturation
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, 
-            final float positiveHue, final float positiveSaturation,
-        final float negativeHue, final float negativeSaturation) {
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution,
+            final float positiveHue, final float positiveSaturation, final float negativeHue, final float negativeSaturation) {
         super();
         jTreeMap = treeMap;
         this.colorDistribution = colorDistribution;
@@ -168,7 +163,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
     @Override
     public JPanel getLegendPanel() {
         if (legend == null) {
-          legend = new Legend();
+            legend = new Legend();
         }
 
         return legend;
@@ -215,8 +210,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param negHue
      * @param negSaturation
      */
-    public void adjustColor(final float posHue, final float posSaturation, final float negHue, 
-            final float negSaturation) {
+    public void adjustColor(final float posHue, final float posSaturation, final float negHue, final float negSaturation) {
         this.positiveHue = posHue;
         this.positiveSaturation = posSaturation;
         this.negativeHue = negHue;
@@ -234,11 +228,11 @@ public class HSBTreeMapColorProvider extends ColorProvider {
         // from 0 to 1,
         // using the specified distribution type
         if (maxValue == null || minValue == null) {
-          setValues(jTreeMap.getRoot());
+            setValues(jTreeMap.getRoot());
         }
         final double max = this.maxValue.getValue();
         final double min = this.minValue.getValue();
-        double val = (value!=null ? value.getValue() : 0.00);
+        double val = (value != null ? value.getValue() : 0.00);
 
         if (val >= 0) {
             // Value is greater than 0, use the positive colors
@@ -269,22 +263,22 @@ public class HSBTreeMapColorProvider extends ColorProvider {
     private double adjustValue(final double value) {
         double ret = value;
         switch (colorDistribution) {
-            case Log:
-                ret = Math.log1p(value);
-                break;
-            case Exp:
-                ret = Math.exp(value);
-                break;
-            case SquareRoot:
-                ret = Math.sqrt(value);
-                break;
-            case CubicRoot:
-                ret = Math.cbrt(value);
-                break;
-            default:
-              // Linear
-              ret = value;
-                break;
+        case Log:
+            ret = Math.log1p(value);
+            break;
+        case Exp:
+            ret = Math.exp(value);
+            break;
+        case SquareRoot:
+            ret = Math.sqrt(value);
+            break;
+        case CubicRoot:
+            ret = Math.cbrt(value);
+            break;
+        default:
+            // Linear
+            ret = value;
+            break;
         }
         return ret;
     }
@@ -296,18 +290,18 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      *            root of the JTreeMap
      */
     private void setValues(final TreeMapNode root) {
-        if (root.isLeaf()) {           
+        if (root.isLeaf()) {
             final Value value = root.getValue();
 
             if (value == null) {
                 return;
             }
-            
+
             if (maxValue == null || value.getValue() >= maxValue.getValue()) {
                 try {
                     final Class c = value.getClass();
                     if (maxValue == null) {
-                      maxValue = (Value) (c.newInstance());
+                        maxValue = (Value) (c.newInstance());
                     }
                     maxValue.setValue(value.getValue());
                 } catch (final IllegalAccessException iae) {
@@ -322,7 +316,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
                 try {
                     final Class c = value.getClass();
                     if (minValue == null) {
-                      minValue = (Value) (c.newInstance());
+                        minValue = (Value) (c.newInstance());
                     }
                     minValue.setValue(value.getValue());
                 } catch (final IllegalAccessException iae) {
@@ -357,53 +351,59 @@ public class HSBTreeMapColorProvider extends ColorProvider {
     private float negativeSaturation = 1f;
 
     private ColorDistributionTypes colorDistribution = ColorDistributionTypes.Linear;
-  /**
+
+    /**
      * Panel with the legend
      * 
      * @author Laurent Dutheil
      */
-  private class Legend extends JPanel {
-    private static final int Y_INSET = 7;
-    private static final int X_INSET = 15;
-    private static final long serialVersionUID = 6371342387871103592L;
-    private static final int HEIGHT = 20;
-    private static final int WIDTH = 120;
-    private static final int X = 20;
-    private static final int Y = 25;
+    private class Legend extends JPanel {
+        private static final int Y_INSET = 7;
 
-    /**
-     * Constructor of Legend
-     */
-    public Legend() {
-      this.setSize(new java.awt.Dimension(2 * Legend.X + Legend.WIDTH, 2 * Legend.Y
-          + Legend.HEIGHT));
-      this.setPreferredSize(new java.awt.Dimension(2 * Legend.X + Legend.WIDTH, 2
-          * Legend.Y + Legend.HEIGHT));
+        private static final int X_INSET = 15;
+
+        private static final long serialVersionUID = 6371342387871103592L;
+
+        private static final int HEIGHT = 20;
+
+        private static final int WIDTH = 120;
+
+        private static final int X = 20;
+
+        private static final int Y = 25;
+
+        /**
+         * Constructor of Legend
+         */
+        public Legend() {
+            this.setSize(new java.awt.Dimension(2 * Legend.X + Legend.WIDTH, 2 * Legend.Y + Legend.HEIGHT));
+            this.setPreferredSize(new java.awt.Dimension(2 * Legend.X + Legend.WIDTH, 2 * Legend.Y + Legend.HEIGHT));
+        }
+
+        @Override
+        public void paintComponent(final Graphics g) {
+            super.paintComponent(g);
+            if (HSBTreeMapColorProvider.this.minValue == null || HSBTreeMapColorProvider.this.maxValue == null) {
+                setValues(HSBTreeMapColorProvider.this.jTreeMap.getRoot());
+            }
+            final Value min = HSBTreeMapColorProvider.this.minValue;
+            final Value max = HSBTreeMapColorProvider.this.maxValue;
+
+            g.setColor(Color.black);
+            if (min != null && max != null) {
+                g.drawString(min.getLabel(), Legend.X - X_INSET, Legend.Y - Y_INSET);
+                g.drawString(max.getLabel(), Legend.X + Legend.WIDTH - X_INSET, Legend.Y - Y_INSET);
+
+                final double step = (max.getValue() - min.getValue()) / Legend.WIDTH;
+                final Value value = new DefaultValue(min.getValue());
+                for (int i = 0; i < Legend.WIDTH; i++) {
+                    g.setColor(HSBTreeMapColorProvider.this.getColor(value));
+                    g.fillRect(Legend.X + i, Legend.Y, 1, Legend.HEIGHT);
+                    value.setValue(value.getValue() + step);
+                }
+            }
+        }
     }
-
-    @Override
-    public void paintComponent(final Graphics g) {
-      super.paintComponent(g);
-      if (HSBTreeMapColorProvider.this.minValue == null
-          || HSBTreeMapColorProvider.this.maxValue == null) {
-        setValues(HSBTreeMapColorProvider.this.jTreeMap.getRoot());
-      }
-      final Value min = HSBTreeMapColorProvider.this.minValue;
-      final Value max = HSBTreeMapColorProvider.this.maxValue;
-
-      g.setColor(Color.black);
-      g.drawString(min.getLabel(), Legend.X - X_INSET, Legend.Y - Y_INSET);
-      g.drawString(max.getLabel(), Legend.X + Legend.WIDTH - X_INSET, Legend.Y - Y_INSET);
-
-      final double step = (max.getValue() - min.getValue()) / Legend.WIDTH;
-      final Value value = new DefaultValue(min.getValue());
-      for (int i = 0; i < Legend.WIDTH; i++) {
-        g.setColor(HSBTreeMapColorProvider.this.getColor(value));
-        g.fillRect(Legend.X + i, Legend.Y, 1, Legend.HEIGHT);
-        value.setValue(value.getValue() + step);
-      }
-    }
-  }
 }
 /*
  *                 ObjectLab is supporing JTreeMap
