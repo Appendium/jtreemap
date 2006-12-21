@@ -117,6 +117,14 @@
             project="jtreemap" statvalue="34" type="simian"/>
         <summaryresult date="2006-12-04" filecount="1" module="ktreemap"
             project="jtreemap" statvalue="4" type="pmd"/>
+        <summaryresult date="2006-12-12" filecount="22"
+            module="ktreemap" project="jtreemap" statvalue="132" type="checkstyle"/>
+        <summaryresult date="2006-12-12" filecount="6" module="ktreemap"
+            project="jtreemap" statvalue="7" type="findbugs"/>
+        <summaryresult date="2006-12-12" filecount="2" module="ktreemap"
+            project="jtreemap" statvalue="34" type="simian"/>
+        <summaryresult date="2006-12-12" filecount="1" module="ktreemap"
+            project="jtreemap" statvalue="4" type="pmd"/>
     </summary>
     <file id="default-default-org_jense_ktreemap_example_package.html"
         module="ktreemap" path="org/jense/ktreemap/example/package.html" project="jtreemap">
@@ -483,34 +491,40 @@
     <file id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_package.html"
         module="ktreemap" path="net/sf/jtreemap/ktreemap/package.html" project="jtreemap">
         <result date="2006-12-04" statvalue="1" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="1" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_example_package.html"
         module="ktreemap"
         path="net/sf/jtreemap/ktreemap/example/package.html" project="jtreemap">
         <result date="2006-12-04" statvalue="1" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="1" type="checkstyle"/>
     </file>
     <file id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_KTreeMap.java"
         module="ktreemap" path="net/sf/jtreemap/ktreemap/KTreeMap.java" project="jtreemap">
         <result date="2006-12-04" statvalue="12" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="12" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_SplitSquarified.java"
         module="ktreemap"
         path="net/sf/jtreemap/ktreemap/SplitSquarified.java" project="jtreemap">
         <result date="2006-12-04" statvalue="12" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="12" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_SplitStrategy.java"
         module="ktreemap"
         path="net/sf/jtreemap/ktreemap/SplitStrategy.java" project="jtreemap">
         <result date="2006-12-04" statvalue="3" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="3" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_TreeMapNode.java"
         module="ktreemap"
         path="net/sf/jtreemap/ktreemap/TreeMapNode.java" project="jtreemap">
         <result date="2006-12-04" statvalue="4" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="4" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_example_BuilderTM3.java"
@@ -518,12 +532,15 @@
         path="net/sf/jtreemap/ktreemap/example/BuilderTM3.java" project="jtreemap">
         <result date="2006-12-04" statvalue="1" type="checkstyle"/>
         <result date="2006-12-04" statvalue="1" type="findbugs"/>
+        <result date="2006-12-12" statvalue="1" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="1" type="findbugs"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_example_BuilderXML.java"
         module="ktreemap"
         path="net/sf/jtreemap/ktreemap/example/BuilderXML.java" project="jtreemap">
         <result date="2006-12-04" statvalue="2" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="2" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_example_HSBTreeMapColorProvider.java"
@@ -532,6 +549,9 @@
         <result date="2006-12-04" statvalue="47" type="checkstyle"/>
         <result date="2006-12-04" statvalue="1" type="findbugs"/>
         <result date="2006-12-04" statvalue="1" type="findbugs"/>
+        <result date="2006-12-12" statvalue="47" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="1" type="findbugs"/>
+        <result date="2006-12-12" statvalue="1" type="findbugs"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_example_KTreeMapView.java"
@@ -539,6 +559,8 @@
         path="net/sf/jtreemap/ktreemap/example/KTreeMapView.java" project="jtreemap">
         <result date="2006-12-04" statvalue="15" type="checkstyle"/>
         <result date="2006-12-04" statvalue="1" type="findbugs"/>
+        <result date="2006-12-12" statvalue="15" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="1" type="findbugs"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_example_ResourceManager.java"
@@ -547,6 +569,9 @@
         <result date="2006-12-04" statvalue="32" type="checkstyle"/>
         <result date="2006-12-04" statvalue="1" type="findbugs"/>
         <result date="2006-12-04" statvalue="4" type="pmd"/>
+        <result date="2006-12-12" statvalue="32" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="1" type="findbugs"/>
+        <result date="2006-12-12" statvalue="4" type="pmd"/>
     </file>
     <file
         id="jtreemap-ktreemap-net_sf_jtreemap_ktreemap_example_TM3Bean.java"
@@ -554,5 +579,7 @@
         path="net/sf/jtreemap/ktreemap/example/TM3Bean.java" project="jtreemap">
         <result date="2006-12-04" statvalue="2" type="checkstyle"/>
         <result date="2006-12-04" statvalue="2" type="findbugs"/>
+        <result date="2006-12-12" statvalue="2" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="2" type="findbugs"/>
     </file>
 </qalab>
