@@ -97,6 +97,14 @@
             project="jtreemap" statvalue="112" type="simian"/>
         <summaryresult date="2006-12-04" filecount="1" module="jtreemap"
             project="jtreemap" statvalue="1" type="pmd"/>
+        <summaryresult date="2006-12-12" filecount="29"
+            module="jtreemap" project="jtreemap" statvalue="64" type="checkstyle"/>
+        <summaryresult date="2006-12-12" filecount="1" module="jtreemap"
+            project="jtreemap" statvalue="1" type="findbugs"/>
+        <summaryresult date="2006-12-12" filecount="2" module="jtreemap"
+            project="jtreemap" statvalue="112" type="simian"/>
+        <summaryresult date="2006-12-12" filecount="1" module="jtreemap"
+            project="jtreemap" statvalue="1" type="pmd"/>
     </summary>
     <file id="default-default-org_jense_swing_jtreemap_package.html"
         module="jtreemap" path="org/jense/swing/jtreemap/package.html" project="jtreemap">
@@ -522,30 +530,35 @@
         module="jtreemap"
         path="net/sf/jtreemap/swing/example/DemoUtil.java" project="jtreemap">
         <result date="2006-12-04" statvalue="57" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="57" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-jtreemap-net_sf_jtreemap_swing_example_JTreeMapAppletExample.java"
         module="jtreemap"
         path="net/sf/jtreemap/swing/example/JTreeMapAppletExample.java" project="jtreemap">
         <result date="2006-12-04" statvalue="1" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="2" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-jtreemap-net_sf_jtreemap_swing_example_JTreeMapExample.java"
         module="jtreemap"
         path="net/sf/jtreemap/swing/example/JTreeMapExample.java" project="jtreemap">
         <result date="2006-12-04" statvalue="1" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="1" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-jtreemap-net_sf_jtreemap_swing_provider_HSBTreeMapColorProvider.java"
         module="jtreemap"
         path="net/sf/jtreemap/swing/provider/HSBTreeMapColorProvider.java" project="jtreemap">
         <result date="2006-12-04" statvalue="2" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="2" type="checkstyle"/>
     </file>
     <file
         id="jtreemap-jtreemap-net_sf_jtreemap_swing_provider_RedGreenColorProvider.java"
         module="jtreemap"
         path="net/sf/jtreemap/swing/provider/RedGreenColorProvider.java" project="jtreemap">
         <result date="2006-12-04" statvalue="2" type="checkstyle"/>
+        <result date="2006-12-12" statvalue="2" type="checkstyle"/>
     </file>
     <file id="jtreemap-jtreemap-net_sf_jtreemap_swing_JTreeMap.java"
         module="jtreemap" path="net/sf/jtreemap/swing/JTreeMap.java" project="jtreemap">
@@ -556,11 +569,13 @@
         module="jtreemap"
         path="net/sf/jtreemap/swing/provider/ZoomPopupMenu.java" project="jtreemap">
         <result date="2006-12-04" statvalue="1" type="findbugs"/>
+        <result date="2006-12-12" statvalue="1" type="findbugs"/>
     </file>
     <file
         id="jtreemap-jtreemap-net_sf_jtreemap_swing_example_BuilderXML.java"
         module="jtreemap"
         path="net/sf/jtreemap/swing/example/BuilderXML.java" project="jtreemap">
         <result date="2006-12-04" statvalue="1" type="pmd"/>
+        <result date="2006-12-12" statvalue="1" type="pmd"/>
     </file>
 </qalab>

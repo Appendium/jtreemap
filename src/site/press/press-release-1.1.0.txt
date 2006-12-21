@@ -20,7 +20,8 @@ Repository (both Maven 1 and Maven 2). The homepage has some very
 quick examples.
 
 The library is small, lightweight and does not force you to adopt a
-framework.
+framework, but you can also use the Applet and Example Application 
+out-of-the-box.
 
 .
 .
