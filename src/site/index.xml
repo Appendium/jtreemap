@@ -72,6 +72,11 @@ Moreover, we can add a code color which makes it possible to introduce new infor
     <p>1.5+, get over it :-)</p>
     </subsection>
     
+    <subsection name="Is there a maven repository?">
+    <p>Yes, we'll be trying to add our library to the official maven repository but in the meantime, you can point Maven to <a href="http://objectlabkit.sourceforge.net/m2-repo">http://objectlabkit.sourceforge.net/m2-repo</a>.  This is the
+    official repository for ObjectLab Open Source Projects.</p>
+    </subsection>
+    
     <subsection name="UML?">
     <p>We are using yDoc to generate a 'javadoc-like' documentation per module with the added twist of UML diagrams:</p>
     <ul>
