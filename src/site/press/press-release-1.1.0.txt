@@ -31,7 +31,8 @@ The homepage has some very quick examples.
 
 The library is small, lightweight and does not force you to adopt a
 framework, but you can also use the Applet and Example Application 
-out-of-the-box, without any coding.
+out-of-the-box, without any coding.  It is currently used in StatSVN and 
+some financial applications deployed around the world.
 
 ObjectLab is not new to the open-source community having used numerous OS 
 projects, It has recently launched the ObjectLab Kit family, including:
