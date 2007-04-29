@@ -44,12 +44,12 @@
    <logo>images/jtreemapSmall.gif</logo>
    <siteDirectory/>
    <repository>
-      <url>http://svn.sourceforge.net/jtreemap</url>
+      <url>http://jtreemap.svn.sourceforge.net/jtreemap</url>
       <connection>
-         scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk
+         scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk
       </connection>
       <developerConnection>
-         scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk
+         scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk
       </developerConnection>
    </repository>
    <developers>
