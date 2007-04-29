@@ -1,0 +1,145 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>net.sf.jtreemap</groupId>
+   <artifactId>jtreemap</artifactId>
+   <packaging>jar</packaging>
+
+   <!-- this is always the current version of the QALab plugin -->
+   <version>1.1.0</version>
+
+   <name>JTreemap Built By Maven 2</name>
+   <url>http://jtreemap.sourceforge.net</url>
+
+   <licenses>
+      <license>
+         <name>Apache License</name>
+      </license>
+   </licenses>
+
+   <description>JTreeMap built by Maven 2.</description>
+
+   <inceptionYear>2005</inceptionYear>
+
+   <issueManagement>
+      <url>http://www.sourceforge.net/tracker/?group_id=26527</url>
+   </issueManagement>
+
+
+   <scm>
+      <url>http://jtreemap.svn.sourceforge.net/viewvc/jtreemap/</url>
+      <connection>scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk</connection>
+      <developerConnection>
+         scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk
+      </developerConnection>
+   </scm>
+
+   <build>
+      <resources>
+         <resource>
+            <directory>src/conf</directory>
+            <includes>
+               <include>*.properties</include>
+               <include>**/*.gif</include>
+            </includes>
+            <filtering>false</filtering>
+         </resource>
+      </resources>
+      <testResources>
+         <testResource>
+            <directory>src/test/java</directory>
+            <includes>
+               <include>**/*.xml</include>
+            </includes>
+            <filtering>false</filtering>
+         </testResource>
+      </testResources>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+               <source>1.5</source>
+               <target>1.5</target>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+
+   <dependencies/>
+
+<!--
+   <distributionManagement>
+      <repository>
+         <id>sourceforge.net</id>
+         <name>SourceForge</name>
+         <url>scpexe://ssh.sourceforge.net/home/groups/q/qa/qalab/htdocs/m2-repo</url>
+      </repository>
+      <snapshotRepository>
+         <id>sourceforge.net</id>
+         <name>SourceForge</name>
+         <url>scpexe://ssh.sourceforge.net/home/groups/q/qa/qalab/htdocs/m2-repo</url>
+      </snapshotRepository>
+      <site>
+         <id>sourceforge.net</id>
+         <name>SourceForge</name>
+         <url>scpexe://ssh.sourceforge.net/home/groups/q/qa/qalab/htdocs</url>
+      </site>
+   </distributionManagement>
+-->
+
+  <profiles>
+    <profile>
+      <id>release-profile</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <build>
+        <plugins>
+          <plugin>
+            <inherited>true</inherited>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <inherited>true</inherited>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <inherited>true</inherited>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <configuration>
+              <updateReleaseInfo>true</updateReleaseInfo>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

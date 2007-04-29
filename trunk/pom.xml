@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+   <modelVersion>4.0.0</modelVersion>
+
+   <artifactId>jtreemap-site</artifactId>
+   <name>JTreemap</name>
+   <packaging>pom</packaging>
+
+   <groupId>net.sf.jtreemap</groupId>
+   <version>1.1.0</version>
+
+   <build>
+      <defaultGoal>install</defaultGoal>
+   </build>
+
+   <modules>
+      <module>jtreemap</module>
+      <module>ktreemap</module>
+   </modules>
+
+<!--
+   <distributionManagement>
+      <repository>
+         <id>sourceforge.net</id>
+         <name>SourceForge</name>
+         <url>scpexe://ssh.sourceforge.net/home/groups/q/qa/qalab/htdocs/m2-repo</url>
+      </repository>
+      <snapshotRepository>
+         <id>sourceforge.net</id>
+         <name>SourceForge</name>
+         <url>scpexe://ssh.sourceforge.net/home/groups/q/qa/qalab/htdocs/m2-repo</url>
+      </snapshotRepository>
+      <site>
+         <id>sourceforge.net</id>
+         <name>SourceForge</name>
+         <url>scpexe://ssh.sourceforge.net/home/groups/q/qa/qalab/htdocs</url>
+      </site>
+   </distributionManagement>
+-->
+</project>
