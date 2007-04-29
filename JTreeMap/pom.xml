@@ -30,9 +30,9 @@
 
    <scm>
       <url>http://jtreemap.svn.sourceforge.net/viewvc/jtreemap/</url>
-      <connection>scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk</connection>
+      <connection>scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk</connection>
       <developerConnection>
-         scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk
+         scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk
       </developerConnection>
    </scm>
 

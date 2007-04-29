@@ -33,10 +33,10 @@
    </description>
    <repository>
       <connection>
-         scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk/JTreeMap
+         scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk/JTreeMap
       </connection>
       <developerConnection>
-         scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk/JTreeMap
+         scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk/JTreeMap
       </developerConnection>
    </repository>
    <dependencies />

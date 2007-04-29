@@ -33,10 +33,10 @@
    </description>
    <repository>
       <connection>
-         scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk/KTreeMap
+         scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk/KTreeMap
       </connection>
       <developerConnection>
-         scm:svn:https://svn.sourceforge.net/svnroot/jtreemap/trunk/KTreeMap
+         scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk/KTreeMap
       </developerConnection>
    </repository>
    <dependencies>
