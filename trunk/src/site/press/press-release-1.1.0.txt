@@ -5,6 +5,9 @@ Open Source TreeMap/Heatmap components for Swing and SWT.
 
 http://jtreemap.sourceforge.net
 
+We believe this is the only open source library of the sort under a 
+business friendly license (Apache License v2.0)
+
 How to represent and visualize a lot of information at a glance is a 
 hot topic in IT. A Treemap, also known as Heatmap, is an important tool
 for this. A TreeMap graphically represents a hierarchical structure.
@@ -13,26 +16,22 @@ Typically, the hierarchy will involve a tree of nodes of different sizes
 and different colours.  The size and colours are determined by parameters
 such as the relative importance of a node in comparison to the full size.
 
-JTreeMap is released under the business friendly Apache License v2.0.
+It is available immediately for download via SourceForge or the ObjectLab 
+Open Source Repository (both Maven 1 and Maven 2). 
 
-It is available immediately for download via SourceForge or the Maven Central
-Repository (both Maven 1 and Maven 2). The homepage has some very 
-quick examples.
+http://objectlabkit.sourceforge.net/m2-repo
+and
+http://objectlabkit.sourceforge.net/m1-repo
+
+
+The libraries will also be put in the Maven Central Repository (pending processing
+by Apache).
+
+The homepage has some very quick examples.
 
 The library is small, lightweight and does not force you to adopt a
 framework, but you can also use the Applet and Example Application 
-out-of-the-box.
-
-.
-.
-.
-.
-.
-.
-.
-
-
-
+out-of-the-box, without any coding.
 
 ObjectLab is not new to the open-source community having used numerous OS 
 projects, It has recently launched the ObjectLab Kit family, including:
@@ -40,7 +39,10 @@ projects, It has recently launched the ObjectLab Kit family, including:
   of the static analysis results from FindBugs, Checkstyle, PMD, Cobertura etc.
 - DateCalculators (http://objectlabkit.sourceforge.net), a set of generic
   lightweight and thread-safe Date calculators for Business and Finance.
- 
+- StatSvn (http://www.statsvn.org) Subversion repository statistics.  
+- PZFileReader (http://pzfilereader.sourceforge.net) a flexible delimited
+  and FIXED LENGTH file/message parser.
+  
 We would like to thanks our friends and colleagues for their help, 
 reviews and suggestions.
 

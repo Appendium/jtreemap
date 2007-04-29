@@ -73,8 +73,11 @@ Moreover, we can add a code color which makes it possible to introduce new infor
     </subsection>
     
     <subsection name="Is there a maven repository?">
-    <p>Yes, we'll be trying to add our library to the official maven repository but in the meantime, you can point Maven to <a href="http://objectlabkit.sourceforge.net/m2-repo">http://objectlabkit.sourceforge.net/m2-repo</a>.  This is the
-    official repository for ObjectLab Open Source Projects.</p>
+    <p>Yes, we'll be trying to add our library to the official maven repository but in the meantime, you can point Maven to:</p>
+    <ul>
+    <li>Maven 1: <a href="http://objectlabkit.sourceforge.net/m1-repo">http://objectlabkit.sourceforge.net/m1-repo</a></li>
+    <li>Maven 2: <a href="http://objectlabkit.sourceforge.net/m2-repo">http://objectlabkit.sourceforge.net/m2-repo</a></li>
+    </ul><p>This is the official repository for ObjectLab Open Source Projects.</p>
     </subsection>
     
     <subsection name="UML?">
