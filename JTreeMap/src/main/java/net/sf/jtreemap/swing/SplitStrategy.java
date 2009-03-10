@@ -59,7 +59,7 @@ public abstract class SplitStrategy implements Serializable {
         }
 
         final Vector<TreeMapNode> v = root.getChildren();
-        if (v != null) {
+        if (v != null && !v.isEmpty()) {
             calculatePositionsRec(root.getX(), root.getY(), root.getWidth(), root.getHeight(), this.sumWeight(v), v);
         }
     }
@@ -100,6 +100,9 @@ public abstract class SplitStrategy implements Serializable {
     protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0,
             final Vector<TreeMapNode> v) {
 
+        if (v.isEmpty()) {
+            return;
+        }
         // if the Vector contains only one element
         if (v.size() == 1) {
             final TreeMapNode f = v.elementAt(0);
