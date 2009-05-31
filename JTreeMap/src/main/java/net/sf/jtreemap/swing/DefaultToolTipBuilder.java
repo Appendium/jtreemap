@@ -44,19 +44,12 @@ import javax.swing.JToolTip;
  * 
  */
 public class DefaultToolTipBuilder implements IToolTipBuilder, Serializable {
-    /**
-     * 
-     */
     private static final long serialVersionUID = -1646772942428571187L;
 
-    private static JToolTip instance = null;
-
+    private JToolTip instance = null;
     private JTreeMap jTreeMap;
-
     private String weightPrefix;
-    
     private String valuePrefix;
-    
     private boolean showWeight;
 
     /**

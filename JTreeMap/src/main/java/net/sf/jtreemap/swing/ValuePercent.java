@@ -42,13 +42,8 @@ import java.text.NumberFormat;
  */
 
 public class ValuePercent extends Value {
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1087258219010392928L;
-
     private double value;
-
     private NumberFormat nf;
 
     /**
