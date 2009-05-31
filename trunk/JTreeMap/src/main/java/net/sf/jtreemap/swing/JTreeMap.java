@@ -146,11 +146,12 @@ public class JTreeMap extends JComponent {
      *            the split strategy
      * @param treeView The tree representation of the hierarchical data. 
      */
-    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, final JTree treeView,
-            final String weightPrefix, final String valuePrefix, final boolean showWeight) {
+    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, final JTree treeView, final String weightPrefix, final String valuePrefix,
+            final boolean showWeight) {
         this(root, strategy, weightPrefix, valuePrefix, showWeight);
         this.treeView = treeView;
     }
+
     /**
      * Constructor of JTreeMap. <BR>
      * The chosen color provider is UniqueColorProvider.
@@ -161,8 +162,7 @@ public class JTreeMap extends JComponent {
      * @param strategy
      *            the split strategy
      */
-    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, 
-            final String weightPrefix, final String valuePrefix, final boolean showWeight) {
+    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, final String weightPrefix, final String valuePrefix, final boolean showWeight) {
         // ToolTips appears without delay and stay as long as possible
         final ToolTipManager ttm = ToolTipManager.sharedInstance();
         ttm.setInitialDelay(0);
@@ -369,8 +369,7 @@ public class JTreeMap extends JComponent {
         final int xMax = displayedRoot.getX() + displayedRoot.getWidth();
         final int yMin = displayedRoot.getY();
         if (this.activeLeaf != null) {
-            if (this.activeLeaf.getWidth() >= toolTip.getWidth() + 2 * INSET
-                    && activeLeaf.getHeight() >= toolTip.getHeight() + 2 * INSET) {
+            if (this.activeLeaf.getWidth() >= toolTip.getWidth() + 2 * INSET && activeLeaf.getHeight() >= toolTip.getHeight() + 2 * INSET) {
                 posX = activeLeaf.getX() + INSET;
                 posY = activeLeaf.getY() + INSET;
             } else {
@@ -403,12 +402,11 @@ public class JTreeMap extends JComponent {
         final Insets insets = getInsets();
 
         final int border = TreeMapNode.getBorder();
-        root.setDimension(this.root.getX(), root.getY(), width - border - insets.left - insets.right, height - border
-                - insets.top - insets.bottom);
+        root.setDimension(this.root.getX(), root.getY(), width - border - insets.left - insets.right, height - border - insets.top - insets.bottom);
 
         if (!this.root.equals(this.displayedRoot)) {
-            displayedRoot.setDimension(this.displayedRoot.getX(), displayedRoot.getY(), width - border - insets.left
-                    - insets.right, height - border - insets.top - insets.bottom);
+            displayedRoot.setDimension(this.displayedRoot.getX(), displayedRoot.getY(), width - border - insets.left - insets.right, height - border
+                    - insets.top - insets.bottom);
         }
 
         calculatePositions();
@@ -416,9 +414,7 @@ public class JTreeMap extends JComponent {
         if (this.displayedRoot.children().hasMoreElements()) {
             // the background
             g.setColor(this.getBackground());
-            g.fillRect(this.displayedRoot.getX(), displayedRoot.getY(), displayedRoot.getWidth() + border, displayedRoot
-                    .getHeight()
-                    + border);
+            g.fillRect(this.displayedRoot.getX(), displayedRoot.getY(), displayedRoot.getWidth() + border, displayedRoot.getHeight() + border);
             // the JTreeMapExample
             draw(g, displayedRoot);
             // reveal the active leaf
@@ -467,17 +463,15 @@ public class JTreeMap extends JComponent {
     public void setBorder(final Border border) {
         // Substract the previous border insets
         Insets insets = getInsets();
-        displayedRoot.setDimension(this.displayedRoot.getX() - insets.left, displayedRoot.getY() - insets.top, displayedRoot
-                .getWidth()
-                + insets.left + insets.right, displayedRoot.getHeight() + insets.top + insets.bottom);
+        displayedRoot.setDimension(this.displayedRoot.getX() - insets.left, displayedRoot.getY() - insets.top, displayedRoot.getWidth() + insets.left
+                + insets.right, displayedRoot.getHeight() + insets.top + insets.bottom);
 
         super.setBorder(border);
 
         // Add the new border insets
         insets = getInsets();
-        displayedRoot.setDimension(this.displayedRoot.getX() + insets.left, displayedRoot.getY() + insets.top, displayedRoot
-                .getWidth()
-                - insets.left - insets.right, displayedRoot.getHeight() - insets.top - insets.bottom);
+        displayedRoot.setDimension(this.displayedRoot.getX() + insets.left, displayedRoot.getY() + insets.top, displayedRoot.getWidth() - insets.left
+                - insets.right, displayedRoot.getHeight() - insets.top - insets.bottom);
     }
 
     /**
@@ -567,7 +561,9 @@ public class JTreeMap extends JComponent {
         // undo the last zoom
         unzoom();
 
-        zoom.execute(dest);
+        if (dest != null) {
+            zoom.execute(dest);
+        }
     }
 
     /**
@@ -607,8 +603,8 @@ public class JTreeMap extends JComponent {
                         //zoom(t);
                         // dont know why below does not work so for now leave it commented out
                         TreePath path = new TreePath(t.getPath());
-                         treeView.setSelectionPath(path);
-                         treeView.scrollPathToVisible(path);
+                        treeView.setSelectionPath(path);
+                        treeView.scrollPathToVisible(path);
                     }
 
                 } else {
@@ -617,7 +613,7 @@ public class JTreeMap extends JComponent {
                     } else {
                         //zoom((TreeMapNode) getDisplayedRoot().getParent());
                         // dont know why below does not work so for now leave it commented out
-                        TreePath path =  new TreePath(((TreeMapNode)getDisplayedRoot().getParent()).getPath());
+                        TreePath path = new TreePath(((TreeMapNode) getDisplayedRoot().getParent()).getPath());
                         treeView.setSelectionPath(path);
                         treeView.scrollPathToVisible(path);
                     }
@@ -626,8 +622,6 @@ public class JTreeMap extends JComponent {
             }
         }
     }
-    
-    
 
     /**
      * Class who zoom and unzoom the JTreeMap.
@@ -691,6 +685,9 @@ public class JTreeMap extends JComponent {
          *            the root to dimension
          */
         protected void setNewDimension(final TreeMapNode dest) {
+            if (dest == null) {
+                return;
+            }
             dest.setX(JTreeMap.this.getRoot().getX());
             dest.setY(JTreeMap.this.getRoot().getY());
 
@@ -727,8 +724,6 @@ public class JTreeMap extends JComponent {
             }
         }
     }
-
-
 
     public JTree getTreeView() {
         return treeView;

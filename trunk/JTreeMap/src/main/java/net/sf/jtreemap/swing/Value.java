@@ -116,6 +116,14 @@ public abstract class Value implements Comparable, Serializable {
         }
         throw new IllegalArgumentException();
     }
+    
+    
+    public String toString() {
+        StringBuilder b = new StringBuilder();
+        b.append(getLabel()).append(" - ").append(getValue());
+        return b.toString();
+    }
+
 }
 /*
  *                 ObjectLab is supporing JTreeMap
