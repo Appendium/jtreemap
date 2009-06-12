@@ -71,7 +71,7 @@ public class BuilderXML {
 
     private Document document;
 
-    private TreeMapNodeBuilder builder;
+    private final TreeMapNodeBuilder builder;
 
     /**
      * Constructor

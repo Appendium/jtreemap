@@ -50,8 +50,6 @@ import net.sf.jtreemap.swing.DefaultValue;
 import net.sf.jtreemap.swing.TreeMapNode;
 import net.sf.jtreemap.swing.TreeMapNodeBuilder;
 
-
-
 /**
  * Parse a TM3 file to build the tree. <BR>
  * See <a href=http://www.cs.umd.edu/hcil/treemap/doc4.1/create_TM3_file.html>
@@ -93,7 +91,7 @@ public class BuilderTM3 implements Serializable {
 
     private final HashMap<TreeMapNode, HashMap<String, Object>> values = new HashMap<TreeMapNode, HashMap<String, Object>>();
 
-    private TreeMapNodeBuilder builder;
+    private final TreeMapNodeBuilder builder;
 
     /**
      * Constructor

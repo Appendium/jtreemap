@@ -174,8 +174,9 @@ public class RedGreenColorProvider extends ColorProvider {
          * Constructor of Legend
          */
         public Legend() {
-            this.setPreferredSize(new java.awt.Dimension(
-                    2 * Legend.X + RedGreenColorProvider.this.tabColor.length * Legend.WIDTH, 2 * Legend.Y + Legend.HEIGHT));
+            this
+                    .setPreferredSize(new java.awt.Dimension(2 * Legend.X + RedGreenColorProvider.this.tabColor.length * Legend.WIDTH, 2 * Legend.Y
+                            + Legend.HEIGHT));
         }
 
         @Override
@@ -204,8 +205,7 @@ public class RedGreenColorProvider extends ColorProvider {
             }
 
             g.setColor(Color.black);
-            g.drawString(RedGreenColorProvider.this.maxAbsValue.getLabel(), Legend.X + (xCursor - 1) * Legend.WIDTH, Legend.Y
-                    - Y_INSET);
+            g.drawString(RedGreenColorProvider.this.maxAbsValue.getLabel(), Legend.X + (xCursor - 1) * Legend.WIDTH, Legend.Y - Y_INSET);
         }
     }
 }

@@ -53,18 +53,18 @@ public class DefaultToolTip extends JToolTip {
 
     private static final long serialVersionUID = -2492627777999093973L;
 
-    private JTreeMap jTreeMap;
+    private final JTreeMap jTreeMap;
 
-    private Font labelFont;
+    private final Font labelFont;
 
-    private Font valueFont;
-    
-    private String weightPrefix;
-    
-    private String valuePrefix;
-    
-    private boolean showWeight;
-    
+    private final Font valueFont;
+
+    private final String weightPrefix;
+
+    private final String valuePrefix;
+
+    private final boolean showWeight;
+
     /**
      * Constructor.
      * 
@@ -90,7 +90,7 @@ public class DefaultToolTip extends JToolTip {
     @Override
     public void paint(final Graphics g) {
         if (this.jTreeMap.getActiveLeaf() != null) {
-            Graphics g2D = (Graphics) g;
+            final Graphics g2D = g;
             g2D.setColor(Color.YELLOW);
             g2D.fill3DRect(0, 0, this.getWidth(), this.getHeight(), true);
             g2D.setColor(Color.black);
@@ -99,13 +99,13 @@ public class DefaultToolTip extends JToolTip {
             g2D.setFont(this.valueFont);
             String toDraw = this.jTreeMap.getActiveLeaf().getLabelValue();
             if (valuePrefix != null) {
-                toDraw = valuePrefix + " " + toDraw; 
+                toDraw = valuePrefix + " " + toDraw;
             }
             if (showWeight) {
-                toDraw = this.jTreeMap.getActiveLeaf().getWeight() + ", " + toDraw; 
+                toDraw = this.jTreeMap.getActiveLeaf().getWeight() + ", " + toDraw;
             }
             if (weightPrefix != null && showWeight) {
-                toDraw = weightPrefix + " " + toDraw; 
+                toDraw = weightPrefix + " " + toDraw;
             }
             g2D.drawString(toDraw, TOOLTIP_OFFSET, this.getHeight() - TOOLTIP_OFFSET);
         }

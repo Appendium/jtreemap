@@ -63,11 +63,11 @@ public class ZoomPopupMenu extends JPopupMenu {
      */
     public static final Icon ZOOM_ICON = new ImageIcon(ZoomPopupMenu.class.getResource("icons/zoom.png"));
 
-    private JTreeMap jTreeMap;
+    private final JTreeMap jTreeMap;
 
-    private transient MouseListener mouseListener;
-    
-    private boolean showAbout;
+    private transient final MouseListener mouseListener;
+
+    private final boolean showAbout;
 
     /**
      * Constructor
@@ -76,9 +76,9 @@ public class ZoomPopupMenu extends JPopupMenu {
      *            jTreeMap which you want to add a zoom popup menu
      */
     public ZoomPopupMenu(final JTreeMap jTreeMap) {
-        this(jTreeMap,false);
+        this(jTreeMap, false);
     }
-    
+
     public ZoomPopupMenu(final JTreeMap jTreeMap, final boolean showAbout) {
         super();
         this.jTreeMap = jTreeMap;
@@ -86,14 +86,12 @@ public class ZoomPopupMenu extends JPopupMenu {
         this.jTreeMap.addMouseListener(this.mouseListener);
         this.showAbout = showAbout;
     }
-    
 
     protected class HandleClickMouse extends MouseAdapter {
         @Override
         public void mouseClicked(final MouseEvent e) {
             if (e.getButton() == MouseEvent.BUTTON3
-                    || (e.getButton() == MouseEvent.BUTTON1 && (e.isAltDown() || e.isControlDown() 
-                            || e.isMetaDown() || e.isAltGraphDown()))) {
+                    || (e.getButton() == MouseEvent.BUTTON1 && (e.isAltDown() || e.isControlDown() || e.isMetaDown() || e.isAltGraphDown()))) {
 
                 for (int i = ZoomPopupMenu.this.getComponentCount(); i > 0; i--) {
                     ZoomPopupMenu.this.remove(i - 1);
@@ -122,12 +120,12 @@ public class ZoomPopupMenu extends JPopupMenu {
                     }
                     cursor = child;
                 }
-                
+
                 if (showAbout) {
                     // Separator
                     ZoomPopupMenu.this.addSeparator();
                     final AboutAction action = new AboutAction();
-                    ZoomPopupMenu.this.add(action);                    
+                    ZoomPopupMenu.this.add(action);
                 }
 
                 ZoomPopupMenu.this.show(e.getComponent(), e.getX(), e.getY());

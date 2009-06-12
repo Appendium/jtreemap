@@ -47,6 +47,11 @@ import javax.swing.JPanel;
 public abstract class ColorProvider implements Serializable {
 
     /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * get the associated color to the value.
      * 
      * @param value

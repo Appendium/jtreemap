@@ -107,7 +107,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
     private static final String OPEN_XML_FILE = "Open Xml File";
 
-    private JTreeMap jTreeMap;
+    private final JTreeMap jTreeMap;
 
     private JTree treeView = new JTree();
 
@@ -457,16 +457,13 @@ public class JTreeMapExample extends JFrame implements ActionListener {
     protected void createColorProviders() {
         colorProviders.put("Red Green", new RedGreenColorProvider(this.jTreeMap));
         colorProviders.put("Random", new RandomColorProvider(jTreeMap));
-        colorProviders.put("HSB linear", new HSBTreeMapColorProvider(jTreeMap,
-                HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED));
-        colorProviders.put("HSB log", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log,
-                Color.GREEN, Color.RED));
-        colorProviders.put("HSB SquareRoot", new HSBTreeMapColorProvider(jTreeMap,
-                HSBTreeMapColorProvider.ColorDistributionTypes.SquareRoot, Color.GREEN, Color.RED));
-        colorProviders.put("HSB CubicRoot", new HSBTreeMapColorProvider(jTreeMap,
-                HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN, Color.RED));
-        colorProviders.put("HSB exp", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp,
-                Color.GREEN, Color.RED));
+        colorProviders.put("HSB linear", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED));
+        colorProviders.put("HSB log", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN, Color.RED));
+        colorProviders.put("HSB SquareRoot", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.SquareRoot, Color.GREEN,
+                Color.RED));
+        colorProviders.put("HSB CubicRoot", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN,
+                Color.RED));
+        colorProviders.put("HSB exp", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN, Color.RED));
         for (final String key : colorProviders.keySet()) {
             final ColorProvider cp = colorProviders.get(key);
             panelLegend.add(cp.getLegendPanel(), key);

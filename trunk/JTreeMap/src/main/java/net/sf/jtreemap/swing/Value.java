@@ -41,6 +41,10 @@ import java.io.Serializable;
  */
 
 public abstract class Value implements Comparable, Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private static final int SHIFT = 32;
     private static final int PRIME = 31;
 
@@ -116,10 +120,9 @@ public abstract class Value implements Comparable, Serializable {
         }
         throw new IllegalArgumentException();
     }
-    
-    
+
     public String toString() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         b.append(getLabel()).append(" - ").append(getValue());
         return b.toString();
     }

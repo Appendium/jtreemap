@@ -68,16 +68,11 @@ import javax.swing.tree.TreePath;
  * @author Laurent Dutheil
  */
 public class JTreeMap extends JComponent {
-    private static final int BORDER_FOR_FONT = 5;
-
-    private static final int MAX_NUM_CHAR = 3;
-
-    private static final int INSET = 4;
-
-    private static final int DISMISS_DELAY_MS = 100000;
-
     private static final long serialVersionUID = 7255952672238300249L;
-
+    private static final int BORDER_FOR_FONT = 5;
+    private static final int MAX_NUM_CHAR = 3;
+    private static final int INSET = 4;
+    private static final int DISMISS_DELAY_MS = 100000;
     private static final Color TRANSPARENCY_COLOR = new Color(204, 204, 204, 128);
 
     /**
@@ -104,7 +99,7 @@ public class JTreeMap extends JComponent {
     private IToolTipBuilder toolTipBuilder;
 
     // zoom
-    private Zoom zoom;
+    private final Zoom zoom = new Zoom();
 
     /**
      * Constructor of JTreeMap. <BR>
@@ -174,8 +169,6 @@ public class JTreeMap extends JComponent {
 
         // the default DefaultToolTipBuilder
         toolTipBuilder = new DefaultToolTipBuilder(this, weightPrefix, valuePrefix, showWeight);
-
-        zoom = new Zoom();
 
         setRoot(root);
         setStrategy(strategy);
@@ -572,7 +565,6 @@ public class JTreeMap extends JComponent {
      * @author Laurent Dutheil
      */
     protected class HandleMouseMotion extends MouseMotionAdapter {
-
         @Override
         public void mouseMoved(final MouseEvent e) {
             if (getDisplayedRoot().children().hasMoreElements()) {
@@ -591,9 +583,8 @@ public class JTreeMap extends JComponent {
      * @author Ekin Gulen
      */
     protected class HandleMouseClick extends MouseAdapter {
-
         @Override
-        public void mouseClicked(MouseEvent e) {
+        public void mouseClicked(final MouseEvent e) {
             if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
                 final TreeMapNode t = getDisplayedRoot().getChild(e.getX(), e.getY());
                 if (t != null && !t.isLeaf()) {
@@ -602,7 +593,7 @@ public class JTreeMap extends JComponent {
                     } else {
                         //zoom(t);
                         // dont know why below does not work so for now leave it commented out
-                        TreePath path = new TreePath(t.getPath());
+                        final TreePath path = new TreePath(t.getPath());
                         treeView.setSelectionPath(path);
                         treeView.scrollPathToVisible(path);
                     }
@@ -613,7 +604,7 @@ public class JTreeMap extends JComponent {
                     } else {
                         //zoom((TreeMapNode) getDisplayedRoot().getParent());
                         // dont know why below does not work so for now leave it commented out
-                        TreePath path = new TreePath(((TreeMapNode) getDisplayedRoot().getParent()).getPath());
+                        final TreePath path = new TreePath(((TreeMapNode) getDisplayedRoot().getParent()).getPath());
                         treeView.setSelectionPath(path);
                         treeView.scrollPathToVisible(path);
                     }
@@ -629,18 +620,10 @@ public class JTreeMap extends JComponent {
      * @author Laurent Dutheil
      */
     private class Zoom implements Serializable {
-        /**
-         * 
-         */
         private static final long serialVersionUID = 6708828099608367996L;
-
         private boolean enable;
-
         private boolean keepProportion = false;
 
-        /**
-         * Constructor
-         */
         public Zoom() {
             enable = true;
         }
@@ -729,7 +712,7 @@ public class JTreeMap extends JComponent {
         return treeView;
     }
 
-    public void setTreeView(JTree treeView) {
+    public void setTreeView(final JTree treeView) {
         this.treeView = treeView;
     }
 }
