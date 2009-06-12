@@ -42,11 +42,10 @@ public class ZoomAction extends AbstractAction {
             jTreeMap.zoom(this.node);
             jTreeMap.repaint();
         } else {
-            TreePath path =  new TreePath(this.node.getPath());
+            final TreePath path = new TreePath(this.node.getPath());
             jTreeMap.getTreeView().setSelectionPath(path);
             jTreeMap.getTreeView().scrollPathToVisible(path);
         }
-        
 
     }
 

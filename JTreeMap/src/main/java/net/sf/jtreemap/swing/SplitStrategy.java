@@ -48,6 +48,11 @@ import java.util.Vector;
 
 public abstract class SplitStrategy implements Serializable {
     /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * calculate the positions for all the elements of the root.
      * 
      * @param root
@@ -97,8 +102,7 @@ public abstract class SplitStrategy implements Serializable {
         return d;
     }
 
-    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0,
-            final Vector<TreeMapNode> v) {
+    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0, final Vector<TreeMapNode> v) {
 
         if (v.isEmpty()) {
             return;
@@ -204,8 +208,7 @@ public abstract class SplitStrategy implements Serializable {
 
     }
 
-    protected void workOutWeight(final Vector<TreeMapNode> v1, final Vector<TreeMapNode> v2, final Vector<TreeMapNode> vClone,
-            final double sumWeight) {
+    protected void workOutWeight(final Vector<TreeMapNode> v1, final Vector<TreeMapNode> v2, final Vector<TreeMapNode> vClone, final double sumWeight) {
         double memWeight = 0.0;
         double elemWeight = 0.0;
         for (final Iterator<TreeMapNode> i = vClone.iterator(); i.hasNext();) {

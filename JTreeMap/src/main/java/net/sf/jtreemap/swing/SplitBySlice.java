@@ -62,10 +62,9 @@ public class SplitBySlice extends SplitStrategy {
      * @param sumWeight
      *            sum of the weights
      */
-    public static void splitInSlice(final int x0, final int y0, final int w0, final int h0, final Vector<TreeMapNode> v,
-            final double sumWeight) {
+    public static void splitInSlice(final int x0, final int y0, final int w0, final int h0, final Vector<TreeMapNode> v, final double sumWeight) {
         int offset = 0;
-        boolean vertical = h0 > w0;
+        final boolean vertical = h0 > w0;
 
         for (final TreeMapNode node : v) {
             if (vertical) {
@@ -114,8 +113,7 @@ public class SplitBySlice extends SplitStrategy {
      *      int, int, double, java.util.Vector)
      */
     @Override
-    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0,
-            final Vector<TreeMapNode> v) {
+    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0, final Vector<TreeMapNode> v) {
 
         SplitBySlice.splitInSlice(x0, y0, w0, h0, v, weight0);
 
@@ -129,17 +127,14 @@ public class SplitBySlice extends SplitStrategy {
                 // if this is not a leaf, calculation for the children
                 if (TreeMapNode.getBorder() > 1) {
                     TreeMapNode.setBorder(TreeMapNode.getBorder() - 2);
-                    calculatePositionsRec(node.getX() + 2, node.getY() + 2, node.getWidth() - 2, node.getHeight() - 2, node
-                            .getWeight(), node.getChildren());
+                    calculatePositionsRec(node.getX() + 2, node.getY() + 2, node.getWidth() - 2, node.getHeight() - 2, node.getWeight(), node.getChildren());
                     TreeMapNode.setBorder(TreeMapNode.getBorder() + 2);
                 } else if (TreeMapNode.getBorder() == 1) {
                     TreeMapNode.setBorder(0);
-                    calculatePositionsRec(node.getX() + 1, node.getY() + 1, node.getWidth() - 1, node.getHeight() - 1, node
-                            .getWeight(), node.getChildren());
+                    calculatePositionsRec(node.getX() + 1, node.getY() + 1, node.getWidth() - 1, node.getHeight() - 1, node.getWeight(), node.getChildren());
                     TreeMapNode.setBorder(1);
                 } else {
-                    calculatePositionsRec(node.getX(), node.getY(), node.getWidth(), node.getHeight(), node.getWeight(), node
-                            .getChildren());
+                    calculatePositionsRec(node.getX(), node.getY(), node.getWidth(), node.getHeight(), node.getWeight(), node.getChildren());
                 }
             }
         }

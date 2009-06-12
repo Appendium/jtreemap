@@ -63,10 +63,9 @@ public class RandomColorProvider extends ColorProvider {
      */
     private static final long serialVersionUID = -8184356270950978553L;
 
-    private static final Color[] COLOURS = new Color[] { new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255),
-            new Color(255, 255, 0), new Color(255, 0, 255), new Color(0, 255, 255), new Color(102, 102, 51),
-            new Color(255, 51, 153), new Color(255, 153, 51), new Color(204, 204, 51), new Color(205, 102, 204),
-            new Color(51, 153, 255), new Color(153, 102, 0) };
+    private static final Color[] COLOURS = new Color[] { new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255), new Color(255, 255, 0),
+            new Color(255, 0, 255), new Color(0, 255, 255), new Color(102, 102, 51), new Color(255, 51, 153), new Color(255, 153, 51), new Color(204, 204, 51),
+            new Color(205, 102, 204), new Color(51, 153, 255), new Color(153, 102, 0) };
 
     private int cursor = 0;
 
@@ -74,7 +73,7 @@ public class RandomColorProvider extends ColorProvider {
 
     private JPanel legend;
 
-    private JTreeMap jTreeMap;
+    private final JTreeMap jTreeMap;
 
     /**
      * Constructor

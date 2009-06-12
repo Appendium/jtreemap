@@ -99,8 +99,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param positiveColor
      * @param negativeColor
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution,
-            final Color positiveColor, final Color negativeColor) {
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, final Color positiveColor, final Color negativeColor) {
         super();
         jTreeMap = treeMap;
         this.colorDistribution = colorDistribution;
@@ -122,8 +121,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param hue
      * @param saturation
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, final float hue,
-            final float saturation) {
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, final float hue, final float saturation) {
         this(treeMap, colorDistribution, hue, saturation, hue, saturation);
     }
 
@@ -134,8 +132,8 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param negativeHue
      * @param negativeSaturation
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final float positiveHue, final float positiveSaturation,
-            final float negativeHue, final float negativeSaturation) {
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final float positiveHue, final float positiveSaturation, final float negativeHue,
+            final float negativeSaturation) {
         this(treeMap, ColorDistributionTypes.Linear, positiveHue, positiveSaturation, negativeHue, negativeSaturation);
     }
 
@@ -147,8 +145,8 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param negativeHue
      * @param negativeSaturation
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution,
-            final float positiveHue, final float positiveSaturation, final float negativeHue, final float negativeSaturation) {
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, final float positiveHue,
+            final float positiveSaturation, final float negativeHue, final float negativeSaturation) {
         super();
         jTreeMap = treeMap;
         this.colorDistribution = colorDistribution;
@@ -334,7 +332,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
         }
     }
 
-    private JTreeMap jTreeMap;
+    private final JTreeMap jTreeMap;
 
     private JPanel legend;
 

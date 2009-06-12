@@ -83,7 +83,7 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
 public class JTreeMapAppletExample extends JApplet {
 
     private static final double CONSTRAINT_WEIGHTX = 0.5;
-    
+
     private static final int SCROLLPANE_WIDTH = 140;
 
     private static final String XML = "xml";
@@ -107,18 +107,18 @@ public class JTreeMapAppletExample extends JApplet {
     private BuilderTM3 builderTM3;
 
     private boolean showTM3CTonf;
-    
+
     private boolean showTree;
-    
+
     private boolean showWeight;
-    
+
     private String weightPrefix;
-    
+
     private String valuePrefix;
-    
+
     private JTree treeView;
     private DefaultTreeModel treeModel;
-    
+
     /**
      * This is the default constructor
      */
@@ -146,7 +146,7 @@ public class JTreeMapAppletExample extends JApplet {
         final String dataFile = getParameter("dataFile");
         final String dataFileType = getParameter("dataFileType");
         TreeMapNode root = null;
-        if(TM3.equalsIgnoreCase(dataFileType)) {
+        if (TM3.equalsIgnoreCase(dataFileType)) {
             try {
                 builderTM3 = new BuilderTM3(createReader(dataFile));
                 root = builderTM3.getRoot();
@@ -157,7 +157,7 @@ public class JTreeMapAppletExample extends JApplet {
             } catch (final IOException e) {
                 root = handleException(e);
             }
-        } else if(XML.equalsIgnoreCase(dataFileType)) {
+        } else if (XML.equalsIgnoreCase(dataFileType)) {
             try {
                 final URL url = new URL(getCodeBase() + dataFile);
                 final URLConnection connection = url.openConnection();
@@ -176,32 +176,28 @@ public class JTreeMapAppletExample extends JApplet {
 
         this.jTreeMap = new JTreeMap(root, new SplitBySortedWeight(), treeView, weightPrefix, valuePrefix, showWeight);
         this.jTreeMap.setFont(new Font(null, Font.BOLD, DEFAULT_FONT_SIZE));
-        
+
         final String colourProvider = getParameter("colorProvider");
-        
+
         ColorProvider colourProviderInstance = null;
         if ("Random".equalsIgnoreCase(colourProvider)) {
             colourProviderInstance = new RandomColorProvider(this.jTreeMap);
         } else if ("HSBLinear".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap,
-                  HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED);
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED);
         } else if ("HSBLog".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log,
-                  Color.GREEN, Color.RED);
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN, Color.RED);
         } else if ("HSBSquareRoot".equalsIgnoreCase(colourProvider)) {
             colourProviderInstance = new RandomColorProvider(this.jTreeMap);
         } else if ("HSBCubicRoot".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap,
-                  HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN, Color.RED);
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN, Color.RED);
         } else if ("HSBExp".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap,
-                  HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN, Color.RED);
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN, Color.RED);
         }
-        
+
         if (colourProviderInstance == null) {
             colourProviderInstance = new RedGreenColorProvider(this.jTreeMap);
         }
-        
+
         this.jTreeMap.setColorProvider(colourProviderInstance);
 
         // Add a popupMenu to zoom
@@ -252,8 +248,7 @@ public class JTreeMapAppletExample extends JApplet {
     private BufferedReader createReader(final String dataFile) throws IOException {
         final URL url = new URL(getCodeBase() + dataFile);
         final URLConnection connection = url.openConnection();
-        final BufferedReader reader = new BufferedReader(
-                new InputStreamReader(connection.getInputStream()));
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         return reader;
     }
 
@@ -320,8 +315,8 @@ public class JTreeMapAppletExample extends JApplet {
                 final JComboBox cmb = (JComboBox) e.getSource();
                 final String field = (String) cmb.getSelectedItem();
                 JTreeMapAppletExample.this.builderTM3.setValues(field);
-//              createColorProviders();
-//              updateLegendPanel();
+                //              createColorProviders();
+                //              updateLegendPanel();
                 JTreeMapAppletExample.this.repaint();
             }
         });
@@ -372,7 +367,6 @@ public class JTreeMapAppletExample extends JApplet {
         this.jContentPane.removeAll();
     }
 
-    
 }
 /*
  *                 ObjectLab is supporing JTreeMap

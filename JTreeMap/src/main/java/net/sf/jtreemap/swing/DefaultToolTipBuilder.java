@@ -47,10 +47,10 @@ public class DefaultToolTipBuilder implements IToolTipBuilder, Serializable {
     private static final long serialVersionUID = -1646772942428571187L;
 
     private JToolTip instance = null;
-    private JTreeMap jTreeMap;
-    private String weightPrefix;
-    private String valuePrefix;
-    private boolean showWeight;
+    private final JTreeMap jTreeMap;
+    private final String weightPrefix;
+    private final String valuePrefix;
+    private final boolean showWeight;
 
     /**
      * Constructor.
@@ -72,8 +72,7 @@ public class DefaultToolTipBuilder implements IToolTipBuilder, Serializable {
      */
     public JToolTip getToolTip() {
         if (instance == null) {
-            instance = new DefaultToolTip(this.jTreeMap, this.weightPrefix, 
-                    this.valuePrefix, this.showWeight);
+            instance = new DefaultToolTip(this.jTreeMap, this.weightPrefix, this.valuePrefix, this.showWeight);
         }
         return instance;
     }

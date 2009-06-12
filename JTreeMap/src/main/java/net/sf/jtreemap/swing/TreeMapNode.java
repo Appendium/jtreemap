@@ -140,8 +140,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     public TreeMapNode getActiveLeaf(final int xParam, final int yParam) {
 
         if (this.isLeaf()) {
-            if ((xParam >= this.getX()) && (xParam <= this.getX() + this.getWidth()) && (yParam >= this.getY())
-                    && (yParam <= this.getY() + this.getHeight())) {
+            if ((xParam >= this.getX()) && (xParam <= this.getX() + this.getWidth()) && (yParam >= this.getY()) && (yParam <= this.getY() + this.getHeight())) {
                 return this;
             }
         } else {

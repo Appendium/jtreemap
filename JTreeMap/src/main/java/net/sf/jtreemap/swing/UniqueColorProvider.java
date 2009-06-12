@@ -52,7 +52,7 @@ public class UniqueColorProvider extends ColorProvider {
 
     private static final Color DEFAULT_COLOR = new Color(153, 153, 51);
 
-    private Color color;
+    private final Color color;
 
     private JPanel legend;
 

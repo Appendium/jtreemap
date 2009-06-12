@@ -130,8 +130,7 @@ public class SplitSquarified extends SplitStrategy {
      *      int, int, double, java.util.Vector)
      */
     @Override
-    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0,
-            final Vector<TreeMapNode> v) {
+    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0, final Vector<TreeMapNode> v) {
         final Vector<TreeMapNode> vClone = new Vector<TreeMapNode>(v);
 
         sortVector(vClone);
