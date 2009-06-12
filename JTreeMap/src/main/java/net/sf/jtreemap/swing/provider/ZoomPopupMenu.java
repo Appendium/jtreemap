@@ -32,17 +32,13 @@
  */
 package net.sf.jtreemap.swing.provider;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
-import javax.swing.tree.TreePath;
 
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.TreeMapNode;
@@ -93,12 +89,6 @@ public class ZoomPopupMenu extends JPopupMenu {
     
 
     protected class HandleClickMouse extends MouseAdapter {
-
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
-         */
         @Override
         public void mouseClicked(final MouseEvent e) {
             if (e.getButton() == MouseEvent.BUTTON3
@@ -115,7 +105,7 @@ public class ZoomPopupMenu extends JPopupMenu {
                 // Parents
                 while (cursor.getParent() != null) {
                     final TreeMapNode parent = (TreeMapNode) cursor.getParent();
-                    final ZoomAction action = new ZoomAction(parent, UNZOOM_ICON);
+                    final ZoomAction action = new ZoomAction(jTreeMap, parent, UNZOOM_ICON);
                     ZoomPopupMenu.this.insert(action, 0);
                     cursor = parent;
                 }
@@ -127,7 +117,7 @@ public class ZoomPopupMenu extends JPopupMenu {
                 while (cursor.getChild(e.getX(), e.getY()) != null) {
                     final TreeMapNode child = cursor.getChild(e.getX(), e.getY());
                     if (!child.isLeaf()) {
-                        final ZoomAction action = new ZoomAction(child, ZOOM_ICON);
+                        final ZoomAction action = new ZoomAction(jTreeMap, child, ZOOM_ICON);
                         ZoomPopupMenu.this.add(action);
                     }
                     cursor = child;
@@ -143,92 +133,7 @@ public class ZoomPopupMenu extends JPopupMenu {
                 ZoomPopupMenu.this.show(e.getComponent(), e.getX(), e.getY());
             }
         }
-
     }
-
-    private class ZoomAction extends AbstractAction {
-        private static final long serialVersionUID = -8559400865920393294L;
-
-        private TreeMapNode node;
-
-        /**
-         * Constructor
-         * 
-         * @param node
-         *            where you want to zoom/unzoom
-         * @param icon
-         *            icon corresponding to the operation (zoom or unzoom)
-         */
-        public ZoomAction(final TreeMapNode node, final Icon icon) {
-            super(node.getLabel(), icon);
-            this.node = node;
-        }
-
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-         */
-        public void actionPerformed(final ActionEvent e) {
-            if (jTreeMap.getTreeView() == null) {
-                ZoomPopupMenu.this.jTreeMap.zoom(this.node);
-                ZoomPopupMenu.this.jTreeMap.repaint();
-            } else {
-                TreePath path =  new TreePath(this.node.getPath());
-                jTreeMap.getTreeView().setSelectionPath(path);
-                jTreeMap.getTreeView().scrollPathToVisible(path);
-            }
-            
-
-        }
-
-        /*
-         * (non-Javadoc)
-         * 
-         * @see javax.swing.Action#isEnabled()
-         */
-        @Override
-        public boolean isEnabled() {
-            return true;
-        }
-    }
-
-
-    private class AboutAction extends AbstractAction {
-        private static final long serialVersionUID = -8559400862920393294L;
-
-        /**
-         * Constructor
-         * 
-         * @param node
-         *            where you want to zoom/unzoom
-         * @param icon
-         *            icon corresponding to the operation (zoom or unzoom)
-         */
-        public AboutAction() {
-            super("About");
-        }
-
-        /*
-         * (non-Javadoc)
-         * 
-         * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-         */
-        public void actionPerformed(final ActionEvent e) {
-            JOptionPane.showMessageDialog(null, "<html>JTreeMap powered by <a href=\"http://www.ObjectLab.co.uk\">ObjectLab.co.uk</a></html>");
-        }
-
-        /*
-         * (non-Javadoc)
-         * 
-         * @see javax.swing.Action#isEnabled()
-         */
-        @Override
-        public boolean isEnabled() {
-            return true;
-        }
-    }
-
 }
 /*
  *                 ObjectLab is supporing JTreeMap
