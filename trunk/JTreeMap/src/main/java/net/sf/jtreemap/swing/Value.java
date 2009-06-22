@@ -41,9 +41,6 @@ import java.io.Serializable;
  */
 
 public abstract class Value implements Comparable, Serializable {
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
     private static final int SHIFT = 32;
     private static final int PRIME = 31;
