@@ -204,7 +204,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
      * @return the label
      */
     public String getLabel() {
-        return this.getUserObject().toString();
+        return getUserObject() != null ? getUserObject().toString() : null;
     }
 
     /**
@@ -213,7 +213,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
      * @return the label of the Value
      */
     public String getLabelValue() {
-        return this.value.getLabel();
+        return value != null ? this.value.getLabel() : null;
     }
 
     /**
