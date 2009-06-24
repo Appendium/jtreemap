@@ -46,23 +46,15 @@ import javax.swing.JToolTip;
  */
 public class DefaultToolTip extends JToolTip {
     private static final int TOOLTIP_OFFSET = 5;
-
     private static final int DEFAULT_VALUE_SIZE = 10;
-
     private static final int DEFAULT_LABEL_SIZE = 12;
-
     private static final long serialVersionUID = -2492627777999093973L;
 
     private final JTreeMap jTreeMap;
-
     private final Font labelFont;
-
     private final Font valueFont;
-
     private final String weightPrefix;
-
     private final String valuePrefix;
-
     private final boolean showWeight;
 
     /**
