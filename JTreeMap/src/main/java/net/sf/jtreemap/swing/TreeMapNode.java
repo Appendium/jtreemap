@@ -57,15 +57,10 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     private static int border = DEFAULT_BORDER_SIZE;
 
     private int height;
-
     private Value value;
-
     private double weight = 0.0;
-
     private int width;
-
     private int x;
-
     private int y;
 
     /**
@@ -204,7 +199,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
      * @return the label
      */
     public String getLabel() {
-        return getUserObject() != null ? getUserObject().toString() : null;
+        return getUserObject() != null ? getUserObject().toString() : "";
     }
 
     /**
@@ -213,7 +208,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
      * @return the label of the Value
      */
     public String getLabelValue() {
-        return value != null ? this.value.getLabel() : null;
+        return value != null ? this.value.getLabel() : "";
     }
 
     /**
