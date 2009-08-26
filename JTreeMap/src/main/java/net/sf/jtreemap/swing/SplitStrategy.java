@@ -107,6 +107,16 @@ public abstract class SplitStrategy implements Serializable {
         if (v.isEmpty()) {
             return;
         }
+        // 1. don't calculate if the area is too small,
+        if (w0 * h0 < 20) {
+            return;
+        }
+
+        // 2. don't calculate if the candidates are too many to display
+        if (w0 * h0 < v.size()) {
+            return;
+        }
+
         // if the Vector contains only one element
         if (v.size() == 1) {
             final TreeMapNode f = v.elementAt(0);

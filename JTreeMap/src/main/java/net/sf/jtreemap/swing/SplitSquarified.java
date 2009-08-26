@@ -131,6 +131,16 @@ public class SplitSquarified extends SplitStrategy {
      */
     @Override
     protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0, final Vector<TreeMapNode> v) {
+        // 1. don't calculate if the area is too small,
+        if (w0 * h0 < 20) {
+            return;
+        }
+
+        // 2. don't calculate if the candidates are too many to display
+        if (w0 * h0 < v.size()) {
+            return;
+        }
+
         final Vector<TreeMapNode> vClone = new Vector<TreeMapNode>(v);
 
         sortVector(vClone);
