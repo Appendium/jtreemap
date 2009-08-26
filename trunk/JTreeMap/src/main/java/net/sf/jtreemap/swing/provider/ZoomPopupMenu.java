@@ -107,9 +107,10 @@ public class ZoomPopupMenu extends JPopupMenu {
                     ZoomPopupMenu.this.insert(action, 0);
                     cursor = parent;
                 }
-                // Separator
-                ZoomPopupMenu.this.addSeparator();
-
+                if (orig.getParent() != null) {
+                    // Separator
+                    ZoomPopupMenu.this.addSeparator();
+                }
                 // children
                 cursor = orig;
                 while (cursor.getChild(e.getX(), e.getY()) != null) {

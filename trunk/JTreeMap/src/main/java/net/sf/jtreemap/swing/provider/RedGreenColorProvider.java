@@ -157,17 +157,11 @@ public class RedGreenColorProvider extends ColorProvider {
      */
     private class Legend extends JPanel {
         private static final int Y_INSET = 7;
-
         private static final int X_INSET = 15;
-
         private static final long serialVersionUID = -536198802533900214L;
-
         private static final int HEIGHT = 20;
-
         private static final int WIDTH = 10;
-
         private static final int X = 20;
-
         private static final int Y = 25;
 
         /**
