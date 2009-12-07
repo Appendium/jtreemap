@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Treemap Plug-in
+Bundle-SymbolicName: net.sf.jtreemap.swttreemap
+Bundle-Version: 1.0.0
+Bundle-Vendor: jtreemap.sf.net contributors
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.draw2d
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: net.sf.jtreemap.swttreemap
