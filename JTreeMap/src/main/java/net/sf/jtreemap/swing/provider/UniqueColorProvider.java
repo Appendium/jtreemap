@@ -30,12 +30,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.sf.jtreemap.swing;
+package net.sf.jtreemap.swing.provider;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
+
+import net.sf.jtreemap.swing.Value;
 
 /**
  * Color Provider by default.<BR>

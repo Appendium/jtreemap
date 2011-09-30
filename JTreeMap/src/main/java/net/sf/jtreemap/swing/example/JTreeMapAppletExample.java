@@ -62,10 +62,10 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultTreeModel;
 
-import net.sf.jtreemap.swing.ColorProvider;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.SplitBySortedWeight;
 import net.sf.jtreemap.swing.TreeMapNode;
+import net.sf.jtreemap.swing.provider.ColorProvider;
 import net.sf.jtreemap.swing.provider.HSBTreeMapColorProvider;
 import net.sf.jtreemap.swing.provider.RandomColorProvider;
 import net.sf.jtreemap.swing.provider.RedGreenColorProvider;
@@ -159,7 +159,7 @@ public class JTreeMapAppletExample extends JApplet {
             }
         } else if (XML.equalsIgnoreCase(dataFileType)) {
             try {
-                final URL url = new URL(getCodeBase() + dataFile);
+                final URL url = new URL(getCodeBase(), dataFile);
                 final URLConnection connection = url.openConnection();
                 final BuilderXML bXml = new BuilderXML(connection.getInputStream());
                 root = bXml.getRoot();
@@ -246,7 +246,7 @@ public class JTreeMapAppletExample extends JApplet {
      * @throws IOException
      */
     private BufferedReader createReader(final String dataFile) throws IOException {
-        final URL url = new URL(getCodeBase() + dataFile);
+    	final URL url = new URL(getCodeBase(), dataFile);
         final URLConnection connection = url.openConnection();
         final BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         return reader;

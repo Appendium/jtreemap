@@ -8,7 +8,7 @@
    <packaging>jar</packaging>
 
    <!-- this is always the current version of the QALab plugin -->
-   <version>1.1.0</version>
+   <version>1.1.1</version>
 
    <name>JTreemap Built By Maven 2</name>
    <url>http://jtreemap.sourceforge.net</url>
@@ -39,10 +39,11 @@
    <build>
       <resources>
          <resource>
-            <directory>src/conf</directory>
+            <directory>src/main/conf</directory>
             <includes>
                <include>*.properties</include>
                <include>**/*.gif</include>
+               <include>**/*.png</include>
             </includes>
             <filtering>false</filtering>
          </resource>

@@ -69,7 +69,6 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.tree.DefaultTreeModel;
 
-import net.sf.jtreemap.swing.ColorProvider;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.SplitByNumber;
 import net.sf.jtreemap.swing.SplitBySlice;
@@ -78,6 +77,7 @@ import net.sf.jtreemap.swing.SplitByWeight;
 import net.sf.jtreemap.swing.SplitSquarified;
 import net.sf.jtreemap.swing.SplitStrategy;
 import net.sf.jtreemap.swing.TreeMapNode;
+import net.sf.jtreemap.swing.provider.ColorProvider;
 import net.sf.jtreemap.swing.provider.HSBTreeMapColorProvider;
 import net.sf.jtreemap.swing.provider.RandomColorProvider;
 import net.sf.jtreemap.swing.provider.RedGreenColorProvider;

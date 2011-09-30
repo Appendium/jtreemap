@@ -41,7 +41,6 @@ import java.util.TreeMap;
 
 import javax.swing.JPanel;
 
-import net.sf.jtreemap.swing.ColorProvider;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.TreeMapNode;
 import net.sf.jtreemap.swing.Value;

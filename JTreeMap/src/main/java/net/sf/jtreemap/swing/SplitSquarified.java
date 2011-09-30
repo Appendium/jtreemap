@@ -32,7 +32,8 @@
  */
 package net.sf.jtreemap.swing;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Squarified split strategy
@@ -66,7 +67,7 @@ public class SplitSquarified extends SplitStrategy {
     private int h2;
 
     @Override
-    public void splitElements(final Vector<TreeMapNode> v, final Vector<TreeMapNode> v1, final Vector<TreeMapNode> v2) {
+    public void splitElements(final List<TreeMapNode> v, final List<TreeMapNode> v1, final List<TreeMapNode> v2) {
         int mid = 0;
         final double weight0 = sumWeight(v);
         final double a = v.get(mid).getWeight() / weight0;
@@ -127,10 +128,10 @@ public class SplitSquarified extends SplitStrategy {
      * (non-Javadoc)
      * 
      * @see net.sf.jtreemap.swing.SplitStrategy#calculatePositionsRec(int, int,
-     *      int, int, double, java.util.Vector)
+     *      int, int, double, java.util.List)
      */
     @Override
-    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0, final Vector<TreeMapNode> v) {
+    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0, final List<TreeMapNode> v) {
         // 1. don't calculate if the area is too small,
         if (w0 * h0 < 20) {
             return;
@@ -141,23 +142,23 @@ public class SplitSquarified extends SplitStrategy {
             return;
         }
 
-        final Vector<TreeMapNode> vClone = new Vector<TreeMapNode>(v);
+        final List<TreeMapNode> vClone = new ArrayList<TreeMapNode>(v);
 
-        sortVector(vClone);
+        sortList(vClone);
 
         if (vClone.size() <= 2) {
             SplitBySlice.splitInSlice(x0, y0, w0, h0, vClone, sumWeight(vClone));
             calculateChildren(vClone);
         } else {
-            final Vector<TreeMapNode> v1 = new Vector<TreeMapNode>();
-            final Vector<TreeMapNode> v2 = new Vector<TreeMapNode>();
+            final List<TreeMapNode> v1 = new ArrayList<TreeMapNode>();
+            final List<TreeMapNode> v2 = new ArrayList<TreeMapNode>();
             this.x = x0;
             this.y = y0;
             this.w = w0;
             this.h = h0;
             splitElements(vClone, v1, v2);
             // before the recurence, we have to "save" the values for the 2nd
-            // Vector
+            // list
             final int prevX2 = this.x2;
             final int prevY2 = this.y2;
             final int prevW2 = this.w2;
@@ -174,13 +175,13 @@ public class SplitSquarified extends SplitStrategy {
     }
 
     /**
-     * Execute the recurence for the children of the elements of the vector.<BR>
+     * Execute the recurence for the children of the elements of the list.<BR>
      * Add also the borders if necessary
      * 
      * @param v
-     *            Vector with the elements to calculate
+     *            List with the elements to calculate
      */
-    private void calculateChildren(final Vector<TreeMapNode> v) {
+    private void calculateChildren(final List<TreeMapNode> v) {
         for (final TreeMapNode node : v) {
             if (node.isLeaf()) {
                 node.setX(node.getX() + TreeMapNode.getBorder());
