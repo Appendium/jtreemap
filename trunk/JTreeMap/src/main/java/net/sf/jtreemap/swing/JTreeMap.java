@@ -50,6 +50,9 @@ import javax.swing.ToolTipManager;
 import javax.swing.border.Border;
 import javax.swing.tree.TreePath;
 
+import net.sf.jtreemap.swing.provider.ColorProvider;
+import net.sf.jtreemap.swing.provider.UniqueColorProvider;
+
 /**
  * JComponent who represents each element of a tree in a rectangle of more or
  * less big size according to its importance in the tree.
@@ -569,12 +572,13 @@ public class JTreeMap extends JComponent {
         public void mouseMoved(final MouseEvent e) {
             if (getDisplayedRoot().children().hasMoreElements()) {
                 final TreeMapNode t = getDisplayedRoot().getActiveLeaf(e.getX(), e.getY());
-                if (t != null && !t.equals(getActiveLeaf())) {
+                if (t == null || (t != null && !t.equals(getActiveLeaf()))) {
                     setActiveLeaf(t);
                     repaint();
                 }
             }
         }
+           
     }
 
     /**
@@ -612,6 +616,13 @@ public class JTreeMap extends JComponent {
                 repaint();
             }
         }
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			setActiveLeaf(null);
+            repaint();
+		}
+        
     }
 
     /**

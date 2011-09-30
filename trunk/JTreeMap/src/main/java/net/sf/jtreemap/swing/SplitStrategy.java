@@ -33,8 +33,9 @@
 package net.sf.jtreemap.swing;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 /**
  * Abtract class with the method which split the elements of a JTreeMap.
@@ -63,7 +64,7 @@ public abstract class SplitStrategy implements Serializable {
             return;
         }
 
-        final Vector<TreeMapNode> v = root.getChildren();
+        final List<TreeMapNode> v = root.getChildren();
         if (v != null && !v.isEmpty()) {
             calculatePositionsRec(root.getX(), root.getY(), root.getWidth(), root.getHeight(), this.sumWeight(v), v);
         }
@@ -73,13 +74,13 @@ public abstract class SplitStrategy implements Serializable {
      * split the elements of a JTreeMap.
      * 
      * @param v
-     *            Vector with the elements to split (arg IN)
+     *            List with the elements to split (arg IN)
      * @param v1
-     *            first Vector of the split (arg OUT)
+     *            first List of the split (arg OUT)
      * @param v2
-     *            second Vector of the split (arg OUT)
+     *            second List of the split (arg OUT)
      */
-    public abstract void splitElements(Vector<TreeMapNode> v, Vector<TreeMapNode> v1, Vector<TreeMapNode> v2);
+    public abstract void splitElements(List<TreeMapNode> v, List<TreeMapNode> v1, List<TreeMapNode> v2);
 
     /**
      * Sum the weight of elements. <BR>
@@ -87,22 +88,22 @@ public abstract class SplitStrategy implements Serializable {
      * or to cancel the effect of weight on the strategy.
      * 
      * @param v
-     *            Vector with the elements to sum
+     *            List with the elements to sum
      * @return the sum of the weight of elements
      */
-    public double sumWeight(final Vector<TreeMapNode> v) {
+    public double sumWeight(final List<TreeMapNode> v) {
         double d = 0.0;
         if (v != null) {
             final int size = v.size();
 
             for (int i = 0; i < size; i++) {
-                d += (v.elementAt(i)).getWeight();
+                d += (v.get(i)).getWeight();
             }
         }
         return d;
     }
 
-    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0, final Vector<TreeMapNode> v) {
+    protected void calculatePositionsRec(final int x0, final int y0, final int w0, final int h0, final double weight0, final List<TreeMapNode> v) {
 
         if (v.isEmpty()) {
             return;
@@ -117,9 +118,9 @@ public abstract class SplitStrategy implements Serializable {
             return;
         }
 
-        // if the Vector contains only one element
+        // if the List contains only one element
         if (v.size() == 1) {
-            final TreeMapNode f = v.elementAt(0);
+            final TreeMapNode f = v.get(0);
             if (f.isLeaf()) {
                 // if this is a leaf, we display with the border
                 int w = w0 - TreeMapNode.getBorder();
@@ -159,9 +160,9 @@ public abstract class SplitStrategy implements Serializable {
             }
         } else {
             // if there is more than one element
-            // we split the Vector according to the selected strategy
-            final Vector<TreeMapNode> v1 = new Vector<TreeMapNode>();
-            final Vector<TreeMapNode> v2 = new Vector<TreeMapNode>();
+            // we split the List according to the selected strategy
+            final List<TreeMapNode> v1 = new ArrayList<TreeMapNode>();
+            final List<TreeMapNode> v2 = new ArrayList<TreeMapNode>();
             double weight1;
             double weight2; // poids des 2 vecteurs
             this.splitElements(v, v1, v2);
@@ -191,7 +192,7 @@ public abstract class SplitStrategy implements Serializable {
                 x2 = x0;
                 y2 = y0 + h1;
             }
-            // calculation for the new two Vectors
+            // calculation for the new two Lists
             calculatePositionsRec(x0, y0, w1, h1, weight1, v1);
             calculatePositionsRec(x2, y2, w2, h2, weight2, v2);
         }
@@ -201,24 +202,24 @@ public abstract class SplitStrategy implements Serializable {
      * Sort the elements by descending weight.
      * 
      * @param v
-     *            Vector with the elements to be sorted
+     *            List with the elements to be sorted
      */
-    protected void sortVector(final Vector<TreeMapNode> v) {
+    protected void sortList(final List<TreeMapNode> v) {
         TreeMapNode tmn;
         // we use the bubble sort
         for (int i = 0; i < v.size(); i++) {
             for (int j = v.size() - 1; j > i; j--) {
-                if ((v.elementAt(j)).getWeight() > (v.elementAt(j - 1)).getWeight()) {
-                    tmn = (v.elementAt(j));
-                    v.setElementAt(v.elementAt(j - 1), j);
-                    v.setElementAt(tmn, j - 1);
+                if ((v.get(j)).getWeight() > (v.get(j - 1)).getWeight()) {
+                    tmn = (v.get(j));
+                    v.set(j, v.get(j - 1));
+                    v.set(j-1, tmn);
                 }
             }
         }
 
     }
 
-    protected void workOutWeight(final Vector<TreeMapNode> v1, final Vector<TreeMapNode> v2, final Vector<TreeMapNode> vClone, final double sumWeight) {
+    protected void workOutWeight(final List<TreeMapNode> v1, final List<TreeMapNode> v2, final List<TreeMapNode> vClone, final double sumWeight) {
         double memWeight = 0.0;
         double elemWeight = 0.0;
         for (final Iterator<TreeMapNode> i = vClone.iterator(); i.hasNext();) {
@@ -230,29 +231,29 @@ public abstract class SplitStrategy implements Serializable {
                 // weight)
                 if (((sumWeight / 2) - memWeight) > ((memWeight + elemWeight) - (sumWeight / 2))) {
                     // if it is after the add, we add the element to the first
-                    // Vector
+                    // List
                     memWeight += elemWeight;
-                    v1.addElement(tmn);
+                    v1.add(tmn);
                 } else {
-                    // we must have at least 1 element in the first vector
+                    // we must have at least 1 element in the first List
                     if (v1.isEmpty()) {
-                        v1.addElement(tmn);
+                        v1.add(tmn);
                     } else {
                         // if it is before the add, we add the element to the
-                        // second Vector
-                        v2.addElement(tmn);
+                        // second List
+                        v2.add(tmn);
                     }
                 }
-                // then we fill the second Vector qith the rest of elements
+                // then we fill the second List qith the rest of elements
                 while (i.hasNext()) {
                     tmn = i.next();
-                    v2.addElement(tmn);
+                    v2.add(tmn);
                 }
             } else {
-                // we add in the first vector while we don't reach the middle of
+                // we add in the first List while we don't reach the middle of
                 // weight
                 memWeight += elemWeight;
-                v1.addElement(tmn);
+                v1.add(tmn);
             }
         }
     }
