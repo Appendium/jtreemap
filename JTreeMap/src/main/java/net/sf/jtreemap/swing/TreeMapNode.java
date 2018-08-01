@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -39,12 +39,12 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * Node of a JTreeMap.<BR>
- * 
+ *
  * If the node is a branch, only the label is set.<BR>
  * If the node is a leaf, we need a label, a weight and a value.
  * <p>
  * You can also use a TreeMapNode in a JTree.
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -65,7 +65,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * Get the max border between two nodes of the same level.
-     * 
+     *
      * @return Returns the border.
      */
     public static int getBorder() {
@@ -74,7 +74,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * Set the max border between two nodes of the same level.
-     * 
+     *
      * @param border
      *            The border to set.
      */
@@ -84,7 +84,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * Constructor for a branch.
-     * 
+     *
      * @param label
      *            label of the branch.
      */
@@ -95,7 +95,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * Constructor for a leaf.
-     * 
+     *
      * @param label
      *            label of the leaf.
      * @param weight
@@ -113,7 +113,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * add a new child to the node.
-     * 
+     *
      * @param newChild
      *            new child
      */
@@ -125,7 +125,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     /**
      * get the active leaf.<BR>
      * null if the passed position is not in this tree.
-     * 
+     *
      * @param xParam
      *            x-coordinate
      * @param yParam
@@ -135,15 +135,15 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     public TreeMapNode getActiveLeaf(final int xParam, final int yParam) {
 
         if (this.isLeaf()) {
-            if ((xParam >= this.getX()) && (xParam <= this.getX() + this.getWidth()) && (yParam >= this.getY())
-                    && (yParam <= this.getY() + this.getHeight())) {
+            if (xParam >= this.getX() && xParam <= this.getX() + this.getWidth() && yParam >= this.getY()
+                    && yParam <= this.getY() + this.getHeight()) {
                 return this;
             }
         } else {
             for (final Enumeration e = this.children(); e.hasMoreElements();) {
-                final TreeMapNode node = (TreeMapNode) (e.nextElement());
-                if ((xParam >= node.getX()) && (xParam <= node.getX() + node.getWidth()) && (yParam >= node.getY())
-                        && (yParam <= node.getY() + node.getHeight())) {
+                final TreeMapNode node = (TreeMapNode) e.nextElement();
+                if (xParam >= node.getX() && xParam <= node.getX() + node.getWidth() && yParam >= node.getY()
+                        && yParam <= node.getY() + node.getHeight()) {
                     return node.getActiveLeaf(xParam, yParam);
                 }
             }
@@ -154,7 +154,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     /**
      * get the first child which fits the position.<BR>
      * null if the passed position is not in this tree.
-     * 
+     *
      * @param xParam
      *            x-coordinate
      * @param yParam
@@ -164,9 +164,9 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     public TreeMapNode getChild(final int xParam, final int yParam) {
         if (!this.isLeaf()) {
             for (final Enumeration e = this.children(); e.hasMoreElements();) {
-                final TreeMapNode node = (TreeMapNode) (e.nextElement());
-                if ((xParam >= node.getX()) && (xParam <= node.getX() + node.getWidth()) && (yParam >= node.getY())
-                        && (yParam <= node.getY() + node.getHeight())) {
+                final TreeMapNode node = (TreeMapNode) e.nextElement();
+                if (xParam >= node.getX() && xParam <= node.getX() + node.getWidth() && yParam >= node.getY()
+                        && yParam <= node.getY() + node.getHeight()) {
                     return node;
                 }
             }
@@ -177,7 +177,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get a List with the children.
-     * 
+     *
      * @return List with the children
      */
     @SuppressWarnings("unchecked")
@@ -187,7 +187,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get the height.
-     * 
+     *
      * @return the height
      */
     public int getHeight() {
@@ -196,7 +196,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get the label.
-     * 
+     *
      * @return the label
      */
     public String getLabel() {
@@ -205,7 +205,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get the label of the Value.
-     * 
+     *
      * @return the label of the Value
      */
     public String getLabelValue() {
@@ -214,7 +214,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get the Value.
-     * 
+     *
      * @return the value
      */
     public Value getValue() {
@@ -223,7 +223,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get the double Value.
-     * 
+     *
      * @return the double value
      */
     public double getDoubleValue() {
@@ -232,7 +232,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get the weight.
-     * 
+     *
      * @return the weight
      */
     public double getWeight() {
@@ -241,7 +241,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get the width.
-     * 
+     *
      * @return the width
      */
     public int getWidth() {
@@ -250,7 +250,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get the x-coordinate.
-     * 
+     *
      * @return the x-coordinate
      */
     public int getX() {
@@ -259,7 +259,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * get the y-coordinate.
-     * 
+     *
      * @return the y-coordinate
      */
     public int getY() {
@@ -268,7 +268,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set the position and the size.
-     * 
+     *
      * @param xParam
      *            x-coordinate
      * @param yParam
@@ -287,7 +287,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set the height.
-     * 
+     *
      * @param height
      *            la nouvelle valeur de height
      */
@@ -297,7 +297,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set the label.
-     * 
+     *
      * @param label
      *            the new label
      */
@@ -307,7 +307,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set the position.
-     * 
+     *
      * @param xParam
      *            x-coordinate
      * @param yParam
@@ -320,7 +320,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set size.
-     * 
+     *
      * @param widthParam
      *            the new width
      * @param heightParam
@@ -333,7 +333,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set the Value.
-     * 
+     *
      * @param value
      *            the new Value
      */
@@ -343,7 +343,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set the weight of the node and update the parents.
-     * 
+     *
      * @param weight
      *            the new weight
      */
@@ -357,7 +357,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set the width.
-     * 
+     *
      * @param width
      *            la nouvelle valeur de width
      */
@@ -367,7 +367,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set the x-coordinate.
-     * 
+     *
      * @param x
      *            the new x-coordinate
      */
@@ -377,7 +377,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 
     /**
      * set the y-coordinate.
-     * 
+     *
      * @param y
      *            the new y-coordinate
      */
@@ -387,10 +387,10 @@ public class TreeMapNode extends DefaultMutableTreeNode {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

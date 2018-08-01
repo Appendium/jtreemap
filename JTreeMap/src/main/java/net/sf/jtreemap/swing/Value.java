@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -36,7 +36,7 @@ import java.io.Serializable;
 
 /**
  * Class who permits to associate a double value to a label
- * 
+ *
  * @author Laurent DUTHEIL
  */
 
@@ -47,21 +47,21 @@ public abstract class Value implements Comparable, Serializable {
 
     /**
      * get the double value.
-     * 
+     *
      * @return the double value
      */
     public abstract double getValue();
 
     /**
      * get the formatedValue.
-     * 
+     *
      * @return the label of the value
      */
     public abstract String getLabel();
 
     /**
      * set the double value.
-     * 
+     *
      * @param value
      *            the new double value
      */
@@ -69,7 +69,7 @@ public abstract class Value implements Comparable, Serializable {
 
     /**
      * set the new label.
-     * 
+     *
      * @param newLabel
      *            the new label
      */
@@ -80,7 +80,7 @@ public abstract class Value implements Comparable, Serializable {
         int result = super.hashCode();
         long temp;
         temp = Double.doubleToLongBits(getValue());
-        result = PRIME * result + (int) (temp ^ (temp >>> SHIFT));
+        result = PRIME * result + (int) (temp ^ temp >>> SHIFT);
         return result;
     }
 
@@ -104,9 +104,10 @@ public abstract class Value implements Comparable, Serializable {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
+    @Override
     public int compareTo(final Object value) {
         if (value != null && value instanceof Value) {
             final Value value2 = (Value) value;
@@ -118,6 +119,7 @@ public abstract class Value implements Comparable, Serializable {
         throw new IllegalArgumentException();
     }
 
+    @Override
     public String toString() {
         final StringBuilder b = new StringBuilder();
         b.append(getLabel()).append(" - ").append(getValue());
@@ -127,10 +129,10 @@ public abstract class Value implements Comparable, Serializable {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

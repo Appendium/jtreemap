@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -36,19 +36,19 @@ import java.util.List;
 
 /**
  * Split the treemap by slice
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class SplitBySlice extends SplitStrategy {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 8484486418097321160L;
 
     /**
      * Calculate the dimension of the elements of the List.
-     * 
+     *
      * @param x0
      *            x-coordinate
      * @param y0
@@ -96,7 +96,7 @@ public class SplitBySlice extends SplitStrategy {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.SplitStrategy#splitElements(java.util.List,
      *      java.util.List, java.util.List)
      */
@@ -108,7 +108,7 @@ public class SplitBySlice extends SplitStrategy {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.SplitStrategy#calculatePositionsRec(int, int,
      *      int, int, double, java.util.List)
      */
@@ -137,11 +137,13 @@ public class SplitBySlice extends SplitStrategy {
                 // if this is not a leaf, calculation for the children
                 if (TreeMapNode.getBorder() > 1) {
                     TreeMapNode.setBorder(TreeMapNode.getBorder() - 2);
-                    calculatePositionsRec(node.getX() + 2, node.getY() + 2, node.getWidth() - 2, node.getHeight() - 2, node.getWeight(), node.getChildren());
+                    calculatePositionsRec(node.getX() + 2, node.getY() + 2, node.getWidth() - 2, node.getHeight() - 2, node.getWeight(),
+                            node.getChildren());
                     TreeMapNode.setBorder(TreeMapNode.getBorder() + 2);
                 } else if (TreeMapNode.getBorder() == 1) {
                     TreeMapNode.setBorder(0);
-                    calculatePositionsRec(node.getX() + 1, node.getY() + 1, node.getWidth() - 1, node.getHeight() - 1, node.getWeight(), node.getChildren());
+                    calculatePositionsRec(node.getX() + 1, node.getY() + 1, node.getWidth() - 1, node.getHeight() - 1, node.getWeight(),
+                            node.getChildren());
                     TreeMapNode.setBorder(1);
                 } else {
                     calculatePositionsRec(node.getX(), node.getY(), node.getWidth(), node.getHeight(), node.getWeight(), node.getChildren());
@@ -153,10 +155,10 @@ public class SplitBySlice extends SplitStrategy {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

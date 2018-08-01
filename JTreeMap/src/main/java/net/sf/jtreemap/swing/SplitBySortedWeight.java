@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -35,7 +35,6 @@ package net.sf.jtreemap.swing;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Strategy who split the elements in 2 groups of equivalent weight.
  * <p>
@@ -44,14 +43,14 @@ import java.util.List;
  * <p>
  * The heaviest elements are on the top left of the JTreeMap. The lightest
  * elements are on the bottom right of the JTreeMap
- * 
+ *
  * @author Laurent Dutheil
  */
 
 public class SplitBySortedWeight extends SplitStrategy {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1600419780258843122L;
 
@@ -67,10 +66,10 @@ public class SplitBySortedWeight extends SplitStrategy {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

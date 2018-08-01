@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -35,7 +35,7 @@ package net.sf.jtreemap.swing;
 /**
  * Default Value <BR>
  * The getLabel() method returns the "" + getValue()
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class DefaultValue extends Value {
@@ -52,7 +52,7 @@ public class DefaultValue extends Value {
 
     /**
      * Constructor.
-     * 
+     *
      * @param value
      *            double value
      */
@@ -62,7 +62,7 @@ public class DefaultValue extends Value {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.Value#getValue()
      */
     @Override
@@ -72,7 +72,7 @@ public class DefaultValue extends Value {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.Value#getLabel()
      */
     @Override
@@ -82,7 +82,7 @@ public class DefaultValue extends Value {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.Value#setValue(double)
      */
     @Override
@@ -92,7 +92,7 @@ public class DefaultValue extends Value {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.Value#setLabel(java.lang.String)
      */
     @Override
@@ -103,10 +103,10 @@ public class DefaultValue extends Value {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

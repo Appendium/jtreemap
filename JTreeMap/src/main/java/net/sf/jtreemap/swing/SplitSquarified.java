@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -37,12 +37,12 @@ import java.util.List;
 
 /**
  * The Squarified split strategy
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class SplitSquarified extends SplitStrategy {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1711898915283018450L;
 
@@ -126,7 +126,7 @@ public class SplitSquarified extends SplitStrategy {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.SplitStrategy#calculatePositionsRec(int, int,
      *      int, int, double, java.util.List)
      */
@@ -171,13 +171,13 @@ public class SplitSquarified extends SplitStrategy {
     }
 
     private double aspect(final double big, final double small, final double a, final double b) {
-        return (big * b) / (small * a / b);
+        return big * b / (small * a / b);
     }
 
     /**
      * Execute the recurence for the children of the elements of the list.<BR>
      * Add also the borders if necessary
-     * 
+     *
      * @param v
      *            List with the elements to calculate
      */
@@ -234,10 +234,10 @@ public class SplitSquarified extends SplitStrategy {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

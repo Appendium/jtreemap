@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: ColorProvider.java 69 2006-10-24 16:20:20Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -48,14 +48,14 @@ import net.sf.jtreemap.swing.Value;
  * map the values onto the HSB color space. The default is a linear function,
  * but in my experience one of the logarithmic ones works best for this color
  * space.
- * 
+ *
  * @author Andy Adamczak
  */
 public class HSBTreeMapColorProvider extends ColorProvider {
     private static final int HSBVAL_SIZE = 3;
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 5009655580804320847L;
 
@@ -63,7 +63,11 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @author Andy Adamczak
      */
     public enum ColorDistributionTypes {
-        Linear, Log, Exp, SquareRoot, CubicRoot
+        Linear,
+        Log,
+        Exp,
+        SquareRoot,
+        CubicRoot
     }
 
     /**
@@ -98,7 +102,8 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param positiveColor
      * @param negativeColor
      */
-    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, final Color positiveColor, final Color negativeColor) {
+    public HSBTreeMapColorProvider(final JTreeMap treeMap, final ColorDistributionTypes colorDistribution, final Color positiveColor,
+            final Color negativeColor) {
         super();
         jTreeMap = treeMap;
         this.colorDistribution = colorDistribution;
@@ -154,7 +159,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.ColorProvider#getLegendPanel()
      */
     @Override
@@ -216,7 +221,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.ColorProvider#getColor(net.sf.jtreemap.swing.Value)
      */
     @Override
@@ -229,7 +234,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
         }
         final double max = this.maxValue.getValue();
         final double min = this.minValue.getValue();
-        double val = (value != null ? value.getValue() : 0.00);
+        double val = value != null ? value.getValue() : 0.00;
 
         if (val >= 0) {
             // Value is greater than 0, use the positive colors
@@ -252,7 +257,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
     /**
      * Given a value, maps that value to a new value using the specified math
      * function
-     * 
+     *
      * @param value
      *            the value to convert
      * @return the converted value
@@ -282,7 +287,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
 
     /**
      * Set the max and the min values in the tree map
-     * 
+     *
      * @param root
      *            root of the JTreeMap
      */
@@ -298,7 +303,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
                 try {
                     final Class c = value.getClass();
                     if (maxValue == null) {
-                        maxValue = (Value) (c.newInstance());
+                        maxValue = (Value) c.newInstance();
                     }
                     maxValue.setValue(value.getValue());
                 } catch (final IllegalAccessException iae) {
@@ -313,7 +318,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
                 try {
                     final Class c = value.getClass();
                     if (minValue == null) {
-                        minValue = (Value) (c.newInstance());
+                        minValue = (Value) c.newInstance();
                     }
                     minValue.setValue(value.getValue());
                 } catch (final IllegalAccessException iae) {
@@ -351,7 +356,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
 
     /**
      * Panel with the legend
-     * 
+     *
      * @author Laurent Dutheil
      */
     private class Legend extends JPanel {
@@ -398,10 +403,10 @@ public class HSBTreeMapColorProvider extends ColorProvider {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

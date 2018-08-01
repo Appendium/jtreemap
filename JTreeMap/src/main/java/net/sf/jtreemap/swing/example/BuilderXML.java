@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -41,20 +41,20 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import net.sf.jtreemap.swing.TreeMapNode;
-import net.sf.jtreemap.swing.TreeMapNodeBuilder;
-import net.sf.jtreemap.swing.Value;
-import net.sf.jtreemap.swing.ValuePercent;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import net.sf.jtreemap.swing.TreeMapNode;
+import net.sf.jtreemap.swing.TreeMapNodeBuilder;
+import net.sf.jtreemap.swing.Value;
+import net.sf.jtreemap.swing.ValuePercent;
+
 /**
  * Parse a XML file to build the tree. <BR>
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -75,7 +75,7 @@ public class BuilderXML {
 
     /**
      * Constructor
-     * 
+     *
      * @param stFileName
      *            XML file name
      * @throws ParseException
@@ -88,7 +88,7 @@ public class BuilderXML {
 
     /**
      * Constructor
-     * 
+     *
      * @param stFile
      *            XML file object
      * @throws ParseException
@@ -101,7 +101,7 @@ public class BuilderXML {
 
     /**
      * Constructor
-     * 
+     *
      * @param stream
      *            <code>InputStream </code> representing XML file object
      * @throws ParseException
@@ -114,7 +114,7 @@ public class BuilderXML {
 
     /**
      * get the build root
-     * 
+     *
      * @return the build root
      */
     public TreeMapNode getRoot() {
@@ -197,10 +197,10 @@ public class BuilderXML {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

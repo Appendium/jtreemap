@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.sf.jtreemap.swing.provider;
 
@@ -13,7 +13,7 @@ class AboutAction extends AbstractAction {
 
     /**
      * Constructor
-     * 
+     *
      * @param node
      *            where you want to zoom/unzoom
      * @param icon
@@ -25,16 +25,17 @@ class AboutAction extends AbstractAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
+    @Override
     public void actionPerformed(final ActionEvent e) {
         JOptionPane.showMessageDialog(null, "<html>JTreeMap powered by <a href=\"http://www.ObjectLab.co.uk\">ObjectLab.co.uk</a></html>");
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see javax.swing.Action#isEnabled()
      */
     @Override

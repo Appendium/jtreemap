@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: ColorProvider.java 69 2006-10-24 16:20:20Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -47,7 +47,7 @@ import net.sf.jtreemap.swing.TreeMapNode;
  * PopupMenu which permits to zoom the JTreeMap<BR>
  * The menuItems are the ancestors and the children of the displayed TreeMapNode
  * of the JTreeMap
- * 
+ *
  * @author Laurent Dutheil
  */
 public class ZoomPopupMenu extends JPopupMenu {
@@ -71,7 +71,7 @@ public class ZoomPopupMenu extends JPopupMenu {
 
     /**
      * Constructor
-     * 
+     *
      * @param jTreeMap
      *            jTreeMap which you want to add a zoom popup menu
      */
@@ -91,7 +91,7 @@ public class ZoomPopupMenu extends JPopupMenu {
         @Override
         public void mouseClicked(final MouseEvent e) {
             if (e.getButton() == MouseEvent.BUTTON3
-                    || (e.getButton() == MouseEvent.BUTTON1 && (e.isAltDown() || e.isControlDown() || e.isMetaDown() || e.isAltGraphDown()))) {
+                    || e.getButton() == MouseEvent.BUTTON1 && (e.isAltDown() || e.isControlDown() || e.isMetaDown() || e.isAltGraphDown())) {
 
                 for (int i = ZoomPopupMenu.this.getComponentCount(); i > 0; i--) {
                     ZoomPopupMenu.this.remove(i - 1);
@@ -136,10 +136,10 @@ public class ZoomPopupMenu extends JPopupMenu {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

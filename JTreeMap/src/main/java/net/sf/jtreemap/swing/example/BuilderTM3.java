@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -54,12 +54,12 @@ import net.sf.jtreemap.swing.TreeMapNodeBuilder;
  * Parse a TM3 file to build the tree. <BR>
  * See <a href=http://www.cs.umd.edu/hcil/treemap/doc4.1/create_TM3_file.html>
  * how to create your own TM3 data file </a> from hcil Treemap site.
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class BuilderTM3 implements Serializable {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -991159075093937695L;
 
@@ -95,7 +95,7 @@ public class BuilderTM3 implements Serializable {
 
     /**
      * Constructor
-     * 
+     *
      * @param tm3File
      *            tm3 file
      * @throws IOException
@@ -107,7 +107,7 @@ public class BuilderTM3 implements Serializable {
 
     /**
      * Constructor
-     * 
+     *
      * @param reader
      *            reader associated with tm3 file
      * @throws IOException
@@ -133,7 +133,7 @@ public class BuilderTM3 implements Serializable {
 
     /**
      * get the build root.
-     * 
+     *
      * @return the build root
      */
     public TreeMapNode getRoot() {
@@ -142,7 +142,7 @@ public class BuilderTM3 implements Serializable {
 
     /**
      * Set the VALUES of all the JTreeMapNode with the VALUES of the fieldName.
-     * 
+     *
      * @param fieldName
      *            name of the field to set the VALUES
      */
@@ -168,7 +168,7 @@ public class BuilderTM3 implements Serializable {
 
     /**
      * Set the weights of all the JTreeMapNode with the VALUES of the fieldName.
-     * 
+     *
      * @param fieldName
      *            name of the field to set the weights
      */
@@ -298,10 +298,10 @@ public class BuilderTM3 implements Serializable {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

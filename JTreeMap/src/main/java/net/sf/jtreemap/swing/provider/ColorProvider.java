@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -42,20 +42,20 @@ import net.sf.jtreemap.swing.Value;
 /**
  * Abstract class with the methods who attribute color to the elements of
  * JTreeMap.
- * 
+ *
  * @author Laurent DUTHEIL
  */
 
 public abstract class ColorProvider implements Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * get the associated color to the value.
-     * 
+     *
      * @param value
      *            double value
      * @return the associated color to the value
@@ -64,17 +64,17 @@ public abstract class ColorProvider implements Serializable {
 
     /**
      * get a legend JPanel.
-     * 
+     *
      * @return a legend JPanel
      */
     public abstract JPanel getLegendPanel();
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

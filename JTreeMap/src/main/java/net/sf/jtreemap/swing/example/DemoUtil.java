@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: ColorProvider.java 69 2006-10-24 16:20:20Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -39,7 +39,7 @@ import net.sf.jtreemap.swing.ValuePercent;
 
 /**
  * @author xhensevb
- * 
+ *
  */
 public final class DemoUtil {
     private DemoUtil() {
@@ -49,7 +49,7 @@ public final class DemoUtil {
      * This method build a default TreeMap root. <BR>
      * This methode may be replaced by one who get the root from a servlet or a
      * jdbc client or something else...
-     * 
+     *
      * @return the root of the TreeMap.
      */
     public static TreeMapNode buildDemoRoot() {
@@ -192,10 +192,10 @@ public final class DemoUtil {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

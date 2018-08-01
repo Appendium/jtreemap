@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -36,7 +36,7 @@ import javax.swing.JToolTip;
 
 /**
  * Interface used to build your own JToolTip for the jTreeMap.
- * 
+ *
  * @see net.sf.jtreemap.swing.JTreeMap#setToolTipBuilder(IToolTipBuilder)
  * @author Laurent DUTHEIL
  */
@@ -45,17 +45,17 @@ public interface IToolTipBuilder {
     /**
      * Return the instance of the JToolTip.<BR>
      * Override this method to build your own JToolTip
-     * 
+     *
      * @return the instance of the JToolTip
      */
     JToolTip getToolTip();
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.sf.jtreemap.swing.provider;
 
@@ -20,7 +20,7 @@ public class ZoomAction extends AbstractAction {
 
     /**
      * Constructor
-     * 
+     *
      * @param node
      *            where you want to zoom/unzoom
      * @param icon
@@ -34,9 +34,10 @@ public class ZoomAction extends AbstractAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
+    @Override
     public void actionPerformed(final ActionEvent e) {
         if (jTreeMap.getTreeView() == null) {
             jTreeMap.zoom(this.node);
@@ -51,7 +52,7 @@ public class ZoomAction extends AbstractAction {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see javax.swing.Action#isEnabled()
      */
     @Override

@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -43,19 +43,19 @@ import java.util.List;
  * The split is done by dichotomy. We split the elements in 2 groups with a
  * defined strategy (for example : take care of the weight of the elements)
  * <p>
- * 
+ *
  * @author Laurent Dutheil
  */
 
 public abstract class SplitStrategy implements Serializable {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * calculate the positions for all the elements of the root.
-     * 
+     *
      * @param root
      *            the root to calculate
      */
@@ -72,7 +72,7 @@ public abstract class SplitStrategy implements Serializable {
 
     /**
      * split the elements of a JTreeMap.
-     * 
+     *
      * @param v
      *            List with the elements to split (arg IN)
      * @param v1
@@ -86,7 +86,7 @@ public abstract class SplitStrategy implements Serializable {
      * Sum the weight of elements. <BR>
      * You can override this method if you want to apply a coef on the weights
      * or to cancel the effect of weight on the strategy.
-     * 
+     *
      * @param v
      *            List with the elements to sum
      * @return the sum of the weight of elements
@@ -97,7 +97,7 @@ public abstract class SplitStrategy implements Serializable {
             final int size = v.size();
 
             for (int i = 0; i < size; i++) {
-                d += (v.get(i)).getWeight();
+                d += v.get(i).getWeight();
             }
         }
         return d;
@@ -200,7 +200,7 @@ public abstract class SplitStrategy implements Serializable {
 
     /**
      * Sort the elements by descending weight.
-     * 
+     *
      * @param v
      *            List with the elements to be sorted
      */
@@ -209,10 +209,10 @@ public abstract class SplitStrategy implements Serializable {
         // we use the bubble sort
         for (int i = 0; i < v.size(); i++) {
             for (int j = v.size() - 1; j > i; j--) {
-                if ((v.get(j)).getWeight() > (v.get(j - 1)).getWeight()) {
-                    tmn = (v.get(j));
+                if (v.get(j).getWeight() > v.get(j - 1).getWeight()) {
+                    tmn = v.get(j);
                     v.set(j, v.get(j - 1));
-                    v.set(j-1, tmn);
+                    v.set(j - 1, tmn);
                 }
             }
         }
@@ -229,7 +229,7 @@ public abstract class SplitStrategy implements Serializable {
             if (memWeight + elemWeight >= sumWeight / 2) {
                 // we look at the finest split (the nearest of the middle of
                 // weight)
-                if (((sumWeight / 2) - memWeight) > ((memWeight + elemWeight) - (sumWeight / 2))) {
+                if (sumWeight / 2 - memWeight > memWeight + elemWeight - sumWeight / 2) {
                     // if it is after the add, we add the element to the first
                     // List
                     memWeight += elemWeight;
@@ -260,10 +260,10 @@ public abstract class SplitStrategy implements Serializable {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

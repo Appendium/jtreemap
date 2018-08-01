@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: ColorProvider.java 69 2006-10-24 16:20:20Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -53,18 +53,18 @@ import net.sf.jtreemap.swing.Value;
  * Each value is associated to a color. If all the COLOURS are already
  * associated the new value is associated to the first color (and so on...)
  * </p>
- * 
+ *
  * @author Laurent DUTHEIL
  */
 public class RandomColorProvider extends ColorProvider {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -8184356270950978553L;
 
     private static final Color[] COLOURS = new Color[] { new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255), new Color(255, 255, 0),
-            new Color(255, 0, 255), new Color(0, 255, 255), new Color(102, 102, 51), new Color(255, 51, 153), new Color(255, 153, 51), new Color(204, 204, 51),
-            new Color(205, 102, 204), new Color(51, 153, 255), new Color(153, 102, 0) };
+            new Color(255, 0, 255), new Color(0, 255, 255), new Color(102, 102, 51), new Color(255, 51, 153), new Color(255, 153, 51),
+            new Color(204, 204, 51), new Color(205, 102, 204), new Color(51, 153, 255), new Color(153, 102, 0) };
 
     private int cursor = 0;
 
@@ -76,7 +76,7 @@ public class RandomColorProvider extends ColorProvider {
 
     /**
      * Constructor
-     * 
+     *
      * @param jTreeMap
      *            jTreeMap to color
      */
@@ -86,7 +86,7 @@ public class RandomColorProvider extends ColorProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.ColorProvider#getColor(double)
      */
     @Override
@@ -115,7 +115,7 @@ public class RandomColorProvider extends ColorProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.ColorProvider#getLegendPanel()
      */
     @Override
@@ -128,7 +128,7 @@ public class RandomColorProvider extends ColorProvider {
 
     /**
      * Panel with the legend
-     * 
+     *
      * @author Laurent Dutheil
      */
     protected class Legend extends JPanel {
@@ -175,10 +175,10 @@ public class RandomColorProvider extends ColorProvider {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

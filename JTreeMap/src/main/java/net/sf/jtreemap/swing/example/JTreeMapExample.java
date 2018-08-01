@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -85,7 +85,7 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
 
 /**
  * Test of JTreeMap
- * 
+ *
  * @author Laurent Dutheil
  */
 public class JTreeMapExample extends JFrame implements ActionListener {
@@ -166,7 +166,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
     /**
      * main
-     * 
+     *
      * @param args
      *            command line
      */
@@ -178,9 +178,10 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
+    @Override
     public void actionPerformed(final ActionEvent e) {
         // Action performed for the File Menu @see addMenu()
 
@@ -218,7 +219,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
     /**
      * Set the tm3 file
-     * 
+     *
      * @param path
      *            the path of the tm3 file
      */
@@ -240,7 +241,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
     /**
      * Set the xml file corresponding to the TreeMap.dtd
-     * 
+     *
      * @param xmlFileName
      *            xml file name
      */
@@ -262,7 +263,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
     /**
      * Code to execute before closing the window
-     * 
+     *
      * @param e
      *            WindowEvent
      */
@@ -311,6 +312,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         jScrollPane1.getViewport().add(this.treeView);
         jScrollPane1.setPreferredSize(new Dimension(SCROLLPANE_WIDTH, jTreeMap.getRoot().getHeight()));
         treeView.addTreeSelectionListener(new TreeSelectionListener() {
+            @Override
             public void valueChanged(final TreeSelectionEvent e) {
                 // for each selected elements ont the treeView, we zoom the
                 // JTreeMap
@@ -358,6 +360,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         gridBagConstraints.weightx = CONSTRAINT_WEIGHTX;
         choicePanel.add(this.cmbWeight, gridBagConstraints);
         cmbWeight.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(final ActionEvent e) {
                 final JComboBox cmb = (JComboBox) e.getSource();
                 final String field = (String) cmb.getSelectedItem();
@@ -383,6 +386,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         gridBagConstraints.weighty = 1.0;
         choicePanel.add(this.cmbValue, gridBagConstraints);
         cmbValue.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(final ActionEvent e) {
                 final JComboBox cmb = (JComboBox) e.getSource();
                 final String field = (String) cmb.getSelectedItem();
@@ -412,6 +416,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         createStrategies();
 
         cmbStrategy.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(final ActionEvent e) {
                 updateStrategy();
             }
@@ -444,6 +449,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         }
 
         cmbColorProvider.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(final ActionEvent e) {
                 if (JTreeMapExample.this.cmbColorProvider.getSelectedIndex() > -1) {
                     updateLegendPanel();
@@ -457,13 +463,16 @@ public class JTreeMapExample extends JFrame implements ActionListener {
     protected void createColorProviders() {
         colorProviders.put("Red Green", new RedGreenColorProvider(this.jTreeMap));
         colorProviders.put("Random", new RandomColorProvider(jTreeMap));
-        colorProviders.put("HSB linear", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED));
-        colorProviders.put("HSB log", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN, Color.RED));
-        colorProviders.put("HSB SquareRoot", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.SquareRoot, Color.GREEN,
-                Color.RED));
-        colorProviders.put("HSB CubicRoot", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN,
-                Color.RED));
-        colorProviders.put("HSB exp", new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN, Color.RED));
+        colorProviders.put("HSB linear",
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED));
+        colorProviders.put("HSB log",
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN, Color.RED));
+        colorProviders.put("HSB SquareRoot",
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.SquareRoot, Color.GREEN, Color.RED));
+        colorProviders.put("HSB CubicRoot",
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN, Color.RED));
+        colorProviders.put("HSB exp",
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN, Color.RED));
         for (final String key : colorProviders.keySet()) {
             final ColorProvider cp = colorProviders.get(key);
             panelLegend.add(cp.getLegendPanel(), key);
@@ -484,7 +493,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
     /**
      * init the window
-     * 
+     *
      * @throws Exception
      */
     private void initGUI() throws Exception {
@@ -591,10 +600,10 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

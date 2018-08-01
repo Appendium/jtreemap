@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -76,8 +76,8 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
  * Accepts 3 parameters;
  * "dataFile" which is the path to data file relative to code base.
  * "dataFileType" is either dt3 or xml.
- * "showTM3CTonf", true if the tm3 configuration panel should be shown for tm3 files. 
- * 
+ * "showTM3CTonf", true if the tm3 configuration panel should be shown for tm3 files.
+ *
  * @author Laurent Dutheil
  */
 public class JTreeMapAppletExample extends JApplet {
@@ -127,7 +127,7 @@ public class JTreeMapAppletExample extends JApplet {
     }
 
     /**
-     * 
+     *
      */
     private void initGUI() {
         // Width and height params are mandatory for an applet/object element in html
@@ -183,15 +183,19 @@ public class JTreeMapAppletExample extends JApplet {
         if ("Random".equalsIgnoreCase(colourProvider)) {
             colourProviderInstance = new RandomColorProvider(this.jTreeMap);
         } else if ("HSBLinear".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED);
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN,
+                    Color.RED);
         } else if ("HSBLog".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN, Color.RED);
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN,
+                    Color.RED);
         } else if ("HSBSquareRoot".equalsIgnoreCase(colourProvider)) {
             colourProviderInstance = new RandomColorProvider(this.jTreeMap);
         } else if ("HSBCubicRoot".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN, Color.RED);
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN,
+                    Color.RED);
         } else if ("HSBExp".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN, Color.RED);
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN,
+                    Color.RED);
         }
 
         if (colourProviderInstance == null) {
@@ -218,6 +222,7 @@ public class JTreeMapAppletExample extends JApplet {
             jScrollPane1.getViewport().add(this.treeView);
             jScrollPane1.setPreferredSize(new Dimension(SCROLLPANE_WIDTH, jTreeMap.getRoot().getHeight()));
             treeView.addTreeSelectionListener(new TreeSelectionListener() {
+                @Override
                 public void valueChanged(final TreeSelectionEvent e) {
                     // for each selected elements ont the treeView, we zoom the
                     // JTreeMap
@@ -246,7 +251,7 @@ public class JTreeMapAppletExample extends JApplet {
      * @throws IOException
      */
     private BufferedReader createReader(final String dataFile) throws IOException {
-    	final URL url = new URL(getCodeBase(), dataFile);
+        final URL url = new URL(getCodeBase(), dataFile);
         final URLConnection connection = url.openConnection();
         final BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         return reader;
@@ -286,6 +291,7 @@ public class JTreeMapAppletExample extends JApplet {
         gridBagConstraints.weightx = CONSTRAINT_WEIGHTX;
         choicePanel.add(this.cmbWeight, gridBagConstraints);
         cmbWeight.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(final ActionEvent e) {
                 final JComboBox cmb = (JComboBox) e.getSource();
                 final String field = (String) cmb.getSelectedItem();
@@ -311,12 +317,13 @@ public class JTreeMapAppletExample extends JApplet {
         gridBagConstraints.weighty = 1.0;
         choicePanel.add(this.cmbValue, gridBagConstraints);
         cmbValue.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(final ActionEvent e) {
                 final JComboBox cmb = (JComboBox) e.getSource();
                 final String field = (String) cmb.getSelectedItem();
                 JTreeMapAppletExample.this.builderTM3.setValues(field);
-                //              createColorProviders();
-                //              updateLegendPanel();
+                // createColorProviders();
+                // updateLegendPanel();
                 JTreeMapAppletExample.this.repaint();
             }
         });
@@ -349,7 +356,7 @@ public class JTreeMapAppletExample extends JApplet {
 
     /**
      * This method initializes jContentPane
-     * 
+     *
      * @return javax.swing.JPanel
      */
     private javax.swing.JPanel getJContentPane() {
@@ -370,10 +377,10 @@ public class JTreeMapAppletExample extends JApplet {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

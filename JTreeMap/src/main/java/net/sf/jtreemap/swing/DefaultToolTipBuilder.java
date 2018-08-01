@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -38,10 +38,10 @@ import javax.swing.JToolTip;
 
 /**
  * Default class to build the DefaultToolTip displayed by the JTreeMap.<BR>
- * 
+ *
  * @see net.sf.jtreemap.swing.DefaultToolTip
  * @author Laurent DUTHEIL
- * 
+ *
  */
 public class DefaultToolTipBuilder implements IToolTipBuilder, Serializable {
     private static final long serialVersionUID = -1646772942428571187L;
@@ -54,7 +54,7 @@ public class DefaultToolTipBuilder implements IToolTipBuilder, Serializable {
 
     /**
      * Constructor.
-     * 
+     *
      * @param jTreeMap
      *            the linked JTreeMap
      */
@@ -67,9 +67,10 @@ public class DefaultToolTipBuilder implements IToolTipBuilder, Serializable {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.IToolTipBuilder#getToolTip()
      */
+    @Override
     public JToolTip getToolTip() {
         if (instance == null) {
             instance = new DefaultToolTip(this.jTreeMap, this.weightPrefix, this.valuePrefix, this.showWeight);
@@ -79,10 +80,10 @@ public class DefaultToolTipBuilder implements IToolTipBuilder, Serializable {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

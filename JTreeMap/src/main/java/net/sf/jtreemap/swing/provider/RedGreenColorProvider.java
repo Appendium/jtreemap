@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id: ColorProvider.java 69 2006-10-24 16:20:20Z benoitx $
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -44,7 +44,7 @@ import net.sf.jtreemap.swing.Value;
 /**
  * ColorProvider who, with a max absolute value M, choose the color between
  * values -M and M.
- * 
+ *
  * @author Laurent Dutheil
  */
 
@@ -52,7 +52,7 @@ public class RedGreenColorProvider extends ColorProvider {
     private static final int COLOUR_MAX_VALUE = 255;
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 5030306338780462810L;
 
@@ -70,7 +70,7 @@ public class RedGreenColorProvider extends ColorProvider {
 
     /**
      * Constructor
-     * 
+     *
      * @param jTreeMap
      *            the JTreeMap to color
      */
@@ -85,7 +85,7 @@ public class RedGreenColorProvider extends ColorProvider {
             setMaxValue(this.jTreeMap.getRoot());
         }
 
-        final double dValeur = (value != null ? value.getValue() : 0.00);
+        final double dValeur = value != null ? value.getValue() : 0.00;
 
         int colorIndex = (int) (COLOUR_MAX_VALUE * Math.abs(dValeur) / this.maxAbsValue.getValue());
 
@@ -120,7 +120,7 @@ public class RedGreenColorProvider extends ColorProvider {
 
     /**
      * Set the max and the min value
-     * 
+     *
      * @param root
      *            root of the JTreeMap
      */
@@ -131,8 +131,8 @@ public class RedGreenColorProvider extends ColorProvider {
                 try {
                     final Class c = value.getClass();
                     if (this.maxAbsValue == null || this.minVal == null) {
-                        this.maxAbsValue = (Value) (c.newInstance());
-                        this.minVal = (Value) (c.newInstance());
+                        this.maxAbsValue = (Value) c.newInstance();
+                        this.minVal = (Value) c.newInstance();
                     }
                     this.minVal.setValue(-Math.abs(value.getValue()));
                     this.maxAbsValue.setValue(Math.abs(value.getValue()));
@@ -151,7 +151,7 @@ public class RedGreenColorProvider extends ColorProvider {
 
     /**
      * Panel with the legend
-     * 
+     *
      * @author Laurent Dutheil
      */
     private class Legend extends JPanel {
@@ -203,10 +203,10 @@ public class RedGreenColorProvider extends ColorProvider {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__

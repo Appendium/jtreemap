@@ -1,9 +1,9 @@
 /*
  * ObjectLab, http://www.objectlab.co.uk/open is supporting JTreeMap.
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
@@ -15,7 +15,7 @@
  *                     www.ObjectLab.co.uk
  *
  * $Id$
- * 
+ *
  * Copyright 2006 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -42,13 +42,13 @@ import net.sf.jtreemap.swing.Value;
 /**
  * Color Provider by default.<BR>
  * All values are associated to a unique color.
- * 
+ *
  * @author Laurent DUTHEIL
- * 
+ *
  */
 public class UniqueColorProvider extends ColorProvider {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -7571926934516139432L;
 
@@ -67,7 +67,7 @@ public class UniqueColorProvider extends ColorProvider {
 
     /**
      * Constructor.
-     * 
+     *
      * @param color
      *            unique color
      */
@@ -77,7 +77,7 @@ public class UniqueColorProvider extends ColorProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.ColorProvider#getColor(double)
      */
     @Override
@@ -87,7 +87,7 @@ public class UniqueColorProvider extends ColorProvider {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see net.sf.jtreemap.swing.ColorProvider#getLegendPanel()
      */
     @Override
@@ -100,7 +100,7 @@ public class UniqueColorProvider extends ColorProvider {
 
     /**
      * Panel with the legend.
-     * 
+     *
      * @author Laurent Dutheil
      */
     private static class Legend extends JPanel {
@@ -133,10 +133,10 @@ public class UniqueColorProvider extends ColorProvider {
 }
 /*
  *                 ObjectLab is supporing JTreeMap
- * 
- * Based in London, we are world leaders in the design and development 
+ *
+ * Based in London, we are world leaders in the design and development
  * of bespoke applications for the securities financing markets.
- * 
+ *
  * <a href="http://www.objectlab.co.uk/open">Click here to learn more about us</a>
  *           ___  _     _           _   _          _
  *          / _ \| |__ (_) ___  ___| |_| |    __ _| |__
