@@ -17,7 +17,7 @@
    </build>
 
    <modules>
-      <module>jtreemap</module>
+      <module>JTreeMap</module>
       <!--
       <module>ktreemap</module> -->
    </modules>
