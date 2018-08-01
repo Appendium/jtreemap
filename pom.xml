@@ -61,6 +61,15 @@
     
     <developers>
         <developer>
+            <name>Laurent Dutheil</name>
+            <id>jense128</id>
+            <roles>
+                <role>Founder</role>
+                <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
             <name>Benoit Xhenseval</name>
             <id>benoitx</id>
             <email>kit AT objectlab DOT co dOt uk</email>
@@ -69,6 +78,15 @@
                 <role>Developer</role>
             </roles>
             <url>http://www.xhenseval.com</url>
+            <timezone>+0</timezone>
+        </developer>
+        <developer>
+            <name>Marcin Jekot</name>
+            <id>marchy</id>
+            <organization>Appendium Ltd</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
             <timezone>+0</timezone>
         </developer>
     </developers>

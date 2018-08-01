@@ -83,7 +83,7 @@ public class BuilderTM3 implements Serializable {
      */
     public static final String STRING = "STRING";
 
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
     private static final LinkedList<String> FIELD_NAMES = new LinkedList<String>();
 
@@ -270,7 +270,7 @@ public class BuilderTM3 implements Serializable {
                         value = new Integer(Integer.parseInt(st.nextToken()));
                     } else if (DATE.equals(FIELD_TYPES.get(i))) {
                         try {
-                            value = DATE_FORMAT.parse(st.nextToken());
+                            value = dateFormat.parse(st.nextToken());
                         } catch (final ParseException e) {
                             value = null;
                         }

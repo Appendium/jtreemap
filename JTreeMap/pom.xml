@@ -27,7 +27,16 @@
                     <include>**/*.png</include>
                 </includes>
                 <filtering>false</filtering>
-         </resource>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                    <include>**/*.gif</include>
+                    <include>**/*.png</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
         </resources>
         <testResources>
             <testResource>
