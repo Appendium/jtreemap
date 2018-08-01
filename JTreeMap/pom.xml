@@ -1,146 +1,148 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-   <modelVersion>4.0.0</modelVersion>
-   <groupId>net.sf.jtreemap</groupId>
-   <artifactId>jtreemap</artifactId>
-   <packaging>jar</packaging>
-
-   <!-- this is always the current version of the QALab plugin -->
-   <version>1.1.1-SNAPSHOT</version>
-
-   <name>JTreemap Built By Maven 2</name>
-   <url>http://jtreemap.sourceforge.net</url>
-
-   <licenses>
-      <license>
-         <name>Apache License</name>
-      </license>
-   </licenses>
-
-   <description>JTreeMap built by Maven 2.</description>
-
-   <inceptionYear>2005</inceptionYear>
-
-   <issueManagement>
-      <url>http://www.sourceforge.net/tracker/?group_id=26527</url>
-   </issueManagement>
-
-
-   <scm>
-      <url>http://jtreemap.svn.sourceforge.net/viewvc/jtreemap/</url>
-      <connection>scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk</connection>
-      <developerConnection>
-         scm:svn:https://jtreemap.svn.sourceforge.net/svnroot/jtreemap/trunk
-      </developerConnection>
-   </scm>
-
-   <build>
-      <resources>
-         <resource>
-            <directory>src/main/conf</directory>
-            <includes>
-               <include>*.properties</include>
-               <include>**/*.gif</include>
-               <include>**/*.png</include>
-            </includes>
-            <filtering>false</filtering>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>net.sf.jtreemap</groupId>
+        <artifactId>jtreemap-parent</artifactId>
+        <version>1.1.1-SNAPSHOT</version>
+    </parent>
+    
+    
+    <artifactId>jtreemap</artifactId>
+    <name>JTreeMap</name>
+    <packaging>bundle</packaging> <!-- (1) OSGi -->
+    
+    <description>Java library for a Heatmap chart.</description>
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>*.properties</include>
+                    <include>**/*.gif</include>
+                    <include>**/*.png</include>
+                </includes>
+                <filtering>false</filtering>
          </resource>
-      </resources>
-      <testResources>
-         <testResource>
-            <directory>src/test/java</directory>
-            <includes>
-               <include>**/*.xml</include>
-            </includes>
-            <filtering>false</filtering>
-         </testResource>
-      </testResources>
-      <plugins>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-               <source>1.5</source>
-               <target>1.5</target>
-            </configuration>
-         </plugin>
-      </plugins>
-   </build>
-
-   <dependencies/>
-
-<!--
-   <distributionManagement>
-      <repository>
-         <id>sourceforge.net</id>
-         <name>SourceForge</name>
-         <url>scpexe://ssh.sourceforge.net/home/groups/q/qa/qalab/htdocs/m2-repo</url>
-      </repository>
-      <snapshotRepository>
-         <id>sourceforge.net</id>
-         <name>SourceForge</name>
-         <url>scpexe://ssh.sourceforge.net/home/groups/q/qa/qalab/htdocs/m2-repo</url>
-      </snapshotRepository>
-      <site>
-         <id>sourceforge.net</id>
-         <name>SourceForge</name>
-         <url>scpexe://ssh.sourceforge.net/home/groups/q/qa/qalab/htdocs</url>
-      </site>
-   </distributionManagement>
--->
-
-  <profiles>
-    <profile>
-      <id>release-profile</id>
-      <activation>
-        <property>
-          <name>performRelease</name>
-          <value>true</value>
-        </property>
-      </activation>
-
-      <build>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </testResource>
+        </testResources>
         <plugins>
-          <plugin>
-            <inherited>true</inherited>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>attach-sources</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-
-          <plugin>
-            <inherited>true</inherited>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-
-          <plugin>
-            <inherited>true</inherited>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-deploy-plugin</artifactId>
-            <configuration>
-              <updateReleaseInfo>true</updateReleaseInfo>
-            </configuration>
-          </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>3.0.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>net.sf.jtreemap.*;version="${project.version}"</Export-Package>
+                        <Private-Package />
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Bundle-RequiredExecutionEnvironment>J2SE-1.4</Bundle-RequiredExecutionEnvironment>
+                    </instructions>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>net.sf.jtreemap</Automatic-Module-Name>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <showDeprecation>true</showDeprecation>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <additionalparam>"-breakiterator"</additionalparam>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <!--
+                     <argLine>-ea</argLine>
+                     -->
+                    <printSummary>false</printSummary>
+                    <reportFormat>plain</reportFormat>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <useFile>false</useFile>
+                    <excludes>
+                        <exclude>**/Abstract*.java</exclude>
+                    </excludes>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            
         </plugins>
-      </build>
-    </profile>
-  </profiles>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.21</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.2</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>

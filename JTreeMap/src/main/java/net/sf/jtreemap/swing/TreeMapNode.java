@@ -101,7 +101,7 @@ public class TreeMapNode extends DefaultMutableTreeNode {
      * @param weight
      *            weight of the leaf (if negative, we take the absolute value).
      * @param value
-     *            Value associée à la feuille
+     *            Value associated a la feuille
      */
     public TreeMapNode(final String label, final double weight, final Value value) {
         super(label);
@@ -135,7 +135,8 @@ public class TreeMapNode extends DefaultMutableTreeNode {
     public TreeMapNode getActiveLeaf(final int xParam, final int yParam) {
 
         if (this.isLeaf()) {
-            if ((xParam >= this.getX()) && (xParam <= this.getX() + this.getWidth()) && (yParam >= this.getY()) && (yParam <= this.getY() + this.getHeight())) {
+            if ((xParam >= this.getX()) && (xParam <= this.getX() + this.getWidth()) && (yParam >= this.getY())
+                    && (yParam <= this.getY() + this.getHeight())) {
                 return this;
             }
         } else {
