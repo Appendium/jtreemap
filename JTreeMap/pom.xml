@@ -8,7 +8,7 @@
    <packaging>jar</packaging>
 
    <!-- this is always the current version of the QALab plugin -->
-   <version>1.1.1</version>
+   <version>1.1.1-SNAPSHOT</version>
 
    <name>JTreemap Built By Maven 2</name>
    <url>http://jtreemap.sourceforge.net</url>
