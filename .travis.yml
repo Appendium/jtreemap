@@ -28,7 +28,7 @@ notifications:
     on_success: always
     on_failure: always
   slack:
-    secure: DTRTtJQpTUX4XkoS8Df2Zi1pcWVLQKIsfMjHmPEv481V3DeBQWJvn7LPWE5YpK/pdD/3LasnASWIGS2ijb9i0bfrwcaH+MWm0vSfg9+5lDhtSlFDM1QXJIhOmjm1bozEYG2lcPZz6u8CSIEBFSATAXZCkxzYAJ5bH5AM1jxJfoI=
+    secure: hrRnpmD/K9ue2dGlob13noutgkFqP9xrfhRDG9tSje3sMSizWd7Yz7pIHqZesOrFKX8KqmBqsqgRyi83pX5Vp0DlAACsf15VReTdz9ogswKKPIRuaMb7CcgxqHM309CpdwlAsHIpSZ9NQyy/TCmYPw9eKIc9mGL+zJZUayf62iuJ0he5FDwuheSGUS5+aiK5T4UHu5cRzxB5bzMGzJDouoLcoKw5i2ceyFoDrJKHXzDdGoeRB/pNmAKhZBR3i1zkjxW412NHLhnpKIDElu6hjl4LFL2h5dh9irkTs9St7TMQCpmoa+mI7reMSUQlFIu+YyjRb3n9P7jcpqu4SJeb1v6p5yBqwLvq0sqQID8yqFHrBQnBpWl6K4vQx5+ummR2D0jvCT7aDid7OakXMYIN88vxBYq/LI/I56R1zsBhbwVCdhaCGvflc6j0SyEd/02kJbm196ZfXW/Kh4VjNtgWpQqQ9EBlGcIkFvx8fWrwZ1b193D/ZZD4+e/Kg66hH9KJ6Et/Jw4N6qTDRi4HsGk/rSp7VsGN5QlFxNWQRI8sOMOu5GKBCd9eqstTCh1rfY7xlgJ4tqQVwDgNdhF0UVly51Tywn09wYdznBnkJ9U0PisQIlCs5enySuV+e19ssoPFqrQAoVM06zxARwGBJiyh5eXldev5GwaavmVTiLTW9aY=
 after_success:
 - '[[ $TRAVIS_BRANCH == "master" ]] && { python travis/addServer.py; mvn clean deploy
   --settings ~/.m2/mySettings.xml; };'
