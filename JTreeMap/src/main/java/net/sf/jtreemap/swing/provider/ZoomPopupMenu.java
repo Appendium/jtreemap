@@ -64,7 +64,7 @@ public class ZoomPopupMenu extends JPopupMenu {
     public static final Icon ZOOM_ICON = new ImageIcon(ZoomPopupMenu.class.getResource("icons/zoom.png"));
 
     private final JTreeMap jTreeMap;
-    private final transient MouseListener mouseListener;
+    private final transient MouseListener mListener;
     private final boolean showAbout;
 
     /**
@@ -80,8 +80,8 @@ public class ZoomPopupMenu extends JPopupMenu {
     public ZoomPopupMenu(final JTreeMap jTreeMap, final boolean showAbout) {
         super();
         this.jTreeMap = jTreeMap;
-        this.mouseListener = new HandleClickMouse();
-        this.jTreeMap.addMouseListener(this.mouseListener);
+        this.mListener = new HandleClickMouse();
+        this.jTreeMap.addMouseListener(this.mListener);
         this.showAbout = showAbout;
     }
 

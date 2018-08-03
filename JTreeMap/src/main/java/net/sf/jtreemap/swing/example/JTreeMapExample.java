@@ -91,50 +91,28 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
  */
 @Slf4j
 public class JTreeMapExample extends JFrame implements ActionListener {
-    private static final double CONSTRAINT_WEIGHTX = 0.5;
-
-    private static final int SCROLLPANE_WIDTH = 140;
-
-    private static final int APPLICATION_HEIGHT = 400;
-
-    private static final int APPLICATION_WIDTH = 600;
-
-    private static final int DEFAULT_FONT_SIZE = 16;
-
     private static final long serialVersionUID = 2813934810390001709L;
-
+    private static final double CONSTRAINT_WEIGHTX = 0.5;
+    private static final int SCROLLPANE_WIDTH = 140;
+    private static final int APPLICATION_HEIGHT = 400;
+    private static final int APPLICATION_WIDTH = 600;
+    private static final int DEFAULT_FONT_SIZE = 16;
     private static final String EXIT = "Exit";
-
     private static final String OPEN_TM3_FILE = "Open TM3 File";
-
     private static final String OPEN_XML_FILE = "Open Xml File";
-
     private final JTreeMap jTreeMap;
-
     private JTree treeView = new JTree();
-
     private BuilderTM3 builderTM3;
-
     private CardLayout cardLayout;
-
     private JComboBox cmbColorProvider;
-
     private JComboBox cmbStrategy;
-
     private JComboBox cmbValue;
-
     private JComboBox cmbWeight;
-
     private final LinkedHashMap<String, ColorProvider> colorProviders = new LinkedHashMap<String, ColorProvider>();
-
     private JPanel panelLegend;
-
     private JPanel panelTM3;
-
     private TreeMapNode root;
-
     private final LinkedHashMap<String, SplitStrategy> strategies = new LinkedHashMap<String, SplitStrategy>();
-
     private DefaultTreeModel treeModel;
 
     /**

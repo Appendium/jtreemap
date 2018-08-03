@@ -85,30 +85,35 @@ public class SplitSquarified extends SplitStrategy {
             this.w2 = this.w;
             this.h2 = this.h - this.h1;
         } else {
-            // width/height
-            while (mid < v.size()) {
-                final double aspect = normAspect(this.w, this.h, a, b);
-                final double q = v.get(mid).getWeight() / weight0;
-                if (normAspect(this.w, this.h, a, b + q) > aspect) {
-                    break;
-                }
-                mid++;
-                b += q;
-            }
-            int i = 0;
-            for (; i <= mid && i < v.size(); i++) {
-                v1.add(v.get(i));
-            }
-            for (; i < v.size(); i++) {
-                v2.add(v.get(i));
-            }
-            this.h1 = this.h;
-            this.w1 = (int) Math.round(this.w * b);
-            this.x2 = (int) Math.round(this.x + this.w * b);
-            this.y2 = this.y;
-            this.w2 = this.w - this.w1;
-            this.h2 = this.h;
+            widthSameOrBiggerThanHeight(v, v1, v2, mid, weight0, a, b);
         }
+    }
+
+    private void widthSameOrBiggerThanHeight(final List<TreeMapNode> v, final List<TreeMapNode> v1, final List<TreeMapNode> v2, int mid,
+            final double weight0, final double a, double b) {
+        // width/height
+        while (mid < v.size()) {
+            final double aspect = normAspect(this.w, this.h, a, b);
+            final double q = v.get(mid).getWeight() / weight0;
+            if (normAspect(this.w, this.h, a, b + q) > aspect) {
+                break;
+            }
+            mid++;
+            b += q;
+        }
+        int i = 0;
+        for (; i <= mid && i < v.size(); i++) {
+            v1.add(v.get(i));
+        }
+        for (; i < v.size(); i++) {
+            v2.add(v.get(i));
+        }
+        this.h1 = this.h;
+        this.w1 = (int) Math.round(this.w * b);
+        this.x2 = (int) Math.round(this.x + this.w * b);
+        this.y2 = this.y;
+        this.w2 = this.w - this.w1;
+        this.h2 = this.h;
     }
 
     /*
@@ -129,7 +134,7 @@ public class SplitSquarified extends SplitStrategy {
             return;
         }
 
-        final List<TreeMapNode> vClone = new ArrayList<TreeMapNode>(v);
+        final List<TreeMapNode> vClone = new ArrayList<>(v);
 
         sortList(vClone);
 
@@ -184,30 +189,34 @@ public class SplitSquarified extends SplitStrategy {
                 node.setHeight(height);
                 node.setWidth(width);
             } else {
-                // if this is not a leaf, calculation for the children
-                int bSub;
-                if (TreeMapNode.getBorder() > 1) {
-                    bSub = 2;
-                } else if (TreeMapNode.getBorder() == 1) {
-                    bSub = 1;
-                } else {
-                    bSub = 0;
-                }
-
-                int width = node.getWidth() - bSub;
-                if (width < 0) {
-                    width = 0;
-                }
-                int height = node.getHeight() - bSub;
-                if (height < 0) {
-                    height = 0;
-                }
-
-                TreeMapNode.setBorder(TreeMapNode.getBorder() - bSub);
-                calculatePositionsRec(node.getX() + bSub, node.getY() + bSub, width, height, node.getWeight(), node.getChildren());
-                TreeMapNode.setBorder(TreeMapNode.getBorder() + bSub);
+                calculateNonLeaf(node);
             }
         }
+    }
+
+    private void calculateNonLeaf(final TreeMapNode node) {
+        // if this is not a leaf, calculation for the children
+        int bSub;
+        if (TreeMapNode.getBorder() > 1) {
+            bSub = 2;
+        } else if (TreeMapNode.getBorder() == 1) {
+            bSub = 1;
+        } else {
+            bSub = 0;
+        }
+
+        int width = node.getWidth() - bSub;
+        if (width < 0) {
+            width = 0;
+        }
+        int height = node.getHeight() - bSub;
+        if (height < 0) {
+            height = 0;
+        }
+
+        TreeMapNode.setBorder(TreeMapNode.getBorder() - bSub);
+        calculatePositionsRec(node.getX() + bSub, node.getY() + bSub, width, height, node.getWeight(), node.getChildren());
+        TreeMapNode.setBorder(TreeMapNode.getBorder() + bSub);
     }
 
     private double normAspect(final double big, final double small, final double a, final double b) {

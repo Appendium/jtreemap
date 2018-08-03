@@ -120,44 +120,7 @@ public abstract class SplitStrategy implements Serializable {
 
         // if the List contains only one element
         if (v.size() == 1) {
-            final TreeMapNode f = v.get(0);
-            if (f.isLeaf()) {
-                // if this is a leaf, we display with the border
-                int w = w0 - TreeMapNode.getBorder();
-                if (w < 0) {
-                    w = 0;
-                }
-                int h = h0 - TreeMapNode.getBorder();
-                if (h < 0) {
-                    h = 0;
-                }
-                f.setDimension(x0 + TreeMapNode.getBorder(), y0 + TreeMapNode.getBorder(), w, h);
-            } else {
-                // if this is not a leaf, calculation for the children
-                f.setDimension(x0, y0, w0, h0);
-
-                int bSub;
-                if (TreeMapNode.getBorder() > 1) {
-                    bSub = 2;
-                } else if (TreeMapNode.getBorder() == 1) {
-                    bSub = 1;
-                } else {
-                    bSub = 0;
-                }
-
-                int w = w0 - bSub;
-                if (w < 0) {
-                    w = 0;
-                }
-                int h = h0 - bSub;
-                if (h < 0) {
-                    h = 0;
-                }
-
-                TreeMapNode.setBorder(TreeMapNode.getBorder() - bSub);
-                calculatePositionsRec(x0 + bSub, y0 + bSub, w, h, weight0, f.getChildren());
-                TreeMapNode.setBorder(TreeMapNode.getBorder() + bSub);
-            }
+            calculatePositionRecForSingleElement(x0, y0, w0, h0, weight0, v);
         } else {
             // if there is more than one element
             // we split the List according to the selected strategy
@@ -195,6 +158,48 @@ public abstract class SplitStrategy implements Serializable {
             // calculation for the new two Lists
             calculatePositionsRec(x0, y0, w1, h1, weight1, v1);
             calculatePositionsRec(x2, y2, w2, h2, weight2, v2);
+        }
+    }
+
+    private void calculatePositionRecForSingleElement(final int x0, final int y0, final int w0, final int h0, final double weight0,
+            final List<TreeMapNode> v) {
+        final TreeMapNode f = v.get(0);
+        if (f.isLeaf()) {
+            // if this is a leaf, we display with the border
+            int w = w0 - TreeMapNode.getBorder();
+            if (w < 0) {
+                w = 0;
+            }
+            int h = h0 - TreeMapNode.getBorder();
+            if (h < 0) {
+                h = 0;
+            }
+            f.setDimension(x0 + TreeMapNode.getBorder(), y0 + TreeMapNode.getBorder(), w, h);
+        } else {
+            // if this is not a leaf, calculation for the children
+            f.setDimension(x0, y0, w0, h0);
+
+            int bSub;
+            if (TreeMapNode.getBorder() > 1) {
+                bSub = 2;
+            } else if (TreeMapNode.getBorder() == 1) {
+                bSub = 1;
+            } else {
+                bSub = 0;
+            }
+
+            int w = w0 - bSub;
+            if (w < 0) {
+                w = 0;
+            }
+            int h = h0 - bSub;
+            if (h < 0) {
+                h = 0;
+            }
+
+            TreeMapNode.setBorder(TreeMapNode.getBorder() - bSub);
+            calculatePositionsRec(x0 + bSub, y0 + bSub, w, h, weight0, f.getChildren());
+            TreeMapNode.setBorder(TreeMapNode.getBorder() + bSub);
         }
     }
 

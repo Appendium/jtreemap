@@ -60,18 +60,13 @@ import net.sf.jtreemap.swing.ValuePercent;
  */
 @Slf4j
 public class BuilderXML {
+    private static final String THE_FILE_DON_T_CORRESPOND_TO_THE_TREE_MAP_DTD = "The file don't correspond to the TreeMap.dtd (";
     private static final String BRANCH = "branch";
-
     private static final String LEAF = "leaf";
-
     private static final String LABEL = "label";
-
     private static final String WEIGHT = "weight";
-
     private static final String VALUE = "value";
-
     private Document document;
-
     private final TreeMapNodeBuilder builder;
 
     /**
@@ -147,12 +142,11 @@ public class BuilderXML {
                     final String valueString = ((Element) values.item(0)).getChildNodes().item(0).getNodeValue();
                     final NodeList weights = child.getElementsByTagName(WEIGHT);
                     final String weightString = ((Element) weights.item(0)).getChildNodes().item(0).getNodeValue();
-                    final Value value = new ValuePercent(Double.valueOf(valueString).doubleValue());
-                    final double weight = Double.valueOf(weightString).doubleValue();
+                    final Value value = new ValuePercent(Double.parseDouble(valueString));
+                    final double weight = Double.parseDouble(weightString);
 
                     this.builder.buildLeaf(label, weight, value, tmn);
                 }
-
             }
         }
     }
@@ -167,12 +161,8 @@ public class BuilderXML {
             final Element root = this.document.getDocumentElement();
 
             build(root, null);
-        } catch (final ParserConfigurationException e) {
-            throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
-        } catch (final SAXException e) {
-            throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
-        } catch (final IOException e) {
-            throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
+        } catch (final ParserConfigurationException | SAXException | IOException e) {
+            throw new ParseException(THE_FILE_DON_T_CORRESPOND_TO_THE_TREE_MAP_DTD + e.getMessage() + ")", 0);
         }
     }
 
@@ -186,13 +176,9 @@ public class BuilderXML {
             final Element root = this.document.getDocumentElement();
 
             build(root, null);
-        } catch (final ParserConfigurationException e) {
-            throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
-        } catch (final SAXException e) {
-            throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
-        } catch (final IOException e) {
+        } catch (final ParserConfigurationException | SAXException | IOException e) {
             log.error("IO Issue", e);
-            throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
+            throw new ParseException(THE_FILE_DON_T_CORRESPOND_TO_THE_TREE_MAP_DTD + e.getMessage() + ")", 0);
         }
     }
 }

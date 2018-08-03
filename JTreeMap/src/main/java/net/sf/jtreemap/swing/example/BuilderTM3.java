@@ -121,7 +121,7 @@ public class BuilderTM3 implements Serializable {
      * @return the number fields (ie INTEGER and FLOAT)
      */
     public String[] getNumberFields() {
-        final TreeSet<String> result = new TreeSet<String>();
+        final TreeSet<String> result = new TreeSet<>();
         for (int i = 0; i < FIELD_NAMES.size(); i++) {
             final String type = FIELD_TYPES.get(i);
             if (INTEGER.equals(type) || FLOAT.equals(type)) {
@@ -257,41 +257,46 @@ public class BuilderTM3 implements Serializable {
             // read the VALUES
             values.clear();
             while ((line = reader.readLine()) != null) {
-                st = new StringTokenizer(line, "\t");
-                final HashMap<String, Object> mapNodeValues = new HashMap<>();
-                // the VALUES are formated
-                for (int i = 0; i < FIELD_NAMES.size(); i++) {
-                    Object value;
-                    if (FLOAT.equals(FIELD_TYPES.get(i))) {
-                        value = Double.valueOf(st.nextToken());
-                    } else if (INTEGER.equals(FIELD_TYPES.get(i))) {
-                        value = Integer.valueOf(st.nextToken());
-                    } else if (DATE.equals(FIELD_TYPES.get(i))) {
-                        try {
-                            value = dateFormat.parse(st.nextToken());
-                        } catch (final ParseException e) {
-                            value = null;
-                        }
-                    } else {
-                        value = st.nextToken();
-                    }
-                    mapNodeValues.put(FIELD_NAMES.get(i), value);
-                }
-
-                // if we have not the path (the node names of parents)
-                if (!st.hasMoreTokens()) {
-                    // we throw an exception, because we can't build the treemap
-                    throw new IOException("the file didn't contains the hierarchy path");
-                }
-
-                // create the nodes
-                createNodes(st, mapNodeValues);
+                handleALine(line);
             }
         } finally {
             if (reader != null) {
                 reader.close();
             }
         }
+    }
+
+    private void handleALine(String line) throws IOException {
+        StringTokenizer st;
+        st = new StringTokenizer(line, "\t");
+        final HashMap<String, Object> mapNodeValues = new HashMap<>();
+        // the VALUES are formated
+        for (int i = 0; i < FIELD_NAMES.size(); i++) {
+            Object value;
+            if (FLOAT.equals(FIELD_TYPES.get(i))) {
+                value = Double.valueOf(st.nextToken());
+            } else if (INTEGER.equals(FIELD_TYPES.get(i))) {
+                value = Integer.valueOf(st.nextToken());
+            } else if (DATE.equals(FIELD_TYPES.get(i))) {
+                try {
+                    value = dateFormat.parse(st.nextToken());
+                } catch (final ParseException e) {
+                    value = null;
+                }
+            } else {
+                value = st.nextToken();
+            }
+            mapNodeValues.put(FIELD_NAMES.get(i), value);
+        }
+
+        // if we have not the path (the node names of parents)
+        if (!st.hasMoreTokens()) {
+            // we throw an exception, because we can't build the treemap
+            throw new IOException("the file didn't contains the hierarchy path");
+        }
+
+        // create the nodes
+        createNodes(st, mapNodeValues);
     }
 }
 /*
