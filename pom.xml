@@ -28,6 +28,7 @@
     
     <modules>
         <module>JTreeMap</module>
+        <module>JTreeMapExample</module>
     </modules>
     
     <inceptionYear>2005</inceptionYear>
