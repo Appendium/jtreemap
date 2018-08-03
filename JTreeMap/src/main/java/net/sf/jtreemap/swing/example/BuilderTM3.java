@@ -85,11 +85,11 @@ public class BuilderTM3 implements Serializable {
 
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
-    private static final LinkedList<String> FIELD_NAMES = new LinkedList<String>();
+    private static final LinkedList<String> FIELD_NAMES = new LinkedList<>();
 
-    private static final LinkedList<String> FIELD_TYPES = new LinkedList<String>();
+    private static final LinkedList<String> FIELD_TYPES = new LinkedList<>();
 
-    private final HashMap<TreeMapNode, HashMap<String, Object>> values = new HashMap<TreeMapNode, HashMap<String, Object>>();
+    private final HashMap<TreeMapNode, HashMap<String, Object>> values = new HashMap<>();
 
     private final TreeMapNodeBuilder builder;
 
@@ -152,17 +152,16 @@ public class BuilderTM3 implements Serializable {
                 node.setValue(new DefaultValue(0));
             }
         } else {
-            for (final TreeMapNode node : values.keySet()) {
-                final HashMap<String, Object> mapNodeValues = values.get(node);
-                final Object value = mapNodeValues.get(fieldName);
+            values.entrySet().forEach(e -> {
+                final Object value = e.getValue().get(fieldName);
                 if (value instanceof Number) {
                     final Number number = (Number) value;
-                    node.setValue(new DefaultValue(number.doubleValue()));
+                    e.getKey().setValue(new DefaultValue(number.doubleValue()));
                 } else if (value instanceof Date) {
                     final Date date = (Date) value;
-                    node.setValue(new DefaultValue(date.getTime()));
+                    e.getKey().setValue(new DefaultValue(date.getTime()));
                 }
-            }
+            });
         }
     }
 
@@ -178,17 +177,16 @@ public class BuilderTM3 implements Serializable {
                 node.setWeight(1);
             }
         } else {
-            for (final TreeMapNode node : values.keySet()) {
-                final HashMap<String, Object> mapNodeValues = values.get(node);
-                final Object value = mapNodeValues.get(fieldName);
+            values.entrySet().forEach(e -> {
+                final Object value = e.getValue().get(fieldName);
                 if (value instanceof Number) {
                     final Number number = (Number) value;
-                    node.setWeight(number.doubleValue());
+                    e.getKey().setWeight(number.doubleValue());
                 } else if (value instanceof Date) {
                     final Date date = (Date) value;
-                    node.setWeight(date.getTime());
+                    e.getKey().setWeight(date.getTime());
                 }
-            }
+            });
         }
     }
 
@@ -200,7 +198,7 @@ public class BuilderTM3 implements Serializable {
      */
     private void createNodes(final StringTokenizer st, final HashMap<String, Object> mapNodeValues) {
         // read the hierarchy path
-        final LinkedList<String> hierarchyPath = new LinkedList<String>();
+        final LinkedList<String> hierarchyPath = new LinkedList<>();
         while (st.hasMoreTokens()) {
             hierarchyPath.add(st.nextToken());
         }
@@ -260,14 +258,14 @@ public class BuilderTM3 implements Serializable {
             values.clear();
             while ((line = reader.readLine()) != null) {
                 st = new StringTokenizer(line, "\t");
-                final HashMap<String, Object> mapNodeValues = new HashMap<String, Object>();
+                final HashMap<String, Object> mapNodeValues = new HashMap<>();
                 // the VALUES are formated
                 for (int i = 0; i < FIELD_NAMES.size(); i++) {
                     Object value;
                     if (FLOAT.equals(FIELD_TYPES.get(i))) {
-                        value = new Double(Double.parseDouble(st.nextToken()));
+                        value = Double.valueOf(st.nextToken());
                     } else if (INTEGER.equals(FIELD_TYPES.get(i))) {
-                        value = new Integer(Integer.parseInt(st.nextToken()));
+                        value = Integer.valueOf(st.nextToken());
                     } else if (DATE.equals(FIELD_TYPES.get(i))) {
                         try {
                             value = dateFormat.parse(st.nextToken());

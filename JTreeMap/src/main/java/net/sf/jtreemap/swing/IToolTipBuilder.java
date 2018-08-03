@@ -32,6 +32,8 @@
  */
 package net.sf.jtreemap.swing;
 
+import java.io.Serializable;
+
 import javax.swing.JToolTip;
 
 /**
@@ -40,7 +42,7 @@ import javax.swing.JToolTip;
  * @see net.sf.jtreemap.swing.JTreeMap#setToolTipBuilder(IToolTipBuilder)
  * @author Laurent DUTHEIL
  */
-public interface IToolTipBuilder {
+public interface IToolTipBuilder extends Serializable {
 
     /**
      * Return the instance of the JToolTip.<BR>

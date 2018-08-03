@@ -69,6 +69,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.tree.DefaultTreeModel;
 
+import lombok.extern.slf4j.Slf4j;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.SplitByNumber;
 import net.sf.jtreemap.swing.SplitBySlice;
@@ -88,6 +89,7 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
  *
  * @author Laurent Dutheil
  */
+@Slf4j
 public class JTreeMapExample extends JFrame implements ActionListener {
     private static final double CONSTRAINT_WEIGHTX = 0.5;
 
@@ -160,7 +162,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         try {
             initGUI();
         } catch (final Exception ex) {
-            ex.printStackTrace();
+            log.error("Issue", ex);
         }
     }
 
@@ -234,7 +236,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
             setTM3Fields();
             panelTM3.setVisible(true);
         } catch (final IOException e) {
-            e.printStackTrace();
+            log.error("IO Issue", e);
             JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -255,7 +257,7 @@ public class JTreeMapExample extends JFrame implements ActionListener {
 
             panelTM3.setVisible(false);
         } catch (final ParseException e) {
-            e.printStackTrace();
+            log.error("Parse Issue", e);
             JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
         }
 
@@ -464,15 +466,15 @@ public class JTreeMapExample extends JFrame implements ActionListener {
         colorProviders.put("Red Green", new RedGreenColorProvider(this.jTreeMap));
         colorProviders.put("Random", new RandomColorProvider(jTreeMap));
         colorProviders.put("HSB linear",
-                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN, Color.RED));
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.LINEAR, Color.GREEN, Color.RED));
         colorProviders.put("HSB log",
-                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN, Color.RED));
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.LOG, Color.GREEN, Color.RED));
         colorProviders.put("HSB SquareRoot",
-                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.SquareRoot, Color.GREEN, Color.RED));
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.SQUARE_ROOT, Color.GREEN, Color.RED));
         colorProviders.put("HSB CubicRoot",
-                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN, Color.RED));
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CUBIC_ROOT, Color.GREEN, Color.RED));
         colorProviders.put("HSB exp",
-                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN, Color.RED));
+                new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.EXP, Color.GREEN, Color.RED));
         for (final String key : colorProviders.keySet()) {
             final ColorProvider cp = colorProviders.get(key);
             panelLegend.add(cp.getLegendPanel(), key);

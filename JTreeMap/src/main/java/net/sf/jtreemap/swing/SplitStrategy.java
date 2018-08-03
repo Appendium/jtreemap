@@ -161,8 +161,8 @@ public abstract class SplitStrategy implements Serializable {
         } else {
             // if there is more than one element
             // we split the List according to the selected strategy
-            final List<TreeMapNode> v1 = new ArrayList<TreeMapNode>();
-            final List<TreeMapNode> v2 = new ArrayList<TreeMapNode>();
+            final List<TreeMapNode> v1 = new ArrayList<>();
+            final List<TreeMapNode> v2 = new ArrayList<>();
             double weight1;
             double weight2; // poids des 2 vecteurs
             this.splitElements(v, v1, v2);
@@ -221,7 +221,7 @@ public abstract class SplitStrategy implements Serializable {
 
     protected void workOutWeight(final List<TreeMapNode> v1, final List<TreeMapNode> v2, final List<TreeMapNode> vClone, final double sumWeight) {
         double memWeight = 0.0;
-        double elemWeight = 0.0;
+        double elemWeight;
         for (final Iterator<TreeMapNode> i = vClone.iterator(); i.hasNext();) {
             TreeMapNode tmn = i.next();
             elemWeight = tmn.getWeight();

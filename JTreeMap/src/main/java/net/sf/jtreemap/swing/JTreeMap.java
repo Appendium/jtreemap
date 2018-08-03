@@ -573,7 +573,7 @@ public class JTreeMap extends JComponent {
         public void mouseMoved(final MouseEvent e) {
             if (getDisplayedRoot().children().hasMoreElements()) {
                 final TreeMapNode t = getDisplayedRoot().getActiveLeaf(e.getX(), e.getY());
-                if (t == null || t != null && !t.equals(getActiveLeaf())) {
+                if (t == null || !t.equals(getActiveLeaf())) {
                     setActiveLeaf(t);
                     repaint();
                 }
@@ -596,8 +596,6 @@ public class JTreeMap extends JComponent {
                     if (treeView == null) {
                         zoom(t);
                     } else {
-                        // zoom(t);
-                        // dont know why below does not work so for now leave it commented out
                         final TreePath path = new TreePath(t.getPath());
                         treeView.setSelectionPath(path);
                         treeView.scrollPathToVisible(path);
@@ -607,8 +605,6 @@ public class JTreeMap extends JComponent {
                     if (treeView == null) {
                         zoom((TreeMapNode) getDisplayedRoot().getParent());
                     } else {
-                        // zoom((TreeMapNode) getDisplayedRoot().getParent());
-                        // dont know why below does not work so for now leave it commented out
                         final TreePath path = new TreePath(((TreeMapNode) getDisplayedRoot().getParent()).getPath());
                         treeView.setSelectionPath(path);
                         treeView.scrollPathToVisible(path);
@@ -623,7 +619,6 @@ public class JTreeMap extends JComponent {
             setActiveLeaf(null);
             repaint();
         }
-
     }
 
     /**

@@ -64,9 +64,7 @@ public class ZoomPopupMenu extends JPopupMenu {
     public static final Icon ZOOM_ICON = new ImageIcon(ZoomPopupMenu.class.getResource("icons/zoom.png"));
 
     private final JTreeMap jTreeMap;
-
-    private transient final MouseListener mouseListener;
-
+    private final transient MouseListener mouseListener;
     private final boolean showAbout;
 
     /**
@@ -111,16 +109,7 @@ public class ZoomPopupMenu extends JPopupMenu {
                     // Separator
                     ZoomPopupMenu.this.addSeparator();
                 }
-                // children
-                cursor = orig;
-                while (cursor.getChild(e.getX(), e.getY()) != null) {
-                    final TreeMapNode child = cursor.getChild(e.getX(), e.getY());
-                    if (!child.isLeaf()) {
-                        final ZoomAction action = new ZoomAction(jTreeMap, child, ZOOM_ICON);
-                        ZoomPopupMenu.this.add(action);
-                    }
-                    cursor = child;
-                }
+                handleChildren(e, orig);
 
                 if (showAbout) {
                     // Separator
@@ -130,6 +119,20 @@ public class ZoomPopupMenu extends JPopupMenu {
                 }
 
                 ZoomPopupMenu.this.show(e.getComponent(), e.getX(), e.getY());
+            }
+        }
+
+        private void handleChildren(final MouseEvent e, final TreeMapNode orig) {
+            TreeMapNode cursor;
+            // children
+            cursor = orig;
+            while (cursor.getChild(e.getX(), e.getY()) != null) {
+                final TreeMapNode child = cursor.getChild(e.getX(), e.getY());
+                if (!child.isLeaf()) {
+                    final ZoomAction action = new ZoomAction(jTreeMap, child, ZOOM_ICON);
+                    ZoomPopupMenu.this.add(action);
+                }
+                cursor = child;
             }
         }
     }

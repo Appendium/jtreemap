@@ -41,29 +41,16 @@ import java.util.List;
  * @author Laurent DUTHEIL
  */
 public class SplitSquarified extends SplitStrategy {
-    /**
-     *
-     */
     private static final long serialVersionUID = 1711898915283018450L;
-
     private int w1;
-
     private int h1;
-
     private int x;
-
     private int y;
-
     private int w;
-
     private int h;
-
     private int x2;
-
     private int y2;
-
     private int w2;
-
     private int h2;
 
     @Override
@@ -150,8 +137,8 @@ public class SplitSquarified extends SplitStrategy {
             SplitBySlice.splitInSlice(x0, y0, w0, h0, vClone, sumWeight(vClone));
             calculateChildren(vClone);
         } else {
-            final List<TreeMapNode> v1 = new ArrayList<TreeMapNode>();
-            final List<TreeMapNode> v2 = new ArrayList<TreeMapNode>();
+            final List<TreeMapNode> v1 = new ArrayList<>();
+            final List<TreeMapNode> v2 = new ArrayList<>();
             this.x = x0;
             this.y = y0;
             this.w = w0;
@@ -220,7 +207,6 @@ public class SplitSquarified extends SplitStrategy {
                 calculatePositionsRec(node.getX() + bSub, node.getY() + bSub, width, height, node.getWeight(), node.getChildren());
                 TreeMapNode.setBorder(TreeMapNode.getBorder() + bSub);
             }
-
         }
     }
 

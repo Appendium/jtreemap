@@ -37,6 +37,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import lombok.extern.slf4j.Slf4j;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.TreeMapNode;
 import net.sf.jtreemap.swing.Value;
@@ -47,25 +48,15 @@ import net.sf.jtreemap.swing.Value;
  *
  * @author Laurent Dutheil
  */
-
+@Slf4j
 public class RedGreenColorProvider extends ColorProvider {
-    private static final int COLOUR_MAX_VALUE = 255;
-
-    /**
-     *
-     */
     private static final long serialVersionUID = 5030306338780462810L;
-
+    private static final int COLOUR_MAX_VALUE = 255;
     private final JTreeMap jTreeMap;
-
     private JPanel legend;
-
     private Value maxAbsValue;
-
     private Value minVal;
-
-    private final int[] tabColor = { 0, 60, 102, 153, 204, COLOUR_MAX_VALUE };
-
+    private static final int[] TAB_COLOR = { 0, 60, 102, 153, 204, COLOUR_MAX_VALUE };
     private static final int[] TAB_LIMIT_VALUE = { 25, 76, 123, 179, 230, COLOUR_MAX_VALUE };
 
     /**
@@ -95,7 +86,7 @@ public class RedGreenColorProvider extends ColorProvider {
 
         for (int i = 0; i < TAB_LIMIT_VALUE.length; i++) {
             if (colorIndex <= TAB_LIMIT_VALUE[i]) {
-                colorIndex = this.tabColor[i];
+                colorIndex = this.TAB_COLOR[i];
                 break;
             }
         }
@@ -136,10 +127,9 @@ public class RedGreenColorProvider extends ColorProvider {
                     }
                     this.minVal.setValue(-Math.abs(value.getValue()));
                     this.maxAbsValue.setValue(Math.abs(value.getValue()));
-                } catch (final IllegalAccessException iae) {
+                } catch (final IllegalAccessException | InstantiationException ie) {
                     // ignore
-                } catch (final InstantiationException ie) {
-                    // ignore
+                    log.error("Issue with max value", ie);
                 }
             }
         } else {
@@ -167,7 +157,7 @@ public class RedGreenColorProvider extends ColorProvider {
          * Constructor of Legend
          */
         public Legend() {
-            this.setPreferredSize(new java.awt.Dimension(2 * (Legend.X + RedGreenColorProvider.this.tabColor.length * Legend.WIDTH),
+            this.setPreferredSize(new java.awt.Dimension(2 * (Legend.X + RedGreenColorProvider.this.TAB_COLOR.length * Legend.WIDTH),
                     2 * (Legend.Y + Legend.HEIGHT)));
         }
 
@@ -180,8 +170,8 @@ public class RedGreenColorProvider extends ColorProvider {
 
             int xCursor = 0;
 
-            for (int i = RedGreenColorProvider.this.tabColor.length - 1; i > 0; i--) {
-                g.setColor(new Color(RedGreenColorProvider.this.tabColor[i], 0, 0));
+            for (int i = RedGreenColorProvider.this.TAB_COLOR.length - 1; i > 0; i--) {
+                g.setColor(new Color(RedGreenColorProvider.this.TAB_COLOR[i], 0, 0));
                 g.fillRect(Legend.X + xCursor * Legend.WIDTH, Legend.Y, Legend.WIDTH, Legend.HEIGHT);
                 xCursor++;
             }
@@ -190,7 +180,7 @@ public class RedGreenColorProvider extends ColorProvider {
             g.drawString(RedGreenColorProvider.this.minVal.getLabel(), Legend.X - X_INSET, Legend.Y - Y_INSET);
             g.drawString("0", Legend.X + xCursor * Legend.WIDTH, Legend.Y - Y_INSET);
 
-            for (final int element : RedGreenColorProvider.this.tabColor) {
+            for (final int element : RedGreenColorProvider.this.TAB_COLOR) {
                 g.setColor(new Color(0, element, 0));
                 g.fillRect(Legend.X + xCursor * Legend.WIDTH, Legend.Y, Legend.WIDTH, Legend.HEIGHT);
                 xCursor++;

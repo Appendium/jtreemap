@@ -57,9 +57,6 @@ import net.sf.jtreemap.swing.Value;
  * @author Laurent DUTHEIL
  */
 public class RandomColorProvider extends ColorProvider {
-    /**
-     *
-     */
     private static final long serialVersionUID = -8184356270950978553L;
 
     private static final Color[] COLOURS = new Color[] { new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255), new Color(255, 255, 0),
@@ -67,11 +64,8 @@ public class RandomColorProvider extends ColorProvider {
             new Color(204, 204, 51), new Color(205, 102, 204), new Color(51, 153, 255), new Color(153, 102, 0) };
 
     private int cursor = 0;
-
-    private final TreeMap<Value, Color> mapping = new TreeMap<Value, Color>();
-
+    private final TreeMap<Value, Color> mapping = new TreeMap<>();
     private JPanel legend;
-
     private final JTreeMap jTreeMap;
 
     /**
@@ -133,19 +127,12 @@ public class RandomColorProvider extends ColorProvider {
      */
     protected class Legend extends JPanel {
         private static final int OFFSET = 3;
-
         private static final int X_OFFSET = 15;
-
         private static final int INITIAL_X_POS = 20;
-
         private static final long serialVersionUID = 4652239358357480113L;
-
-        private int x = INITIAL_X_POS;
-
+        private int xPosition = INITIAL_X_POS;
         private static final int Y = 25;
-
         private static final int WIDTH = 10;
-
         private static final int HEIGHT = 20;
 
         @Override
@@ -157,18 +144,18 @@ public class RandomColorProvider extends ColorProvider {
             final FontMetrics fm = g.getFontMetrics();
             final int yString = Legend.Y + (Legend.HEIGHT + fm.getAscent() - fm.getDescent()) / 2;
 
-            x = INITIAL_X_POS;
+            xPosition = INITIAL_X_POS;
             for (final Value value : RandomColorProvider.this.mapping.keySet()) {
                 final Color color = RandomColorProvider.this.mapping.get(value);
                 g.setColor(color);
-                g.fillRect(this.x, Legend.Y, Legend.WIDTH, Legend.HEIGHT);
+                g.fillRect(this.xPosition, Legend.Y, Legend.WIDTH, Legend.HEIGHT);
                 g.setColor(Color.black);
-                x = x + Legend.WIDTH + OFFSET;
-                g.drawString(value.getLabel(), x, yString);
-                x = x + fm.stringWidth(value.getLabel()) + X_OFFSET;
+                xPosition = xPosition + Legend.WIDTH + OFFSET;
+                g.drawString(value.getLabel(), xPosition, yString);
+                xPosition = xPosition + fm.stringWidth(value.getLabel()) + X_OFFSET;
             }
 
-            setPreferredSize(new Dimension(this.x, 2 * Legend.Y + Legend.HEIGHT));
+            setPreferredSize(new Dimension(this.xPosition, 2 * Legend.Y + Legend.HEIGHT));
             setSize(this.getPreferredSize());
         }
     }

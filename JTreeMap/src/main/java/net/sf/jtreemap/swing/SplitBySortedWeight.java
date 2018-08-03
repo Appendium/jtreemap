@@ -56,7 +56,7 @@ public class SplitBySortedWeight extends SplitStrategy {
 
     @Override
     public void splitElements(final List<TreeMapNode> v, final List<TreeMapNode> v1, final List<TreeMapNode> v2) {
-        final List<TreeMapNode> vClone = new ArrayList<TreeMapNode>(v);
+        final List<TreeMapNode> vClone = new ArrayList<>(v);
         final double sumWeight = sumWeight(v);
 
         sortList(vClone);

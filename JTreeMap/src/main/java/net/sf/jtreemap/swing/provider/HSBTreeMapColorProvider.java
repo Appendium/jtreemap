@@ -38,6 +38,7 @@ import java.util.Enumeration;
 
 import javax.swing.JPanel;
 
+import lombok.extern.slf4j.Slf4j;
 import net.sf.jtreemap.swing.DefaultValue;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.TreeMapNode;
@@ -51,6 +52,7 @@ import net.sf.jtreemap.swing.Value;
  *
  * @author Andy Adamczak
  */
+@Slf4j
 public class HSBTreeMapColorProvider extends ColorProvider {
     private static final int HSBVAL_SIZE = 3;
 
@@ -63,11 +65,11 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @author Andy Adamczak
      */
     public enum ColorDistributionTypes {
-        Linear,
-        Log,
-        Exp,
-        SquareRoot,
-        CubicRoot
+        LINEAR,
+        LOG,
+        EXP,
+        SQUARE_ROOT,
+        CUBIC_ROOT
     }
 
     /**
@@ -75,7 +77,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param color
      */
     public HSBTreeMapColorProvider(final JTreeMap treeMap, final Color color) {
-        this(treeMap, ColorDistributionTypes.Linear, color, color);
+        this(treeMap, ColorDistributionTypes.LINEAR, color, color);
     }
 
     /**
@@ -93,7 +95,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param negativeColor
      */
     public HSBTreeMapColorProvider(final JTreeMap treeMap, final Color positiveColor, final Color negativeColor) {
-        this(treeMap, ColorDistributionTypes.Linear, positiveColor, negativeColor);
+        this(treeMap, ColorDistributionTypes.LINEAR, positiveColor, negativeColor);
     }
 
     /**
@@ -116,7 +118,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @param saturation
      */
     public HSBTreeMapColorProvider(final JTreeMap treeMap, final float hue, final float saturation) {
-        this(treeMap, ColorDistributionTypes.Linear, hue, saturation, hue, saturation);
+        this(treeMap, ColorDistributionTypes.LINEAR, hue, saturation, hue, saturation);
     }
 
     /**
@@ -138,7 +140,7 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      */
     public HSBTreeMapColorProvider(final JTreeMap treeMap, final float positiveHue, final float positiveSaturation, final float negativeHue,
             final float negativeSaturation) {
-        this(treeMap, ColorDistributionTypes.Linear, positiveHue, positiveSaturation, negativeHue, negativeSaturation);
+        this(treeMap, ColorDistributionTypes.LINEAR, positiveHue, positiveSaturation, negativeHue, negativeSaturation);
     }
 
     /**
@@ -263,18 +265,18 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      * @return the converted value
      */
     private double adjustValue(final double value) {
-        double ret = value;
+        double ret;
         switch (colorDistribution) {
-        case Log:
+        case LOG:
             ret = Math.log1p(value);
             break;
-        case Exp:
+        case EXP:
             ret = Math.exp(value);
             break;
-        case SquareRoot:
+        case SQUARE_ROOT:
             ret = Math.sqrt(value);
             break;
-        case CubicRoot:
+        case CUBIC_ROOT:
             ret = Math.cbrt(value);
             break;
         default:
@@ -299,35 +301,8 @@ public class HSBTreeMapColorProvider extends ColorProvider {
                 return;
             }
 
-            if (maxValue == null || value.getValue() >= maxValue.getValue()) {
-                try {
-                    final Class c = value.getClass();
-                    if (maxValue == null) {
-                        maxValue = (Value) c.newInstance();
-                    }
-                    maxValue.setValue(value.getValue());
-                } catch (final IllegalAccessException iae) {
-                    // ignore
-                } catch (final InstantiationException ie) {
-                    // Ignore
-                    ie.printStackTrace();
-                }
-            }
-
-            if (minValue == null || value.getValue() <= minValue.getValue()) {
-                try {
-                    final Class c = value.getClass();
-                    if (minValue == null) {
-                        minValue = (Value) c.newInstance();
-                    }
-                    minValue.setValue(value.getValue());
-                } catch (final IllegalAccessException iae) {
-                    // ignore
-                } catch (final InstantiationException ie) {
-                    // Ignore
-                    ie.printStackTrace();
-                }
-            }
+            setMaxValue(value);
+            setMinValue(value);
         } else {
             for (final Enumeration e = root.children(); e.hasMoreElements();) {
                 final TreeMapNode node = (TreeMapNode) e.nextElement();
@@ -336,23 +311,49 @@ public class HSBTreeMapColorProvider extends ColorProvider {
         }
     }
 
+    private void setMinValue(final Value value) {
+        if (minValue == null || value.getValue() <= minValue.getValue()) {
+            try {
+                final Class c = value.getClass();
+                if (minValue == null) {
+                    minValue = (Value) c.newInstance();
+                }
+                minValue.setValue(value.getValue());
+            } catch (final IllegalAccessException iae) {
+                // ignore
+            } catch (final InstantiationException ie) {
+                // Ignore
+                log.error("Instantiation Issue", ie);
+            }
+        }
+    }
+
+    private void setMaxValue(final Value value) {
+        if (maxValue == null || value.getValue() >= maxValue.getValue()) {
+            try {
+                final Class c = value.getClass();
+                if (maxValue == null) {
+                    maxValue = (Value) c.newInstance();
+                }
+                maxValue.setValue(value.getValue());
+            } catch (final IllegalAccessException iae) {
+                // ignore
+            } catch (final InstantiationException ie) {
+                // Ignore
+                log.error("Instantiation Issue", ie);
+            }
+        }
+    }
+
     private final JTreeMap jTreeMap;
-
     private JPanel legend;
-
     private Value maxValue;
-
     private Value minValue;
-
     private float positiveHue;
-
     private float negativeHue;
-
     private float positiveSaturation = 1f;
-
     private float negativeSaturation = 1f;
-
-    private ColorDistributionTypes colorDistribution = ColorDistributionTypes.Linear;
+    private ColorDistributionTypes colorDistribution = ColorDistributionTypes.LINEAR;
 
     /**
      * Panel with the legend

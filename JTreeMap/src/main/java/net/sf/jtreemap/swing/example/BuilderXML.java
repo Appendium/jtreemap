@@ -47,6 +47,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import lombok.extern.slf4j.Slf4j;
 import net.sf.jtreemap.swing.TreeMapNode;
 import net.sf.jtreemap.swing.TreeMapNodeBuilder;
 import net.sf.jtreemap.swing.Value;
@@ -57,7 +58,7 @@ import net.sf.jtreemap.swing.ValuePercent;
  *
  * @author Laurent Dutheil
  */
-
+@Slf4j
 public class BuilderXML {
     private static final String BRANCH = "branch";
 
@@ -190,7 +191,7 @@ public class BuilderXML {
         } catch (final SAXException e) {
             throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
         } catch (final IOException e) {
-            e.printStackTrace();
+            log.error("IO Issue", e);
             throw new ParseException("The file don't correspond to the TreeMap.dtd (" + e.getMessage() + ")", 0);
         }
     }

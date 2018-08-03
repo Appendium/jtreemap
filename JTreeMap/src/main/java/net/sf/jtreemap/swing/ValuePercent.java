@@ -34,12 +34,15 @@ package net.sf.jtreemap.swing;
 
 import java.text.NumberFormat;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * class who can display the values of elements of a JTreeMap with pourcent
  *
  * @author Laurent Dutheil
  */
 
+@EqualsAndHashCode(callSuper = true)
 public class ValuePercent extends Value {
     private static final long serialVersionUID = 1087258219010392928L;
     private double value;
@@ -55,13 +58,7 @@ public class ValuePercent extends Value {
         this.nf.setMinimumIntegerDigits(1);
     }
 
-    /**
-     * Constructor of ValuePercent
-     *
-     * @param value
-     *            double value
-     */
-    public ValuePercent(final double value) {
+    public ValuePercent(double value) {
         this();
         this.value = value;
     }
@@ -88,6 +85,7 @@ public class ValuePercent extends Value {
         }
         return this.nf.format(this.value) + " %";
     }
+
 }
 /*
  *                 ObjectLab is supporing JTreeMap

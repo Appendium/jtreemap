@@ -62,6 +62,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultTreeModel;
 
+import lombok.extern.slf4j.Slf4j;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.SplitBySortedWeight;
 import net.sf.jtreemap.swing.TreeMapNode;
@@ -80,6 +81,7 @@ import net.sf.jtreemap.swing.provider.ZoomPopupMenu;
  *
  * @author Laurent Dutheil
  */
+@Slf4j
 public class JTreeMapAppletExample extends JApplet {
 
     private static final double CONSTRAINT_WEIGHTX = 0.5;
@@ -183,18 +185,18 @@ public class JTreeMapAppletExample extends JApplet {
         if ("Random".equalsIgnoreCase(colourProvider)) {
             colourProviderInstance = new RandomColorProvider(this.jTreeMap);
         } else if ("HSBLinear".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Linear, Color.GREEN,
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.LINEAR, Color.GREEN,
                     Color.RED);
         } else if ("HSBLog".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Log, Color.GREEN,
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.LOG, Color.GREEN,
                     Color.RED);
         } else if ("HSBSquareRoot".equalsIgnoreCase(colourProvider)) {
             colourProviderInstance = new RandomColorProvider(this.jTreeMap);
         } else if ("HSBCubicRoot".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CubicRoot, Color.GREEN,
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.CUBIC_ROOT, Color.GREEN,
                     Color.RED);
         } else if ("HSBExp".equalsIgnoreCase(colourProvider)) {
-            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.Exp, Color.GREEN,
+            colourProviderInstance = new HSBTreeMapColorProvider(jTreeMap, HSBTreeMapColorProvider.ColorDistributionTypes.EXP, Color.GREEN,
                     Color.RED);
         }
 
@@ -258,7 +260,7 @@ public class JTreeMapAppletExample extends JApplet {
     }
 
     private TreeMapNode handleException(final Exception e) {
-        e.printStackTrace();
+        log.error("Issue", e);
         JOptionPane.showMessageDialog(this, e.getMessage(), "File error", JOptionPane.ERROR_MESSAGE);
         return DemoUtil.buildDemoRoot();
     }
