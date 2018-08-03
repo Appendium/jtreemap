@@ -74,34 +74,6 @@ public abstract class Value implements Comparable, Serializable {
      *            the new label
      */
     public abstract void setLabel(String newLabel);
-    /*
-    @Override
-    public int hashCode() {
-        int result = super.hashCode();
-        long temp;
-        temp = Double.doubleToLongBits(getValue());
-        result = PRIME * result + (int) (temp ^ temp >>> SHIFT);
-        return result;
-    }
-    
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Value other = (Value) obj;
-        if (Double.doubleToLongBits(getValue()) != Double.doubleToLongBits(other.getValue())) {
-            return false;
-        }
-        return true;
-    }
-    */
 
     @Override
     public int compareTo(final Object value) {

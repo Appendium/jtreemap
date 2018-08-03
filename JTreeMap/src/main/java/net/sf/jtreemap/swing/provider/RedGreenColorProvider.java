@@ -86,7 +86,7 @@ public class RedGreenColorProvider extends ColorProvider {
 
         for (int i = 0; i < TAB_LIMIT_VALUE.length; i++) {
             if (colorIndex <= TAB_LIMIT_VALUE[i]) {
-                colorIndex = this.TAB_COLOR[i];
+                colorIndex = TAB_COLOR[i];
                 break;
             }
         }
@@ -120,7 +120,7 @@ public class RedGreenColorProvider extends ColorProvider {
             final Value value = root.getValue();
             if (value != null && (this.maxAbsValue == null || Math.abs(value.getValue()) > this.maxAbsValue.getValue())) {
                 try {
-                    final Class c = value.getClass();
+                    final Class<?> c = value.getClass();
                     if (this.maxAbsValue == null || this.minVal == null) {
                         this.maxAbsValue = (Value) c.newInstance();
                         this.minVal = (Value) c.newInstance();
@@ -157,8 +157,8 @@ public class RedGreenColorProvider extends ColorProvider {
          * Constructor of Legend
          */
         public Legend() {
-            this.setPreferredSize(new java.awt.Dimension(2 * (Legend.X + RedGreenColorProvider.this.TAB_COLOR.length * Legend.WIDTH),
-                    2 * (Legend.Y + Legend.HEIGHT)));
+            this.setPreferredSize(
+                    new java.awt.Dimension(2 * (Legend.X + RedGreenColorProvider.TAB_COLOR.length * Legend.WIDTH), 2 * (Legend.Y + Legend.HEIGHT)));
         }
 
         @Override
@@ -170,8 +170,8 @@ public class RedGreenColorProvider extends ColorProvider {
 
             int xCursor = 0;
 
-            for (int i = RedGreenColorProvider.this.TAB_COLOR.length - 1; i > 0; i--) {
-                g.setColor(new Color(RedGreenColorProvider.this.TAB_COLOR[i], 0, 0));
+            for (int i = RedGreenColorProvider.TAB_COLOR.length - 1; i > 0; i--) {
+                g.setColor(new Color(RedGreenColorProvider.TAB_COLOR[i], 0, 0));
                 g.fillRect(Legend.X + xCursor * Legend.WIDTH, Legend.Y, Legend.WIDTH, Legend.HEIGHT);
                 xCursor++;
             }
@@ -180,7 +180,7 @@ public class RedGreenColorProvider extends ColorProvider {
             g.drawString(RedGreenColorProvider.this.minVal.getLabel(), Legend.X - X_INSET, Legend.Y - Y_INSET);
             g.drawString("0", Legend.X + xCursor * Legend.WIDTH, Legend.Y - Y_INSET);
 
-            for (final int element : RedGreenColorProvider.this.TAB_COLOR) {
+            for (final int element : RedGreenColorProvider.TAB_COLOR) {
                 g.setColor(new Color(0, element, 0));
                 g.fillRect(Legend.X + xCursor * Legend.WIDTH, Legend.Y, Legend.WIDTH, Legend.HEIGHT);
                 xCursor++;

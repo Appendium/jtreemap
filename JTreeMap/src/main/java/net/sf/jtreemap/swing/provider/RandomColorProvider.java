@@ -130,7 +130,6 @@ public class RandomColorProvider extends ColorProvider {
         private static final int X_OFFSET = 15;
         private static final int INITIAL_X_POS = 20;
         private static final long serialVersionUID = 4652239358357480113L;
-        private int xPosition = INITIAL_X_POS;
         private static final int Y = 25;
         private static final int WIDTH = 10;
         private static final int HEIGHT = 20;
@@ -144,18 +143,18 @@ public class RandomColorProvider extends ColorProvider {
             final FontMetrics fm = g.getFontMetrics();
             final int yString = Legend.Y + (Legend.HEIGHT + fm.getAscent() - fm.getDescent()) / 2;
 
-            xPosition = INITIAL_X_POS;
+            int xPosition = INITIAL_X_POS;
             for (final Value value : RandomColorProvider.this.mapping.keySet()) {
                 final Color color = RandomColorProvider.this.mapping.get(value);
                 g.setColor(color);
-                g.fillRect(this.xPosition, Legend.Y, Legend.WIDTH, Legend.HEIGHT);
+                g.fillRect(xPosition, Legend.Y, Legend.WIDTH, Legend.HEIGHT);
                 g.setColor(Color.black);
                 xPosition = xPosition + Legend.WIDTH + OFFSET;
                 g.drawString(value.getLabel(), xPosition, yString);
                 xPosition = xPosition + fm.stringWidth(value.getLabel()) + X_OFFSET;
             }
 
-            setPreferredSize(new Dimension(this.xPosition, 2 * Legend.Y + Legend.HEIGHT));
+            setPreferredSize(new Dimension(xPosition, 2 * Legend.Y + Legend.HEIGHT));
             setSize(this.getPreferredSize());
         }
     }

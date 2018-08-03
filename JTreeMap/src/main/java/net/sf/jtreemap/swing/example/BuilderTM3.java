@@ -84,13 +84,9 @@ public class BuilderTM3 implements Serializable {
     public static final String STRING = "STRING";
 
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-
     private static final LinkedList<String> FIELD_NAMES = new LinkedList<>();
-
     private static final LinkedList<String> FIELD_TYPES = new LinkedList<>();
-
     private final HashMap<TreeMapNode, HashMap<String, Object>> values = new HashMap<>();
-
     private final TreeMapNodeBuilder builder;
 
     /**
@@ -237,9 +233,7 @@ public class BuilderTM3 implements Serializable {
      */
     private void parse(final BufferedReader reader) throws IOException {
         try {
-            String line = "";
-            // read the field names
-            line = reader.readLine();
+            String line = reader.readLine();
             StringTokenizer st = new StringTokenizer(line, "\t");
             FIELD_NAMES.clear();
             while (st.hasMoreTokens()) {
@@ -260,9 +254,7 @@ public class BuilderTM3 implements Serializable {
                 handleALine(line);
             }
         } finally {
-            if (reader != null) {
-                reader.close();
-            }
+            reader.close();
         }
     }
 
