@@ -10,7 +10,7 @@
     <groupId>net.sf.jtreemap</groupId>
     <artifactId>jtreemap-parent</artifactId>
     <name>JTreeMap Parent</name>
-    <version>1.1.3</version>
+    <version>1.1.4-SNAPSHOT</version>
     <url>https://github.com/Appendium/jtreemap</url>
     <packaging>pom</packaging>
     
@@ -228,7 +228,7 @@
         <connection>scm:git:git@github.com:appendium/jtreemap.git</connection>
         <url>git://github.com:appendium/jtreemap.git</url>
         <developerConnection>scm:git:git@github.com:appendium/jtreemap.git</developerConnection>
-        <tag>jtreemap-parent-1.1.3</tag>
+        <tag>jtreemap-parent-1.1.0</tag>
     </scm>
     
     <issueManagement>
