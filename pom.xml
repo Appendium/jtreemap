@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -11,7 +10,7 @@
     <groupId>net.sf.jtreemap</groupId>
     <artifactId>jtreemap-parent</artifactId>
     <name>JTreeMap Parent</name>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.1</version>
     <url>https://github.com/Appendium/jtreemap</url>
     <packaging>pom</packaging>
     
@@ -174,7 +173,9 @@
                     </links>
                     <linksource>true</linksource>
                     <show>private</show>
-                    <additionalparam>${javadoc.opts}</additionalparam>
+                    <additionalOptions>
+                        <additionalOption>-Xdoclint:none</additionalOption>
+                    </additionalOptions>
                 </configuration>
             </plugin>
             
@@ -227,7 +228,7 @@
         <connection>scm:git:git@github.com:appendium/jtreemap.git</connection>
         <url>git://github.com:appendium/jtreemap.git</url>
         <developerConnection>scm:git:git@github.com:appendium/jtreemap.git</developerConnection>
-        <tag>jtreemap-parent-1.1.0</tag>
+        <tag>1.1.1</tag>
     </scm>
     
     <issueManagement>
