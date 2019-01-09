@@ -239,15 +239,12 @@ public abstract class SplitStrategy implements Serializable {
                     // List
                     memWeight += elemWeight;
                     v1.add(tmn);
+                } else if (v1.isEmpty()) { // we must have at least 1 element in the first List
+                    v1.add(tmn);
                 } else {
-                    // we must have at least 1 element in the first List
-                    if (v1.isEmpty()) {
-                        v1.add(tmn);
-                    } else {
-                        // if it is before the add, we add the element to the
-                        // second List
-                        v2.add(tmn);
-                    }
+                    // if it is before the add, we add the element to the
+                    // second List
+                    v2.add(tmn);
                 }
                 // then we fill the second List qith the rest of elements
                 while (i.hasNext()) {
