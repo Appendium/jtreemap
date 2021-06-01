@@ -13,9 +13,10 @@ env:
   - SONATYPE_USERNAME=benoitx
   - secure: tXreeG40l/hrhgaJQpi6VZ7H0QdULytjhSoXVLD9TJRKA7lOZaMAdSC0Lt4WmOshtQdkL8OdDx2NNOYM6KXcMounDpShHSeasIE2e/pzo1SG/jk1zwNPxpHu+YmClE4QMmT/BG5bYoPqIsj4DHflUuUkDp9ELBcMB54klat5IAl/wGL9blW49rT/tg06DvO47Wmj7quyPmjLCiVoYLPlY3FTTnn4Ul5HLf4CfC+4d8Tsh8ku1rmjbvC4V0aQZuNtoEB+qA+A2IInC3CQq2shVofko5k2XzFK4uoJXJOLUNwowq+ncNALnTIVcWbrHkNqk6Ps9B9euBnxaJrhMV6P+xTJObdvBN37TlZyMj58AGfZskM9Dldl4aS1Hbay430l8nzQX/2tvm5EENoSjXjm9cDdqMLsWsRGaK+CThAXku9h2cBpASlwJGqugskj5Sg2mAac0E2xkqm1HIFg5sOh/nlk1v9Uf09lfiQT6Ur+wOqaXb659nhYgpRWxktADMRAyjCIXPIPdhx7+pmal/WM6dEwa+YDEnvfzEPxBwZ4liH95SuTGhLv89drQMZfrtOJwdVmuRdOHTfu4S59NgMO8VPcaRJLI/PP25Gp9SNi1Dz8BluFUNaqOQXfzssB6avLWkvl/VlqUKkN6Wuvz99LUcDfAGt+UGWIeDw3XQjr0RI=
 jdk:
-- oraclejdk8
+- openjdk8
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package 
+# mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
 cache:
   directories:
   - "$HOME/.m2/repository"
