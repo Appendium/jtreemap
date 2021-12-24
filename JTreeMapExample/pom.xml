@@ -57,7 +57,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>net.sf.jtreemap.*;version="${project.version}"</Export-Package>
-                        <Private-Package />
+                        <Private-Package/>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-RequiredExecutionEnvironment>J2SE-1.4</Bundle-RequiredExecutionEnvironment>
@@ -157,7 +157,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
+            <version>1.18.22</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
