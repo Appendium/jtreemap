@@ -32,23 +32,20 @@
  */
 package net.sf.jtreemap.swing;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
 /**
  * Default Value <BR>
  * The getLabel() method returns the "" + getValue()
  *
  * @author Laurent DUTHEIL
  */
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
 public class DefaultValue extends Value {
     private static final long serialVersionUID = 367321198951855282L;
 
     private double value;
+    
+    public DefaultValue(double value) {
+        this.value = value;
+    }
 
     /*
      * (non-Javadoc)

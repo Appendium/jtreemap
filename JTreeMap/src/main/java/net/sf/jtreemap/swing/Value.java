@@ -34,14 +34,11 @@ package net.sf.jtreemap.swing;
 
 import java.io.Serializable;
 
-import lombok.EqualsAndHashCode;
-
 /**
  * Class who permits to associate a double value to a label
  *
  * @author Laurent DUTHEIL
  */
-@EqualsAndHashCode
 public abstract class Value implements Comparable, Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -85,6 +82,29 @@ public abstract class Value implements Comparable, Serializable {
             return this.getValue() > value2.getValue() ? 1 : 0;
         }
         throw new IllegalArgumentException();
+    }
+    
+    @Override
+    public int hashCode() {
+        final String label = getLabel();
+        return Double.hashCode(getValue()) + 31 * (label != null ? 0 : label.hashCode());
+    }
+
+    @Override
+    public boolean equals(final Object value) {
+        if (value != null && Value.class.equals(value.getClass())) {
+            final Value value2 = (Value) value;
+            if (this.getValue() != value2.getValue()) {
+                return false;
+            }
+            
+            if (this.getLabel() == null) {
+                return  value2.getLabel() == null;
+            }
+            
+            return this.getLabel().equals(value2.getLabel());
+        }
+        return false;
     }
 
     @Override

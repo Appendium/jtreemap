@@ -37,10 +37,12 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import lombok.extern.slf4j.Slf4j;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.TreeMapNode;
 import net.sf.jtreemap.swing.Value;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * ColorProvider who, with a max absolute value M, choose the color between
@@ -48,10 +50,11 @@ import net.sf.jtreemap.swing.Value;
  *
  * @author Laurent Dutheil
  */
-@Slf4j
 public class RedGreenColorProvider extends ColorProvider {
     private static final long serialVersionUID = 5030306338780462810L;
     private static final int COLOUR_MAX_VALUE = 255;
+    private static final Logger log = LoggerFactory.getLogger(RedGreenColorProvider.class);
+    
     private final JTreeMap jTreeMap;
     private JPanel legend;
     private Value maxAbsValue;

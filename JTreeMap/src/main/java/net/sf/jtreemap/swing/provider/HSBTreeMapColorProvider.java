@@ -38,11 +38,13 @@ import java.util.Enumeration;
 
 import javax.swing.JPanel;
 
-import lombok.extern.slf4j.Slf4j;
 import net.sf.jtreemap.swing.DefaultValue;
 import net.sf.jtreemap.swing.JTreeMap;
 import net.sf.jtreemap.swing.TreeMapNode;
 import net.sf.jtreemap.swing.Value;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * An HSB color space color provider for JTreeMap. Uses a specified function to
@@ -52,7 +54,6 @@ import net.sf.jtreemap.swing.Value;
  *
  * @author Andy Adamczak
  */
-@Slf4j
 public class HSBTreeMapColorProvider extends ColorProvider {
     private static final int HSBVAL_SIZE = 3;
 
@@ -60,6 +61,8 @@ public class HSBTreeMapColorProvider extends ColorProvider {
      *
      */
     private static final long serialVersionUID = 5009655580804320847L;
+    
+    private static final Logger log = LoggerFactory.getLogger(RedGreenColorProvider.class);
 
     /**
      * @author Andy Adamczak
