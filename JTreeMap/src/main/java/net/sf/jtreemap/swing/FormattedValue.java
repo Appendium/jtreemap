@@ -35,14 +35,11 @@ package net.sf.jtreemap.swing;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 
-import lombok.EqualsAndHashCode;
-
 /**
  * class who can display the values of elements of a JTreeMap with a formatter.
  *
  * @author Benoit Xhenseval
  */
-@EqualsAndHashCode(callSuper = true)
 public class FormattedValue extends DefaultValue {
     private static final long serialVersionUID = 108728719010392928L;
     private final NumberFormat nf;
