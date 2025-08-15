@@ -54,18 +54,21 @@ import net.sf.jtreemap.swing.provider.ColorProvider;
 import net.sf.jtreemap.swing.provider.UniqueColorProvider;
 
 /**
- * JComponent who represents each element of a tree in a rectangle of more or
- * less big size according to its importance in the tree.
+ * A JComponent that represents each element of a tree in a rectangle of a size
+ * proportional to its importance in the tree.
  * <p>
- * A tree structure may includes more or less important elements. For example,
- * in a tree structure of files, there can be files of big size. Then it can be
- * interesting to know which repertory is the most important on a hard disk.
+ * A tree structure may include elements of varying importance. For example, in
+ * a file system tree, some files may be very large. It can be useful to
+
+ * visualize which directories consume the most disk space.
+ * </p>
  * <p>
- * Moreover, we can add a code color which makes it possible to introduce new
- * information into the representation of the tree structure.
+ * Additionally, a color code can be used to introduce new information into the
+ * representation of the tree structure.
+ * </p>
  * <p>
- * So, in a JTreeMap, you can see the size and the value of an element in a
- * tree.
+ * Thus, in a JTreeMap, you can see the size and value of an element in a tree.
+ * </p>
  *
  * @see net.sf.jtreemap.swing.TreeMapNode
  * @author Laurent Dutheil
@@ -83,50 +86,47 @@ public class JTreeMap extends JComponent {
      */
     private JTree treeView;
 
-    // active leaf
-    private TreeMapNode activeLeaf = null;
+    private TreeMapNode activeLeaf;
 
-    // color provider
-    private ColorProvider colorProvider = null;
+    private ColorProvider colorProvider;
 
-    // displayed root
-    private TreeMapNode displayedRoot = null;
+    private TreeMapNode displayedRoot;
 
-    // root of the tree
-    private TreeMapNode root = null;
+    private TreeMapNode root;
 
-    // divide strategy
-    private SplitStrategy strategy = null;
+    private SplitStrategy strategy;
 
-    // tooltip builder
     private IToolTipBuilder toolTipBuilder;
 
     // zoom
     private final Zoom zoom = new Zoom();
 
     /**
-     * Constructor of JTreeMap. <BR>
-     * The chosen strategy is SplitSquarified. <BR>
-     * The chosen color provider is UniqueColorProvider.
+     * Constructs a JTreeMap with the specified root node.
+     * <p>
+     * The default strategy is {@link SplitSquarified}, and the default color
+     * provider is {@link UniqueColorProvider}.
+     * </p>
      *
+     * @param root the root of the tree to display
      * @see SplitSquarified
      * @see UniqueColorProvider
-     * @param root
-     *            the root of the tree to display
      */
     public JTreeMap(final TreeMapNode root) {
         this(root, new SplitSquarified(), null, null, false);
     }
 
     /**
-     * Constructor of JTreeMap. <BR>
-     * The chosen strategy is SplitSquarified. <BR>
-     * The chosen color provider is UniqueColorProvider.
+     * Constructs a JTreeMap with the specified root node and a JTree view.
+     * <p>
+     * The default strategy is {@link SplitSquarified}, and the default color
+     * provider is {@link UniqueColorProvider}.
+     * </p>
      *
+     * @param root     the root of the tree to display
+     * @param treeView the JTree representation of the hierarchical data
      * @see SplitSquarified
      * @see UniqueColorProvider
-     * @param root the root of the tree to display
-     * @param treeView The tree representation of the hierarchical data.
      */
     public JTreeMap(final TreeMapNode root, final JTree treeView) {
         this(root, new SplitSquarified(), null, null, false);
@@ -134,35 +134,41 @@ public class JTreeMap extends JComponent {
     }
 
     /**
-     * Constructor of JTreeMap. <BR>
-     * The chosen color provider is UniqueColorProvider.
+     * Constructs a JTreeMap with the specified root node, split strategy, and JTree
+     * view.
+     * <p>
+     * The default color provider is {@link UniqueColorProvider}.
+     * </p>
      *
+     * @param root         the root of the tree to display
+     * @param strategy     the split strategy
+     * @param treeView     the JTree representation of the hierarchical data
+     * @param weightPrefix the prefix for the weight in the tooltip
+     * @param valuePrefix  the prefix for the value in the tooltip
+     * @param showWeight   if true, the weight is shown in the tooltip
      * @see UniqueColorProvider
-     * @param root
-     *            the root of the tree to display
-     * @param strategy
-     *            the split strategy
-     * @param treeView The tree representation of the hierarchical data.
      */
-    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, final JTree treeView, final String weightPrefix, final String valuePrefix,
-            final boolean showWeight) {
+    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, final JTree treeView,
+            final String weightPrefix, final String valuePrefix, final boolean showWeight) {
         this(root, strategy, weightPrefix, valuePrefix, showWeight);
         this.treeView = treeView;
     }
 
     /**
-     * Constructor of JTreeMap. <BR>
-     * The chosen color provider is UniqueColorProvider.
+     * Constructs a JTreeMap with the specified root node and split strategy.
+     * <p>
+     * The default color provider is {@link UniqueColorProvider}.
+     * </p>
      *
+     * @param root         the root of the tree to display
+     * @param strategy     the split strategy
+     * @param weightPrefix the prefix for the weight in the tooltip
+     * @param valuePrefix  the prefix for the value in the tooltip
+     * @param showWeight   if true, the weight is shown in the tooltip
      * @see UniqueColorProvider
-     * @param root
-     *            the root of the tree to display
-     * @param strategy
-     *            the split strategy
      */
-    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, final String weightPrefix, final String valuePrefix,
-            final boolean showWeight) {
-        // ToolTips appears without delay and stay as long as possible
+    public JTreeMap(final TreeMapNode root, final SplitStrategy strategy, final String weightPrefix,
+            final String valuePrefix, final boolean showWeight) {
         final ToolTipManager ttm = ToolTipManager.sharedInstance();
         ttm.setInitialDelay(0);
         ttm.setReshowDelay(0);
@@ -171,8 +177,7 @@ public class JTreeMap extends JComponent {
         ttm.setLightWeightPopupEnabled(true);
         setToolTipText("");
 
-        // the default DefaultToolTipBuilder
-        toolTipBuilder = new DefaultToolTipBuilder(this, weightPrefix, valuePrefix, showWeight);
+        this.toolTipBuilder = new DefaultToolTipBuilder(this, weightPrefix, valuePrefix, showWeight);
 
         setRoot(root);
         setStrategy(strategy);
@@ -183,11 +188,13 @@ public class JTreeMap extends JComponent {
     }
 
     /**
-     * calculate the postitions for the displayed root. <BR>
+     * Calculates the positions for the displayed root.
+     * <p>
      * The positions of the root must be calculated first.
+     * </p>
      */
     public void calculatePositions() {
-        if (this.getStrategy() != null && displayedRoot != null) {
+        if (this.getStrategy() != null && this.displayedRoot != null) {
             getStrategy().calculatePositions(this.displayedRoot);
         }
     }
@@ -198,60 +205,50 @@ public class JTreeMap extends JComponent {
     }
 
     /**
-     * draw the item.
+     * Draws the item.
      *
-     * @param g
-     *            Graphics where you have to draw
-     * @param item
-     *            item to draw
+     * @param g    the Graphics context where the item has to be drawn
+     * @param item the item to draw
      */
     protected void draw(final Graphics g, final TreeMapNode item) {
         if (item.isLeaf() && item.getValue() != null) {
             g.setColor(this.colorProvider.getColor(item.getValue()));
             g.fillRect(item.getX(), item.getY(), item.getWidth(), item.getHeight());
         } else {
-            for (final Enumeration e = item.children(); e.hasMoreElements();) {
+            for (final Enumeration<?> e = item.children(); e.hasMoreElements();) {
                 draw(g, (TreeMapNode) e.nextElement());
             }
         }
     }
 
     /**
-     * write the label in the middle of the item. <BR>
-     * You have first to define the font of the Graphics. <BR>
+     * Writes the label in the middle of the item.
+     * <p>
+     * You must first define the font of the Graphics.
+     * </p>
+     * <p>
      * You may override this method to change the position or the color of the
      * label.
+     * </p>
      *
-     * @param g
-     *            Graphics where you have to draw
-     * @param item
-     *            TreeMapNode to draw
+     * @param g    the Graphics context where the label has to be drawn
+     * @param item the TreeMapNode to draw
      */
     protected void drawLabel(final Graphics g, final TreeMapNode item) {
         final FontMetrics fm = g.getFontMetrics(g.getFont());
-        // if the height of the item is high enough
         if (fm.getHeight() < item.getHeight() - 2) {
             String label = item.getLabel();
-
             final int y = (item.getHeight() + fm.getAscent() - fm.getDescent()) / 2;
             final int stringWidth = fm.stringWidth(label);
-            // the width of the label depends on the font :
-            // if the width of the label is larger than the item
             if (item.getWidth() - BORDER_FOR_FONT <= stringWidth) {
-                // We have to truncate the label
-                // number of chars who can be writen in the item
                 final int nbChar = label.length() * item.getWidth() / stringWidth;
                 if (nbChar > MAX_NUM_CHAR) {
-                    // and add "..." at the end
                     label = label.substring(0, nbChar - MAX_NUM_CHAR) + "...";
                 } else {
-                    // if it is not enough large, we display nothing
                     label = "";
                 }
             }
             final int x = (item.getWidth() - fm.stringWidth(label)) / 2;
-
-            // background in black
             g.setColor(Color.black);
             g.drawString(label, item.getX() + x + 1, item.getY() + y + 1);
             g.drawString(label, item.getX() + x - 1, item.getY() + y + 1);
@@ -261,30 +258,27 @@ public class JTreeMap extends JComponent {
             g.drawString(label, item.getX() + x - 1, item.getY() + y);
             g.drawString(label, item.getX() + x, item.getY() + y + 1);
             g.drawString(label, item.getX() + x, item.getY() + y - 1);
-            // label in white
             g.setColor(Color.white);
             g.drawString(label, item.getX() + x, item.getY() + y);
         }
     }
 
     /**
-     * Draw all the labels to draw. <BR>
-     * You may override this method to draw the labels you want. <BR>
-     * For exemples, all the leaves, or all the first level children, or all of
-     * them...
+     * Draws all the labels to draw.
+     * <p>
+     * You may override this method to draw the labels you want. For example, all
+     * the leaves, or all the first level children, or all of them.
+     * </p>
      *
-     * @param g
-     *            Graphics where you have to draw
-     * @param item
-     *            TreeMapNode to draw
+     * @param g    the Graphics context where the labels have to be drawn
+     * @param item the TreeMapNode to draw
      */
     protected void drawLabels(final Graphics g, final TreeMapNode item) {
-        // add the labels (level -1)
         g.setFont(this.getFont());
         if (this.displayedRoot.isLeaf()) {
-            drawLabel(g, displayedRoot);
+            drawLabel(g, this.displayedRoot);
         } else {
-            for (final Enumeration e = displayedRoot.children(); e.hasMoreElements();) {
+            for (final Enumeration<?> e = this.displayedRoot.children(); e.hasMoreElements();) {
                 drawLabel(g, (TreeMapNode) e.nextElement());
             }
         }
@@ -310,52 +304,52 @@ public class JTreeMap extends JComponent {
     }
 
     /**
-     * get the active leaf (the one under the mouse).
+     * Gets the active leaf (the one under the mouse).
      *
-     * @return Returns the activeLeaf.
+     * @return the active leaf
      */
     public TreeMapNode getActiveLeaf() {
-        return activeLeaf;
+        return this.activeLeaf;
     }
 
     /**
-     * get the ColorProvider.
+     * Gets the ColorProvider.
      *
      * @return the ColorProvider
      */
     public ColorProvider getColorProvider() {
-        return colorProvider;
+        return this.colorProvider;
     }
 
     /**
-     * get the displayed root.
+     * Gets the displayed root.
      * <p>
-     * This may be not the root of the jTreeMap. After a zoom, the displayed
-     * root can be the root of an under-tree.
+     * This may not be the root of the JTreeMap. After a zoom, the displayed root
+     * can be the root of a subtree.
      * </p>
      *
      * @return the displayed root
      */
     public TreeMapNode getDisplayedRoot() {
-        return displayedRoot;
+        return this.displayedRoot;
     }
 
     /**
-     * get the root.
+     * Gets the root of the JTreeMap.
      *
      * @return the root
      */
     public TreeMapNode getRoot() {
-        return root;
+        return this.root;
     }
 
     /**
-     * get the SplitStrategy.
+     * Gets the SplitStrategy.
      *
      * @return the SplitStrategy
      */
     public SplitStrategy getStrategy() {
-        return strategy;
+        return this.strategy;
     }
 
     @Override
@@ -363,22 +357,23 @@ public class JTreeMap extends JComponent {
         int posX;
         int posY;
         final JToolTip toolTip = createToolTip();
-        final int xMax = displayedRoot.getX() + displayedRoot.getWidth();
-        final int yMin = displayedRoot.getY();
+        final int xMax = this.displayedRoot.getX() + this.displayedRoot.getWidth();
+        final int yMin = this.displayedRoot.getY();
         if (this.activeLeaf != null) {
-            if (this.activeLeaf.getWidth() >= toolTip.getWidth() + 2 * INSET && activeLeaf.getHeight() >= toolTip.getHeight() + 2 * INSET) {
-                posX = activeLeaf.getX() + INSET;
-                posY = activeLeaf.getY() + INSET;
+            if (this.activeLeaf.getWidth() >= toolTip.getWidth() + 2 * INSET
+                    && activeLeaf.getHeight() >= toolTip.getHeight() + 2 * INSET) {
+                posX = this.activeLeaf.getX() + INSET;
+                posY = this.activeLeaf.getY() + INSET;
             } else {
-                posX = activeLeaf.getX() + activeLeaf.getWidth() + INSET;
-                posY = activeLeaf.getY() - toolTip.getHeight() - INSET;
+                posX = this.activeLeaf.getX() + this.activeLeaf.getWidth() + INSET;
+                posY = this.activeLeaf.getY() - toolTip.getHeight() - INSET;
             }
 
             if (posY < yMin + INSET) {
                 posY = yMin + INSET;
             }
             if (posX + toolTip.getWidth() > xMax - INSET && this.activeLeaf.getX() >= toolTip.getWidth() + INSET) {
-                posX = activeLeaf.getX() - INSET - toolTip.getWidth();
+                posX = this.activeLeaf.getX() - INSET - toolTip.getWidth();
             }
 
             return new Point(posX, posY);
@@ -425,12 +420,10 @@ public class JTreeMap extends JComponent {
     }
 
     /**
-     * reveal the item.
+     * Reveals the item.
      *
-     * @param g
-     *            Graphics where you have to draw
-     * @param item
-     *            TreeMapNode to reveal
+     * @param g    the Graphics context where the item has to be drawn
+     * @param item the TreeMapNode to reveal
      */
     protected void reveal(final Graphics g, final TreeMapNode item) {
         if (item.isLeaf()) {
@@ -440,14 +433,13 @@ public class JTreeMap extends JComponent {
     }
 
     /**
-     * set the active leaf.
+     * Sets the active leaf.
      *
-     * @param newActiveLeaf
-     *            the new active leaf
+     * @param newActiveLeaf the new active leaf
      */
     public void setActiveLeaf(final TreeMapNode newActiveLeaf) {
         if (newActiveLeaf == null || newActiveLeaf.isLeaf()) {
-            activeLeaf = newActiveLeaf;
+            this.activeLeaf = newActiveLeaf;
         }
     }
 
@@ -472,99 +464,88 @@ public class JTreeMap extends JComponent {
     }
 
     /**
-     * set the ColorProvider.
+     * Sets the ColorProvider.
      *
-     * @param newColorProvider
-     *            the new ColorPorvider
+     * @param newColorProvider the new ColorProvider
      */
     public void setColorProvider(final ColorProvider newColorProvider) {
-        colorProvider = newColorProvider;
+        this.colorProvider = newColorProvider;
     }
 
     /**
-     * set the displayed root.
+     * Sets the displayed root.
      * <p>
-     * This may be not the root of the jTreeMap. After a zoom, the displayed
-     * root can be the root of an under-tree.
+     * This may not be the root of the JTreeMap. After a zoom, the displayed root
+     * can be the root of a subtree.
      * </p>
      *
-     * @param newDisplayedRoot
-     *            new DiplayedRoot
+     * @param newDisplayedRoot the new displayed root
      */
     public void setDisplayedRoot(final TreeMapNode newDisplayedRoot) {
-        displayedRoot = newDisplayedRoot;
+        this.displayedRoot = newDisplayedRoot;
     }
 
     /**
-     * set the new root.
+     * Sets the new root.
      *
-     * @param newRoot
-     *            the new root to set
+     * @param newRoot the new root to set
      */
     public void setRoot(final TreeMapNode newRoot) {
-        root = newRoot;
+        this.root = newRoot;
         final Insets insets = getInsets();
-        root.setX(insets.left);
-        root.setY(insets.top);
+        this.root.setX(insets.left);
+        this.root.setY(insets.top);
         setDisplayedRoot(this.root);
-
     }
 
     /**
-     * set the new strategy.
+     * Sets the new strategy.
      *
-     * @param newStrat
-     *            the new strategy to set
+     * @param newStrat the new strategy to set
      */
     public void setStrategy(final SplitStrategy newStrat) {
-        strategy = newStrat;
+        this.strategy = newStrat;
     }
 
     /**
-     * Set the builder of the toolTip.<BR>
+     * Sets the builder of the toolTip.
      *
-     * @param toolTipBuilder
-     *            The toolTipBuilder to set.
+     * @param toolTipBuilder the toolTipBuilder to set
      */
     public void setToolTipBuilder(final IToolTipBuilder toolTipBuilder) {
         this.toolTipBuilder = toolTipBuilder;
     }
 
     /**
-     * When you zoom the jTreeMap, you have the choice to keep proportions or
-     * not.
+     * When you zoom the JTreeMap, you have the choice to keep proportions or not.
      *
-     * @param keepProportion
-     *            true if you want to keep proportions, else false
+     * @param keepProportion true if you want to keep proportions, else false
      */
     public void setZoomKeepProportion(final boolean keepProportion) {
-        zoom.setKeepProportion(keepProportion);
+        this.zoom.setKeepProportion(keepProportion);
     }
 
     /**
-     * Undo the zoom to display the root.
+     * Undoes the zoom to display the root.
      */
     public void unzoom() {
-        zoom.undo();
+        this.zoom.undo();
     }
 
     /**
-     * Zoom the JTreeMap to the dest node.
+     * Zooms the JTreeMap to the specified destination node.
      *
-     * @param dest
-     *            node we want to zoom
+     * @param dest the node we want to zoom to
      */
     public void zoom(final TreeMapNode dest) {
-        // undo the last zoom
         unzoom();
-
         if (dest != null) {
-            zoom.execute(dest);
+            this.zoom.execute(dest);
         }
     }
 
     /**
-     * Listener who define the active leaf and set the tooltip text.
+     * A listener that defines the active leaf and sets the tooltip text.
      *
      * @author Laurent Dutheil
      */
@@ -579,11 +560,10 @@ public class JTreeMap extends JComponent {
                 }
             }
         }
-
     }
 
     /**
-     * Listener which listens for double click to navigate one level down.
+     * A listener that listens for double-clicks to navigate one level down.
      *
      * @author Ekin Gulen
      */
@@ -593,21 +573,21 @@ public class JTreeMap extends JComponent {
             if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
                 final TreeMapNode t = getDisplayedRoot().getChild(e.getX(), e.getY());
                 if (t != null && !t.isLeaf()) {
-                    if (treeView == null) {
+                    if (JTreeMap.this.treeView == null) {
                         zoom(t);
                     } else {
                         final TreePath path = new TreePath(t.getPath());
-                        treeView.setSelectionPath(path);
-                        treeView.scrollPathToVisible(path);
+                        JTreeMap.this.treeView.setSelectionPath(path);
+                        JTreeMap.this.treeView.scrollPathToVisible(path);
                     }
-
                 } else {
-                    if (treeView == null) {
+                    if (JTreeMap.this.treeView == null) {
                         zoom((TreeMapNode) getDisplayedRoot().getParent());
                     } else {
-                        final TreePath path = new TreePath(((TreeMapNode) getDisplayedRoot().getParent()).getPath());
-                        treeView.setSelectionPath(path);
-                        treeView.scrollPathToVisible(path);
+                        final TreePath path = new TreePath(
+                                ((TreeMapNode) getDisplayedRoot().getParent()).getPath());
+                        JTreeMap.this.treeView.setSelectionPath(path);
+                        JTreeMap.this.treeView.scrollPathToVisible(path);
                     }
                 }
                 repaint();
@@ -622,57 +602,55 @@ public class JTreeMap extends JComponent {
     }
 
     /**
-     * Class who zoom and unzoom the JTreeMap.
+     * A class that zooms and un-zooms the JTreeMap.
      *
      * @author Laurent Dutheil
      */
     private class Zoom implements Serializable {
         private static final long serialVersionUID = 6708828099608367996L;
         private boolean enable;
-        private boolean keepProportion = false;
+        private boolean keepProportion;
 
         public Zoom() {
-            enable = true;
+            this.enable = true;
         }
 
         /**
-         * Execute the zoom.
+         * Executes the zoom.
          *
-         * @param dest
-         *            TreeMapNode where you want to zoom
+         * @param dest the TreeMapNode where you want to zoom
          */
         public void execute(final TreeMapNode dest) {
             if (this.enable) {
                 JTreeMap.this.setActiveLeaf(null);
-
                 setNewDimension(dest);
-
                 JTreeMap.this.setDisplayedRoot(dest);
-
-                enable = false;
+                this.enable = false;
             }
         }
 
         /**
-         * @return Returns the keepProportion.
+         * Returns whether to keep the proportion when zooming.
+         *
+         * @return true if the proportion should be kept, false otherwise
          */
         public boolean isKeepProportion() {
-            return keepProportion;
+            return this.keepProportion;
         }
 
         /**
-         * @param keepProportion
-         *            The keepProportion to set.
+         * Sets whether to keep the proportion when zooming.
+         *
+         * @param keepProportion true if the proportion should be kept, false otherwise
          */
         public void setKeepProportion(final boolean keepProportion) {
             this.keepProportion = keepProportion;
         }
 
         /**
-         * set the new dimensions of the dest root
+         * Sets the new dimensions of the destination root.
          *
-         * @param dest
-         *            the root to dimension
+         * @param dest the root to dimension
          */
         protected void setNewDimension(final TreeMapNode dest) {
             if (dest == null) {
@@ -680,16 +658,13 @@ public class JTreeMap extends JComponent {
             }
             dest.setX(JTreeMap.this.getRoot().getX());
             dest.setY(JTreeMap.this.getRoot().getY());
-
             final int rootWidth = JTreeMap.this.getRoot().getWidth();
             final int rootHeight = JTreeMap.this.getRoot().getHeight();
-
             if (isKeepProportion()) {
                 final int destHeight = dest.getHeight();
                 final int destWidth = dest.getWidth();
                 final float divWidth = (float) destWidth / (float) rootWidth;
                 final float divHeight = (float) destHeight / (float) rootHeight;
-
                 if (divWidth >= divHeight) {
                     dest.setHeight(Math.round(destHeight / divWidth));
                     dest.setWidth(rootWidth);
@@ -697,7 +672,6 @@ public class JTreeMap extends JComponent {
                     dest.setHeight(rootHeight);
                     dest.setWidth(Math.round(destWidth / divHeight));
                 }
-
             } else {
                 dest.setHeight(rootHeight);
                 dest.setWidth(rootWidth);
@@ -705,20 +679,30 @@ public class JTreeMap extends JComponent {
         }
 
         /**
-         * undo the zoom.
+         * Undoes the zoom.
          */
         public void undo() {
             if (!this.enable) {
                 JTreeMap.this.setDisplayedRoot(JTreeMap.this.getRoot());
-                enable = true;
+                this.enable = true;
             }
         }
     }
 
+    /**
+     * Gets the JTree view.
+     *
+     * @return the JTree view
+     */
     public JTree getTreeView() {
-        return treeView;
+        return this.treeView;
     }
 
+    /**
+     * Sets the JTree view.
+     *
+     * @param treeView the JTree view
+     */
     public void setTreeView(final JTree treeView) {
         this.treeView = treeView;
     }
